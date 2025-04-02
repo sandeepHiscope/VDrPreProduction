@@ -1,0 +1,114 @@
+/* BODY PART */
+.search-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.location-wrapper, .search-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.location-input {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 260px;
+  background-color: #dddada;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(78, 76, 76, 0.1);
+  position: absolute;
+  top: 280px;
+  left: 200px;
+}
+
+.location-select {
+  background-color: #dddada;
+  height: 40px;
+  width: 200px;
+  position: relative;
+  left: 10px;
+}
+
+.doctor-select {
+  background-color: #dddada;
+  height: 40px;
+  position: relative;
+  left: 40px;
+  width: 430px;
+}
+
+.search-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 50px;
+  width: 500px;
+  background-color: #dddada;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(78, 76, 76, 0.1);
+  position: absolute;
+  top: 280px;
+  left: 600px;
+}
+
+.location-icon, .search-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.location-text, .search-placeholder {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  width: 100%;
+}
+
+.search-placeholder {
+  margin-left: 30px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.findDoctor-submit {
+  position: absolute;
+  top: 287px;
+  left: 1180px;
+  background-color: #cccbc9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.findDoctor-submit:hover {
+  opacity: 0.8;
+}
+
+.findDoctor-print {
+  position: relative;
+  top: 200px;
+  align-items: center;
+  transition: 1ms;
+}
+
+
+
