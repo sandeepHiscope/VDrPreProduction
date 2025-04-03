@@ -15,7 +15,7 @@ import DoctorProfilePage from "./pages/doctorProfilePage";
 import MainInsurance from "./pages/mainInsurancePage";
 import MainHeader from "./components/header";
 import Footer from "./components/footer";
-import QrScanner from './pages/verifyDoc'
+import VerifyDoc from "./pages/verifyDoc";
 
 const App = () => {
   return (
@@ -24,7 +24,8 @@ const App = () => {
         <MainHeader />
         <div className="content-wrapper ">
           <Routes>
-            <Route path="/qrScanner" element={<QrScanner />} />
+            <Route path="/" element={<Homepage />} />
+            <Route path="/verifyDoc" element={<VerifyDoc />} />
             <Route
               path="/doctorVerificationpage"
               element={<DoctorVerification />}

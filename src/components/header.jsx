@@ -51,7 +51,7 @@ const MainHeader = () => {
             <Link to="/findDoctorPage" className="nav-link">
               Find a Doctor
             </Link>
-            <Link to="/" className="nav-link">
+            <Link to="/verifyDoc" className="nav-link">
               Verify Doc
             </Link>
             <Link to="/sosPage" className="nav-link sos-link">
