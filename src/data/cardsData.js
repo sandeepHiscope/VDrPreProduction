@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import CardiologistImg from "../assets/images/commonImg/Cardiologist.png";
+import CardiologistImg from "../assets/Images/commonImg/Cardiologist.png";
 import GynaecologistImg from "../assets/images/homeImg/gynaecologist.png";
 import DentistImg from "../assets/images/homeImg/Dentist.png";
 import GastroenterologistImg from "../assets/images/homeImg/Gastrologist.png";
