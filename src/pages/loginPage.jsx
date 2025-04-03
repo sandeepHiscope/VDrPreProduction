@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
 import Googlelogo from "../assets/icons/google.png";
 import Fotter from "../components/footer";
-
+import docRegister from '../assets/Images/docRegister.png'
 const LOGIN_API_URL = "http://localhost:8080/api/auth/login";
 const REGISTER_API_URL = "http://localhost:8080/api/auth/register";
 
@@ -107,13 +107,15 @@ const Login = () => {
   const goBack = () => setRole("");
 
   return (
-    <>
-      <div className="login-change">
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/b07d1dfbb02eae67caa3e2cfdf5c9867238ca7e72eb515ca4ba7a5fa71896a65"
+    <div className="loginContainer">
+      <div className="registerI">
+      <img
+          src={docRegister}
           alt="Healthcare illustration"
-          className="hero-image"
-        />
+          className="docRegisterImg"
+        /></div>mg
+      <div className="login-change">
+        
       </div>
       <div className="container">
         <div className="tabs">
@@ -219,7 +221,7 @@ const Login = () => {
         )}
       </div>
 
-    </>
+      </div>
   );
 };
 
