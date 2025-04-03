@@ -20,7 +20,7 @@ const cardsData = [
   },
   {
     title: "Gynaecologist",
-    img: GynaecologistImg,
+    img: GynaecologistImg ,
     description: "Women's health, expert care",
   },
   {
