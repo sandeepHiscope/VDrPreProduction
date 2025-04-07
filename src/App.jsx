@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import React from "react";
+import React,{useEffect,useState} from "react";
+
 import "./App.css";
 import Homepage from "./pages/Home";
 import DoctorVerification from "./pages/doctorVerificationpage";
@@ -18,6 +19,14 @@ import Footer from "./components/footer";
 import VerifyDoc from "./pages/verifyDoc";
 
 const App = () => {
+  const [location, setLocation] = useState();
+  const currentUrl = window.location.href;
+  console.log(`url:${currentUrl}`);
+
+
+  useEffect(() => {
+    setLocation(currentUrl);
+  }, [currentUrl]);
   return (
     <>
       <Router>

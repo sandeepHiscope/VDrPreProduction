@@ -1,6 +1,6 @@
 /* Footer Container */
 .footer-container {
-  background-color: rgb(75, 165, 250); 
+  background: linear-gradient(to right, #75b8ff, #0e86ff); 
   color: #f9fafb; /* Light text */
   padding: 1rem;
   font-family: Arial, sans-serif;
@@ -10,8 +10,6 @@
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
   height: 15vh;
 }
-
-
 
 /* Logo Section */
 .footer-logo-section {
