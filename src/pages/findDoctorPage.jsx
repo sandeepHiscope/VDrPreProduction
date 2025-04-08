@@ -14,6 +14,7 @@ import Fotter from "../components/footer";
 
 const GET_DOCTOR_API_URL = "http://localhost:2003/api/doctors/getdoctors";
 
+
 const FindDoctorPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedState, setSelectedState] = useState("");
@@ -81,7 +82,7 @@ const FindDoctorPage = () => {
             filteredDoctors.map((doctor) => (
               <div key={doctor.id} className="doctor-card">
                 <img
-                  src={doctor.image || "https://via.placeholder.com/120"}
+                  src={doctor.doctorPhoto}
                   alt={`Dr. ${doctor.fullName}`}
                   className="doctor-image"
                 />
