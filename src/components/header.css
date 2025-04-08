@@ -11,6 +11,7 @@
   align-items: flex-start;
   /* background: #000; */
   position: relative;
+  
 }
 
 /* Background Image */
@@ -25,19 +26,25 @@
   transition: background-image 2s ease-in-out;
   z-index: -1;
   object-fit: cover;
+ 
 }
 
 /* Navigation */
 .nav-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: 100vw;
-  background: linear-gradient(to bottom, #ffffff18, #ffffff12, #ffffff08, #ffffff04, transparent); 
-  backdrop-filter: blur(9px); 
+  border-radius: 0.5em;
   padding: 8px;
+
  
+}
+.nav-container:hover{
+  backdrop-filter: blur(50px); 
+  transition: ease-in-out 3s;
+
 }
 /* Logo */
 .header-logo {
@@ -56,9 +63,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
- 
   border-radius: 10px;
 }
+
 
 .nav-links {
   display: flex;
@@ -71,7 +78,7 @@
   font-size: 1rem;
   padding: 10px 15px;
   border-radius: 8px;
-  background: -webkit-linear-gradient(90deg, #8d8d8d, #000000);
+  background: -webkit-linear-gradient(90deg, #ffffff, #000000);
   background-clip: text;
   color: transparent;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -81,6 +88,68 @@
 .nav-link:hover {
   background-color: #f0f0f0;
   color: #0055ff;
+}
+
+@media (max-width:1150px){
+  .nav-menu{
+    padding:0.5em;
+   
+  }
+  .nav-link{
+    font-size: 0.7rem;
+    padding: 5px 15px;
+  }
+  .header-logo {
+    height: 90px;
+    width: 90px;
+    cursor: pointer;
+    border-radius: 10px;
+    
+  
+  }
+  .nav-links {
+    display: flex;
+    gap: .1em;
+  
+  }
+  
+}
+@media (max-width:700px){
+  .nav-menu{
+    padding:0.1em;
+   
+  
+  }
+  .nav-link{
+    font-size:none;
+    padding: 15px;
+    text-align: center;
+   
+  }
+  .nav-link:hover{
+    border-bottom: 1px solid #a8a3a3a5;
+    border-top: 1px solid #a8a3a3a5;
+  }
+  .header-logo {
+    height: 90px;
+    width: 90px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: -200%;
+    margin-left:-40%;
+  
+  }
+  .nav-links {
+    flex-direction: column;
+    background: -webkit-linear-gradient(50deg, #ffffff, #000000);
+    gap: .5em;
+    backdrop-filter: blur(10px); 
+    width: 220px;
+    z-index: 1;
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
+ 
 }
 
 /* SOS Button */

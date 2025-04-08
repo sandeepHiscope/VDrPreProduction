@@ -74,6 +74,7 @@ const MainHeader = () => {
         </div>
       </nav>
     </section>
+    
   );
 };
 
