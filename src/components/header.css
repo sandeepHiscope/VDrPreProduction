@@ -30,7 +30,7 @@
 /* Navigation */
 .nav-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: 100vw;
@@ -38,6 +38,11 @@
   backdrop-filter: blur(9px); 
   padding: 8px;
  
+}
+.nav-container:hover{
+  backdrop-filter: blur(50px); 
+  transition: ease-in-out 3s;
+
 }
 /* Logo */
 .header-logo {
