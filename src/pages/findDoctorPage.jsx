@@ -81,11 +81,12 @@ const FindDoctorPage = () => {
           ) : filteredDoctors.length > 0 ? (
             filteredDoctors.map((doctor) => (
               <div key={doctor.id} className="doctor-card">
-                <img
-                  src={doctor.doctorPhoto}
-                  alt={`Dr. ${doctor.fullName}`}
-                  className="doctor-image"
-                />
+               <img
+                  src={`data:image/jpeg;base64,${doctor.doctorPhoto}`}
+                    alt={`Dr. ${doctor.fullName}`}
+                   className="doctor-image"
+               />
+
                 <div className="doctor-info">
                   <p>Dr. {doctor.fullName}</p>
                   <p>{doctor.specialization}</p>
