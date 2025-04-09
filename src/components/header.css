@@ -32,7 +32,7 @@
 /* Navigation */
 .nav-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   height: auto;
@@ -43,11 +43,17 @@
  
 }
 .nav-container:hover{
+
   background: rgba(109, 109, 109, 0.3);
   backdrop-filter: blur(10px);
 }
 .secicon{
   font-size: 1.2rem;
+
+  
+
+
+
 }
 /* Logo */
 .header-logo {
