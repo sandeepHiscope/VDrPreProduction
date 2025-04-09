@@ -4,12 +4,17 @@ import "./header.css";
 import "../index.css";
 import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
 import headerImages from "../data/headerImages";
+import { IoReorderThreeOutline } from "react-icons/io5";
+import { ImCross } from "react-icons/im";
+
 
 const MainHeader = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [position, setPosition] = useState(0);
   const navigate = useNavigate();
   const [windowWidth, setWindowWidth] = useState(window.innerHeight);
+  const [isOpen, setIsOpen] = useState(false);
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -32,9 +37,15 @@ const MainHeader = () => {
   const handleLoginClick = () => {
     navigate("/loginPage");
   };
+  const toggleSlide = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <section className="header-section">
+      <button className="toggle-button" onClick={toggleSlide}>
+      {isOpen?<IoReorderThreeOutline /> : <ImCross className="secicon" />}
+      </button>
       <div
         className="header-background"
         style={{
@@ -46,8 +57,8 @@ const MainHeader = () => {
         <Link to="/">
           <img src={VDrLogo} alt="VDrapp Footer Logo" className="header-logo" />
         </Link>
-        <div className="nav-menu  ">
-          <div className="nav-links ">
+        <div className="nav-menu">
+          <div className={isOpen? "nav-links-open" : "nav-links"}>
             <Link to="/findDoctorPage" className="nav-link">
               Find a Doctor
             </Link>
@@ -76,6 +87,8 @@ const MainHeader = () => {
           </div>
         </div>
       </nav>
+      
+        
     </section>
     
   );
