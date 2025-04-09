@@ -77,6 +77,12 @@ const MainHeader = () => {
             <Link to="/founderPage" className="nav-link">
               Founder Page
             </Link>
+            <Link to="/doctorID" className="nav-link">
+              doctorID
+            </Link>
+            <Link to="/QRCodeGenerator" className="nav-link">
+              QRCode Generator
+            </Link>
             {/* <div className="nav-link">width :{windowWidth}px</div>remove this when pushing to production */}
             <button className="login-button-header" onClick={handleLoginClick}>
               Login/Signup
