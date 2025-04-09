@@ -44,7 +44,7 @@
 }
 .nav-container:hover{
 
-  background: rgba(109, 109, 109, 0.3);
+  background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
 }
 .secicon{
@@ -87,7 +87,7 @@
   font-size: 1rem;
   padding: 10px 15px;
   border-radius: 8px;
-  background: -webkit-linear-gradient(120deg, #ffffff, #000000);
+  background: -webkit-linear-gradient(120deg, #151515, #000000);
   background-clip: text;
   color: transparent;
  
@@ -140,7 +140,7 @@
     width: 100px;
     cursor: pointer;
     border-radius: 10px;
-    position: fixed;
+    position: absolute;
     top: 3%;
     left: 2%;
   
@@ -161,7 +161,7 @@
   }
  
   .toggle-button{
-    position: fixed;
+    position: absolute;
     top: 20px;
     right: 20px;
     background-color: #4CAF50;
