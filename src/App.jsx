@@ -18,6 +18,7 @@ import MainHeader from "./components/header";
 import Footer from "./components/footer";
 import VerifyDoc from "./pages/verifyDoc";
 import DoctorID from "./pages/doctorID";
+import QRCodeGenerator from "./pages/QRCodeGenerator";
 
 const App = () => {
   const [location, setLocation] = useState();
@@ -57,13 +58,26 @@ const App = () => {
             <Route path="/doctorProfilePage" element={<DoctorProfilePage />} />
             <Route path="/mainInsurancePage" element={<MainInsurance />} />
             <Route path="/doctorID" element={<DoctorID />} />
+            <Route path="/QRCodeGenerator" element={<QRCodeGenerator />} />
+            {/* <Route path="/doctorID" element={<DoctorID />} /> */}
           </Routes>
         </div>
         <Footer />
       </Router>
+      <div>
+      <QRCodeGenerator />
+    </div>
+  
       {/* <Fotter/> */}
     </>
   );
-};
-
+// };
+// function App() {
+//   return (
+//     <div>
+//       <QRCodeGenerator />
+//     </div>
+//   );
+// }
+ };
 export default App;
