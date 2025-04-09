@@ -57,7 +57,7 @@ const MainHeader = () => {
             <Link to="/sosPage" className="nav-link sos-link">
               SOS
             </Link>
-            <Link to="https://v-commerce-in.netlify.app/" className="nav-link">
+            <Link to="https://vdr-door-delivery-medicines.netlify.app/" className="nav-link">
               Doorstep Meds
             </Link>
             <Link to="/" className="nav-link">
