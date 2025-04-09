@@ -21,7 +21,7 @@
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: center;
+  background: center;
   transition: background-image 2s ease-in-out;
   z-index: -1;
   object-fit: cover;
@@ -35,8 +35,9 @@
   width: 100%;
   max-width: 100vw;
   background: linear-gradient(to bottom, #ffffff18, #ffffff12, #ffffff08, #ffffff04, transparent); 
-  backdrop-filter: blur(9px); 
+  backdrop-filter: blur(8px); 
   padding: 8px;
+  padding: 0 1em;
  
 }
 .nav-container:hover{
@@ -48,6 +49,7 @@
 .header-logo {
   height: 7em;
   padding: 1em;
+  /* margin-left: 12%; */
   cursor: pointer;
   border-radius: 10px;
   /* background: rgba(255, 255, 255, 0.094); 

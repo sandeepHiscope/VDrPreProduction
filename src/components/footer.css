@@ -7,19 +7,29 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
   height: 15vh;
+  padding:1em;
 }
 
 /* Logo Section */
 .footer-logo-section {
+  display: flex;
+  width:  100px;
+  /* background: #12c660; */
+  justify-content:first baseline ;
+  align-items: center;
   flex: 1;
-  min-width: 250px;
 }
 
 .footer-logo {
   width: 80px;
   margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
 .footer-description {
@@ -27,6 +37,7 @@
   line-height: 1.6;
   color: rgb(13, 11, 65);
   margin: 1em;
+  
 }
 
 /* Links Section */
@@ -79,12 +90,7 @@
 }
 
 /* Social Icons */
-.footer-social {
-  flex: 1;
-  min-width: 150px;
-  /* background: #000; */
-  padding: 1em;
-}
+
 
 .footer-social h4 {
   font-size: 1.2rem;
@@ -95,15 +101,26 @@
 .social-icons {
   display: flex;
   gap: 1rem;
+  /* background: #fffdfd; */
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+  
 }
 
 .social-icons a {
   background-color: #222b38;
+  margin: .5em;
+  width: 50px;
+height: 50px;
   color: #f9fafb;
   padding: 0.6rem;
   border-radius: 50%;
   font-size: 1rem;
   transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .social-icons a:hover {
@@ -111,9 +128,21 @@
 }
 
 /* Footer Bottom Section */
-.footer-bottom {
+.footer-text-content {
   text-align: center;
   font-size: 0.9rem;
   color: #000343;
+  flex: 1;
 
+}
+.to-top-btn{
+  
+  /* background-color: #222b38; */
+  /* color: #f9fafb; */
+  border: none;
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: x-large;
 }
