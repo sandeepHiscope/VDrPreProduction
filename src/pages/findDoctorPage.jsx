@@ -11,6 +11,8 @@ import DoctorRegisterPage from "./doctorRegisterPage";
 import FounderPage from "./ourFoundersPage";
 import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
 import Fotter from "../components/footer";
+import DoctorId from "./doctorID";
+import { useNavigate } from "react-router-dom";
 
 const GET_DOCTOR_API_URL = "http://localhost:2003/api/doctors/getdoctors";
 
@@ -20,6 +22,8 @@ const FindDoctorPage = () => {
   const [selectedState, setSelectedState] = useState("");
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const [doctorId, setDoctorId] = useState(null);
 
 
   useEffect(() => {
@@ -45,6 +49,10 @@ const FindDoctorPage = () => {
       (selectedState === "" || doctor.location.includes(selectedState))
   );
 
+  const doctorProfile = (doctor) => {
+    alert("Doctor Profile Clicked!");
+    navigate(`/doctorID/${doctor.id}`, { state: { doctor } });
+  }
   return (
     <>
       <div className="header-placeholder"></div>
@@ -80,7 +88,7 @@ const FindDoctorPage = () => {
             <p>Loading doctors...</p>
           ) : filteredDoctors.length > 0 ? (
             filteredDoctors.map((doctor) => (
-              <div key={doctor.id} className="doctor-card">
+              <div key={doctor.id} className="doctor-card" onClick={() => doctorProfile(doctor)}>
                <img
                   src={`data:image/jpeg;base64,${doctor.doctorPhoto}`}
                     alt={`Dr. ${doctor.fullName}`}
