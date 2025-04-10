@@ -18,6 +18,15 @@ const GET_DOCTOR_API_URL = "http://localhost:2003/api/doctors/getdoctors";
 
 
 const FindDoctorPage = () => {
+  const defaultDoctor = {
+    id: 1,
+    fullName: "Dr. John Doe",
+    specialization: "Cardiologist",
+    experience: "10 years",
+    location: "New York",
+    rating: 9.5,
+    doctorPhoto: null, 
+  }
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedState, setSelectedState] = useState("");
   const [doctors, setDoctors] = useState([]);
