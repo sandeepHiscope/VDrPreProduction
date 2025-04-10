@@ -64,9 +64,9 @@ const App = () => {
         </div>
         <Footer />
       </Router>
-{/*       <div>
+      <div>
       <QRCodeGenerator />
-    </div> */}
+    </div>
   
       {/* <Fotter/> */}
     </>
