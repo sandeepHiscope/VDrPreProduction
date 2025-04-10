@@ -1,15 +1,24 @@
 import React from "react";
+import { useLocation, useParams } from "react-router-dom";
 import "./doctorID.css"; // Assuming you have a CSS file for styling
 
 const DoctorID = () => {
+  const location = useLocation();
+  const { doctor: stateDoctor } = location.state;
+  const { id } = useParams();
+
   const doctor = {
-    name: "Dr. Jane Smith",
-    license: "MD12345",
-    expiry: "2025-12-31",
-    specialization: "Cardiology",
-    clinics: "City Hospital, Private Clinic",
-    experience: "A dedicated cardiologist with 15+ years of experience in treating various heart conditions.",
-    image: "src/assets/Images/headerImages/doc.jpg"
+    name: stateDoctor?.fullName ,
+    license: stateDoctor?.license || "MD12345",
+    expiry: stateDoctor?.expiry || "2025-12-31",
+    specialization: stateDoctor?.specialization,
+    clinics: stateDoctor?.clinics || "City Hospital, Private Clinic",
+    experience:
+      stateDoctor?.experience ||
+      "A dedicated cardiologist with 15+ years of experience in treating various heart conditions.",
+    image: stateDoctor?.doctorPhoto
+      ? `data:image/jpeg;base64,${stateDoctor.doctorPhoto}`
+      : "src/assets/Images/headerImages/doc.jpg",
   };
 
   return (
