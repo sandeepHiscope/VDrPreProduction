@@ -37,7 +37,12 @@
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.13.0",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "vite": "^6.2.5"
+=======
+    "vite": "^6.2.4",
+    "vite-plugin-pwa": "^1.0.0"
+>>>>>>> Stashed changes
 =======
     "vite": "^6.2.4",
     "vite-plugin-pwa": "^1.0.0"
