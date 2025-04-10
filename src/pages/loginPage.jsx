@@ -113,7 +113,7 @@ const Login = () => {
           src={docRegister}
           alt="Healthcare illustration"
           className="docRegisterImg"
-        /></div>mg
+        /></div>
       <div className="login-change">
         
       </div>
@@ -155,7 +155,7 @@ const Login = () => {
               />
               <button type="submit">Login</button>
               <div className="forget">Forget password ?</div>
-              <div className="login-h1">----continue with----</div>
+              <div className="login-h1">continue with</div>
               <img src={Googlelogo} alt="google" className="small-image" />
             </form>
           </div>
