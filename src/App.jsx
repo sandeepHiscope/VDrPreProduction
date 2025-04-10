@@ -64,20 +64,10 @@ const App = () => {
         </div>
         <Footer />
       </Router>
-      {/* <div>
-      <QRCodeGenerator />
-    </div> */}
+      
   
-      {/* <Fotter/> */}
     </>
   );
-// };
-// function App() {
-//   return (
-//     <div>
-//       <QRCodeGenerator />
-//     </div>
-//   );
-// }
+
  };
 export default App;

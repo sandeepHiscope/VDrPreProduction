@@ -120,9 +120,7 @@
 }
 @media (max-width:850px){
   .nav-menu{
-    margin-top: 10%;
-    margin-right: 15%;
-    transition: all 0.5s ease;
+    transition: all 5s ease;
   
   }
   .nav-link{
@@ -147,11 +145,11 @@
   }
    .nav-links,.nav-links-open{
   flex-direction: column;
-  border: 1px solid #000000a5;
-  background-color: #000000;
+  border: 1px solid #dcd6d6a5;
+  background-color: #cec8c8;
   height: 350px;
   gap: 1px;
-  background: -webkit-linear-gradient(99deg, #999999, #000000);
+  background: -webkit-linear-gradient(99deg, #999999, #747474);
   } 
 
   .nav-links-open{

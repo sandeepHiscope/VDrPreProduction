@@ -1,7 +1,8 @@
 .footer-container{
   height: 10%;
   width: 100%;
-  background-color: aqua;
+  background-image: linear-gradient(to right,rgb(133, 208, 255), rgb(35, 137, 233));
+
 }
 .all-components{
   width: 80%;

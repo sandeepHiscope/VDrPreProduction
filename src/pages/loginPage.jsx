@@ -1,9 +1,7 @@
 import { useState } from "react";
 import "./loginPage.css";
 import { useNavigate } from "react-router-dom";
-import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
 import Googlelogo from "../assets/icons/google.png";
-import Fotter from "../components/footer";
 import docRegister from '../assets/Images/docRegister.png'
 const LOGIN_API_URL = "http://localhost:8080/api/auth/login";
 const REGISTER_API_URL = "http://localhost:8080/api/auth/register";
