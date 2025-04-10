@@ -25,7 +25,7 @@ const DoctorID = () => {
     <div className="doctor-card1">
       <img src="src/assets/Images/commonImg/VDrlogoBg.png" alt="Logo" className="logo" />
       <img src={doctor.image} alt={doctor.name} className="doctor-img" />
-      <h2>{doctor.name}</h2>
+      <h2>Dr. {doctor.name}</h2>
 
       <div className="details">
         <p><strong>License          :</strong> {doctor.license}</p>

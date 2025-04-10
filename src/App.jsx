@@ -64,11 +64,7 @@ const App = () => {
         </div>
         <Footer />
       </Router>
-      <div>
-      <QRCodeGenerator />
-    </div>
   
-      {/* <Fotter/> */}
     </>
   );
 // };
