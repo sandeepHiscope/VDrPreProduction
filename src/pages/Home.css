@@ -455,6 +455,11 @@ label {
   }
   .cursor-pointer{
     font-size: 10px;
+    color: #000000;
+    background-color:white;
+  }
+  .cursor-pointer:hover{
+    background-color: rgb(163, 163, 163);
   }
 }
 
@@ -570,4 +575,26 @@ label {
     font-size: 15px;
   }
   
+}
+.opinion-container{
+  background: linear-gradient(-45deg, #00c6ff, #38bdf8, #10b981, #00c6ff);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+  padding: 2rem;
+  border-radius: 16px;
+  color:black;
+}
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.opinion-container:hover{
+  color: #000;
 }
