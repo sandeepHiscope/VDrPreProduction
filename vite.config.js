@@ -12,11 +12,13 @@ export default defineConfig({
       includeAssets: [
         "favicon.svg",
         "robots.txt",
-        "offline.html", // include offline fallback
+        "offline.html",
+        "manifest.webmanifest", // Add this
+        "icons/*.png",          // Add this
       ],
       manifest: {
-        name: "Vdr PWA",
-        short_name: "VitePWA",
+        name: "vdr pwa",
+        short_name: "Vdr",
         description: "My robust React + Vite PWA!",
         theme_color: "#ffffff",
         background_color: "#ffffff",
@@ -26,16 +28,15 @@ export default defineConfig({
         orientation: "portrait",
         icons: [
           {
-            src: "icons/icon-192x192.png",
+            src: "icons/web-app-manifest-192x192.png", // ✅ drop `/public` — not needed
             sizes: "192x192",
             type: "image/png",
-            purpose: "any maskable"
           },
           {
-            src: "icons/icon-512x512.png",
+            src: "icons/web-app-manifest-512x512.png",
             sizes: "512x512",
             type: "image/png",
-            purpose: "any maskable"
+            purpose: "any maskable",
           },
         ],
       },
