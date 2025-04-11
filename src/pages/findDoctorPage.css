@@ -15,7 +15,7 @@
   /* height: 550px; */
 }
 /* Search Bar Container */
-.search-bar-container {
+.search-bar-container1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,26 +25,11 @@
 }
 
 /* Specialization Search Bar */
-.specialization-search {
+.specialization-search1 {
   padding: 12px 15px;
-  width: 50%;
-  border: 2px solid #4caf50;
-  border-radius: 8px;
-  font-size: 16px;
-  outline: none;
-  background-color: #f9f9f9;
-  transition: border-color 0.3s ease;
-}
-
-.specialization-search:focus {
-  border-color: #45a049;
-}
-
-/* State Dropdown Search Bar */
-.state-dropdown {
-  padding: 12px;
-  width: 45%;
-  border: 2px solid #2196f3;
+  flex: 1;
+  min-width: 200px;
+  border: 2px solid;
   border-radius: 8px;
   font-size: 16px;
   outline: none;
@@ -52,9 +37,38 @@
   transition: border-color 0.3s ease;
 }
 
-.state-dropdown:focus {
-  border-color: #1976d2;
+/* State Dropdown Search Bar */
+.state-dropdown {
+  padding: 12px 15px;
+  flex: 1;
+  min-width: 200px;
+  border: 2px solid;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
 }
+
+/* .specialization-search:focus {
+  border-color: #45a049;
+} */
+
+/* State Dropdown Search Bar */
+/* .state-dropdown {
+  padding: 12px;
+  width: 45%;
+  border: 2px solid ;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+} */
+
+/* .state-dropdown:focus {
+  border-color: #1976d2;
+} */
 
 /* Doctor List Container */
 .doctor-list {
@@ -74,6 +88,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .doctor-card:hover {
@@ -140,13 +155,14 @@
 /* Large Screens (Above 1080px) */
 @media (min-width: 1080px) {
   .search-bar-container {
+    text-align: center;
     flex-direction: row;
     justify-content: space-between;
     gap: 20px;
   }
 
-  .specialization-search,
-  .state-dropdown {
+  .specialization-search1,
+  .state-dropdown1 {
     width: 45%;
   }
 
@@ -172,12 +188,13 @@
 @media (max-width: 1080px) {
   .search-bar-container {
     flex-direction: row;
-    width: 80%;
+    
+    width: 40%;
     gap: 15px;
   }
 
-  .specialization-search,
-  .state-dropdown {
+  .specialization-search1,
+  .state-dropdown1 {
     width: 45%;
   }
 
@@ -241,8 +258,8 @@
     margin-top: 10px;
   }
 
-  .specialization-search,
-  .state-dropdown {
+  .specialization-search1,
+  .state-dropdown1 {
     width: 100%;
     padding: 10px 12px;
     font-size: 14px;

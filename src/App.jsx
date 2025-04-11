@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import React from "react";
+import React,{useEffect,useState} from "react";
+
 import "./App.css";
 import Homepage from "./pages/Home";
 import DoctorVerification from "./pages/doctorVerificationpage";
@@ -15,15 +16,59 @@ import DoctorProfilePage from "./pages/doctorProfilePage";
 import MainInsurance from "./pages/mainInsurancePage";
 import MainHeader from "./components/header";
 import Footer from "./components/footer";
+import VerifyDoc from "./pages/verifyDoc";
+import DoctorID from "./pages/doctorID";
+import QRCodeGenerator from "./pages/QRCodeGenerator";
 
 const App = () => {
+
+  // const [deferredPrompt, setDeferredPrompt] = useState(null);
+
+  // useEffect(() => {
+  //   window.addEventListener("beforeinstallprompt", (e) => {
+  //     e.preventDefault();
+  //     setDeferredPrompt(e);
+  //     console.log("👍 beforeinstallprompt fired");
+  //   });
+  // }, []);
+
+  // const handleInstallClick = () => {
+  //   if (deferredPrompt) {
+  //     deferredPrompt.prompt();
+  //     deferredPrompt.userChoice.then((choiceResult) => {
+  //       if (choiceResult.outcome === "accepted") {
+  //         console.log("👍 User accepted the A2HS prompt");
+  //       } else {
+  //         console.log("😢 User dismissed the A2HS prompt");
+  //       }
+  //       setDeferredPrompt(null);
+  //     });
+  //   }
+  // };
+
+
+
+
+
+
+
+  const [location, setLocation] = useState();
+  const currentUrl = window.location.href;
+  console.log(`url:${currentUrl}`);
+
+
+  useEffect(() => {
+    setLocation(currentUrl);
+  }, [currentUrl]);
   return (
     <>
+    
       <Router>
         <MainHeader />
         <div className="content-wrapper ">
           <Routes>
             <Route path="/" element={<Homepage />} />
+            <Route path="/verifyDoc" element={<VerifyDoc />} />
             <Route
               path="/doctorVerificationpage"
               element={<DoctorVerification />}
@@ -44,13 +89,17 @@ const App = () => {
             <Route path="/demoPage" element={<HomeDeliveryMedicine />} />
             <Route path="/doctorProfilePage" element={<DoctorProfilePage />} />
             <Route path="/mainInsurancePage" element={<MainInsurance />} />
+            <Route path="/doctorID" element={<DoctorID />} />
+            <Route path="/QRCodeGenerator" element={<QRCodeGenerator />} />
+            {/* <Route path="/doctorID" element={<DoctorID />} /> */}
           </Routes>
         </div>
         <Footer />
       </Router>
-      {/* <Fotter/> */}
+      
+      
     </>
   );
-};
 
+ };
 export default App;

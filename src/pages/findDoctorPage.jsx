@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./findDoctorPage.css";
 
 import Header from "../components/header";
-
 import DoctorVerification from "./doctorVerificationpage";
-
 import Home from "./Home";
 import Login from "./loginPage";
 import IndividualRegisterPage from "./individualRegisterPage";
@@ -13,81 +11,70 @@ import DoctorRegisterPage from "./doctorRegisterPage";
 import FounderPage from "./ourFoundersPage";
 import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
 import Fotter from "../components/footer";
+import DoctorId from "./doctorID";
+import { useNavigate } from "react-router-dom";
 
-// Sample Doctor Data
-const doctorData = [
-  {
-    id: 1,
-    name: "Dr. Ananya Sharma",
-    specialization: "Orthopedic",
-    experience: "12 years",
-    location: "Mumbai, Maharashtra",
-    rating: 9.5,
-    image: "./src/assets/Images/comingSoonPage/bag1.png", // Add doctor image URL here
-  },
-  {
-    id: 2,
-    name: "Dr. Raj Mehta",
-    specialization: "Cardiologist",
-    experience: "15 years",
-    location: "Bengaluru, Karnataka",
-    rating: 9.2,
-    image: "./src/assets/Images/comingSoonPage/bag1.png",
-  },
-  {
-    id: 3,
-    name: "Dr. Priya Verma111",
-    specialization: "Dermatologist",
-    experience: "8 years",
-    location: "Delhi",
-    rating: 8.8,
-    image: "./src/assets/Images/comingSoonPage/bag1.png",
-  },
-  {
-    id: 4,
-    name: "Dr. Amit Roy",
-    specialization: "Neurologist",
-    experience: "10 years",
-    location: "Chennai, Tamil Nadu",
-    rating: 9.0,
-    image: "https://via.placeholder.com/120",
-  },
-];
+const GET_DOCTOR_API_URL = "http://localhost:2003/api/doctors/getdoctors";
 
-// Main Component
+
 const FindDoctorPage = () => {
+  const defaultDoctor = {
+    id: 1,
+    fullName: "Dr. John Doe",
+    specialization: "Cardiologist",
+    experience: "10 years",
+    location: "New York",
+    rating: 9.5,
+    doctorPhoto: null, 
+  }
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedState, setSelectedState] = useState("");
-  const [selectDoctor, setSelectDoctor] = useState("");
-  const [print, setPrint] = useState("Select State and Doctor to find doctors");
+  const [doctors, setDoctors] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const [doctorId, setDoctorId] = useState(null);
 
-  // Filter Doctors based on search query and state
-  const filteredDoctors = doctorData.filter(
+
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const response = await fetch(GET_DOCTOR_API_URL);
+        const data = await response.json();
+        setDoctors(data);
+        console.log("Fetched doctors:", data);
+      } catch (error) {
+        console.error("Error fetching doctors:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDoctors();
+  }, []);
+
+  const filteredDoctors = doctors.filter(
     (doctor) =>
       doctor.specialization.toLowerCase().includes(searchQuery.toLowerCase()) &&
       (selectedState === "" || doctor.location.includes(selectedState))
   );
 
+  const doctorProfile = (doctor) => {
+    alert("Doctor Profile Clicked!");
+    navigate(`/doctorID/${doctor.id}`, { state: { doctor } });
+  }
   return (
     <>
-      <div className="header-placeholder">
-       
-      </div>
+      <div className="header-placeholder"></div>
       <div className="main-container">
-        {/* Header Space */}
-
-        {/* Search Bar Section */}
-        <div className="search-bar-container">
-          {/* Specialization Search */}
+        <div className="search-bar-container1">
           <input
             type="text"
             placeholder="Search by specialization"
-            className="specialization-search"
+            className="specialization-search1"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
 
-          {/* State Dropdown */}
           <select
             className="state-dropdown"
             value={selectedState}
@@ -105,28 +92,25 @@ const FindDoctorPage = () => {
           </select>
         </div>
 
-        {/* Doctor List Section */}
         <div className="doctor-list">
-          {filteredDoctors.length > 0 ? (
+          {loading ? (
+            <p>Loading doctors...</p>
+          ) : filteredDoctors.length > 0 ? (
             filteredDoctors.map((doctor) => (
-              <div key={doctor.id} className="doctor-card">
-                {/* Doctor Image */}
-                <img
-                  src={doctor.image}
-                  alt={doctor.name}
-                  className="doctor-image"
-                />
+              <div key={doctor.id} className="doctor-card" onClick={() => doctorProfile(doctor)}>
+               <img
+                  src={`data:image/jpeg;base64,${doctor.doctorPhoto}`}
+                    alt={`Dr. ${doctor.fullName}`}
+                   className="doctor-image"
+               />
 
-                {/* Doctor Information */}
                 <div className="doctor-info">
-                  <p>{doctor.name}</p>
+                  <p>Dr. {doctor.fullName}</p>
                   <p>{doctor.specialization}</p>
                   <p>{doctor.experience}</p>
                   <p>{doctor.location}</p>
                   <p>⭐ {doctor.rating} / 10</p>
                 </div>
-
-                {/* Book Appointment Button */}
                 <button className="book-btn">Book Appointment</button>
               </div>
             ))
@@ -137,7 +121,6 @@ const FindDoctorPage = () => {
           )}
         </div>
       </div>
-     
     </>
   );
 };
