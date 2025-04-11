@@ -66,11 +66,11 @@ const FindDoctorPage = () => {
     <>
       <div className="header-placeholder"></div>
       <div className="main-container">
-        <div className="search-bar-container">
+        <div className="search-bar-container1">
           <input
             type="text"
             placeholder="Search by specialization"
-            className="specialization-search"
+            className="specialization-search1"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
