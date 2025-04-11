@@ -26,6 +26,7 @@
   .founderpage-founder-h2{
     align-content: center;
   }
+
   
   .founderpage-founder-div-img{
     width: 220px;
@@ -37,6 +38,16 @@
     font-weight: 200;
     font-size: medium;
   }
+  @media(max-width:700px){
+    .founderpage-founder-div-img{
+      width: 150px;
+      height: 200px;
+      margin-left: -30%;
+      border-radius: 50%;
+    }
+    
+  }
+  
   
   .founderpage-founder:hover,
   .founderpage-founder-img:hover {
