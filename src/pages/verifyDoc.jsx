@@ -164,7 +164,7 @@ const VerifyDoc = () => {
           <canvas className="scanner-canvas" ref={canvasRef} />
         </div>
 
-        <input
+        <input className="upload-input"
           id="fileInput"
           type="file"
           accept="image/*"
@@ -174,18 +174,19 @@ const VerifyDoc = () => {
       </div>
 
       {/* Hidden Video Element for Camera Stream */}
-      <video ref={videoRef} style={{ display: "none" }} playsInline autoPlay />
+      <video className="ScanningVideo" ref={videoRef} style={{ display: "none" }} playsInline autoPlay />
 
-      <button className="scan-button" onClick={startScanner}>
-        {scanning ? "Scanning..." : "Scan"}
-      </button>
-
-      {scanning && (
-        <button className="stop-button scan-button" onClick={stopScanner}>
-          Stop
+      <div className="scannerButtons">
+        <button className="scan-button" onClick={startScanner}>
+          {scanning ? "Scanning..." : "Scan"}
         </button>
-      )}
 
+        {scanning && (
+          <button className="stop-button scan-button" onClick={stopScanner}>
+            Stop
+          </button>
+        )}
+      </div>
       {redirecting && (
         <div className="redirect-box">
           <p>Redirecting in {countdown} seconds...</p>
