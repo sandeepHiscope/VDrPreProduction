@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation, useParams } from "react-router-dom";
-import "./doctorID.css"; // Assuming you have a CSS file for styling
+import "./doctorID.css";
+import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
 
 const DoctorID = () => {
   const location = useLocation();
@@ -23,7 +24,7 @@ const DoctorID = () => {
 
   return (
     <div className="doctor-card1">
-      <img src="src/assets/Images/commonImg/VDrlogoBg.png" alt="Logo" className="logo" />
+      <img src={VDrLogo} alt="Logo" className="logo" />
       <img src={doctor.image} alt={doctor.name} className="doctor-img" />
       <h2>Dr. {doctor.name}</h2>
 

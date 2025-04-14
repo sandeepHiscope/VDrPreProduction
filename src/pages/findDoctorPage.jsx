@@ -14,7 +14,7 @@ import Fotter from "../components/footer";
 import DoctorId from "./doctorID";
 import { useNavigate } from "react-router-dom";
 
-const GET_DOCTOR_API_URL = "http://localhost:2003/api/doctors/getdoctors";
+const GET_DOCTOR_API_URL = "http://localhost:8080/api/doctorsregistration/getdoctors";
 
 
 const FindDoctorPage = () => {
