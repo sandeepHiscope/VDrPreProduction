@@ -2,9 +2,8 @@ import { useState } from "react";
 import "./loginPage.css";
 import { useNavigate } from "react-router-dom";
 import Googlelogo from "../assets/icons/google.png";
-import docRegister from '../assets/Images/docRegister.png'
-const LOGIN_API_URL = "http://localhost:8080/api/auth/login";
-const REGISTER_API_URL = "http://localhost:8080/api/auth/register";
+import DoctorVerification from "./doctorVerificationpage";
+import docRegister from "../assets/Images/docRegister.png";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,6 +30,11 @@ const Login = () => {
       password: formData.password,
     };
 
+    const LOGIN_API_URL =
+      role === "doctor"
+        ? "http://localhost:8080/doctors/login"
+        : "http://localhost:8080/users/login";
+
     try {
       const response = await fetch(LOGIN_API_URL, {
         method: "POST",
@@ -39,9 +43,14 @@ const Login = () => {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        alert(`WELCOME LOGIN SUCCESSFUL! FINISH THE VERIFICATION FORM`);
-        navigate("/doctorVerificationpage");
+        const data = await response.text();
+        alert(`WELCOME LOGIN SUCCESSFUL! ${data}`);
+            if(role === "doctor") {
+             navigate("/doctorVerificationpage");
+             }
+           else {
+             navigate("/findDoctorPage");
+             }
       } else {
         const errorMessage = await response.text();
         alert(`Login failed: ${errorMessage}`);
@@ -61,11 +70,15 @@ const Login = () => {
     }
 
     const registerData = {
-      role: role,
       username: formData.username,
       email: formData.email,
       password: formData.password,
     };
+
+    const REGISTER_API_URL =
+      role === "doctor"
+        ? "http://localhost:8080/doctors/register"
+        : "http://localhost:8080/users/register";
 
     try {
       const response = await fetch(REGISTER_API_URL, {
@@ -78,8 +91,7 @@ const Login = () => {
         alert("Registration successful!");
         setFormData({ username: "", email: "", password: "" });
         setRole("");
-
-        navigate("/doctorVerificationpage");
+        // navigate("/doctorVerificationpage");
       } else {
         const errorMessage = await response.text();
         alert(`Registration failed: ${errorMessage}`);
@@ -107,14 +119,13 @@ const Login = () => {
   return (
     <div className="loginContainer">
       <div className="registerI">
-      <img
+        <img
           src={docRegister}
           alt="Healthcare illustration"
           className="docRegisterImg"
-        /></div>
-      <div className="login-change">
-        
+        />
       </div>
+
       <div className="container">
         <div className="tabs">
           <button
@@ -131,48 +142,68 @@ const Login = () => {
           </button>
         </div>
 
+        {/* ----------------- LOGIN TAB ----------------- */}
         {activeTab === "login" && (
           <div className="form-container">
             <h2>Login</h2>
-            <form onSubmit={handleLogin}>
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-              />
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleInputChange}
-                required
-              />
-              <button type="submit">Login</button>
-              <div className="forget">Forget password ?</div>
-              <div className="login-h1">continue with</div>
-              <img src={Googlelogo} alt="google" className="small-image" />
-            </form>
+
+            {!role && (
+              <div className="role-selection">
+                <p>Select Role to Login:</p>
+                <button className="role-btn" onClick={showDoctorForm}>
+                  Doctor
+                </button>
+                <button className="role-btn" onClick={showUserForm}>
+                  User
+                </button>
+              </div>
+            )}
+
+            {role && (
+              <form onSubmit={handleLogin}>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  required
+                />
+                <button type="submit">Login as {role}</button>
+                <button type="button" onClick={goBack} className="role-btn">
+                  Back
+                </button>
+                <div className="forget">Forget password ?</div>
+                <div className="login-h1">continue with</div>
+                <img src={Googlelogo} alt="google" className="small-image" />
+              </form>
+            )}
           </div>
         )}
 
+        {/* ----------------- REGISTER TAB ----------------- */}
         {activeTab === "register" && !role && (
           <div className="form-container">
             <h2>Register</h2>
             <button className="role-btn" onClick={showDoctorForm}>
-              Are you a HealthCare Profession?
+              Are you a HealthCare Professional?
             </button>
             <button className="role-btn" onClick={showUserForm}>
               User
             </button>
             <div className="title1">
-              <li>If you are a doctor, click on "Are you a Doctor" button</li>
+              <li>If you are a doctor, click on the first button</li>
             </div>
             <div className="title2">
-              <li>If you are a user, click on the "User" button</li>
+              <li>If you are a user, click on the second button</li>
             </div>
             <div className="title3">
               <li>
@@ -182,7 +213,7 @@ const Login = () => {
           </div>
         )}
 
-        {(role === "doctor" || role === "user") && (
+        {(activeTab === "register" && role) && (
           <div className="form-container">
             <h2>{role === "doctor" ? "Doctor" : "User"} Registration</h2>
             <form onSubmit={handleRegister}>
@@ -210,7 +241,7 @@ const Login = () => {
                 onChange={handleInputChange}
                 required
               />
-              <button type="submit">Register</button>
+              <button type="submit">Register as {role}</button>
             </form>
             <button className="role-btn" onClick={goBack}>
               Back
@@ -218,8 +249,7 @@ const Login = () => {
           </div>
         )}
       </div>
-
-      </div>
+    </div>
   );
 };
 

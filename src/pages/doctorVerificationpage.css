@@ -1,5 +1,13 @@
 /* App.css */
 
+.doctorverification-page-container{
+  background-color: #f0f0f0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .v-drapp {
   color: #000000;
   text-align: center;
@@ -59,8 +67,7 @@ height: 5rem;}
   }
 
 .doctorverification-container{
-  position: absolute;
-  top: 300px;
+  margin-left: 40%;
 }
 .doctorverification-container1 {
   background-color: rgba(230, 229, 229, 0.488);

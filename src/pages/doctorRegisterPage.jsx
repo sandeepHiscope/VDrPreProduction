@@ -15,7 +15,7 @@ const DoctorRegisterPage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const API_URL = "http://localhost:8080/api/auth/register";
+  const API_URL = "http://localhost:8080/api/doctorsverification/register";
 
 const handleRegister = async (e) => {
   e.preventDefault();

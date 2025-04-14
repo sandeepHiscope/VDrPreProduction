@@ -29,7 +29,7 @@ const QRCodeGenerator = () => {
 
   useEffect(() => {
     if (isGenerated && qrRef.current) {
-      qrRef.current.innerHTML = ""; // Clear previous QR
+      qrRef.current.innerHTML = "";
       qrCode.append(qrRef.current);
     }
   }, [isGenerated]);
