@@ -44,7 +44,7 @@ const Login = () => {
 
       if (response.ok) {
         const data = await response.text();
-        alert(`WELCOME LOGIN SUCCESSFUL! ${data}`);
+        alert(`WELCOME LOGIN SUCCESSFUL!`);
             if(role === "doctor") {
              navigate("/doctorVerificationpage");
              }

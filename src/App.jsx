@@ -62,7 +62,7 @@ const App = () => {
             <Route path="/demoPage" element={<HomeDeliveryMedicine />} />
             <Route path="/doctorProfilePage" element={<DoctorProfilePage />} />
             <Route path="/mainInsurancePage" element={<MainInsurance />} />
-            <Route path="/doctorID" element={<DoctorID />} />
+            <Route path="/doctorID/:id" element={<DoctorID />} />
             <Route path="/QRCodeGenerator" element={<QRCodeGenerator />} />
             {/* <Route path="/doctorID" element={<DoctorID />} /> */}
           </Routes>

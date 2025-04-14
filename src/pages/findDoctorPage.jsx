@@ -1,39 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./findDoctorPage.css";
-
-import Header from "../components/header";
-import DoctorVerification from "./doctorVerificationpage";
-import Home from "./Home";
-import Login from "./loginPage";
-import IndividualRegisterPage from "./individualRegisterPage";
-import SosPage from "./sosPage";
-import DoctorRegisterPage from "./doctorRegisterPage";
-import FounderPage from "./ourFoundersPage";
-import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
-import Fotter from "../components/footer";
-import DoctorId from "./doctorID";
 import { useNavigate } from "react-router-dom";
 
-const GET_DOCTOR_API_URL = "http://localhost:8080/api/doctorsregistration/getdoctors";
-
+const GET_DOCTOR_API_URL = "http://localhost:8080/api/doctorsverification/all";
 
 const FindDoctorPage = () => {
-  const defaultDoctor = {
-    id: 1,
-    fullName: "Dr. John Doe",
-    specialization: "Cardiologist",
-    experience: "10 years",
-    location: "New York",
-    rating: 9.5,
-    doctorPhoto: null, 
-  }
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedState, setSelectedState] = useState("");
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const [doctorId, setDoctorId] = useState(null);
-
 
   useEffect(() => {
     const fetchDoctors = async () => {
@@ -54,14 +30,14 @@ const FindDoctorPage = () => {
 
   const filteredDoctors = doctors.filter(
     (doctor) =>
-      doctor.specialization.toLowerCase().includes(searchQuery.toLowerCase()) &&
-      (selectedState === "" || doctor.location.includes(selectedState))
+      doctor.medicalSpeciality.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      (selectedState === "" || doctor.state.includes(selectedState))
   );
 
   const doctorProfile = (doctor) => {
-    alert("Doctor Profile Clicked!");
     navigate(`/doctorID/${doctor.id}`, { state: { doctor } });
-  }
+  };
+
   return (
     <>
       <div className="header-placeholder"></div>
@@ -98,18 +74,21 @@ const FindDoctorPage = () => {
           ) : filteredDoctors.length > 0 ? (
             filteredDoctors.map((doctor) => (
               <div key={doctor.id} className="doctor-card" onClick={() => doctorProfile(doctor)}>
-               <img
-                  src={`data:image/jpeg;base64,${doctor.doctorPhoto}`}
+                {doctor.doctorPhoto && (
+                  <img
+                    src={`data:image/jpeg;base64,${doctor.doctorPhoto}`}
                     alt={`Dr. ${doctor.fullName}`}
-                   className="doctor-image"
-               />
+                    className="doctor-image"
+                  />
+                )}
 
                 <div className="doctor-info">
-                  <p>Dr. {doctor.fullName}</p>
-                  <p>{doctor.specialization}</p>
-                  <p>{doctor.experience}</p>
-                  <p>{doctor.location}</p>
-                  <p>⭐ {doctor.rating} / 10</p>
+                  <h3>Dr. {doctor.fullName.toUpperCase()}</h3>
+                  <p><strong>Specialty: </strong> {doctor.medicalSpeciality}</p>
+                  <p><strong>Experience: </strong> {doctor.experience} years</p>
+                  <p><strong>Location: </strong> {doctor.city}, {doctor.state}, {doctor.country}</p>
+                  <p><strong>Hospital: </strong> {doctor.hospitalCurrentWorking}</p>
+                  <p><strong>License: </strong> {doctor.medicalLicenseNumber}</p>
                 </div>
                 <button className="book-btn">Book Appointment</button>
               </div>

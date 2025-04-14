@@ -10,12 +10,12 @@ const DoctorID = () => {
 
   const doctor = {
     name: stateDoctor?.fullName ,
-    license: stateDoctor?.license || "MD12345",
+    license: stateDoctor?.medicalLicenseNumber || "MD12345",
     expiry: stateDoctor?.expiry || "2025-12-31",
-    specialization: stateDoctor?.specialization,
-    clinics: stateDoctor?.clinics || "City Hospital, Private Clinic",
+    specialization: stateDoctor?.medicalSpeciality,
+    clinics: stateDoctor?.hospitalCurrentWorking || "City Hospital, Private Clinic",
     experience:
-      stateDoctor?.experience ||
+      `A dedicated cardiologist with${stateDoctor?.experience}+years of experience in treating various heart conditions. `||
       "A dedicated cardiologist with 15+ years of experience in treating various heart conditions.",
     image: stateDoctor?.doctorPhoto
       ? `data:image/jpeg;base64,${stateDoctor.doctorPhoto}`
@@ -26,7 +26,7 @@ const DoctorID = () => {
     <div className="doctor-card1">
       <img src={VDrLogo} alt="Logo" className="logo" />
       <img src={doctor.image} alt={doctor.name} className="doctor-img" />
-      <h2>Dr. {doctor.name}</h2>
+      <h2>Dr. {doctor.name.toUpperCase()}</h2>
 
       <div className="details">
         <p><strong>License          :</strong> {doctor.license}</p>
