@@ -492,15 +492,13 @@ label {
 .searchbar-container {
   display: flex;
   align-items: center;
-  background: linear-gradient(145deg, #f0f4f9, #e2e8f0);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, #90b1d9, #e2e8f0);
+  box-shadow: 1px 4px 15px rgba(0, 0, 0, 0.1);
   border-radius: 10rem;
   padding: 0.75rem 1.25rem;
   min-width: 35rem;
   width: 80vw;
   transition: all 0.3s ease-in-out;
-  /* background: #000; */  border: 1px solid rgba(0, 0, 0, 0.050);
-
 }
 @media(max-width:800px){
   .searchbar-container{
@@ -515,15 +513,13 @@ label {
   border: none;
   background-color: transparent;
   font-size: 1.25rem;
-  color: #1e293b;
   font-weight: 500;
-  padding: 0.5rem;
+  padding: 0rem;
   outline: none;
-  
 }
 
 .searchbar-input::placeholder {
-  color: #94a3b8;
+  color: #6e6d6d;
   font-size: 1.1rem;
 
 }
