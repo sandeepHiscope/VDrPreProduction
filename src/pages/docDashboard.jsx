@@ -12,7 +12,7 @@ import {
 import "./docDashboard.css"
 
 const DocDashboard = () => {
-  // State to track active page
+  
   const [activePage, setActivePage] = useState("Dashboard");
 
   // Menu items for sidebar
