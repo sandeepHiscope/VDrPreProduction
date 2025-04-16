@@ -13,14 +13,7 @@ import docImg9 from "../assets/Images/headerImages/docImg9.jpg";
 const headerImages = [
   { img: doc },
   { img: docx },
-  { img: docImg2 },
   { img: docImg3 },
-  { img: docImg4 },
-  { img: docImg5 },
-  { img: docImg6 },
-  { img: docImg7 },
-  { img: docImg8 },
-  { img: docImg9 },
   { img: docImg1 },
 ];
 
