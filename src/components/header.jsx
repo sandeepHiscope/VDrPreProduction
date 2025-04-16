@@ -7,7 +7,6 @@ import headerImages from "../data/headerImages";
 import { IoReorderThreeOutline } from "react-icons/io5";
 import { ImCross } from "react-icons/im";
 
-
 const MainHeader = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [position, setPosition] = useState(0);
@@ -15,17 +14,13 @@ const MainHeader = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerHeight);
   const [isOpen, setIsOpen] = useState(false);
 
-
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % headerImages.length);
-      setPosition((prev) => (prev + 20) % 100); // Scrolls in steps
-    }, 5000); // Change image every 5 seconds
+      setPosition((prev) => (prev + 20) % 100);
+    }, 5000);
 
     const updateWidth = () => setWindowWidth(window.innerWidth);
-    {
-      /* remove this when pushing to production */
-    }
     window.addEventListener("resize", updateWidth);
 
     return () => {
@@ -36,21 +31,27 @@ const MainHeader = () => {
 
   const handleLoginClick = () => {
     navigate("/loginPage");
+    setIsOpen(false);
   };
+
   const toggleSlide = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleNavClick = () => {
+    setIsOpen(false);
   };
 
   return (
     <section className="header-section">
       <button className="toggle-button" onClick={toggleSlide}>
-      {isOpen?<IoReorderThreeOutline /> : <ImCross className="secicon" />}
+        {isOpen ? <ImCross className="secicon" /> : <IoReorderThreeOutline />}
       </button>
       <div
         className="header-background"
         style={{
           backgroundImage: `url(${headerImages[currentImage].img})`,
-          backgroundPosition: `right ${position}% top 0%`, // Scrolls horizontally
+          backgroundPosition: `right ${position}% top 0%`,
         }}
       ></div>
       <nav className="nav-container">
@@ -58,39 +59,35 @@ const MainHeader = () => {
           <img src={VDrLogo} alt="VDrapp Footer Logo" className="header-logo" />
         </Link>
         <div className="nav-menu">
-          <div className={isOpen? "nav-links-open" : "nav-links"}>
-            <Link to="/findDoctorPage" className="nav-link">
-              Find a Doctor
+          <div className={isOpen ? "nav-links-open" : "nav-links"}>
+            <Link to="/findDoctorPage" className="nav-link" onClick={handleNavClick}>
+            Find a Doctor
             </Link>
-            <Link to="/verifyDoc" className="nav-link">
+            <Link to="/verifyDoc" className="nav-link" onClick={handleNavClick}>
+           
               Verify Doc
             </Link>
-            <Link to="/sosPage" className="nav-link sos-link">
+            <Link to="/sosPage" className="nav-link sos-link" onClick={handleNavClick}>
               SOS
             </Link>
-            <Link to="https://vdr-door-delivery-medicines.netlify.app/" className="nav-link">
+            <Link to="https://vdr-door-delivery-medicines.netlify.app/" className="nav-link" onClick={handleNavClick}>
               Doorstep Meds
             </Link>
-            <Link to="https://vdr-insurance.netlify.app/" className="nav-link">
+            <Link to="https://vdr-insurance.netlify.app/" className="nav-link" onClick={handleNavClick}>
               Insurance
             </Link>
-            <Link to="/founderPage" className="nav-link">
+            <Link to="/founderPage" className="nav-link" onClick={handleNavClick}>
               Founder Page
             </Link>
-            {/* <Link to="/QRCodeGenerator" className="nav-link">
-              QRCode Generator
-            </Link> */}
-            {/* <div className="nav-link">width :{windowWidth}px</div>remove this when pushing to production */}
+
+          
             <button className="login-button-header" onClick={handleLoginClick}>
               Login/Signup
             </button>
           </div>
         </div>
       </nav>
-      
-        
     </section>
-    
   );
 };
 
