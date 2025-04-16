@@ -96,6 +96,7 @@ const MainHeader = () => {
             <button className="login-button-header" onClick={handleLoginClick}>
               Login/Signup
             </button>
+            <Link to="/docDashboard" className="nav-link">DocDashboard</Link>
           </div>
         </div>
       </nav>
