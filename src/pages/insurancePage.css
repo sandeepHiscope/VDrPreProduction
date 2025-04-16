@@ -114,13 +114,8 @@
     color: red;
     font-weight: 900;
   }
-  
-  span{
-    position: relative;
-    left: 100%;
-    color: red;
-    font-weight: 900;
-  }
+  /* its efecting the calender in doc dashboard page  */
+
   .Insuranceform-group input {
     width: 100%;
     padding: 8px;
