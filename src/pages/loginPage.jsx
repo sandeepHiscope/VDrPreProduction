@@ -118,13 +118,13 @@ const Login = () => {
 
   return (
     <div className="loginContainer">
-      <div className="registerI">
+     
         <img
           src={docRegister}
           alt="Healthcare illustration"
           className="docRegisterImg"
         />
-      </div>
+      
 
       <div className="container">
         <div className="tabs">
