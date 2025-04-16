@@ -1,5 +1,6 @@
 
-.content-wrapper {
-  /* padding-top: 5em;  */
-  min-height: 100vh;
+.content-wrapper{
+  height: fit-content;
+  min-height: 30vh;
+  padding: 20px 0px;
 }
