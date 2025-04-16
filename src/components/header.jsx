@@ -44,7 +44,7 @@ const MainHeader = () => {
   return (
     <section className="header-section">
       <button className="toggle-button" onClick={toggleSlide}>
-      {isOpen?<IoReorderThreeOutline /> : <ImCross className="secicon" />}
+        {isOpen ? <IoReorderThreeOutline /> : <ImCross className="secicon" />}
       </button>
       <div
         className="header-background"
@@ -58,28 +58,41 @@ const MainHeader = () => {
           <img src={VDrLogo} alt="VDrapp Footer Logo" className="header-logo" />
         </Link>
         <div className="nav-menu">
-          <div className={isOpen? "nav-links-open" : "nav-links"}>
+          <div className={isOpen ? "nav-links-open" : "nav-links"}>
             <Link to="/findDoctorPage" className="nav-link">
               Find a Doctor
             </Link>
             <Link to="/verifyDoc" className="nav-link" onClick={handleNavClick}>
-           
               Verify Doc
             </Link>
-            <Link to="/sosPage" className="nav-link sos-link" onClick={handleNavClick}>
+            <Link
+              to="/sosPage"
+              className="nav-link sos-link"
+              onClick={handleNavClick}
+            >
               SOS
             </Link>
-            <Link to="https://vdr-door-delivery-medicines.netlify.app/" className="nav-link">
+            <Link
+              to="https://vdr-door-delivery-medicines.netlify.app/"
+              className="nav-link"
+            >
               Doorstep Meds
             </Link>
-            <Link to="https://vdr-insurance.netlify.app/" className="nav-link" onClick={handleNavClick}>
+            <Link
+              to="https://vdr-insurance.netlify.app/"
+              className="nav-link"
+              onClick={handleNavClick}
+            >
               Insurance
             </Link>
-            <Link to="/founderPage" className="nav-link" onClick={handleNavClick}>
+            <Link
+              to="/founderPage"
+              className="nav-link"
+              onClick={handleNavClick}
+            >
               Founder Page
             </Link>
 
-          
             <button className="login-button-header" onClick={handleLoginClick}>
               Login/Signup
             </button>
