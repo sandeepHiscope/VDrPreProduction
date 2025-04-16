@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 
 import "./App.css";
 import Homepage from "./pages/Home";
@@ -19,23 +19,18 @@ import Footer from "./components/footer";
 import VerifyDoc from "./pages/verifyDoc";
 import DoctorID from "./pages/doctorID";
 import QRCodeGenerator from "./pages/QRCodeGenerator";
+import DocDashboard from "./pages/docDashboard";
 
 const App = () => {
-
-
-
-
   const [location, setLocation] = useState();
   const currentUrl = window.location.href;
   console.log(`url:${currentUrl}`);
-
 
   useEffect(() => {
     setLocation(currentUrl);
   }, [currentUrl]);
   return (
     <>
-    
       <Router>
         <MainHeader />
         <div className="content-wrapper ">
@@ -64,15 +59,12 @@ const App = () => {
             <Route path="/mainInsurancePage" element={<MainInsurance />} />
             <Route path="/doctorID/:id" element={<DoctorID />} />
             <Route path="/QRCodeGenerator" element={<QRCodeGenerator />} />
-            {/* <Route path="/doctorID" element={<DoctorID />} /> */}
+            <Route path="/docDashboard" element={<DocDashboard />} />
           </Routes>
         </div>
         <Footer />
       </Router>
-      
-      
     </>
   );
-
- };
+};
 export default App;
