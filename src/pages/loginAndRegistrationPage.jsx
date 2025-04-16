@@ -1,11 +1,11 @@
 import { useState } from "react";
-import "./loginPage.css";
+import "./loginAndRegistrationPage.css";
 import { useNavigate } from "react-router-dom";
 import Googlelogo from "../assets/icons/google.png";
 import DoctorVerification from "./doctorVerificationpage";
 import docRegister from "../assets/Images/docRegister.png";
 
-const Login = () => {
+const LoginAndRegistration = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("login");
   const [role, setRole] = useState("");
@@ -45,12 +45,12 @@ const Login = () => {
       if (response.ok) {
         const data = await response.text();
         alert(`WELCOME LOGIN SUCCESSFUL!`);
-            if(role === "doctor") {
-             navigate("/doctorVerificationpage");
-             }
-           else {
-             navigate("/findDoctorPage");
-             }
+        if (role === "doctor") {
+          // navigate("/doctorVerificationpage");
+          navigate("/docDashboard");
+        } else {
+          navigate("/findDoctorPage");
+        }
       } else {
         const errorMessage = await response.text();
         alert(`Login failed: ${errorMessage}`);
@@ -213,7 +213,7 @@ const Login = () => {
           </div>
         )}
 
-        {(activeTab === "register" && role) && (
+        {activeTab === "register" && role && (
           <div className="form-container">
             <h2>{role === "doctor" ? "Doctor" : "User"} Registration</h2>
             <form onSubmit={handleRegister}>
@@ -253,4 +253,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginAndRegistration;

@@ -1,20 +1,18 @@
-import React from 'react';
+import React from "react";
 import "./individualRegisterPage.css"; // Import the CSS file
 
 import DoctorVerification from "./doctorVerificationpage";
 import FindDoctorPage from "./findDoctorPage";
 import Home from "./Home";
-import Login from "./loginPage";
+import Login from "./loginAndRegistrationPage";
 // import IndividualRegisterPage from "./individualRegisterPage";
 import SosPage from "./sosPage";
 import DoctorRegisterPage from "./doctorRegisterPage";
 import FounderPage from "./ourFoundersPage";
 import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
 
-
 const IndividualRegisterPage = () => {
   return (
-  
     <div className="login-container">
       <section className="header-section">
         <img
@@ -54,10 +52,13 @@ const IndividualRegisterPage = () => {
         </nav>
         <div className="separator"></div>
         <div className="auth-tabs">
-          <a href="http://localhost:5174/loginPage">
+          <a href="http://localhost:5174/loginAndRegistrationPage">
             <div className="change">Login</div>
           </a>
-         <a href="http://localhost:5175/"> <div className="change">Register</div></a>
+          <a href="http://localhost:5175/">
+            {" "}
+            <div className="change">Register</div>
+          </a>
         </div>
       </section>
 

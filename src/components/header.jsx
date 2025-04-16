@@ -31,7 +31,6 @@ const MainHeader = () => {
 
   const handleLoginClick = () => {
     navigate("/loginPage");
-    setIsOpen(false);
   };
 
   const toggleSlide = () => {
@@ -45,7 +44,7 @@ const MainHeader = () => {
   return (
     <section className="header-section">
       <button className="toggle-button" onClick={toggleSlide}>
-        {isOpen ? <ImCross className="secicon" /> : <IoReorderThreeOutline />}
+      {isOpen?<IoReorderThreeOutline /> : <ImCross className="secicon" />}
       </button>
       <div
         className="header-background"
@@ -59,9 +58,9 @@ const MainHeader = () => {
           <img src={VDrLogo} alt="VDrapp Footer Logo" className="header-logo" />
         </Link>
         <div className="nav-menu">
-          <div className={isOpen ? "nav-links-open" : "nav-links"}>
-            <Link to="/findDoctorPage" className="nav-link" onClick={handleNavClick}>
-            Find a Doctor
+          <div className={isOpen? "nav-links-open" : "nav-links"}>
+            <Link to="/findDoctorPage" className="nav-link">
+              Find a Doctor
             </Link>
             <Link to="/verifyDoc" className="nav-link" onClick={handleNavClick}>
            
@@ -70,7 +69,7 @@ const MainHeader = () => {
             <Link to="/sosPage" className="nav-link sos-link" onClick={handleNavClick}>
               SOS
             </Link>
-            <Link to="https://vdr-door-delivery-medicines.netlify.app/" className="nav-link" onClick={handleNavClick}>
+            <Link to="https://vdr-door-delivery-medicines.netlify.app/" className="nav-link">
               Doorstep Meds
             </Link>
             <Link to="https://vdr-insurance.netlify.app/" className="nav-link" onClick={handleNavClick}>
