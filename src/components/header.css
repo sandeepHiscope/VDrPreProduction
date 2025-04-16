@@ -137,9 +137,11 @@
 
   .nav-link {
     padding: 15px;
-    font-size: 0.9rem;
-    color: white;
-    text-align: center;
+    font-size: 1rem;
+    color: #2c3e50;
+    text-align:left;
+    font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+
   }
 
   .nav-link:hover {
@@ -156,7 +158,7 @@
   .nav-links,
   .nav-links-open {
     flex-direction: column;
-    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    background: linear-gradient(90deg, #e0f7fa, #b2ebf2);
     width: 100%;
     height: 600px;
     position: absolute;
@@ -202,6 +204,9 @@
   .header-section {
     height: 5em;
   }
+  .icon1{
+    margin-left: 100px;
+  }
 }
 
 .sos-link {
@@ -225,6 +230,7 @@
   background: linear-gradient(360deg, #000000, #7f7f7f);
   background-clip: text;
   color: transparent;
+  text-align: left;
 }
 
 .login-button-header:hover {
