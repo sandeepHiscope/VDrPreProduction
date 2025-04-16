@@ -5,7 +5,7 @@ import "./App.css";
 import Homepage from "./pages/Home";
 import DoctorVerification from "./pages/doctorVerificationpage";
 import FindDoctorPage from "./pages/findDoctorPage";
-import Login from "./pages/loginPage";
+import LoginAndRegistration from "./pages/loginAndRegistrationPage";
 import IndividualRegisterPage from "./pages/individualRegisterPage";
 import SosPage from "./pages/sosPage";
 import DoctorRegisterPage from "./pages/doctorRegisterPage";
@@ -42,7 +42,7 @@ const App = () => {
               element={<DoctorVerification />}
             />
             <Route path="/findDoctorPage" element={<FindDoctorPage />} />
-            <Route path="/loginPage" element={<Login />} />
+            <Route path="/loginAndRegistrationPage" element={<LoginAndRegistration />} />
             <Route
               path="/individualRegisterPage"
               element={<IndividualRegisterPage />}

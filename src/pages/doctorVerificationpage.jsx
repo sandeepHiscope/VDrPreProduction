@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./doctorVerificationpage.css";
 import { useNavigate } from "react-router-dom";
 
+
 const DoctorVerification = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -99,7 +100,8 @@ const DoctorVerification = () => {
           city: "",
           doctorPhoto: null
         });
-        navigate("/findDoctorPage");
+        // navigate("/findDoctorPage");
+        navigate("/docDashboard")
       } else {
         const error = await response.text();
         throw new Error(error || "Submission failed");

@@ -7,14 +7,12 @@ import headerImages from "../data/headerImages";
 import { IoReorderThreeOutline } from "react-icons/io5";
 import { ImCross } from "react-icons/im";
 
-
 const MainHeader = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [position, setPosition] = useState(0);
   const navigate = useNavigate();
   const [windowWidth, setWindowWidth] = useState(window.innerHeight);
   const [isOpen, setIsOpen] = useState(false);
-
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -35,7 +33,7 @@ const MainHeader = () => {
   }, []);
 
   const handleLoginClick = () => {
-    navigate("/loginPage");
+    navigate("/loginAndRegistrationPage");
   };
   const toggleSlide = () => {
     setIsOpen(!isOpen);
@@ -44,7 +42,7 @@ const MainHeader = () => {
   return (
     <section className="header-section">
       <button className="toggle-button" onClick={toggleSlide}>
-      {isOpen?<IoReorderThreeOutline /> : <ImCross className="secicon" />}
+        {isOpen ? <IoReorderThreeOutline /> : <ImCross className="secicon" />}
       </button>
       <div
         className="header-background"
@@ -58,7 +56,7 @@ const MainHeader = () => {
           <img src={VDrLogo} alt="VDrapp Footer Logo" className="header-logo" />
         </Link>
         <div className="nav-menu">
-          <div className={isOpen? "nav-links-open" : "nav-links"}>
+          <div className={isOpen ? "nav-links-open" : "nav-links"}>
             <Link to="/findDoctorPage" className="nav-link">
               Find a Doctor
             </Link>
@@ -68,7 +66,10 @@ const MainHeader = () => {
             <Link to="/sosPage" className="nav-link sos-link">
               SOS
             </Link>
-            <Link to="https://vdr-door-delivery-medicines.netlify.app/" className="nav-link">
+            <Link
+              to="https://vdr-door-delivery-medicines.netlify.app/"
+              className="nav-link"
+            >
               Doorstep Meds
             </Link>
             <Link to="https://vdr-insurance.netlify.app/" className="nav-link">
@@ -87,10 +88,7 @@ const MainHeader = () => {
           </div>
         </div>
       </nav>
-      
-        
     </section>
-    
   );
 };
 

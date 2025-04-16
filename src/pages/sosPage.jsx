@@ -5,7 +5,7 @@ import Header from "../components/header";
 import DoctorVerification from "./doctorVerificationpage";
 import FindDoctorPage from "./findDoctorPage";
 import Home from "./Home";
-import Login from "./loginPage";
+import Login from "./loginAndRegistrationPage";
 import IndividualRegisterPage from "./individualRegisterPage";
 import DoctorRegisterPage from "./doctorRegisterPage";
 import FounderPage from "./ourFoundersPage";
@@ -16,7 +16,7 @@ const SosPage = () => {
   const [count, setCount] = useState("Double click");
   const [sosActive, setSosActive] = useState(false);
   const [countdownStarted, setCountdownStarted] = useState(false);
-  const[infoMessege,setInfoMessege]=useState("");
+  const [infoMessege, setInfoMessege] = useState("");
   const audioRef = useRef(null);
   const countdownRef = useRef(null); // Ref to keep track of countdown interval
 
@@ -30,7 +30,9 @@ const SosPage = () => {
       } else {
         clearInterval(countdownRef.current);
         setCount("SOS Activated");
-        setInfoMessege("Your SOS has been activated. Contacting emergency services... and your family members");
+        setInfoMessege(
+          "Your SOS has been activated. Contacting emergency services... and your family members"
+        );
         setSosActive(true);
         playMusic();
         setCountdownStarted(false); // Ensure countdown state is reset
@@ -53,7 +55,7 @@ const SosPage = () => {
     setSosActive(false);
     setCountdownStarted(false);
     setCount("Double click");
-    setInfoMessege("")
+    setInfoMessege("");
   };
 
   return (

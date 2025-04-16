@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Insurance from "./insurancePage";
 import FindDoctorPage from "./findDoctorPage";
 import Home from "./Home";
-import Login from "./loginPage";
+import Login from "./loginAndRegistrationPage";
 import IndividualRegisterPage from "./individualRegisterPage";
 import SosPage from "./sosPage";
 import DoctorRegisterPage from "./doctorRegisterPage";
