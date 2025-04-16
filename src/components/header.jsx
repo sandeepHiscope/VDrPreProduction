@@ -61,9 +61,10 @@ const MainHeader = () => {
         <div className="nav-menu">
           <div className={isOpen ? "nav-links-open" : "nav-links"}>
             <Link to="/findDoctorPage" className="nav-link" onClick={handleNavClick}>
-              Find a Doctor
+            Find a Doctor
             </Link>
             <Link to="/verifyDoc" className="nav-link" onClick={handleNavClick}>
+           
               Verify Doc
             </Link>
             <Link to="/sosPage" className="nav-link sos-link" onClick={handleNavClick}>
