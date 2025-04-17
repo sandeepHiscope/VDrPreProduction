@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./findDoctorPage.css";
 import { useNavigate } from "react-router-dom";
+import indianStates from "../data/indianStates";
+import doctorDetails from "../data/doctorDetails";
+import defaultUser from "../assets/Images/commonImg/VDrlogo.png"; 
 
 const GET_DOCTOR_API_URL = "http://localhost:8080/api/doctorsverification/all";
 
@@ -28,11 +31,35 @@ const FindDoctorPage = () => {
     fetchDoctors();
   }, []);
 
-  const filteredDoctors = doctors.filter(
-    (doctor) =>
-      doctor.medicalSpeciality.toLowerCase().includes(searchQuery.toLowerCase()) &&
-      (selectedState === "" || doctor.state.includes(selectedState))
-  );
+  const filteredDoctors = [
+    ...doctors.filter(
+      (doctor) =>
+        doctor.medicalSpeciality.toLowerCase().includes(searchQuery.toLowerCase()) &&
+        (selectedState === "" || doctor.state?.toLowerCase() === selectedState.toLowerCase())
+    ),
+    ...doctorDetails
+      .filter(
+        (doc) =>
+          typeof doc.speciality === "string" &&
+          doc.speciality.toLowerCase().includes(searchQuery.toLowerCase()) &&
+          (selectedState === "" || (doc.Address && doc.Address.toLowerCase().includes(selectedState.toLowerCase())))
+      )
+      .map((doc, index) => ({
+        id: `dummy-${index}`,
+        fullName: doc.name || "not mentioned",
+        medicalSpeciality: doc.speciality || "not mentioned",
+        experience: "not mentioned",
+        city: doc.locality || "not mentioned",
+        state: "not mentioned",
+        country: "India",
+        hospitalCurrentWorking: doc.Address || "not mentioned",
+        medicalLicenseNumber: "not mentioned",
+        doctorPhoto: null,
+        phone: isNaN(doc.phone) ? "not mentioned" : doc.phone,
+        email: doc.email || "not mentioned"
+      }))
+  ];
+  
 
   const doctorProfile = (doctor) => {
     navigate(`/doctorID/${doctor.id}`, { state: { doctor } });
@@ -57,14 +84,11 @@ const FindDoctorPage = () => {
             onChange={(e) => setSelectedState(e.target.value)}
           >
             <option value="">Select State</option>
-            <option value="Maharashtra">Maharashtra</option>
-            <option value="Karnataka">Karnataka</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Tamil Nadu">Tamil Nadu</option>
-            <option value="Uttar Pradesh">Uttar Pradesh</option>
-            <option value="West Bengal">West Bengal</option>
-            <option value="Gujarat">Gujarat</option>
-            <option value="Rajasthan">Rajasthan</option>
+            {indianStates.map((state) => (
+              <option key={state} value={state}>
+                {state}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -74,13 +98,15 @@ const FindDoctorPage = () => {
           ) : filteredDoctors.length > 0 ? (
             filteredDoctors.map((doctor) => (
               <div key={doctor.id} className="doctor-card" onClick={() => doctorProfile(doctor)}>
-                {doctor.doctorPhoto && (
-                  <img
-                    src={`data:image/jpeg;base64,${doctor.doctorPhoto}`}
-                    alt={`Dr. ${doctor.fullName}`}
-                    className="doctor-image"
-                  />
-                )}
+                <img
+                  src={
+                    doctor.doctorPhoto
+                      ? `data:image/jpeg;base64,${doctor.doctorPhoto}`
+                      : defaultUser
+                  }
+                  alt={`Dr. ${doctor.fullName}`}
+                  className="doctor-image"
+                />
 
                 <div className="doctor-info">
                   <h3>Dr. {doctor.fullName.toUpperCase()}</h3>
