@@ -76,9 +76,11 @@
   font-size: 1rem;
   padding: 5px 15px;
   border-radius: 8px;
-  /* background: -webkit-linear-gradient(120deg, #151515, #000000); */
-  /* background-clip: text; */
-  color: white;
+  background: -webkit-linear-gradient(120deg, #151515, #000000);
+  background-clip: text;
+  color: transparent;
+  white-space: nowrap; /* 🔥 This prevents text from wrapping */
+  display: inline-block;
 }
 
 .nav-link:hover {

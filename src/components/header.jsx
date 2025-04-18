@@ -135,6 +135,7 @@ const MainHeader = () => {
             >
               <User className="icon w-5 h-5 mr-2 text-neutral-900" /> Login/Signup
             </button>
+            <Link to="/docDashboard" className="nav-link">DocDashboard</Link>
           </div>
         </div>
       </nav>
