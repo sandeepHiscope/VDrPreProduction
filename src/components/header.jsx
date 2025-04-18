@@ -29,7 +29,7 @@ const MainHeader = () => {
   }, []);
 
   const handleLoginClick = () => {
-    navigate("/loginPage");
+    navigate("/loginAndRegistrationPage");
     setIsOpen(false);
   };
 

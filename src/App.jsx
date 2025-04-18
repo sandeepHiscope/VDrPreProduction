@@ -22,6 +22,7 @@ import QRCodeGenerator from "./pages/QRCodeGenerator";
 import DocDashboard from "./pages/docDashboard";
 import WhyVDr from "./pages/whyVDr"
 import ScrollToTop from "./components/scrollToTop";
+
 const App = () => {
   const [location, setLocation] = useState();
   const currentUrl = window.location.href;
