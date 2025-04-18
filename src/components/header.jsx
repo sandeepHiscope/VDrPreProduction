@@ -44,7 +44,7 @@ const MainHeader = () => {
   return (
     <section className="header-section">
       <button className="toggle-button" onClick={toggleSlide}>
-        {isOpen ? <IoReorderThreeOutline /> : <ImCross className="secicon" />}
+        {isOpen ?<ImCross className="secicon" />: <IoReorderThreeOutline />}
       </button>
       <div
         className="header-background"
