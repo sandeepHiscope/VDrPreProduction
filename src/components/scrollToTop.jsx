@@ -8,7 +8,7 @@ useEffect(() => {
     if (pathname !== "/") { 
         const timeout = setTimeout(() => {
             window.scrollTo({ top: 450, behavior: "smooth" }); 
-        }, 1000);
+        }, 100);
 
         return () => clearTimeout(timeout);
     }
