@@ -5,7 +5,7 @@ import Googlelogo from "../assets/icons/google.png";
 import DoctorVerification from "./doctorVerificationpage";
 import docRegister from "../assets/Images/docRegister.png";
 
-const LoginAndRegistration = () => {
+const Login = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("login");
   const [role, setRole] = useState("");
@@ -45,12 +45,12 @@ const LoginAndRegistration = () => {
       if (response.ok) {
         const data = await response.text();
         alert(`WELCOME LOGIN SUCCESSFUL!`);
-        if (role === "doctor") {
-          // navigate("/doctorVerificationpage");
-          navigate("/docDashboard");
-        } else {
-          navigate("/findDoctorPage");
-        }
+            if(role === "doctor") {
+             navigate("/doctorVerificationpage");
+             }
+           else {
+             navigate("/findDoctorPage");
+             }
       } else {
         const errorMessage = await response.text();
         alert(`Login failed: ${errorMessage}`);
@@ -118,13 +118,13 @@ const LoginAndRegistration = () => {
 
   return (
     <div className="loginContainer">
-     
+      <div className="registerI">
         <img
           src={docRegister}
           alt="Healthcare illustration"
           className="docRegisterImg"
         />
-      
+      </div>
 
       <div className="container">
         <div className="tabs">
@@ -213,7 +213,7 @@ const LoginAndRegistration = () => {
           </div>
         )}
 
-        {activeTab === "register" && role && (
+        {(activeTab === "register" && role) && (
           <div className="form-container">
             <h2>{role === "doctor" ? "Doctor" : "User"} Registration</h2>
             <form onSubmit={handleRegister}>
@@ -253,4 +253,4 @@ const LoginAndRegistration = () => {
   );
 };
 
-export default LoginAndRegistration;
+export default Login;
