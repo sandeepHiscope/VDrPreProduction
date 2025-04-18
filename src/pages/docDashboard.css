@@ -1,26 +1,9 @@
-/* Base styles */
-/* :root {
-  --primary-color: #3b82f6;
-  --primary-hover: #2563eb;
-  --danger-color: #ef4444;
-  --success-color: #10b981;
-  --warning-color: #f59e0b;
-  --text-color: #1f2937;
-  --text-light: #6b7280;
-  --border-color: #e5e7eb;
-  --bg-color: #f9fafb;
-  --card-bg: #ffffff;
-  --sidebar-width: 240px;
-} */
-
-/* App container */
-.app-container {
+/* .app-container {
   display: flex;
   height: 100vh;
   background-color: var(--bg-color);
 }
 
-/* Sidebar */
 .sidebar {
   width: var(--sidebar-width);
   background-color: var(--card-bg);
@@ -104,13 +87,11 @@
   color: var(--danger-color);
 }
 
-/* Main content */
 .main-content {
   flex: 1;
   overflow: auto;
 }
 
-/* Page container */
 .page-container {
   padding: 1.5rem;
 }
@@ -121,7 +102,6 @@
   margin-bottom: 1.5rem;
 }
 
-/* Dashboard specific */
 .dashboard-container {
   height: 100%;
 }
@@ -162,7 +142,6 @@
   }
 }
 
-/* Cards */
 .dashboard-card, .content-card, .profile-card {
   background-color: var(--card-bg);
   border-radius: 0.5rem;
@@ -191,7 +170,6 @@
   padding: 1rem;
 }
 
-/* Lists */
 .list-container {
   display: flex;
   flex-direction: column;
@@ -242,7 +220,6 @@
   color: var(--text-light);
 }
 
-/* Quick Actions */
 .quick-action-item {
   display: flex;
   justify-content: space-between;
@@ -274,7 +251,6 @@
   margin-bottom: 0.5rem;
 }
 
-/* Badges */
 .badge {
   background-color: var(--bg-color);
   padding: 0.25rem 0.5rem;
@@ -303,7 +279,6 @@
   color: var(--success-color);
 }
 
-/* Buttons */
 .primary-button {
   background-color: var(--primary-color);
   color: white;
@@ -371,7 +346,6 @@
   margin-left: auto;
 }
 
-/* Search */
 .search-container {
   margin-bottom: 1rem;
 }
@@ -383,7 +357,6 @@
   border-radius: 0.25rem;
 }
 
-/* Table */
 .data-table {
   width: 100%;
   border-collapse: collapse;
@@ -410,7 +383,6 @@
   border-bottom: none;
 }
 
-/* Toolbar */
 .toolbar {
   display: flex;
   justify-content: space-between;
@@ -418,7 +390,6 @@
   margin-bottom: 1rem;
 }
 
-/* Flex layouts */
 .flex-layout {
   display: flex;
   gap: 1.5rem;
@@ -434,7 +405,6 @@
   width: 100%;
 }
 
-/* Session lists */
 .session-list {
   display: flex;
   flex-direction: column;
@@ -457,7 +427,6 @@
   flex-direction: column;
 }
 
-/* Profile */
 .profile-header {
   padding: 1.5rem;
   border-bottom: 1px solid var(--border-color);
@@ -581,7 +550,6 @@
   border-bottom: none;
 }
 
-/* Empty state */
 .empty-state {
   display: flex;
   align-items: center;
@@ -601,4 +569,4 @@
 
 .empty-message {
   color: var(--text-light);
-}
+} */

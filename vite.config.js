@@ -14,7 +14,7 @@ export default defineConfig({
         "robots.txt",
         "offline.html",
         "manifest.webmanifest", // Add this
-        "icons/*.png",          // Add this
+        "icons/*.png", // Add this
       ],
       manifest: {
         name: "vdr pwa",
@@ -24,6 +24,7 @@ export default defineConfig({
         background_color: "#ffffff",
         display: "standalone",
         start_url: "/",
+        publicDir: "public",
         scope: "/",
         orientation: "portrait",
         icons: [

@@ -20,7 +20,8 @@ import VerifyDoc from "./pages/verifyDoc";
 import DoctorID from "./pages/doctorID";
 import QRCodeGenerator from "./pages/QRCodeGenerator";
 import DocDashboard from "./pages/docDashboard";
-
+import WhyVDr from "./pages/whyVDr"
+import ScrollToTop from "./components/scrollToTop";
 const App = () => {
   const [location, setLocation] = useState();
   const currentUrl = window.location.href;
@@ -32,6 +33,7 @@ const App = () => {
   return (
     <>
       <Router>
+      <ScrollToTop/>
         <MainHeader />
         <div className="content-wrapper ">
           <Routes>
@@ -60,6 +62,8 @@ const App = () => {
             <Route path="/doctorID/:id" element={<DoctorID />} />
             <Route path="/QRCodeGenerator" element={<QRCodeGenerator />} />
             <Route path="/docDashboard" element={<DocDashboard />} />
+            <Route path="/whyVDr" element={<WhyVDr />} />
+          
           </Routes>
         </div>
         <Footer />
