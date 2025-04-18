@@ -2,7 +2,8 @@
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
-  height: 25em;
+  height: 28em;
+  min-height: 25em;
   position: relative;
   z-index: 10;
   display: flex;
@@ -43,7 +44,8 @@
 }
 
 .header-logo {
-  height: 7em;
+  height: 4em;
+  max-height: 5em;
   padding: 0em;
   cursor: pointer;
   border-radius: 10px;
@@ -55,8 +57,10 @@
   padding: 0.5em;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   border-radius: 10px;
+  /* background: #000; */
+  flex: 1;
 }
 
 .nav-links,
@@ -66,6 +70,8 @@
 }
 
 .nav-link {
+  /* background: #000; */
+  font-weight: bold;
   text-decoration: none;
   font-size: 1rem;
   padding: 5px 15px;
@@ -78,10 +84,8 @@
 }
 
 .nav-link:hover {
-  background-color: #d41212;
-  color: #0b83a4;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease-in-out;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.646);
+  transition: text-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
 }
 
 .toggle-button {
@@ -141,9 +145,8 @@
     padding: 15px;
     font-size: 1rem;
     color: #2c3e50;
-    text-align:left;
-    font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
-
+    text-align: left;
+    font-family: "Inter", "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
   }
 
   .nav-link:hover {
@@ -160,7 +163,7 @@
   .nav-links,
   .nav-links-open {
     flex-direction: column;
-    background: linear-gradient(90deg, #e0f7fa, #b2ebf2);
+    background: linear-gradient(to top, #65b0ee, #2060ba);
     width: 100%;
     height: 600px;
     position: absolute;
@@ -206,8 +209,13 @@
   .header-section {
     height: 5em;
   }
-  .icon1{
+  .icon1 {
     margin-left: 100px;
+  }
+}
+@media (min-width: 768px) {
+  .icon {
+    display: none;
   }
 }
 
@@ -218,13 +226,13 @@
 }
 
 .sos-link:hover {
-  background-color: #ff3e3e;
+  /* background-color: #ff3e3e; */
   color: rgb(16, 131, 246);
 }
 
 .login-button-header {
-  color: white;
-  padding: 10px 20px;
+  color: rgb(25, 25, 25);
+  /* padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
@@ -232,10 +240,10 @@
   background: linear-gradient(360deg, #000000, #7f7f7f);
   background-clip: text;
   color: transparent;
-  text-align: left;
+  text-align: left; */
 }
 
 .login-button-header:hover {
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); */
   transition: background 0.3s ease-in-out;
 }
