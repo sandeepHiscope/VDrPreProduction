@@ -114,20 +114,14 @@ const MainHeader = () => {
             >
               <User className="icon w-5 h-5 mr-2 text-neutral-900" /> Founder Page
             </Link>
-            <Link
-              to="/docDashboard"
-              className="nav-link flex items-center"
-              onClick={handleNavClick}
-            >
-              <User className="icon w-5 h-5 mr-2 text-neutral-900" /> DocDash
-            </Link>
-            <Link
+            
+            {/* <Link
               to="/whyVDr"
               className="nav-link flex items-center"
               onClick={handleNavClick}
             >
               <Info className="icon w-5 h-5 mr-2 text-neutral-900" /> Why VDr
-            </Link>
+            </Link> */}
 
             <button
               className="login-button-header nav-link flex items-center"
