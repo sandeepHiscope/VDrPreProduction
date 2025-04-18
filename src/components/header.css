@@ -76,11 +76,9 @@
   font-size: 1rem;
   padding: 5px 15px;
   border-radius: 8px;
-  background: -webkit-linear-gradient(120deg, #151515, #000000);
-  background-clip: text;
-  color: transparent;
-  white-space: nowrap; /* 🔥 This prevents text from wrapping */
+
   display: inline-block;
+  color: white;
 }
 
 .nav-link:hover {
@@ -144,7 +142,7 @@
   .nav-link {
     padding: 15px;
     font-size: 1rem;
-    color: #2c3e50;
+    color: #ffffff;
     text-align: left;
     font-family: "Inter", "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
   }
@@ -231,7 +229,7 @@
 }
 
 .login-button-header {
-  color: rgb(25, 25, 25);
+  color: rgb(83, 83, 83);
   /* padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
