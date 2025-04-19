@@ -2,29 +2,37 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./header.css";
 import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
-import headerImages from "../data/headerImages";
+import HeaderImages from "../data/headerImages";
 import { IoReorderThreeOutline } from "react-icons/io5";
 import { ImCross } from "react-icons/im";
-import { Home, Search, Shield, Bell, ShoppingBag, User, Info } from "lucide-react"; // Import Lucide icons
+import {
+  Home,
+  Search,
+  Shield,
+  Bell,
+  ShoppingBag,
+  User,
+  Info,
+} from "lucide-react"; 
 
 const MainHeader = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [position, setPosition] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-
+ 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % headerImages.length);
+      setCurrentImage((prev) => (prev + 1) % HeaderImages.length);
       setPosition((prev) => (prev + 20) % 100);
     }, 5000);
 
-    const updateWidth = () => setWindowWidth(window.innerWidth);
-    window.addEventListener("resize", updateWidth);
+    // const updateWidth = () => setWindowWidth(window.innerWidth);
+    // window.addEventListener("resize", updateWidth);
 
     return () => {
       clearInterval(interval);
-      window.removeEventListener("resize", updateWidth);
+      // window.removeEventListener("resize", updateWidth);
     };
   }, []);
 
@@ -54,7 +62,7 @@ const MainHeader = () => {
       <div
         className="header-background"
         style={{
-          backgroundImage: `url(${headerImages[currentImage].img})`,
+          backgroundImage: `url(${HeaderImages[currentImage].img})`,
           backgroundPosition: `right ${position}% top 0%`,
         }}
       ></div>
@@ -71,14 +79,16 @@ const MainHeader = () => {
               className="nav-link flex items-center"
               onClick={handleNavClick}
             >
-              <Search className="icon w-5 h-5 mr-2 text-neutral-900" /> Find a Doctor
+              <Search className="icon w-5 h-5 mr-2 text-neutral-900" /> Find a
+              Doctor
             </Link>
             <Link
               to="/verifyDoc"
               className="nav-link flex items-center"
               onClick={handleNavClick}
             >
-              <Shield className="icon w-5 h-5 mr-2 text-neutral-900" /> Verify Doc
+              <Shield className="icon w-5 h-5 mr-2 text-neutral-900" /> Verify
+              Doc
             </Link>
             <Link
               to="/sosPage"
@@ -95,7 +105,8 @@ const MainHeader = () => {
               className="nav-link flex items-center"
               onClick={handleNavClick}
             >
-              <ShoppingBag className="icon w-5 h-5 mr-2 text-neutral-900" /> Doorstep Meds
+              <ShoppingBag className="icon w-5 h-5 mr-2 text-neutral-900" />{" "}
+              Doorstep Meds
             </a>
             <a
               href="https://vdr-insurance.netlify.app/"
@@ -104,7 +115,8 @@ const MainHeader = () => {
               className="nav-link flex items-center"
               onClick={handleNavClick}
             >
-              <Shield className="icon w-5 h-5 mr-2 text-neutral-900" /> Insurance
+              <Shield className="icon w-5 h-5 mr-2 text-neutral-900" />{" "}
+              Insurance
             </a>
 
             <Link
@@ -112,9 +124,10 @@ const MainHeader = () => {
               className="nav-link flex items-center"
               onClick={handleNavClick}
             >
-              <User className="icon w-5 h-5 mr-2 text-neutral-900" /> Founder Page
+              <User className="icon w-5 h-5 mr-2 text-neutral-900" /> Founder
+              Page
             </Link>
-            
+
             {/* <Link
               to="/whyVDr"
               className="nav-link flex items-center"
@@ -127,9 +140,12 @@ const MainHeader = () => {
               className="login-button-header nav-link flex items-center"
               onClick={handleLoginClick}
             >
-              <User className="icon w-5 h-5 mr-2 text-neutral-900" /> Login/Signup
+              <User className="icon w-5 h-5 mr-2 text-neutral-900" />{" "}
+              Login/Signup
             </button>
-            <Link to="/docDashboard" className="nav-link">DocDashboard</Link>
+            <Link to="/docDashboard" className="nav-link">
+              DocDashboard
+            </Link>
           </div>
         </div>
       </nav>
