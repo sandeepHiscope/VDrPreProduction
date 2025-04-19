@@ -2,6 +2,9 @@
 /* @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities"; */
+* {
+  transition: all 0.3s ease-in-out;
+}
 :root {
   box-sizing: border-box;
   margin: 0;

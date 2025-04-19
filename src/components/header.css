@@ -46,8 +46,8 @@
 }
 
 .header-logo {
-  height: 4em;
-  max-height: 5em;
+  height: 5em;
+  /* max-height: 5em; */
   padding: 0em;
   cursor: pointer;
   border-radius: 10px;
@@ -92,7 +92,7 @@
   display: none;
 }
 
-@media (max-width: 1150px) {
+@media (min-width: 1024px) {
   .nav-link {
     font-size: 0.7rem;
     padding: 5px 15px;
@@ -114,16 +114,15 @@
   }
 }
 
-@media (max-width: 1000px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .nav-link {
     font-size: 0.5rem;
     padding: 5px 15px;
   }
 
   .header-logo {
-    height: 60px;
-    width: 60px;
-    border-radius: 10px;
+    height: 6em;
+    width: 6em;
   }
 
   .header-background {
@@ -136,7 +135,7 @@
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 768px) {
   .nav-menu {
     transition: all 0.5s ease;
   }
@@ -156,8 +155,8 @@
   }
 
   .header-logo {
-    height: 40px;
-    width: 40px;
+    height: 6em;
+    width: 6em;
   }
 
   .nav-links,
