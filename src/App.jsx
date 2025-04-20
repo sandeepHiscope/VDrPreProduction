@@ -20,8 +20,8 @@ import VerifyDoc from "./pages/verifyDoc";
 import DoctorID from "./pages/doctorID";
 import QRCodeGenerator from "./pages/QRCodeGenerator";
 import DocDashboard from "./pages/docDashboard";
-import WhyVDr from "./pages/whyVDr"
 import ScrollToTop from "./components/scrollToTop";
+import WhyVDr from "./pages/whyVDr"
 
 const App = () => {
   const [location, setLocation] = useState();
@@ -55,7 +55,7 @@ const App = () => {
               path="/doctorRegisterPage"
               element={<DoctorRegisterPage />}
             />
-            <Route path="/FounderPage" element={<FounderPage />} />
+            {/* <Route path="/FounderPage" element={<FounderPage />} /> */}
             <Route path="/insurancePage" element={<Insurance />} />
             <Route path="/demoPage" element={<HomeDeliveryMedicine />} />
             <Route path="/doctorProfilePage" element={<DoctorProfilePage />} />
