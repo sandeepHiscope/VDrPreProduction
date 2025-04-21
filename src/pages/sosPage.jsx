@@ -1,16 +1,7 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import "./sosPage.css";
-import Header from "../components/header";
 
-import DoctorVerification from "./doctorVerificationpage";
-import FindDoctorPage from "./findDoctorPage";
-import Home from "./Home";
-import Login from "./loginAndRegistrationPage";
-import IndividualRegisterPage from "./individualRegisterPage";
-import DoctorRegisterPage from "./doctorRegisterPage";
-import FounderPage from "./ourFoundersPage";
-import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
-import Fotter from "../components/footer";
+
 
 const SosPage = () => {
   const [count, setCount] = useState("Double click");
@@ -34,17 +25,17 @@ const SosPage = () => {
           "Your SOS has been activated. Contacting emergency services... and your family members"
         );
         setSosActive(true);
-        playMusic();
+        // playMusic();
         setCountdownStarted(false); // Ensure countdown state is reset
       }
     }, 1000); // Decrease count every 1 second
   };
 
-  const playMusic = () => {
-    audioRef.current = new Audio("./emergency-alarm-69780.mp3"); // Ensure the path to your music file is correct
-    audioRef.current.loop = true; // Loop the audio
-    audioRef.current.play();
-  };
+  // const playMusic = () => {
+  //   audioRef.current = new Audio("./emergency-alarm-69780.mp3"); // Ensure the path to your music file is correct
+  //   audioRef.current.loop = true; // Loop the audio
+  //   audioRef.current.play();
+  // };
 
   const stopSos = () => {
     if (audioRef.current) {
@@ -61,7 +52,9 @@ const SosPage = () => {
   return (
     <>
       {/* <Header /> */}
-
+      <div className="sos-header">
+      <h2> This Feature Is Under Development</h2>
+      </div>
       {/* SOS part */}
       <div className="sos-container">
         <div className="div1">

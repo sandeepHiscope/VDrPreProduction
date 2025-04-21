@@ -15,6 +15,8 @@ const DocDashboard = () => {
   
   const [activePage, setActivePage] = useState("Dashboard");
 
+  
+  
   // Menu items for sidebar
   const menuItems = [
     { name: "Dashboard", icon: <Calendar className="w-5 h-5 text-neutral-900" /> },

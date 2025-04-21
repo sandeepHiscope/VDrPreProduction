@@ -197,22 +197,22 @@ p {
 
 .problem-card, .solution-card {
   background-color: white;
-  padding: 2rem;
+  padding: 1.8rem;
   border-radius: var(--border-radius);
   box-shadow: var(--card-shadow);
   height: 100%;
 }
 
 .problem-card {
-  border-left: 4px solid var(--danger);
+  border-left: 6px solid var(--danger);
 }
 
 .solution-card {
-  border-left: 4px solid var(--success);
+  border-left: 6px solid var(--success);
 }
 
 .problem-card h3, .solution-card h3 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
   text-align: center;
 }
 
