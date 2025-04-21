@@ -8,13 +8,18 @@ export default defineConfig({
     react(),
     tailwindcss(),
     VitePWA({
-      registerType: "autoUpdate",
+      registerType: "prompt", // Changed from autoUpdate to prompt for more control
+      injectRegister: "auto", // This will handle injection of register
+      filename: "sw.js", // Explicit filename
+      strategies: "generateSW", // Use the generateSW strategy
       includeAssets: [
         "favicon.svg",
         "robots.txt",
         "offline.html",
         "icons/web-app-manifest-192x192.png",
-        "icons/web-app-manifest-512x512.png"
+        "icons/web-app-manifest-512x512.png",
+        "screenshots/desktop.png",
+        "screenshots/mobile.png",
       ],
       manifest: {
         name: "Verified Doctor App",
@@ -36,12 +41,58 @@ export default defineConfig({
             src: "/icons/web-app-manifest-512x512.png",
             sizes: "512x512",
             type: "image/png",
-            purpose: "any maskable",
+            purpose: "maskable",
+          },
+          {
+            src: "/icons/web-app-manifest-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "any",
+          },
+        ],
+        screenshots: [
+          {
+            src: "/public/vdrDesktop.png",
+            sizes: "1280x800",
+            type: "image/png",
+            form_factor: "wide",
+            label: "Desktop view of Verified Doctor App",
+          },
+          {
+            src: "/public/vdrMobile.png",
+            sizes: "750x1334",
+            type: "image/png",
+            label: "Mobile view of Verified Doctor App",
           },
         ],
       },
       workbox: {
+        swDest: "sw.js", // Ensure the service worker is generated at the root
+        globDirectory: "dist", // Output directory
+        globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
+        navigateFallback: "/index.html", // Fallback for SPA
+        navigateFallbackDenylist: [/^\/api\//], // Don't fallback API routes
+        skipWaiting: true,
+        clientsClaim: true,
         runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com/,
+            handler: "StaleWhileRevalidate",
+            options: {
+              cacheName: "google-fonts-stylesheets",
+            },
+          },
+          {
+            urlPattern: /^https:\/\/fonts\.gstatic\.com/,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "google-fonts-webfonts",
+              expiration: {
+                maxEntries: 30,
+                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
+              },
+            },
+          },
           {
             urlPattern: ({ request }) => request.destination === "document",
             handler: "NetworkFirst",
@@ -78,14 +129,12 @@ export default defineConfig({
               },
             },
           },
-          {
-            urlPattern: /\/offline.html$/,
-            handler: "CacheFirst",
-            options: {
-              cacheName: "offline-page",
-            },
-          },
         ],
+      },
+      devOptions: {
+        enabled: true,
+        type: "module",
+        navigateFallback: "index.html",
       },
     }),
   ],

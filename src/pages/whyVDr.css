@@ -63,6 +63,7 @@ p {
   color: var(--neutral-700);
 }
 
+
 /* Container Styles */
 .why-we-container {
   width: 100%;
@@ -184,6 +185,7 @@ p {
   transform: scale(1.03);
 }
 
+
 /* Mission Section */
 .mission-section {
   background-color: var(--neutral-50);
@@ -225,6 +227,7 @@ p {
   align-items: flex-start;
   margin-bottom: 1rem;
 }
+
 
 .icon {
   margin-right: 1rem;
@@ -488,3 +491,65 @@ p {
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: background-color }
+
+  .mainheader{
+    text-align: center;
+  }
+  @media(max-width:800px){
+    p {
+      margin-bottom: 1rem;
+      color: var(--neutral-700);
+      font-size: 10px;
+    }
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .Probletext{
+      font-size: 12px;
+    }
+    .problem-card, .solution-card {
+     
+      height: 89%;
+    }
+    .Soltext{
+      font-size: 12px;
+    }
+    .mainheader{
+      text-align: center;
+      font-size: 40px;
+    }
+  }
+  @media(max-width:600px){
+    p {
+      margin-bottom: 1rem;
+      color: var(--neutral-700);
+      font-size: 9px;
+    }
+    h3 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .Probletext{
+      font-size: 10px;
+    }
+    .problem-card, .solution-card {
+     
+      height: 89%;
+    }
+    .Soltext{
+      font-size: 10px;
+    }
+    .mainheader{
+      text-align: center;
+      font-size: 30px;
+    }
+  }
