@@ -146,6 +146,36 @@ body {
 
 @media (max-width: 600px) {
   .slide-item {
+    width: 55vw;
+    min-width: 200px;
+  }
+
+  .slide-item img {
+    height: 50px;
+    width: 100%;
+  }
+
+  .online-button,
+  .clinic-button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .section-title {
+    font-size: 1rem;
+  }
+  .expert-slider-section {
+    position: relative;
+    padding: 2em 0;
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 1000px) {
+  .slide-item {
     width: 85vw;
     min-width: 200px;
   }
@@ -163,4 +193,5 @@ body {
   .section-title {
     font-size: 1rem;
   }
+  
 }

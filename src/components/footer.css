@@ -64,9 +64,20 @@
 }
 @media(max-width:500px){
   .first-text{
-    font-size: 8px;
-  }
+    font-size: 6px;
+    }
   .second-text{
-    font-size: 8px;
+    font-size: 6px;
+  }
+  .social-icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2px;
+    width: 20%;
+    font-size: 15px;
+    margin-left: 85%;
+    margin-top: 0px;
+   
   }
 }
