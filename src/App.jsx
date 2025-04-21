@@ -28,7 +28,7 @@ const App = () => {
   const [location, setLocation] = useState();
   const currentUrl = window.location.href;
   console.log(`url:${currentUrl}`);
-  const { showUpdate, reload } = useSWUpdateToast();
+  const { showUpdate, reload, setShowUpdate } = useSWUpdateToast();
 
   useEffect(() => {
     setLocation(currentUrl);
@@ -81,7 +81,7 @@ const App = () => {
           <button className="underline" onClick={reload}>
             Refresh
           </button>
-          <button onClick={() => showUpdate(false)} className="ml-2 text-sm">
+          <button onClick={() => setShowUpdate(false)} className="ml-2 text-sm">
             ✕
           </button>
         </div>
