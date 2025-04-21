@@ -70,13 +70,16 @@ const MainHeader = () => {
   }, []);
 
   const handleLoginClick = () => {
-    navigate("/loginAndRegistrationPage");
-    setIsOpen(false);
+    navigate("/LoginAndRegistrationPage");
   };
 
-  const toggleSlide = () => setIsOpen(!isOpen);
+  const toggleSlide = () => {
+    setIsOpen(!isOpen);
+  };
 
-  const handleNavClick = () => setIsOpen(false);
+  const handleNavClick = () => {
+    setIsOpen(false);
+  };
 
   return (
     <section className="header-section">
