@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./loginAndRegistrationPage.css";
+import "./loginPage.css";
 import { useNavigate } from "react-router-dom";
 import Googlelogo from "../assets/icons/google.png";
 import DoctorVerification from "./doctorVerificationpage";
@@ -91,7 +91,6 @@ const Login = () => {
         alert("Registration successful!");
         setFormData({ username: "", email: "", password: "" });
         setRole("");
-        // navigate("/doctorVerificationpage");
       } else {
         const errorMessage = await response.text();
         alert(`Registration failed: ${errorMessage}`);
@@ -142,7 +141,7 @@ const Login = () => {
           </button>
         </div>
 
-        {/* ------ LOGIN TAB ------ */}
+        {/* ----- LOGIN TAB ----------- */}
         {activeTab === "login" && (
           <div className="form-container">
             <h2>Login</h2>
@@ -151,7 +150,7 @@ const Login = () => {
               <div className="role-selection">
                 <p>Select Role to Login:</p>
                 <button className="role-btn" onClick={showDoctorForm}>
-                HealthCare Professional
+                  Doctor
                 </button>
                 <button className="role-btn" onClick={showUserForm}>
                   User
