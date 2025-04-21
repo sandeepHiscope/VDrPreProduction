@@ -21,20 +21,24 @@ import DoctorID from "./pages/doctorID";
 import QRCodeGenerator from "./pages/QRCodeGenerator";
 import DocDashboard from "./pages/docDashboard";
 import ScrollToTop from "./components/scrollToTop";
-import WhyVDr from "./pages/whyVDr"
+import WhyVDr from "./pages/whyVDr";
+import { useSWUpdateToast } from "./sw-update";
 
 const App = () => {
   const [location, setLocation] = useState();
   const currentUrl = window.location.href;
   console.log(`url:${currentUrl}`);
+  const { showUpdate, reload } = useSWUpdateToast();
 
   useEffect(() => {
     setLocation(currentUrl);
   }, [currentUrl]);
+
+  
   return (
     <>
       <Router>
-      <ScrollToTop/>
+        <ScrollToTop />
         <MainHeader />
         <div className="content-wrapper ">
           <Routes>
@@ -45,7 +49,10 @@ const App = () => {
               element={<DoctorVerification />}
             />
             <Route path="/findDoctorPage" element={<FindDoctorPage />} />
-            <Route path="/loginAndRegistrationPage" element={<LoginAndRegistration />} />
+            <Route
+              path="/loginAndRegistrationPage"
+              element={<LoginAndRegistration />}
+            />
             <Route
               path="/individualRegisterPage"
               element={<IndividualRegisterPage />}
@@ -64,11 +71,21 @@ const App = () => {
             <Route path="/QRCodeGenerator" element={<QRCodeGenerator />} />
             <Route path="/docDashboard" element={<DocDashboard />} />
             <Route path="/whyVDr" element={<WhyVDr />} />
-          
           </Routes>
         </div>
         <Footer />
       </Router>
+      {showUpdate && (
+        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-4 py-2 rounded-xl shadow-lg z-50 flex items-center space-x-2">
+          <span>New version available.</span>
+          <button className="underline" onClick={reload}>
+            Refresh
+          </button>
+          <button onClick={() => setShowUpdate(false)} className="ml-2 text-sm">
+            ✕
+          </button>
+        </div>
+      )}
     </>
   );
 };
