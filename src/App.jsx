@@ -81,7 +81,7 @@ const App = () => {
           <button className="underline" onClick={reload}>
             Refresh
           </button>
-          <button onClick={() => setShowUpdate(false)} className="ml-2 text-sm">
+          <button onClick={() => showUpdate(false)} className="ml-2 text-sm">
             ✕
           </button>
         </div>
