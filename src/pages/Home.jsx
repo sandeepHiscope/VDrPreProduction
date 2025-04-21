@@ -16,6 +16,7 @@ import CardsSlider from "../components/cardsSlider";
 import indiaUsaStates from "../data/indiaUsaStates";
 import doctorCategories from "../data/doctorCategories";
 import tempImg from "../assets/Images/foundersImg/kiran.jpg"
+import ScrollingCardsContainer from "../components/ScrollingCardsContainer"
 
 function Homepage() {
   const [isHomePageRendered, setIsHomePageRendered] = useState(false);
