@@ -15,6 +15,8 @@ import AppStoreLogo from "../assets/icons/apps/applestore.png";
 import CardsSlider from "../components/cardsSlider";
 import indiaUsaStates from "../data/indiaUsaStates";
 import doctorCategories from "../data/doctorCategories";
+import tempImg from "../assets/Images/foundersImg/kiran.jpg"
+
 function Homepage() {
   const [isHomePageRendered, setIsHomePageRendered] = useState(false);
 
@@ -127,7 +129,7 @@ function Homepage() {
         </div>
 
         {/* Opinion Section */}
-        <div
+        {/* <div
           className="opinion-container bg-neutral-200 w-3/4 h-90 flex flex-col justify-around items-center p-2
          rounded-2xl "
         >
@@ -156,7 +158,71 @@ function Homepage() {
           <div className="opinion-slides text-3xl">
             <div className="opinion-slide">{slides[currentSlideIndex]}</div>
           </div>
-        </div>
+        </div> */}
+        
+        {/* Testimonials Section */}
+              <section className="content-section testimonials-section">
+                <div className="section-header">
+                  <h2>Trusted By Users, Assured By Verified Doctors</h2>
+                  <div className="section-underline"></div>
+                </div>
+                <div className="testimonials-grid">
+                  <div className="testimonial-card">
+                    <div className="testimonial-content">
+                      <p>
+                        "After struggling to find a specialist I could trust, this platform matched 
+                        me with a doctor who not only had the right credentials but truly listened 
+                        to my concerns. The peace of mind knowing they've been thoroughly vetted is priceless."
+                      </p>
+                    </div>
+                    <div className="testimonial-author">
+                      <div className="author-image">
+                        <img src={tempImg} alt="Sarah M." />
+                      </div>
+                      <div className="author-info">
+                        <h4>Sarah M.</h4>
+                        <p>Patient since 2023</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="testimonial-card">
+                    <div className="testimonial-content">
+                      <p>
+                        "As a physician, I appreciate the rigorous verification process. It ensures 
+                        that patients connect with qualified professionals and helps maintain the 
+                        integrity of our profession in an era of misinformation."
+                      </p>
+                    </div>
+                    <div className="testimonial-author">
+                      <div className="author-image">
+                        <img src={tempImg} alt="Dr. James L." />
+                      </div>
+                      <div className="author-info">
+                        <h4>Dr. James L.</h4>
+                        <p>Cardiologist, Verified Provider</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="testimonial-card">
+                    <div className="testimonial-content">
+                      <p>
+                        "When my daughter needed specialized care, I couldn't risk choosing the wrong 
+                        doctor. This platform gave me confidence in my choice with transparent verification 
+                        and real patient reviews. The care she received was exceptional."
+                      </p>
+                    </div>
+                    <div className="testimonial-author">
+                      <div className="author-image">
+                        <img src={tempImg} alt="Robert K." />
+                      </div>
+                      <div className="author-info">
+                        <h4>Robert K.</h4>
+                        <p>Parent of patient</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
 
         {/* App Download Section */}
         <div className="download-container m-8 w-3/4 flex justify-evenly  items-center p-2 rounded-2xl">

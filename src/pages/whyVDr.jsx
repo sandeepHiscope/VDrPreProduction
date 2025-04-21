@@ -78,7 +78,7 @@ const WhyVDr = () => {
             Connecting you with verified, background-checked doctors committed to 
             providing safe and high-quality healthcare.
           </p>
-          <button className="cta-button fade-in-element delay-2">
+          <button className="cta-button fade-in-element delay-2" >
             Find Your Doctor
           </button>
         </div>
