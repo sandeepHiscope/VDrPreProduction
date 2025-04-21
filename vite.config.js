@@ -13,28 +13,27 @@ export default defineConfig({
         "favicon.svg",
         "robots.txt",
         "offline.html",
-        "manifest.webmanifest", // Add this
-        "icons/*.png", // Add this
+        "icons/web-app-manifest-192x192.png",
+        "icons/web-app-manifest-512x512.png"
       ],
       manifest: {
-        name: "vdr pwa",
-        short_name: "Vdr",
-        description: "My robust React + Vite PWA!",
-        theme_color: "#ffffff",
-        background_color: "#ffffff",
-        display: "standalone",
+        name: "Verified Doctor App",
+        short_name: "VDr",
+        description: "Access trusted, verified doctors anytime, anywhere.",
         start_url: "/",
-        publicDir: "public",
         scope: "/",
+        display: "standalone",
         orientation: "portrait",
+        background_color: "#ffffff",
+        theme_color: "#0f172a",
         icons: [
           {
-            src: "icons/web-app-manifest-192x192.png", // ✅ drop `/public` — not needed
+            src: "/icons/web-app-manifest-192x192.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "icons/web-app-manifest-512x512.png",
+            src: "/icons/web-app-manifest-512x512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "any maskable",
@@ -48,7 +47,10 @@ export default defineConfig({
             handler: "NetworkFirst",
             options: {
               cacheName: "pages",
-              expiration: { maxEntries: 50 },
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60 * 24 * 7, // 7 days
+              },
             },
           },
           {
@@ -57,7 +59,10 @@ export default defineConfig({
             handler: "StaleWhileRevalidate",
             options: {
               cacheName: "assets",
-              expiration: { maxEntries: 100 },
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
+              },
             },
           },
           {
@@ -67,7 +72,17 @@ export default defineConfig({
             handler: "CacheFirst",
             options: {
               cacheName: "images",
-              expiration: { maxEntries: 50 },
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
+              },
+            },
+          },
+          {
+            urlPattern: /\/offline.html$/,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "offline-page",
             },
           },
         ],
