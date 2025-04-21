@@ -12,28 +12,61 @@ import {
   Bell,
   ShoppingBag,
   User,
-  Info,
-} from "lucide-react"; 
+} from "lucide-react";
+
+const NAV_LINKS = [
+  {
+    to: "/findDoctorPage",
+    label: "Find a Doctor",
+    icon: <Search className="icon w-5 h-5 mr-2 text-neutral-900" />,
+  },
+  {
+    to: "/verifyDoc",
+    label: "Verify Doc",
+    icon: <Shield className="icon w-5 h-5 mr-2 text-neutral-900" />,
+  },
+  {
+    to: "/sosPage",
+    label: "SOS",
+    icon: <Bell className="icon w-5 h-5 mr-2 text-neutral-900" />,
+    className: "sos-link",
+  },
+  {
+    href: "https://vdr-door-delivery-medicines.netlify.app/",
+    label: "Doorstep Meds",
+    icon: <ShoppingBag className="icon w-5 h-5 mr-2 text-neutral-900" />,
+    external: true,
+  },
+  {
+    href: "https://vdr-insurance.netlify.app/",
+    label: "Insurance",
+    icon: <Shield className="icon w-5 h-5 mr-2 text-neutral-900" />,
+    external: true,
+  },
+  
+  {
+    to: "/whyVDr",
+    label: "Why VDr",
+  },
+  {
+    to: "/docDashboard",
+    label: "DocDashboard",
+  },
+];
 
 const MainHeader = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [position, setPosition] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
- 
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % HeaderImages.length);
       setPosition((prev) => (prev + 20) % 100);
     }, 5000);
 
-    // const updateWidth = () => setWindowWidth(window.innerWidth);
-    // window.addEventListener("resize", updateWidth);
-
-    return () => {
-      clearInterval(interval);
-      // window.removeEventListener("resize", updateWidth);
-    };
+    return () => clearInterval(interval);
   }, []);
 
   const handleLoginClick = () => {
@@ -41,13 +74,9 @@ const MainHeader = () => {
     setIsOpen(false);
   };
 
-  const toggleSlide = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleSlide = () => setIsOpen(!isOpen);
 
-  const handleNavClick = () => {
-    setIsOpen(false);
-  };
+  const handleNavClick = () => setIsOpen(false);
 
   return (
     <section className="header-section">
@@ -74,78 +103,35 @@ const MainHeader = () => {
 
         <div className="nav-menu">
           <div className={isOpen ? "nav-links-open" : "nav-links"}>
-            <Link
-              to="/findDoctorPage"
-              className="nav-link flex items-center"
-              onClick={handleNavClick}
-            >
-              <Search className="icon w-5 h-5 mr-2 text-neutral-900" /> Find a
-              Doctor
-            </Link>
-            <Link
-              to="/verifyDoc"
-              className="nav-link flex items-center"
-              onClick={handleNavClick}
-            >
-              <Shield className="icon w-5 h-5 mr-2 text-neutral-900" /> Verify
-              Doc
-            </Link>
-            <Link
-              to="/sosPage"
-              className="nav-link flex items-center sos-link"
-              onClick={handleNavClick}
-            >
-              <Bell className="icon w-5 h-5 mr-2 text-neutral-900" /> SOS
-            </Link>
-
-            <a
-              href="https://vdr-door-delivery-medicines.netlify.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-link flex items-center"
-              onClick={handleNavClick}
-            >
-              <ShoppingBag className="icon w-5 h-5 mr-2 text-neutral-900" />{" "}
-              Doorstep Meds
-            </a>
-            <a
-              href="https://vdr-insurance.netlify.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-link flex items-center"
-              onClick={handleNavClick}
-            >
-              <Shield className="icon w-5 h-5 mr-2 text-neutral-900" />{" "}
-              Insurance
-            </a>
-
-            <Link
-              to="/founderPage"
-              className="nav-link flex items-center"
-              onClick={handleNavClick}
-            >
-              <User className="icon w-5 h-5 mr-2 text-neutral-900" /> Founder
-              Page
-            </Link>
-
-            {/* <Link
-              to="/whyVDr"
-              className="nav-link flex items-center"
-              onClick={handleNavClick}
-            >
-              <Info className="icon w-5 h-5 mr-2 text-neutral-900" /> Why VDr
-            </Link> */}
-
+            {NAV_LINKS.map((link, index) =>
+              link.external ? (
+                <a
+                  key={index}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`nav-link flex items-center ${link.className || ""}`}
+                  onClick={handleNavClick}
+                >
+                  {link.icon} {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={index}
+                  to={link.to}
+                  className={`nav-link flex items-center ${link.className || ""}`}
+                  onClick={handleNavClick}
+                >
+                  {link.icon} {link.label}
+                </Link>
+              )
+            )}
             <button
               className="login-button-header nav-link flex items-center"
               onClick={handleLoginClick}
             >
-              <User className="icon w-5 h-5 mr-2 text-neutral-900" />{" "}
-              Login/Signup
+              <User className="icon w-5 h-5 mr-2 text-neutral-900" /> Login/Signup
             </button>
-            <Link to="/docDashboard" className="nav-link">
-              DocDashboard
-            </Link>
           </div>
         </div>
       </nav>

@@ -21,7 +21,7 @@
   transition: background-image 2s ease-in-out;
   z-index: -1;
   object-fit: cover;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+  /* filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)); */
 
 }
 
@@ -155,8 +155,8 @@
   }
 
   .header-logo {
-    height: 6em;
-    width: 6em;
+    height: 4.5em;
+    width: 4.5em;
   }
 
   .nav-links,

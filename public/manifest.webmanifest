@@ -1,20 +1,22 @@
 {
-  "short_name": "Vdr",
-  "name": "Vdr Progressive Web App",
+  "short_name": "VDr",
+  "name": "VerifiedDoctor",
   "icons": [
     {
-      "src": "/icons/web-app-manifest-192x192.png",
+      "src":"/icons/web-app-manifest-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "/icons/web-app-manifest-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#ffffff",
   "background_color": "#ffffff"
 }
