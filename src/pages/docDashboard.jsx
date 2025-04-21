@@ -11,23 +11,23 @@ import {
 } from "lucide-react";
 import "./docDashboard.css"
 
-const DocDashboard = () => {
-  
-  const [activePage, setActivePage] = useState("Dashboard");
+const menuItems = [
+  { name: "Dashboard", icon: <Calendar className="w-5 h-5 text-neutral-900" /> },
+  { name: "Appointments", icon: <Clock className="w-5 h-5  text-neutral-900" /> },
+  { name: "Patients", icon: <Users className="w-5 h-5  text-neutral-900" /> },
+  { name: "Prescriptions", icon: <Clipboard className="w-5 h-5  text-neutral-900" /> },
+  { name: "Teleconsultations", icon: <Video className="w-5 h-5  text-neutral-900" /> },
+  { name: "Services", icon: <FileText className="w-5 h-5  text-neutral-900" /> },
+  { name: "Insurance", icon: <Shield className="w-5 h-5  text-neutral-900" /> },
+  { name: "SOS Alerts", icon: <Bell className="w-5 h-5  text-neutral-900" /> },
+];
 
-  
-  
-  // Menu items for sidebar
-  const menuItems = [
-    { name: "Dashboard", icon: <Calendar className="w-5 h-5 text-neutral-900" /> },
-    { name: "Appointments", icon: <Clock className="w-5 h-5  text-neutral-900" /> },
-    { name: "Patients", icon: <Users className="w-5 h-5  text-neutral-900" /> },
-    { name: "Prescriptions", icon: <Clipboard className="w-5 h-5  text-neutral-900" /> },
-    { name: "Teleconsultations", icon: <Video className="w-5 h-5  text-neutral-900" /> },
-    { name: "Services", icon: <FileText className="w-5 h-5  text-neutral-900" /> },
-    { name: "Insurance", icon: <Shield className="w-5 h-5  text-neutral-900" /> },
-    { name: "SOS Alerts", icon: <Bell className="w-5 h-5  text-neutral-900" /> },
-  ];
+
+
+
+
+const DocDashboard = () => {
+  const [activePage, setActivePage] = useState("Dashboard");
 
   // Mock data for the dashboard
   const upcomingAppointments = [
@@ -626,96 +626,96 @@ const DocDashboard = () => {
   };
 
   return (
-    // {sidepanel}
     <div className="flex h-screen bg-gray-50">
-      <div className="w-64 bg-white shadow-lg flex flex-col h-full">
-        <div className="p-4 border-b flex items-center">
-          <svg
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
-            stroke="currentColor"
-            strokeWidth="2"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="mr-2"
-          >
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-          </svg>
-          <span className="font-bold text-lg">Doctor</span>
-        </div>
-        <nav className="py-4 flex-grow">
-          <ul>
-            {menuItems.map((item) => (
-              <li key={item.name}>
-                <button
-                  onClick={() => setActivePage(item.name)}
-                  className={`flex items-center px-4 py-3 w-full text-left  text-neutral-900 ${
-                    activePage === item.name
-                      ? "bg-blue-50 text-blue-600 border-r-4 border-blue-600"
-                      : "text-gray-600 hover:bg-gray-100"
-                  }`}
-                >
-                  <span className="mr-3">{item.icon}</span>
-                  <span>{item.name}</span>
-                </button>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div className="mt-auto border-t  text-neutral-900">
-          <button
-            onClick={() => setActivePage("Profile")}
-            className={`flex items-center px-4 py-3 w-full text-left  text-neutral-900 ${
-              activePage === "Profile"
-                ? "bg-blue-50 text-blue-600 border-r-4 border-blue-600"
-                : "text-gray-600 hover:bg-gray-100"
-            }`}
-          >
-            <span className="mr-3">
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                />
-              </svg>
-            </span>
-            <span className=" text-neutral-900">Profile</span>
-          </button>
-          <button
-            onClick={() => alert("Logged out successfully")}
-            className="flex items-center px-4 py-3 w-full text-left text-black hover:bg-gray-100"
-          >
-            <span className="mr-3">
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                />
-              </svg>
-            </span>
-            <span>Logout</span>
-          </button>
-        </div>
-      </div>
-
-      <div className="flex-1 overflow-auto">{renderContent()}</div>
+  {/* Sidebar */}
+  <div className="w-24 sm:w-60 bg-white shadow-lg flex flex-col h-full transition-all duration-300">
+    {/* Header */}
+    <div className="p-4 border-b flex items-center justify-center sm:justify-start">
+      <svg
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        stroke="currentColor"
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="mr-0 sm:mr-2"
+      >
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+      </svg>
+      <span className="font-bold text-lg hidden sm:inline">Doctor</span>
     </div>
+
+    {/* Menu */}
+    <nav className="py-4 flex-grow">
+      <ul>
+        {menuItems.map((item) => (
+          <li key={item.name}>
+            <button
+              onClick={() => setActivePage(item.name)}
+              className={`flex items-center px-4 py-3 w-full text-left ${
+                activePage === item.name
+                  ? "bg-blue-50 text-blue-600 border-r-4 border-blue-600"
+                  : "text-gray-600 hover:bg-gray-100"
+              }`}
+            >
+              <span className="mr-0 sm:mr-3">{item.icon}</span>
+              <span className="hidden sm:inline">{item.name}</span>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    {/* Footer */}
+    <div className="mt-auto border-t text-neutral-900">
+      <button
+        onClick={() => setActivePage("Profile")}
+        className={`flex items-center px-4 py-3 w-full text-left ${
+          activePage === "Profile"
+            ? "bg-blue-50 text-blue-600 border-r-4 border-blue-600"
+            : "text-gray-600 hover:bg-gray-100"
+        }`}
+      >
+        <span className="mr-0 sm:mr-3">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+            />
+          </svg>
+        </span>
+        <span className="hidden sm:inline">Profile</span>
+      </button>
+
+      <button
+        onClick={() => alert("Logged out successfully")}
+        className="flex items-center px-4 py-3 w-full text-left text-black hover:bg-gray-100"
+      >
+        <span className="mr-0 sm:mr-3">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+            />
+          </svg>
+        </span>
+        <span className="hidden sm:inline">Logout</span>
+      </button>
+    </div>
+  </div>
+
+  {/* Main Content */}
+  <div className="flex-1 overflow-auto">
+    {renderContent()}
+  </div>
+</div>
+
   );
 };
 
