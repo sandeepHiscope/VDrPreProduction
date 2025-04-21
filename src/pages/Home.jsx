@@ -163,7 +163,7 @@ function Homepage() {
         {/* Testimonials Section */}
               <section className="content-section testimonials-section">
                 <div className="section-header">
-                  <h2>Trusted By Users, Assured By Verified Doctors</h2>
+                  <h2 className="text2">Trusted By Users, Assured By Verified Doctors</h2>
                   <div className="section-underline"></div>
                 </div>
                 <div className="testimonials-grid">
@@ -225,6 +225,7 @@ function Homepage() {
               </section>
 
         {/* App Download Section */}
+        <div className="download-section ">
         <div className="download-container m-8 w-3/4 flex justify-evenly  items-center p-2 rounded-2xl">
           <div className="app-preview">
             <img src={VDrLogo} height="400px" width="900px" alt="App Preview" />
@@ -248,6 +249,7 @@ function Homepage() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </>
