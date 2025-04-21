@@ -261,7 +261,7 @@ const DocDashboard = () => {
       case "Patients":
         return (
           <div className="p-4 sm:p-6">
-          <h1 className="text-xl sm:text-2xl font-bold mb-6">Patients</h1>
+          <h3 className="text-xl sm:text-2xl font-bold mb-6">Patients</h3>
         
           <div className="bg-white rounded-lg shadow p-4 sm:p-6">
             {/* Search Input */}
@@ -401,7 +401,7 @@ const DocDashboard = () => {
       case "Prescriptions":
         return (
           <div className="p-4 sm:p-6">
-  <h1 className="text-xl sm:text-2xl font-bold mb-6">Prescriptions</h1>
+  <h3 className="text-xl sm:text-2xl font-bold mb-6">Prescriptions</h3>
 
   <div className="bg-white rounded-lg shadow p-4 sm:p-6">
     {/* Header: Search + Button */}
@@ -700,97 +700,95 @@ const DocDashboard = () => {
 
       case "Profile":
         return (
-          <div className="p-6">
-            <h1 className="text-2xl font-bold mb-6">Doctor Profile</h1>
-            <div className="bg-white rounded-lg shadow">
-              <div className="p-6 border-b">
-                <div className="flex items-center">
-                  <div className="bg-gray-200 rounded-full w-24 h-24 flex items-center justify-center mr-6">
-                    <svg
-                      className="w-12 h-12 text-gray-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h2 className="text-xl font-bold">Dr. Sarah Reynolds</h2>
-                    <p className="text-gray-600">General Practitioner</p>
-                    <p className="text-gray-600">License #: MD12345</p>
-                  </div>
-                  <button className="ml-auto bg-blue-500 text-white px-4 py-2 rounded">
+          <div className="p-4 sm:p-6">
+          <h1 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Doctor Profile</h1>
+          <div className="bg-white rounded-lg shadow">
+            
+            {/* Header Section */}
+            <div className="p-4 sm:p-6 border-b">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+                <div className="bg-gray-200 rounded-full w-24 h-24 flex items-center justify-center">
+                  <svg
+                    className="w-12 h-12 text-gray-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    />
+                  </svg>
+                </div>
+                <div className="text-center sm:text-left">
+                  <h2 className="text-lg sm:text-xl font-bold">Dr. Sarah Reynolds</h2>
+                  <p className="text-gray-600">General Practitioner</p>
+                  <p className="text-gray-600">License #: MD12345</p>
+                </div>
+                <div className="sm:ml-auto mt-2 sm:mt-0">
+                  <button className="w-full sm:w-auto bg-blue-500 text-white px-4 py-2 rounded">
                     Edit Profile
                   </button>
                 </div>
               </div>
-
-              <div className="p-6">
-                <h3 className="text-lg font-medium mb-4">
-                  Personal Information
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <p className="text-gray-500 text-sm">Email</p>
-                    <p>dr.reynolds@example.com</p>
-                  </div>
-                  <div>
-                    <p className="text-gray-500 text-sm">Phone</p>
-                    <p>+1 (555) 123-4567</p>
-                  </div>
-                  <div>
-                    <p className="text-gray-500 text-sm">Address</p>
-                    <p>123 Medical Center Drive, Suite 456</p>
-                  </div>
-                  <div>
-                    <p className="text-gray-500 text-sm">Specialization</p>
-                    <p>Family Medicine</p>
-                  </div>
+            </div>
+        
+            {/* Personal Information */}
+            <div className="p-4 sm:p-6">
+              <h3 className="text-lg font-medium mb-3 sm:mb-4">Personal Information</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <p className="text-gray-500 text-sm">Email</p>
+                  <p>dr.reynolds@example.com</p>
                 </div>
-              </div>
-
-              <div className="p-6 border-t">
-                <h3 className="text-lg font-medium mb-4">
-                  Schedule & Availability
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-gray-50 p-3 rounded">
-                    <p className="font-medium">Monday - Friday</p>
-                    <p className="text-gray-600">9:00 AM - 5:00 PM</p>
-                  </div>
-                  <div className="bg-gray-50 p-3 rounded">
-                    <p className="font-medium">Saturday</p>
-                    <p className="text-gray-600">10:00 AM - 2:00 PM</p>
-                  </div>
-                  <div className="bg-gray-50 p-3 rounded">
-                    <p className="font-medium">Sunday</p>
-                    <p className="text-gray-600">Closed</p>
-                  </div>
+                <div>
+                  <p className="text-gray-500 text-sm">Phone</p>
+                  <p>+1 (555) 123-4567</p>
                 </div>
-              </div>
-
-              <div className="p-6 border-t">
-                <h3 className="text-lg font-medium mb-4">Account Settings</h3>
-                <div className="space-y-3">
-                  <button className="block text-blue-600">
-                    Change Password
-                  </button>
-                  <button className="block text-blue-600">
-                    Notification Preferences
-                  </button>
-                  <button className="block text-blue-600">
-                    Two-Factor Authentication
-                  </button>
+                <div>
+                  <p className="text-gray-500 text-sm">Address</p>
+                  <p>123 Medical Center Drive, Suite 456</p>
+                </div>
+                <div>
+                  <p className="text-gray-500 text-sm">Specialization</p>
+                  <p>Family Medicine</p>
                 </div>
               </div>
             </div>
+        
+            {/* Schedule */}
+            <div className="p-4 sm:p-6 border-t">
+              <h3 className="text-lg font-medium mb-3 sm:mb-4">Schedule & Availability</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="bg-gray-50 p-3 rounded">
+                  <p className="font-medium">Monday - Friday</p>
+                  <p className="text-gray-600">9:00 AM - 5:00 PM</p>
+                </div>
+                <div className="bg-gray-50 p-3 rounded">
+                  <p className="font-medium">Saturday</p>
+                  <p className="text-gray-600">10:00 AM - 2:00 PM</p>
+                </div>
+                <div className="bg-gray-50 p-3 rounded">
+                  <p className="font-medium">Sunday</p>
+                  <p className="text-gray-600">Closed</p>
+                </div>
+              </div>
+            </div>
+        
+            {/* Account Settings */}
+            <div className="p-4 sm:p-6 border-t">
+              <h3 className="text-lg font-medium mb-3 sm:mb-4">Account Settings</h3>
+              <div className="space-y-3">
+                <button className="block text-blue-600">Change Password</button>
+                <button className="block text-blue-600">Notification Preferences</button>
+                <button className="block text-blue-600">Two-Factor Authentication</button>
+              </div>
+            </div>
           </div>
+        </div>
+        
         );
 
       default:
