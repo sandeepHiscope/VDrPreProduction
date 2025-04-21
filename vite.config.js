@@ -2,7 +2,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 import tailwindcss from "@tailwindcss/vite";
-
 export default defineConfig({
   plugins: [
     react(),
@@ -14,7 +13,9 @@ export default defineConfig({
         "robots.txt",
         "offline.html",
         "icons/web-app-manifest-192x192.png",
-        "icons/web-app-manifest-512x512.png"
+        "icons/web-app-manifest-512x512.png",
+        "screenshots/desktop.png",
+        "screenshots/mobile.png"
       ],
       manifest: {
         name: "Verified Doctor App",
@@ -30,17 +31,40 @@ export default defineConfig({
           {
             src: "/icons/web-app-manifest-192x192.png",
             sizes: "192x192",
-            type: "image/png",
+            type: "image/png"
           },
           {
             src: "/icons/web-app-manifest-512x512.png",
             sizes: "512x512",
             type: "image/png",
-            purpose: "any maskable",
+            purpose: "maskable"
           },
+          {
+            src: "/icons/web-app-manifest-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "any"
+          }
         ],
+        // Add screenshots for better installation UI
+        screenshots: [
+          {
+            src: "/public/vdrDesk.png",
+            sizes: "1280x800",
+            type: "image/png",
+            form_factor: "wide",
+            label: "Desktop view of Verified Doctor App"
+          },
+          {
+            src: "/screenshots/vdrMobile.png",
+            sizes: "750x1334",
+            type: "image/png",
+            label: "Mobile view of Verified Doctor App"
+          }
+        ]
       },
       workbox: {
+        globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
         runtimeCaching: [
           {
             urlPattern: ({ request }) => request.destination === "document",
@@ -78,14 +102,11 @@ export default defineConfig({
               },
             },
           },
-          {
-            urlPattern: /\/offline.html$/,
-            handler: "CacheFirst",
-            options: {
-              cacheName: "offline-page",
-            },
-          },
         ],
+      },
+      devOptions: {
+        enabled: true,
+        type: "module",
       },
     }),
   ],
