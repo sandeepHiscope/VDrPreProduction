@@ -4,8 +4,9 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #2c3e50, #1e272e);
-    color: white;
+    /* background: linear-gradient(135deg, #2c3e50, #1e272e); */
+    background: var(--color-background-main);
+    color:var(--color-secondary);
     text-align: center;
     padding: 20px;
   }
@@ -48,7 +49,7 @@
   }
   
   .scanner-box:hover {
-    background: #ffffff22;
+    background: var(--color-background-card);
   }
   
   .placeholder {
@@ -66,11 +67,11 @@
     top: 30%;
     transform: translateX(-50%);
     z-index: 10;
-    color: #b2bec3;
+    color: var(--color-primary);
   }
   .upload-text {
     font-size: 1rem;
-    color: #b2bec3;
+    color: var(--color-primary);
     margin-top: 10px;
     position: absolute;
     left: 50%;
@@ -82,9 +83,9 @@
     width: 95%;
     height: 95%;
     border-radius: 8px;
-    background: #485460;
+    background: var(--color-third);
     position: relative; /* Ensure positioning for pseudo-element */
-border: 3px rgb(254, 254, 254) dashed;
+    /* border: var(--border-width-medium) var(--color-text-primary) dashed; */
 }
 .scannerButtons{
   display: flex;
@@ -99,7 +100,7 @@ border: 3px rgb(254, 254, 254) dashed;
     padding: 12px 20px;
     font-size: 1rem;
     font-weight: bold;
-    background: #27ae60;
+    background:var(--color-accent);
     border: none;
     color: white;
     border-radius: 8px;
@@ -111,7 +112,7 @@ border: 3px rgb(254, 254, 254) dashed;
 
   
   .scan-button:hover {
-    background: #2d65ff;
+    background:var(--color-accent-hover);
   }
   
   .stop-button {
