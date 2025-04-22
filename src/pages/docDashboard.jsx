@@ -506,7 +506,7 @@ const DocDashboard = () => {
       case "Teleconsultations":
         return (
           <div className="p-4 sm:p-6">
-          <h3 className="text-xl sm:text-2xl font-bold mb-6">Teleconsultations</h3>
+          <h3 className="text-xl sm:text-2xl font-bold mb-6 ">Teleconsultations</h3>
         
           <div className="flex flex-col gap-6 lg:flex-row">
             {/* Upcoming Sessions */}
