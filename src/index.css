@@ -4,12 +4,94 @@
 @import "tailwindcss/utilities"; */
 * {
   transition: all 0.3s ease-in-out;
+
+  /* Colors*/
+--color-primary: #007BFF;         /*// Main blue for primary actions*/
+--color-primary-hover: #0069D9;   /*// Darker blue on hover*/
+--color-accent: #28C76F;          /*// Positive, health-themed green*/
+--color-accent-hover: #2ea748;    /*// Darker green on hover*/
+--color-secondary: #6C757D;       /*// Secondary button, muted UI*/
+--color-third: #DEE2E6;          /*// Darker text, headers*/
+ 
+   /*Backgrounds*/
+--color-background-main: #F8F9FA;       /*// App background*/
+--color-background-card: #FFFFFF;       /*// Cards and modals*/
+--color-background-muted: #F1F3F5;      /*// Light section backgrounds*/
+--color-background-hover: #F0F0F0;      /*// Hover states*/
+
+     /*Text Colors*/
+--color-text-primary: #212529;       /*// Headlines, main text*/
+--color-text-secondary: #6C757D;     /* // Subtext, descriptions*/
+--color-text-muted: #ADB5BD;         /* // Placeholder or disabled text*/
+--color-text-on-primary: #FFFFFF;    /*// Text on primary buttons*/
+
+      /*Border & Divider Colors*/
+--color-border: #E0E0E0;             /*// Standard dividers*/
+--color-border-strong: #CED4DA;      /*// Card or modal outlines*/
+--color-divider: #DEE2E6;            /*// Soft content separators*/
+
+     /*Status Colors*/
+--color-success: #28C76F;        /*// Success states*/
+--color-warning: #FF9F43;        /*// Warning or pending states*/
+--color-error: #EA5455;         /* // Validation errors, failures*/
+--color-info: #00CFE8;          /* // Informational UI*/
+            
+    /*Optional Dark Theme (if you support dark mode)*/
+--color-dark-bg: #1E1E2F;
+--color-dark-card: #2C2C3E;
+--color-dark-text: #E3E3E3;
+--color-dark-border: #3A3A50;
+
+--radius-none: 0px;
+--radius-sm: 4px;
+--radius-md: 8px;           /* // Recommended default for cards, buttons*/
+--radius-lg: 12px;
+--radius-xl: 16px;
+--radius-full: 9999px;      /* // For pills, circles*/
+
+
+--shadow-none: none;
+
+--shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+--shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.12);
+--shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.15);
+
+--border-width-none: 0;
+--border-width-hairline: 0.5px;  /*// Very subtle dividers*/
+--border-width-thin: 1px;        /*// Standard element borders*/
+--border-width-medium: 2px;      /*// Focused states, buttons*/
+--border-width-thick: 4px;       /*// Emphasis or callout boxes*/
+
+--border-color-default: #E0E0E0;        /*// Normal UI borders*/
+--border-color-muted: #F1F3F5;          /*// Soft, low contrast*/
+--border-color-strong: #CED4DA;         /*// Card outlines*/
+--border-color-focus: #007BFF;          /*// Focused input/active states*/
+--border-color-error: #EA5455;          /*// Error highlights*/
+--border-color-success: #28C76F;        /*// Success outlines*/
+
+--border-style-none: none;
+--border-style-solid: solid;
+--border-style-dashed: dashed;
+--border-style-dotted: dotted;
+--border-style-double: double;
+
+
+
+
+
+
+
+
+
 }
 :root {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   width: 100%;
+  background-color: var(--color-background-main);
 }
 
 body {
@@ -21,6 +103,6 @@ body {
   position: relative;
 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f8fb;
+  background-color: #03101a;
   color: #333;
 }
