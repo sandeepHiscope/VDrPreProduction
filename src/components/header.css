@@ -1,12 +1,15 @@
+/* ============ HEADER ============ */
 .header-section {
-  background-color: #ffffff;
+  background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
-  height: 28em;
-  min-height: 25em;
+  height: 32em;
+  /* min-height: 5em; */
+
   position: relative;
   z-index: 10;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
 }
 
@@ -21,19 +24,16 @@
   transition: background-image 2s ease-in-out;
   z-index: -1;
   object-fit: cover;
-  /* filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)); */
-
 }
 
+/* ============ NAV ============ */
 .nav-container {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  height: auto;
-  max-width: 100vw;
-  padding: 15px;
-  transition: background-color 4s ease-out;
+  padding: 1em 1.5em;
+  position: relative;
 }
 
 .nav-container:hover {
@@ -41,30 +41,55 @@
   backdrop-filter: blur(10px);
 }
 
-.secicon {
-  font-size: 1.2rem;
-}
-
+/* ============ LOGO ============ */
 .header-logo {
-  height: 5em;
-  /* max-height: 5em; */
-  padding: 0em;
+  height: 3.5em;
+  width: auto;
   cursor: pointer;
   border-radius: 10px;
-  margin-top: 0px;
-  margin-left: 0px;
 }
 
+/* ============ TOGGLE BUTTON ============ */
+.toggle-button {
+  display: none; /* default hidden on large screens */
+  background-color: #4da6ff;
+  color: #fff;
+  border: none;
+
+  position: absolute;
+  right: 0;
+  padding: 10px 15px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  margin: 10px;
+  cursor: pointer;
+  z-index: 1001;
+  margin-left: auto; /* pushes it to the right inside a flex container */
+}
+
+/* Make it visible in mobile view */
+@media (max-width: 768px) {
+  .toggle-button {
+    display: block;
+  }
+
+  .nav-container {
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+
+/* ============ NAV MENU ============ */
 .nav-menu {
-  padding: 0.5em;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  border-radius: 10px;
-  /* background: #000; */
   flex: 1;
 }
 
+/* ============ LINKS ============ */
 .nav-links,
 .nav-links-open {
   display: flex;
@@ -72,177 +97,95 @@
 }
 
 .nav-link {
-  /* background: #000; */
+  font-size: 1rem;
   font-weight: bold;
   text-decoration: none;
-  font-size: 1.5rem;
-  padding: 5px 15px;
-  border-radius: 8px;
-  display: inline-block;
-
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 6px;
 }
 
 .nav-link:hover {
-  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.646);
-  transition: text-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
+  color: #007bff;
+  background-color: rgba(0, 123, 255, 0.1);
 }
 
-.toggle-button {
-  display: none;
-}
-
-@media (min-width: 1024px) {
-  .nav-link {
-    font-size: 0.7rem;
-    padding: 5px 15px;
-  }
-
-  .header-logo {
-    height: 60px;
-    width: 60px;
-    border-radius: 10px;
-  }
-
-  .header-background {
-    width: 100%;
-    height: 100%;
-  }
-
-  .header-section {
-    height: 15em;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .nav-link {
-    font-size: 0.5rem;
-    padding: 5px 15px;
-  }
-
-  .header-logo {
-    height: 6em;
-    width: 6em;
-  }
-
-  .header-background {
-    width: 100%;
-    height: 100%;
-  }
-
-  .header-section {
-    height: 10em;
-  }
-}
-
+/* ============ MOBILE ============ */
 @media (max-width: 768px) {
-  .nav-menu {
-    transition: all 0.5s ease;
+  .nav-links {
+    display: none;
+  }
+
+  .toggle-button {
+    display: block;
+  }
+
+  .nav-links-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0%;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, #65b0ee, #2060ba);
+    padding: 1.5em 1em;
+    z-index: 999;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
   }
 
   .nav-link {
-    padding: 15px;
-    font-size: 1rem;
-    color: #ffffff;
-    text-align: left;
-    font-family: "Inter", "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 12px;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .nav-link:hover {
-    color: #151515;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s ease-in-out;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #000;
+  }
+}
+
+/* ============ TABLET ============ */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .nav-link {
+    font-size: 0.9rem;
+  }
+
+  .header-logo {
+    height: 4em;
+  }
+}
+
+/* ============ DESKTOP ============ */
+@media (min-width: 1025px) {
+  .nav-link {
+    font-size: 0.9rem;
   }
 
   .header-logo {
     height: 4.5em;
-    width: 4.5em;
-  }
-
-  .nav-links,
-  .nav-links-open {
-    flex-direction: column;
-    background: linear-gradient(to top, #65b0ee, #2060ba);
-    width: 100%;
-    height: 600px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    border-radius: 0 0 10px 10px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 20;
-    overflow: hidden;
-    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .nav-links-open {
-    transform: translateY(0%);
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .toggle-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: #4da6ff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 24px;
-    cursor: pointer;
-    border-radius: 5px;
-    z-index: 1000;
-    display: block;
-  }
-
-  .toggle-button:hover {
-    background-color: #1686f6;
-  }
-
-  .header-section {
-    height: 5em;
-  }
-  .icon1 {
-    margin-left: 100px;
-  }
-}
-@media (min-width: 768px) {
-  .icon {
-    display: none;
   }
 }
 
+/* ============ SOS & LOGIN ============ */
 .sos-link {
   color: #ff4d4d;
-  padding: 10px 15px;
-  border-radius: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
 }
 
 .sos-link:hover {
-  /* background-color: #ff3e3e; */
-  color: rgb(16, 131, 246);
+  color: #1083f6;
 }
 
 .login-button-header {
-  color: rgb(83, 83, 83);
+  color: #535353;
   cursor: pointer;
-  /* padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: bold;
-  background: linear-gradient(360deg, #000000, #7f7f7f);
-  background-clip: text;
-  color: transparent;
-  text-align: left; */
 }
 
 .login-button-header:hover {
-  /* box-shadow: 4px 4px 10px rgba(241, 241, 241, 0.2); */
-  transition: background 0.3s ease-in-out;
+  color: #007bff;
 }
