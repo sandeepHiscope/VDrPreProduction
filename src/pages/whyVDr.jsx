@@ -377,7 +377,7 @@ const WhyVDr = () => {
       </section> */}
     </div>
     <hr  className='text-neutral-400'/>
-    <h1 className=' ml-[43%] mt-4'>Our Founders</h1>
+    <h1 className='mainheader'>Our Founders</h1>
         <FounderPage/>
     </>
   );

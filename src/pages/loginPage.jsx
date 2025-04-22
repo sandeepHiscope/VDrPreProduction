@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./loginPage.css";
 import { useNavigate } from "react-router-dom";
 import Googlelogo from "../assets/icons/google.png";
-import DoctorVerification from "./doctorVerificationpage";
 import docRegister from "../assets/Images/docRegister.png";
 
 const Login = () => {

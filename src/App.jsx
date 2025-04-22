@@ -28,13 +28,13 @@ const App = () => {
   const [location, setLocation] = useState();
   const currentUrl = window.location.href;
   console.log(`url:${currentUrl}`);
-  const { showUpdate, reload } = useSWUpdateToast();
+  const { showUpdate, reload, setShowUpdate } = useSWUpdateToast();
 
   useEffect(() => {
     setLocation(currentUrl);
   }, [currentUrl]);
 
-  
+
   return (
     <>
       <Router>
@@ -89,4 +89,5 @@ const App = () => {
     </>
   );
 };
+
 export default App;

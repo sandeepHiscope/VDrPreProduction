@@ -5,4 +5,5 @@
   height: fit-content;
   min-height: 30vh;
   /* padding: 20px 0px; */
+  background-color: var(--color-background-main);
 }
