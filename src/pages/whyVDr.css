@@ -145,7 +145,7 @@ p {
   border: none;
   border-radius: var(--border-radius);
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: --transition-background-color 0.3s, var(--transition-slide);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -256,7 +256,7 @@ p {
   padding: 2rem;
   border-radius: var(--border-radius);
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: var(--transition-slide), box-shadow 0.3s ease;
 }
 
 .step-card:hover {
@@ -351,7 +351,7 @@ p {
   padding: 2rem;
   border-radius: var(--border-radius);
   box-shadow: var(--card-shadow);
-  transition: transform 0.3s ease;
+  transition: var(--transition-slide),box-shadow 0.3s ease;
   height: 100%;
 }
 
@@ -470,7 +470,7 @@ p {
   border: none;
   border-radius: var(--border-radius);
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s, var(--transition-slide);
 }
 
 .primary-cta:hover {
@@ -487,4 +487,4 @@ p {
   border: 2px solid white;
   border-radius: var(--border-radius);
   cursor: pointer;
-  transition: background-color }
+  transition: --transition-background-color, var(--transition-slide);}

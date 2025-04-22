@@ -4,6 +4,8 @@
 @import "tailwindcss/utilities"; */
 * {
   transition: all 0.3s ease-in-out;
+  --transition-slide: transform 0.3s ease;
+  --transition-background-color: background-color 0.3s ease;
 }
 :root {
   box-sizing: border-box;
