@@ -21,8 +21,7 @@ import Vyshanavi from "../assets/Images/foundersImg/Vaishanavi.jpg";
 const FounderPage = () => {
   const founderDetails = [
     {
-      name: "Anjaneyulu Kadari",
-      role: "Software Developer, Digital Marketing",
+      name: "Anjaneyulu Kadari",role: " Digital Marketing",
       image: Anji,
     },
     { name: "Pavan P", role: "Team Lead", image: Pavan },

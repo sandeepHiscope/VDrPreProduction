@@ -34,7 +34,7 @@ const App = () => {
     setLocation(currentUrl);
   }, [currentUrl]);
 
-  
+
   return (
     <>
       <Router>
@@ -89,4 +89,5 @@ const App = () => {
     </>
   );
 };
+
 export default App;
