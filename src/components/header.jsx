@@ -5,14 +5,8 @@ import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
 import HeaderImages from "../data/headerImages";
 import { IoReorderThreeOutline } from "react-icons/io5";
 import { ImCross } from "react-icons/im";
-import {
-  Home,
-  Search,
-  Shield,
-  Bell,
-  ShoppingBag,
-  User,
-} from "lucide-react";
+import { Home, Search, Shield, Bell, ShoppingBag, User, ShieldQuestion } from "lucide-react";
+import { icon } from "@fortawesome/fontawesome-svg-core";
 
 const NAV_LINKS = [
   {
@@ -31,6 +25,13 @@ const NAV_LINKS = [
     icon: <Bell className="icon w-5 h-5 mr-2 text-neutral-900" />,
     className: "sos-link",
   },
+  
+  {
+    to: "/whyVDr",
+    label: "Why VDr",
+    icon: <ShieldQuestion className="icon w-5 h-5 mr-2 text-neutral-900" />,
+    external: true,
+  },
   {
     href: "https://vdr-door-delivery-medicines.netlify.app/",
     label: "Doorstep Meds",
@@ -43,11 +44,7 @@ const NAV_LINKS = [
     icon: <Shield className="icon w-5 h-5 mr-2 text-neutral-900" />,
     external: true,
   },
-  
-  {
-    to: "/whyVDr",
-    label: "Why VDr",
-  },
+
   {
     to: "/docDashboard",
     label: "DocDashboard",
@@ -113,7 +110,9 @@ const MainHeader = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`nav-link flex items-center ${link.className || ""}`}
+                  className={`nav-link flex items-center ${
+                    link.className || ""
+                  }`}
                   onClick={handleNavClick}
                 >
                   {link.icon} {link.label}
@@ -122,7 +121,9 @@ const MainHeader = () => {
                 <Link
                   key={index}
                   to={link.to}
-                  className={`nav-link flex items-center ${link.className || ""}`}
+                  className={`nav-link flex items-center ${
+                    link.className || ""
+                  }`}
                   onClick={handleNavClick}
                 >
                   {link.icon} {link.label}
@@ -133,7 +134,8 @@ const MainHeader = () => {
               className="login-button-header nav-link flex items-center"
               onClick={handleLoginClick}
             >
-              <User className="icon w-5 h-5 mr-2 text-neutral-900" /> Login/Signup
+              <User className="icon w-5 h-5 mr-2 text-neutral-900" />{" "}
+              Login/Signup
             </button>
           </div>
         </div>
