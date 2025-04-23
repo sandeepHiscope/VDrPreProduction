@@ -1,5 +1,5 @@
 .homepage-container {
-  /* background: #6dff76; */
+  /* background: #F8F9FA; */
   margin-top: 2em;
 
   --primary-color: #2563eb;
@@ -28,6 +28,7 @@
   /* Container properties */
   width: 100%;
   overflow-x: hidden;
+   background: var(--color-background-main);
 }
 .moving-text-container {
   width: 100vw;

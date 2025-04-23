@@ -7,7 +7,7 @@
   box-sizing: border-box;
   /* overflow-x: hidden; */
   /* height: a; Fixed height to ensure visibility */
-  /* background: #000; */
+  background: var(--color-background-main);
 }
 
 .header-placeholder {
@@ -29,11 +29,11 @@
   padding: 12px 15px;
   flex: 1;
   min-width: 200px;
-  border: 2px solid;
-  border-radius: 8px;
+  border: var(--border-width-medium) var(--border-style-solid) var(	--border-color-default); 
+  border-radius: var(--radius-md);
   font-size: 16px;
   outline: none;
-  background-color: #fff;
+  background-color: var(--color-background-card);
   transition: border-color 0.3s ease;
 }
 
@@ -42,11 +42,11 @@
   padding: 12px 15px;
   flex: 1;
   min-width: 200px;
-  border: 2px solid;
-  border-radius: 8px;
+  border:  var(--border-width-medium) var(--border-style-solid) var(	--border-color-default);
+  border-radius: var(--radius-md);
   font-size: 16px;
   outline: none;
-  background-color: #fff;
+  background-color: var(--color-background-card);
   transition: border-color 0.3s ease;
 }
 
@@ -84,13 +84,14 @@
 .doctor-card {
   display: flex;
   height: 200px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-background-card);
+  border: var(--border-width-thin) var(--border-style-solid) var(--border-color-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
   overflow: hidden;
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
+  
 }
 
 .doctor-card:hover {
@@ -131,14 +132,15 @@
 /* Book Appointment Button */
 .book-btn {
   padding: 10px 15px;
-  background-color: #4caf50;
+  background-color: var(--color-accent);
   color: white;
   width: 20px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-top: 50px; /* Align button to the bottom of the card */
+  margin-top: 70px; /* Align button to the bottom of the card */
+  margin-right: 10px;
   align-self: flex-start;
 }
 
@@ -271,7 +273,7 @@
     height: auto;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    gap: 5px; 
   }
 
   .doctor-image {
