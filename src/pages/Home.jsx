@@ -135,37 +135,7 @@ function Homepage() {
           <CardsSlider />
         </div>
 
-        {/* Opinion Section */}
-        {/* <div
-          className="opinion-container bg-neutral-200 w-3/4 h-90 flex flex-col justify-around items-center p-2
-         rounded-2xl "
-        >
-          <div className="buttonapos">
-            <button
-              onClick={() => showSlides("doctor")}
-              className="cursor-pointer p-2 rounded-sm ease-in-out hover:bg-gray-900  hover:text-amber-50 "
-            >
-              Doctor's Opinion
-            </button>
-            <button
-              onClick={() => showSlides("patient")}
-              className="cursor-pointer p-2 rounded-sm ease-in-out hover:bg-gray-900  hover:text-amber-50 "
-            >
-              Patient's Opinion
-            </button>
-          </div>
         
-
-          <div className="opinion-header text-2xl">
-            {activeSlides === "doctor"
-              ? "Opinions from Our Doctors"
-              : "Opinions from Our Patients"}
-          </div>
-
-          <div className="opinion-slides text-3xl">
-            <div className="opinion-slide">{slides[currentSlideIndex]}</div>
-          </div>
-        </div> */}
 
         {/* Testimonials Section */}
         <section className="content-section testimonials-section">
@@ -233,6 +203,7 @@ function Homepage() {
                 </div>
               </div>
             </div>
+          
           </div>
         </section>
 
