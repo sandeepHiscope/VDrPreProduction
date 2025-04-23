@@ -45,7 +45,7 @@ const SosPage = () => {
     clearInterval(countdownRef.current); // Clear countdown interval
     setSosActive(false);
     setCountdownStarted(false);
-    setCount("Double click");
+    setCount("Under Developement");
     setInfoMessege("");
   };
 
@@ -58,7 +58,9 @@ const SosPage = () => {
       {/* SOS part */}
       <div className="sos-container">
         <div className="div1">
-          <button className="div1_btn" onDoubleClick={handleDoubleClick}>
+          {/* <button className="div1_btn" onDoubleClick={handleDoubleClick}> */}
+          {/* uncomment the above to turn on the fun ctionality */}
+          <button className="div1_btn" >
             {count}
           </button>
         </div>

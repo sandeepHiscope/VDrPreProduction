@@ -37,8 +37,8 @@
 
 
   .div1 {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     top: 20px;
     background: rgb(214, 206, 206);
     left: 45%;
@@ -75,8 +75,8 @@
 
 .div1_btn {
   border: none;
-  height: 80px;
-  width: 80px;
+  height: 100px;
+  width: 100px;
   aspect-ratio: 1/1; /* Ensures circle on all screens */
   border-radius: 50%; /* 100% works too */
   display: flex;
@@ -87,6 +87,7 @@
   color: white;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* optional */
+  padding: 10%;
 }
 
 .div1_btn:focus {
