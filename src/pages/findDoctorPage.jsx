@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+// src/pages/FindDoctorPage.js
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./findDoctorPage.css";
-import { useNavigate } from "react-router-dom";
 import indianStates from "../data/indianStates";
 import doctorDetails from "../data/doctorDetails";
 import defaultUser from "../assets/Images/commonImg/VDrlogo.png"; 
@@ -8,11 +9,17 @@ import defaultUser from "../assets/Images/commonImg/VDrlogo.png";
 const GET_DOCTOR_API_URL = "http://localhost:8080/api/doctorsverification/all";
 
 const FindDoctorPage = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const listRef = useRef(null);
+
+  const queryParams = new URLSearchParams(location.search);
+  const specialityFromURL = queryParams.get("speciality") || "";
+
+  const [searchQuery, setSearchQuery] = useState(specialityFromURL);
   const [selectedState, setSelectedState] = useState("");
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDoctors = async () => {
@@ -27,9 +34,17 @@ const FindDoctorPage = () => {
         setLoading(false);
       }
     };
-
     fetchDoctors();
   }, []);
+
+  useEffect(() => {
+    if (specialityFromURL) {
+      setSearchQuery(specialityFromURL);
+      if (listRef.current) {
+        listRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [specialityFromURL]);
 
   const filteredDoctors = [
     ...doctors.filter(
@@ -59,7 +74,6 @@ const FindDoctorPage = () => {
         email: doc.email || "not mentioned"
       }))
   ];
-  
 
   const doctorProfile = (doctor) => {
     navigate(`/doctorID/${doctor.id}`, { state: { doctor } });
@@ -77,7 +91,6 @@ const FindDoctorPage = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-
           <select
             className="state-dropdown"
             value={selectedState}
@@ -92,7 +105,7 @@ const FindDoctorPage = () => {
           </select>
         </div>
 
-        <div className="doctor-list">
+        <div className="doctor-list" ref={listRef}>
           {loading ? (
             <p>Loading doctors...</p>
           ) : filteredDoctors.length > 0 ? (
@@ -107,7 +120,6 @@ const FindDoctorPage = () => {
                   alt={`Dr. ${doctor.fullName}`}
                   className="doctor-image"
                 />
-
                 <div className="doctor-info">
                   <h3>Dr. {doctor.fullName.toUpperCase()}</h3>
                   <p><strong>Specialty: </strong> {doctor.medicalSpeciality}</p>

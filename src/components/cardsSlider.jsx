@@ -1,9 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+// src/components/CardsSlider.js
+import React, { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import cardsData from "../data/cardsData";
 import "./cardsSlider.css";
 
 const CardsSlider = () => {
   const scrollRef = useRef(null);
+  const navigate = useNavigate();
 
   const scrollLeft = () => {
     if (scrollRef.current) {
@@ -24,10 +27,14 @@ const CardsSlider = () => {
     }
   };
 
+  const handleCardClick = (category) => {
+    navigate(`/find-doctor?speciality=${encodeURIComponent(category)}`);
+  };
+
   useEffect(() => {
     const autoScroll = setInterval(() => {
       scrollRight();
-    }, 3000); // Scrolls every 3 seconds
+    }, 3000);
     return () => clearInterval(autoScroll);
   }, []);
 
@@ -39,17 +46,14 @@ const CardsSlider = () => {
 
       <div className="slider-container" ref={scrollRef}>
         {cardsData.map((item, index) => (
-          <div className="slide-item" key={index}>
+          <div
+            className="slide-item"
+            key={index}
+            onClick={() => handleCardClick(item.category)}
+          >
             <img src={item.img} alt={item.title} />
             <div className="slide-title">{item.title}</div>
-
-            {/* <div className="slide-description">{item.description}</div> Un-commented the description */}
-            <div className="slide-buttons">
-              {/* <button className="online-button">Online</button>
-              <button className="clinic-button">Clinic</button> */}
-            </div>
           </div>
-          
         ))}
         <div className="slider-navigation">
           <button onClick={scrollLeft}>&#10094;</button>
