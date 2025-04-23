@@ -1,5 +1,5 @@
 * {
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition-slide);
 }
 .content-wrapper{
   height: fit-content;

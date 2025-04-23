@@ -5,52 +5,55 @@ import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
 import HeaderImages from "../data/headerImages";
 import { IoReorderThreeOutline } from "react-icons/io5";
 import { ImCross } from "react-icons/im";
-import {
-  Home,
-  Search,
-  Shield,
-  Bell,
-  ShoppingBag,
-  User,
-} from "lucide-react";
+import { Home, Search, Shield, Bell, ShoppingBag, User, ShieldQuestion } from "lucide-react";
+import { icon } from "@fortawesome/fontawesome-svg-core";
+import { FaUserDoctor } from "react-icons/fa6";
+
 
 const NAV_LINKS = [
   {
     to: "/findDoctorPage",
     label: "Find a Doctor",
-    icon: <Search className="icon w-5 h-5 mr-2 text-neutral-900" />,
+    icon: <Search className="headericons" />,
   },
   {
     to: "/verifyDoc",
-    label: "Verify Doc",
+    label: "Scan Doc",
     icon: <Shield className="icon w-5 h-5 mr-2 text-neutral-900" />,
   },
   {
     to: "/sosPage",
     label: "SOS",
-    icon: <Bell className="icon w-5 h-5 mr-2 text-neutral-900" />,
+    icon: <Bell className="headericons" />,
     className: "sos-link",
-  },
-  {
-    href: "https://vdr-door-delivery-medicines.netlify.app/",
-    label: "Doorstep Meds",
-    icon: <ShoppingBag className="icon w-5 h-5 mr-2 text-neutral-900" />,
-    external: true,
-  },
-  {
-    href: "https://vdr-insurance.netlify.app/",
-    label: "Insurance",
-    icon: <Shield className="icon w-5 h-5 mr-2 text-neutral-900" />,
-    external: true,
   },
   
   {
     to: "/whyVDr",
     label: "Why VDr",
+
+    icon: <ShieldQuestion className="headericons" />,
+    external: true,
+
   },
+  {
+    href: "https://vdr-door-delivery-medicines.netlify.app/",
+    label: "Doorstep Meds",
+    icon: <ShoppingBag className="headericons" />,
+    external: true,
+  },
+  {
+    href: "https://vdr-insurance.netlify.app/",
+    label: "Insurance",
+    icon: <Shield className="headericons" />,
+    external: true,
+  },
+
   {
     to: "/docDashboard",
     label: "DocDashboard",
+    icon:<FaUserDoctor  className="headericons"/>
+
   },
 ];
 
@@ -113,7 +116,9 @@ const MainHeader = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`nav-link flex items-center ${link.className || ""}`}
+                  className={`nav-link flex items-center ${
+                    link.className || ""
+                  }`}
                   onClick={handleNavClick}
                 >
                   {link.icon} {link.label}
@@ -122,7 +127,9 @@ const MainHeader = () => {
                 <Link
                   key={index}
                   to={link.to}
-                  className={`nav-link flex items-center ${link.className || ""}`}
+                  className={`nav-link flex items-center ${
+                    link.className || ""
+                  }`}
                   onClick={handleNavClick}
                 >
                   {link.icon} {link.label}
@@ -133,7 +140,8 @@ const MainHeader = () => {
               className="login-button-header nav-link flex items-center"
               onClick={handleLoginClick}
             >
-              <User className="icon w-5 h-5 mr-2 text-neutral-900" /> Login/Signup
+              <User className="icon w-5 h-5 mr-2 text-neutral-900" />{" "}
+              Login/Signup
             </button>
           </div>
         </div>
