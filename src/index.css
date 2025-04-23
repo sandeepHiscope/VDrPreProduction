@@ -18,6 +18,7 @@
 --color-background-card: #FFFFFF;       /*// Cards and modals*/
 --color-background-muted: #F1F3F5;      /*// Light section backgrounds*/
 --color-background-hover: #F0F0F0;      /*// Hover states*/
+--color-background-white: #FFFFFF;       /*// Pure white for elements*/
 
      /*Text Colors*/
 --color-text-primary: #212529;       /*// Headlines, main text*/
@@ -43,6 +44,7 @@
 --color-dark-border: #3A3A50;
 
 --radius-none: 0px;
+--radius-xs: 2px;            /*// For very subtle elements, like inputs*/
 --radius-sm: 4px;
 --radius-md: 8px;           /* // Recommended default for cards, buttons*/
 --radius-lg: 12px;

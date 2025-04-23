@@ -86,7 +86,7 @@
   background-color: rgb(157, 150, 150);
   color: white;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* optional */
+  box-shadow: var(--shadow-md); /* optional */
 }
 
 .div1_btn:focus {
@@ -150,7 +150,8 @@
   font-size: 12px;
   text-align: center;
   font-weight: 700;
-  color: rgb(0, 157, 0);
+  /* color: rgb(0, 157, 0); */
+  color:var(--color-accent);
 }
 @media (max-width: 768px) {
   .infoMessege {
