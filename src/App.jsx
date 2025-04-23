@@ -9,7 +9,6 @@ import LoginAndRegistration from "./pages/loginAndRegistrationPage";
 import IndividualRegisterPage from "./pages/individualRegisterPage";
 import SosPage from "./pages/sosPage";
 import DoctorRegisterPage from "./pages/doctorRegisterPage";
-import FounderPage from "./pages/ourFoundersPage";
 import HomeDeliveryMedicine from "./pages/demoPage";
 import Insurance from "./pages/insurancePage";
 import DoctorProfilePage from "./pages/doctorProfilePage";
@@ -22,8 +21,7 @@ import QRCodeGenerator from "./pages/QRCodeGenerator";
 import DocDashboard from "./pages/docDashboard";
 import ScrollToTop from "./components/scrollToTop";
 import WhyVDr from "./pages/whyVDr";
-import { useSWUpdateToast } from "./sw-update";
-import InstallPromptToast from './components/InstallPromptToast';
+import InstallPromptToast from "./hooks/InstallPromptToast.jsx";
 
 
 const App = () => {

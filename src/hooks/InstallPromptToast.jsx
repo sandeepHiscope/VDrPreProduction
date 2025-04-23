@@ -1,6 +1,6 @@
 // src/components/InstallPromptToast.jsx
 import React from 'react';
-import { useInstallPrompt } from '../hooks/useInstallPrompt';
+import { useInstallPrompt } from './useInstallPrompt';
 
 const InstallPromptToast = () => {
   const { showInstallToast, installApp, closeToast } = useInstallPrompt();
