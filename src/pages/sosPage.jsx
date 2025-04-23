@@ -45,7 +45,7 @@ const SosPage = () => {
     clearInterval(countdownRef.current); // Clear countdown interval
     setSosActive(false);
     setCountdownStarted(false);
-    setCount("Under Developement");
+    setCount("Under ");
     setInfoMessege("");
   };
 

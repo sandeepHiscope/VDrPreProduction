@@ -560,12 +560,13 @@ label {
 
 .searchbar-input {
   flex-grow: 1;
-  /* border: none; */
+  /* border: 5px solid red; */
   background-color: transparent;
   font-size: 1.25rem;
   font-weight: 500;
   padding: 0rem;
   /* outline: none; */
+  /* border: 5px solid red; */
 }
 
 .searchbar-input::placeholder {
