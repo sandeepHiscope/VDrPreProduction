@@ -814,34 +814,28 @@ const DocDashboard = () => {
   return (
     // {sidepanel}
     <div className="flex h-screen bg-gray-50">
-    <div
-className={`
-  bg-white shadow-lg flex flex-col transition-all duration-300
-  ${isSidebarOpen ? "w-60" : "w-12 sm:w-60"}
-${isSidebarOpen ? "fixed sm:relative top-0 left-0 z-50" : "relative"}
-  
-  h-full
-`}
->
-
-
-      {/* Sidebar Header */}
-      <div className="p-4 border-b flex items-center justify-between sm:justify-start cursor-pointer">
-      <span
-  onClick={toggleSidebar}
-  className="cursor-pointer sm:inline block"
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="w-6 h-6 text-gray-800"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={2}
+  {/* Sidebar */}
+  <div
+    className={`
+      bg-white shadow-lg flex flex-col transition-all duration-300
+      ${isSidebarOpen ? "w-60" : "w-12 sm:w-60"}
+      h-full
+    `}
   >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-  </svg>
-</span>
+    {/* Sidebar Header */}
+    <div className="p-4 border-b flex items-center justify-between sm:justify-start cursor-pointer">
+      <span onClick={toggleSidebar} className="cursor-pointer sm:inline block">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-6 h-6 text-gray-800"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </span>
 
         <div className="flex items-center sm:block hidden ">
           <svg
