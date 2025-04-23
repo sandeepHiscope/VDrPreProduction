@@ -1,18 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ Section</title>
+  <style>
+    
+    :root {
+      --primary-color: #4f46e5;
+      --bg-color: #f9fafb;
+      --text-color: #111827;
+      --border-radius: 0.75rem;
+      --transition: 0.3s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 2rem;
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .faq-header h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 1rem 0;
+    }
+
+    .faq-item input {
+      display: none;
+    }
+
+    .faq-item label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+      cursor: pointer;
+      transition: color var(--transition);
+    }
+
+    .faq-item label:hover {
+      color: var(--primary-color);
+    }
+
+    .faq-item .icon {
+      transition: transform var(--transition);
+    }
+
+    .faq-item input:checked ~ label .icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #374151;
+    }
+
+    .faq-item input:checked ~ .faq-content {
+      max-height: 500px;
+      margin-top: 0.5rem;
+    }
+  </style>
 </head>
 <body>
-    <div style="color:  #1A73E8;"></div>
-    <div style="color:  #34A853 ;"></div>
-    <div style="color:  #202124;"></div>
-    <div style="color:  #51C4D3;"></div>
-    <div style="color:  #1A73E8;"></div>
-    <div style="color:  #1A73E8;"></div>
+  <div class="faq-container">
+    <div class="faq-header">
+      <h2>Frequently Asked Questions</h2>
+    </div>
 
+    <div class="faq-item">
+      <input type="checkbox" id="faq1" />
+      <label for="faq1">
+        What is your refund policy?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        We offer a full refund within 30 days of purchase if you're not satisfied with our service. Please contact support for more details.
+      </div>
+    </div>
 
+    <div class="faq-item">
+      <input type="checkbox" id="faq2" />
+      <label for="faq2">
+        How do I get customer support?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        You can reach our support team 24/7 via email or through the support chat on our website.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq3" />
+      <label for="faq3">
+        Can I upgrade my plan later?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        Absolutely! You can upgrade or downgrade your plan anytime through your account settings. Changes take effect immediately.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+        Is my data secure?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        Yes. We use bank-level encryption, regular audits, and comply with GDPR and other global privacy regulations to keep your data safe.
+      </div>
+    </div>
+  </div>
 </body>
 </html>
