@@ -12,7 +12,7 @@
 }
 .container {
   background: #fff;
-  margin: 50px 50px 50px 50px;
+  margin: 20px 50px 50px 60px;
   padding: 30px;
   /* margin: 5em; */
   border-radius: 8px;
@@ -27,11 +27,11 @@
 }
 
 .docRegisterImg{
-  margin: 50px 50px 50px 50px;
+  margin-left: 10%;
   /* min-width: 180px;
   min-height: 150px; */
-  width: 40%;
-  height: 400px;
+  width: 70%;
+  height: 70%;
 }
 .tabs {
   display: flex;
