@@ -29,8 +29,7 @@ const NAV_LINKS = [
   {
     to: "/whyVDr",
     label: "Why VDr",
-    icon: <ShieldQuestion className="icon w-5 h-5 mr-2 text-neutral-900" />,
-    external: true,
+     icon: <ShieldQuestion className="icon w-5 h-5 mr-2 text-neutral-900" />,
   },
   {
     href: "https://vdr-door-delivery-medicines.netlify.app/",
