@@ -75,15 +75,10 @@ const App = () => {
         </div>
         <Footer />
       </Router>
-      {showUpdate && (
-        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-4 py-2 rounded-xl shadow-lg z-50 flex items-center space-x-2">
-          <span>New version available.</span>
-          <button className="underline" onClick={reload}>
-            Refresh
-          </button>
-          <InstallPromptToast />
-        </div>
-      )}
+
+      
+      <InstallPromptToast />
+      
     </>
   );
 };
