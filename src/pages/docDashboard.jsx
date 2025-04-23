@@ -823,7 +823,7 @@ const DocDashboard = () => {
     `}
   >
     {/* Sidebar Header */}
-    <div className="p-4 border-b flex items-center justify-between sm:justify-start cursor-pointer bg-white   ">
+    <div className="p-4 border-b flex items-center justify-between sm:justify-start cursor-pointer bg-red-200  ">
       <span onClick={toggleSidebar} className="cursor-pointer sm:inline block">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -868,7 +868,7 @@ const DocDashboard = () => {
       }}
       className={`group flex items-center px-2 py-3 w-full text-left transition-all duration-200 ${
         activePage === item.name
-          ? "bg-blue-50 text-blue-600 border-r-4 border-blue-600"
+          ? "bg-white text-blue-600 border-r-4 border-blue-600"
           : "bg-white bg-white"
       }`}
     >
