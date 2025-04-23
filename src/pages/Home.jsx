@@ -1,9 +1,4 @@
-
-
-
 ///Tailwind css used in this region
-
-
 
 import React, { useState, useEffect } from "react";
 import "./Home.css";
@@ -15,8 +10,8 @@ import AppStoreLogo from "../assets/icons/apps/applestore.png";
 import CardsSlider from "../components/cardsSlider";
 import indiaUsaStates from "../data/indiaUsaStates";
 import doctorCategories from "../data/doctorCategories";
-import tempImg from "../assets/Images/foundersImg/kiran.jpg"
-import ScrollingCardsContainer from "../components/ScrollingCardsContainer"
+import tempImg from "../assets/Images/foundersImg/kiran.jpg";
+import ScrollingCardsContainer from "../components/ScrollingCardsContainer";
 
 function Homepage() {
   const [isHomePageRendered, setIsHomePageRendered] = useState(false);
@@ -71,6 +66,17 @@ function Homepage() {
   };
 
   // doctoropinio
+  const questions = document.querySelectorAll(".faq-question");
+
+  questions.forEach((question) => {
+    question.addEventListener("click", () => {
+      const answer = question.nextElementSibling;
+      const icon = question.querySelector("open-icon");
+
+      answer.classList.toggle("open");
+      icon.classList.toggle("rotate");
+    });
+  });
 
   const [activeSlides, setActiveSlides] = useState("doctor");
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
@@ -129,129 +135,160 @@ function Homepage() {
           <CardsSlider />
         </div>
 
-        {/* Opinion Section */}
-        {/* <div
-          className="opinion-container bg-neutral-200 w-3/4 h-90 flex flex-col justify-around items-center p-2
-         rounded-2xl "
-        >
-          <div className="buttonapos">
-            <button
-              onClick={() => showSlides("doctor")}
-              className="cursor-pointer p-2 rounded-sm ease-in-out hover:bg-gray-900  hover:text-amber-50 "
-            >
-              Doctor's Opinion
-            </button>
-            <button
-              onClick={() => showSlides("patient")}
-              className="cursor-pointer p-2 rounded-sm ease-in-out hover:bg-gray-900  hover:text-amber-50 "
-            >
-              Patient's Opinion
-            </button>
-          </div>
         
 
-          <div className="opinion-header text-2xl">
-            {activeSlides === "doctor"
-              ? "Opinions from Our Doctors"
-              : "Opinions from Our Patients"}
-          </div>
-
-          <div className="opinion-slides text-3xl">
-            <div className="opinion-slide">{slides[currentSlideIndex]}</div>
-          </div>
-        </div> */}
-        
         {/* Testimonials Section */}
-              <section className="content-section testimonials-section">
-                <div className="section-header">
-                  <h2 className="text2">Trusted By Users, Assured By Verified Doctors</h2>
-                  <div className="section-underline"></div>
+        <section className="content-section testimonials-section">
+          <div className="section-header">
+            <h2 className="text2">
+              Trusted By Users, Assured By Verified Doctors
+            </h2>
+            <div className="section-underline"></div>
+          </div>
+          <div className="testimonials-grid">
+            <div className="testimonial-card">
+              <div className="testimonial-content">
+                <p>
+                  "After struggling to find a specialist I could trust, this
+                  platform matched me with a doctor who not only had the right
+                  credentials but truly listened to my concerns. The peace of
+                  mind knowing they've been thoroughly vetted is priceless."
+                </p>
+              </div>
+              <div className="testimonial-author">
+                <div className="author-image">
+                  <img src={tempImg} alt="Sarah M." />
                 </div>
-                <div className="testimonials-grid">
-                  <div className="testimonial-card">
-                    <div className="testimonial-content">
-                      <p>
-                        "After struggling to find a specialist I could trust, this platform matched 
-                        me with a doctor who not only had the right credentials but truly listened 
-                        to my concerns. The peace of mind knowing they've been thoroughly vetted is priceless."
-                      </p>
-                    </div>
-                    <div className="testimonial-author">
-                      <div className="author-image">
-                        <img src={tempImg} alt="Sarah M." />
-                      </div>
-                      <div className="author-info">
-                        <h4>Sarah M.</h4>
-                        <p>Patient since 2023</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="testimonial-card">
-                    <div className="testimonial-content">
-                      <p>
-                        "As a physician, I appreciate the rigorous verification process. It ensures 
-                        that patients connect with qualified professionals and helps maintain the 
-                        integrity of our profession in an era of misinformation."
-                      </p>
-                    </div>
-                    <div className="testimonial-author">
-                      <div className="author-image">
-                        <img src={tempImg} alt="Dr. James L." />
-                      </div>
-                      <div className="author-info">
-                        <h4>Dr. James L.</h4>
-                        <p>Cardiologist, Verified Provider</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="testimonial-card">
-                    <div className="testimonial-content">
-                      <p>
-                        "When my daughter needed specialized care, I couldn't risk choosing the wrong 
-                        doctor. This platform gave me confidence in my choice with transparent verification 
-                        and real patient reviews. The care she received was exceptional."
-                      </p>
-                    </div>
-                    <div className="testimonial-author">
-                      <div className="author-image">
-                        <img src={tempImg} alt="Robert K." />
-                      </div>
-                      <div className="author-info">
-                        <h4>Robert K.</h4>
-                        <p>Parent of patient</p>
-                      </div>
-                    </div>
-                  </div>
+                <div className="author-info">
+                  <h4>Sarah M.</h4>
+                  <p>Patient since 2023</p>
                 </div>
-              </section>
+              </div>
+            </div>
+            <div className="testimonial-card">
+              <div className="testimonial-content">
+                <p>
+                  "As a physician, I appreciate the rigorous verification
+                  process. It ensures that patients connect with qualified
+                  professionals and helps maintain the integrity of our
+                  profession in an era of misinformation."
+                </p>
+              </div>
+              <div className="testimonial-author">
+                <div className="author-image">
+                  <img src={tempImg} alt="Dr. James L." />
+                </div>
+                <div className="author-info">
+                  <h4>Dr. James L.</h4>
+                  <p>Cardiologist, Verified Provider</p>
+                </div>
+              </div>
+            </div>
+            <div className="testimonial-card">
+              <div className="testimonial-content">
+                <p>
+                  "When my daughter needed specialized care, I couldn't risk
+                  choosing the wrong doctor. This platform gave me confidence in
+                  my choice with transparent verification and real patient
+                  reviews. The care she received was exceptional."
+                </p>
+              </div>
+              <div className="testimonial-author">
+                <div className="author-image">
+                  <img src={tempImg} alt="Robert K." />
+                </div>
+                <div className="author-info">
+                  <h4>Robert K.</h4>
+                  <p>Parent of patient</p>
+                </div>
+              </div>
+            </div>
+          
+          </div>
+        </section>
 
         {/* App Download Section */}
         <div className="download-section ">
-        <div className="download-container m-8 w-3/4 flex justify-evenly  items-center p-2 rounded-2xl">
-          <div className="app-preview">
-            <img src={VDrLogo} height="400px" width="900px" alt="App Preview" />
-          </div>
-          <div className="app-info">
-            <h2 className="app-title">Download VDr App</h2>
-            <p className="app-description">
-              Consult with India's top doctors via video on VDr app. Get 24/7
-              access to healthcare.
-            </p>
-            <div className="store-buttons">
-              <div className="store-button">
-                <Link>
-                  <img src={GooglePlayLogo} alt="Google Play Store" />
-                </Link>
-              </div>
-              <div className="store-button">
-                <Link>
-                  <img src={AppStoreLogo} alt="Apple App Store" />
-                </Link>
+          <div className="download-container m-8 w-3/4 flex justify-evenly  items-center p-2 rounded-2xl">
+            <div className="app-preview">
+              <img
+                src={VDrLogo}
+                height="400px"
+                width="900px"
+                alt="App Preview"
+              />
+            </div>
+            <div className="app-info">
+              <h2 className="app-title">Download VDr App</h2>
+              <p className="app-description">
+                Consult with India's top doctors via video on VDr app. Get 24/7
+                access to healthcare.
+              </p>
+              <div className="store-buttons">
+                <div className="store-button">
+                  <Link>
+                    <img src={GooglePlayLogo} alt="Google Play Store" />
+                  </Link>
+                </div>
+                <div className="store-button">
+                  <Link>
+                    <img src={AppStoreLogo} alt="Apple App Store" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        </div>
+
+        <div class="faq-container">
+    <div class="faq-header">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq1" />
+      <label for="faq1">
+        What is your refund policy?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        We offer a full refund within 30 days of purchase if you're not satisfied with our service. Please contact support for more details.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq2" />
+      <label for="faq2">
+        How do I get customer support?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        You can reach our support team 24/7 via email or through the support chat on our website.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq3" />
+      <label for="faq3">
+        Can I upgrade my plan later?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        Absolutely! You can upgrade or downgrade your plan anytime through your account settings. Changes take effect immediately.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+        Is my data secure?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        Yes. We use bank-level encryption, regular audits, and comply with GDPR and other global privacy regulations to keep your data safe.
+      </div>
+    </div>
+  </div>
       </div>
     </>
   );

@@ -473,6 +473,7 @@ label {
 .app-title {
   font-size: 2rem;
   margin-bottom: 10px;
+  margin-left: 50px;
   
 }
 .app-description {
@@ -560,12 +561,13 @@ label {
 
 .searchbar-input {
   flex-grow: 1;
-  /* border: none; */
+  /* border: 5px solid red; */
   background-color: transparent;
   font-size: 1.25rem;
   font-weight: 500;
   padding: 0rem;
   /* outline: none; */
+  /* border: 5px solid red; */
 }
 
 .searchbar-input::placeholder {
@@ -629,6 +631,7 @@ label {
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  
 }
 
 .testimonial-content {
@@ -677,9 +680,10 @@ label {
   background: #ffffff;
   border: 1px solid #e5e7eb;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-  padding: 32px;
+  /* padding: 32px; */
   transition: box-shadow 0.3s ease;
-  max-width: 100%;
+  /* max-width: 90vw; */
+  width: 81vw;
   align-items: center;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -729,4 +733,69 @@ label {
   100% {
     background-position: 0% 50%;
   }
+}
+.faq-container {
+  min-width: 400px;
+  margin: 1em;
+  padding: 2rem;
+  background: rgb(255, 253, 253);
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  width: 81vw;
+  transition: all 0.3s ease-in-out;
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.faq-header h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.faq-item {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1rem 0;
+}
+
+.faq-item input {
+  display: none;
+}
+
+.faq-item label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.faq-item label:hover {
+  color: var(--primary-color);
+}
+
+.faq-item .icon {
+  transition: transform var(--transition);
+}
+
+.faq-item input:checked ~ label .icon {
+  transform: rotate(45deg);
+}
+
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #374151;
+}
+
+.faq-item input:checked ~ .faq-content {
+  max-height: 500px;
+  margin-top: 0.5rem;
 }
