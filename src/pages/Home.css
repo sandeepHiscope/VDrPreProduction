@@ -799,16 +799,5 @@ label {
   max-height: 500px;
   margin-top: 0.5rem;
 }
-.ScrollingCardsContainer1{
-  
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 1rem;
-  margin: 1em;
-  background: #000;
-}
-.ScrollingCardsContainer > div {
-  scroll-snap-align: start;
-  margin-right: 1rem;
+.SlidingSecContainer{
 }

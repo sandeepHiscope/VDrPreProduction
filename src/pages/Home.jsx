@@ -131,9 +131,9 @@ function Homepage() {
         </Link>
 
         {/* Cards Slider Section */}
-        <div className="ScrollingCardsContainer1">
+        {/* <div className="SlidingSecContainer"> */}
           <CardsSlider />
-        </div>
+        {/* </div> */}
 
    
         {/* Testimonials Section */}
