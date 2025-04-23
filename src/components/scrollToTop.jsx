@@ -7,7 +7,7 @@ const ScrollToTop = () => {
 useEffect(() => {
     if (pathname !== "/") { 
         const timeout = setTimeout(() => {
-            window.scrollTo({ top: 400, behavior: "smooth" }); 
+            window.scrollTo({ top: 520, behavior: "smooth" }); 
         }, 100);
 
         return () => clearTimeout(timeout);
