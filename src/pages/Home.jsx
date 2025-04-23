@@ -136,7 +136,7 @@ function Homepage() {
         {/* </div> */}
 
    
-        {/* Testimonials Section */}
+        {/* Testimonials (reviews) Section */}
         <section className="content-section testimonials-section">
           <div className="section-header">
             <h2 className="text2">
