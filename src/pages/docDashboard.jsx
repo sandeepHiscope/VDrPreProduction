@@ -815,23 +815,33 @@ const DocDashboard = () => {
     // {sidepanel}
     <div className="flex h-screen bg-gray-50">
     <div
-  className={`
-    bg-white shadow-lg flex flex-col h-full transition-all duration-300 
-    ${isSidebarOpen ? "w-60" : "w-20 sm:w-60 mt-1"}
-    ${isSidebarOpen ? "fixed top-28  z-50 sm:relative" : "sm:relative"}
-    ${isSidebarOpen ? "sm:w-60" : "relative top-0 left-0"}
-    ${isSidebarOpen ? "h-full" : ""}
-  `}
+className={`
+  bg-white shadow-lg flex flex-col transition-all duration-300
+  ${isSidebarOpen ? "w-60" : "w-12 sm:w-60"}
+  ${isSidebarOpen ? "fixed sm:relative top-129 z-50 sm:top-0 sm:z-auto" : "relative"}
+  h-full
+`}
 >
+
 
       {/* Sidebar Header */}
       <div className="p-4 border-b flex items-center justify-between sm:justify-start cursor-pointer">
-        <span
-          onClick={toggleSidebar}
-          className="font-bold text-lg sm:inline block sm:hidden"
-        >
-          Doctor
-        </span>
+      <span
+  onClick={toggleSidebar}
+  className="cursor-pointer sm:inline block"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-6 h-6 text-gray-800"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth={2}
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+  </svg>
+</span>
+
         <div className="flex items-center sm:block hidden ">
           <svg
             viewBox="0 0 24 24"
@@ -844,9 +854,8 @@ const DocDashboard = () => {
             strokeLinejoin="round"
             className="mr-2"
           >
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
           </svg>
-          {/* <span className="font-bold text-lg">Doctor</span> */}
+  
         </div>
       </div>
 
@@ -862,7 +871,7 @@ const DocDashboard = () => {
           setIsSidebarOpen(false); // Close sidebar if screen width is mobile (<640px)
         }
       }}
-      className={`group flex items-center px-4 py-3 w-full text-left transition-all duration-200 ${
+      className={`group flex items-center px-2 py-3 w-full text-left transition-all duration-200 ${
         activePage === item.name
           ? "bg-blue-50 text-blue-600 border-r-4 border-blue-600"
           : "text-gray-600 hover:bg-gray-100"
