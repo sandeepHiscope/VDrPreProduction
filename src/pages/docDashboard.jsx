@@ -36,19 +36,19 @@ const DocDashboard = () => {
   // Mock data for the dashboard
   const upcomingAppointments = [
     {
-      name: "John Smith",
+      name: "indhu yadav",
       time: "5:30 am",
       type: "patient",
       date: "04 apr. at 9:40",
     },
     {
-      name: "Mary Johnson",
+      name: "Teju ",
       time: "5:30 am",
       type: "prescription",
       date: "24 apr. at 2:45",
     },
     {
-      name: "James Williams",
+      name: "Ramesh",
       time: "5:30 am",
       type: "insurance",
       date: "19 apr. at 2:05",
@@ -57,12 +57,12 @@ const DocDashboard = () => {
 
   const recentUpdates = [
     {
-      name: "John Smith",
+      name: "Jony",
       action: "New prescription created",
       date: "May at 9:50 PM",
     },
-    { name: "James Williams", action: "Completed teleconsultation", date: "" },
-    { name: "Patricia Brown", action: "Resolved SOS alert", date: "" },
+    { name: "Raj", action: "Completed teleconsultation", date: "" },
+    { name: "Tinku", action: "Resolved SOS alert", date: "" },
   ];
 
   // Function to render different pages based on active state
@@ -295,7 +295,7 @@ const DocDashboard = () => {
                 </thead>
                 <tbody className="divide-y">
                   <tr>
-                    <td className="p-3">John Smith</td>
+                    <td className="p-3">Raja singh</td>
                     <td className="p-3">P-001</td>
                     <td className="p-3">Apr 04, 2025</td>
                     <td className="p-3">
@@ -308,7 +308,7 @@ const DocDashboard = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td className="p-3">Mary Johnson</td>
+                    <td className="p-3">Salman</td>
                     <td className="p-3">P-002</td>
                     <td className="p-3">Apr 24, 2025</td>
                     <td className="p-3">
@@ -321,7 +321,7 @@ const DocDashboard = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td className="p-3">James Williams</td>
+                    <td className="p-3">Sowmith</td>
                     <td className="p-3">P-003</td>
                     <td className="p-3">Apr 19, 2025</td>
                     <td className="p-3">
@@ -341,7 +341,7 @@ const DocDashboard = () => {
             <div className="md:hidden space-y-4">
               <div className="border rounded-lg p-4 shadow-sm bg-gray-50">
                 <div className="mb-2">
-                  <span className="font-semibold">Name:</span> John Smith
+                  <span className="font-semibold">Name:</span> Raju
                 </div>
                 <div className="mb-2">
                   <span className="font-semibold">ID:</span> P-001
@@ -362,7 +362,7 @@ const DocDashboard = () => {
         
               <div className="border rounded-lg p-4 shadow-sm bg-gray-50">
                 <div className="mb-2">
-                  <span className="font-semibold">Name:</span> Mary Johnson
+                  <span className="font-semibold">Name:</span> Raja singh
                 </div>
                 <div className="mb-2">
                   <span className="font-semibold">ID:</span> P-002
@@ -383,7 +383,7 @@ const DocDashboard = () => {
         
               <div className="border rounded-lg p-4 shadow-sm bg-gray-50">
                 <div className="mb-2">
-                  <span className="font-semibold">Name:</span> James Williams
+                  <span className="font-semibold">Name:</span> Sowmith
                 </div>
                 <div className="mb-2">
                   <span className="font-semibold">ID:</span> P-003
@@ -438,7 +438,7 @@ const DocDashboard = () => {
         </thead>
         <tbody className="divide-y">
           <tr>
-            <td className="p-3">John Smith</td>
+            <td className="p-3">Indhu yadav</td>
             <td className="p-3">Amoxicillin</td>
             <td className="p-3">500mg, 3x daily</td>
             <td className="p-3">Apr 04, 2025</td>
@@ -449,7 +449,7 @@ const DocDashboard = () => {
             </td>
           </tr>
           <tr>
-            <td className="p-3">Mary Johnson</td>
+            <td className="p-3">Teju</td>
             <td className="p-3">Lisinopril</td>
             <td className="p-3">10mg, daily</td>
             <td className="p-3">Apr 24, 2025</td>
@@ -467,7 +467,7 @@ const DocDashboard = () => {
     <div className="md:hidden space-y-4">
       <div className="border rounded-lg p-4 bg-gray-50 shadow-sm">
         <div className="mb-1">
-          <span className="font-semibold">Patient:</span> John Smith
+          <span className="font-semibold">Patient:</span> Indhu yadav
         </div>
         <div className="mb-1">
           <span className="font-semibold">Medication:</span> Amoxicillin
@@ -488,7 +488,7 @@ const DocDashboard = () => {
 
       <div className="border rounded-lg p-4 bg-gray-50 shadow-sm">
         <div className="mb-1">
-          <span className="font-semibold">Patient:</span> Mary Johnson
+          <span className="font-semibold">Patient:</span> Teju
         </div>
         <div className="mb-1">
           <span className="font-semibold">Medication:</span> Lisinopril
@@ -524,7 +524,7 @@ const DocDashboard = () => {
                 <div className="py-3">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
                     <div>
-                      <div className="font-medium">John Smith</div>
+                      <div className="font-medium">Indhu yadav</div>
                       <div className="text-sm text-gray-500">04 Apr. at 9:40</div>
                     </div>
                     <button className="bg-blue-500 text-white px-4 py-2 sm:px-3 sm:py-1 rounded text-sm w-full sm:w-auto">
@@ -535,7 +535,7 @@ const DocDashboard = () => {
                 <div className="py-3">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
                     <div>
-                      <div className="font-medium">Mary Johnson</div>
+                      <div className="font-medium">Teju</div>
                       <div className="text-sm text-gray-500">24 Apr. at 2:45</div>
                     </div>
                     <button className="bg-blue-500 text-white px-4 py-2 sm:px-3 sm:py-1 rounded text-sm w-full sm:w-auto">
@@ -553,7 +553,7 @@ const DocDashboard = () => {
                 <div className="py-3">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
                     <div>
-                      <div className="font-medium">James Williams</div>
+                      <div className="font-medium">Jony</div>
                       <div className="text-sm text-gray-500">19 Apr. at 2:05</div>
                     </div>
                     <button className="bg-gray-100 text-gray-700 px-4 py-2 sm:px-3 sm:py-1 rounded text-sm w-full sm:w-auto">
@@ -564,7 +564,7 @@ const DocDashboard = () => {
                 <div className="py-3">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
                     <div>
-                      <div className="font-medium">Patricia Brown</div>
+                      <div className="font-medium">Raj</div>
                       <div className="text-sm text-gray-500">15 Apr. at 11:30</div>
                     </div>
                     <button className="bg-gray-100 text-gray-700 px-4 py-2 sm:px-3 sm:py-1 rounded text-sm w-full sm:w-auto">
@@ -607,21 +607,21 @@ const DocDashboard = () => {
           <tbody className="divide-y">
             {[
               {
-                name: "John Smith",
+                name: "Indhu yadav",
                 date: "Apr 04, 2025 - 9:40 AM",
                 type: "Check-up",
                 status: "Confirmed",
                 statusClass: "bg-green-100 text-green-800",
               },
               {
-                name: "Mary Johnson",
+                name: "Teju",
                 date: "Apr 24, 2025 - 2:45 PM",
                 type: "Prescription",
                 status: "Pending",
                 statusClass: "bg-yellow-100 text-yellow-800",
               },
               {
-                name: "James Williams",
+                name: "Ramesh",
                 date: "Apr 19, 2025 - 2:05 PM",
                 type: "Follow-up",
                 status: "Confirmed",
@@ -731,7 +731,7 @@ const DocDashboard = () => {
                   </svg>
                 </div>
                 <div className="text-center sm:text-left">
-                  <h2 className="text-lg sm:text-xl font-bold">Dr. Sarah Reynolds</h2>
+                  <h2 className="text-lg sm:text-xl font-bold">Dr.Pavan</h2>
                   <p className="text-gray-600">General Practitioner</p>
                   <p className="text-gray-600">License #: MD12345</p>
                 </div>
@@ -813,35 +813,29 @@ const DocDashboard = () => {
 
   return (
     // {sidepanel}
-    <div className="flex h-screen bg-gray-50">
-    <div
-className={`
-  bg-white shadow-lg flex flex-col transition-all duration-300
-  ${isSidebarOpen ? "w-60" : "w-12 sm:w-60"}
-${isSidebarOpen ? "fixed sm:relative top-0 left-0 z-50" : "relative"}
-  
-  h-full
-`}
->
-
-
-      {/* Sidebar Header */}
-      <div className="p-4 border-b flex items-center justify-between sm:justify-start cursor-pointer">
-      <span
-  onClick={toggleSidebar}
-  className="cursor-pointer sm:inline block"
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="w-6 h-6 text-gray-800"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={2}
+    <div className="flex h-screen bg-white">
+  {/* Sidebar */}
+  <div
+    className={`
+      bg-white shadow-lg flex flex-col transition-all duration-300
+      ${isSidebarOpen ? "w-40" : "w-12 sm:w-60"}
+      h-full
+    `}
   >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-  </svg>
-</span>
+    {/* Sidebar Header */}
+    <div className="p-4 border-b flex items-center justify-between sm:justify-start cursor-pointer bg-red-200  ">
+      <span onClick={toggleSidebar} className="cursor-pointer sm:inline block">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-6 h-6 bg-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </span>
 
         <div className="flex items-center sm:block hidden ">
           <svg
@@ -867,15 +861,15 @@ ${isSidebarOpen ? "fixed sm:relative top-0 left-0 z-50" : "relative"}
   <li key={item.name}>
     <button
       onClick={() => {
-        setActivePage(item.name); // Set the active page
+        setActivePage(item.name); 
         if (window.innerWidth < 640) {
-          setIsSidebarOpen(false); // Close sidebar if screen width is mobile (<640px)
+          setIsSidebarOpen(false); 
         }
       }}
       className={`group flex items-center px-2 py-3 w-full text-left transition-all duration-200 ${
         activePage === item.name
-          ? "bg-blue-50 text-blue-600 border-r-4 border-blue-600"
-          : "text-gray-600 hover:bg-gray-100"
+          ? "bg-white text-blue-600 border-r-4 border-blue-600"
+          : "bg-white bg-white"
       }`}
     >
       <span className="mr-3 group-hover:text-blue-600 group-hover:scale-110">
@@ -902,7 +896,7 @@ ${isSidebarOpen ? "fixed sm:relative top-0 left-0 z-50" : "relative"}
           className={`group flex items-center px-4 py-3 w-full text-left transition-all duration-200 ${
             activePage === "Profile"
               ? "bg-blue-50 text-blue-600 border-r-4 border-blue-600"
-              : "text-gray-600 hover:bg-gray-100"
+              : "bg-white hover:bg-white"
           }`}
         >
           <span className="mr-0 sm:mr-3 transition-all duration-200 group-hover:text-blue-600 group-hover:scale-110">

@@ -19,7 +19,15 @@ const NAV_LINKS = [
   {
     to: "/verifyDoc",
     label: "Scan Doc",
+
     icon: <Shield className="headericons" />,
+
+  },
+  {
+    to: "/whyVDr",
+    label: "Why VDr",
+
+    icon: <ShieldQuestion className="headericons" />,
   },
   {
     to: "/sosPage",
@@ -28,6 +36,7 @@ const NAV_LINKS = [
     className: "sos-link",
   },
   
+
   {
     to: "/whyVDr",
     label: "Why VDr",
@@ -36,6 +45,7 @@ const NAV_LINKS = [
    
 
   },
+
   {
     href: "https://vdr-door-delivery-medicines.netlify.app/",
     label: "Doorstep Meds",

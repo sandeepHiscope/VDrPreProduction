@@ -83,12 +83,13 @@
 /* Doctor Card */
 .doctor-card {
   display: flex;
-  height: 200px;
+  height: 260px;
   background-color: var(--color-background-card);
   border: var(--border-width-thin) var(--border-style-solid) var(--border-color-default);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   overflow: hidden;
+  padding: 0px;
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
   
@@ -116,7 +117,7 @@
 
 /* Doctor Information */
 .doctor-info {
-  padding: 10px 15px;
+  padding: 10px 15px; 
   
   display: flex;
   flex-direction: column;
@@ -141,8 +142,8 @@
   border: none;
   border-radius: var(--radius-md);
   cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: 145px; /* Align button to the bottom of the card */
+    transition: background-color 0.3s;
+  margin-top: 200px; /* Align button to the bottom of the card */
   margin-right: 10px;
   align-self: flex-start;
 }
