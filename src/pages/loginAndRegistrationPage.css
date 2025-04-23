@@ -1,6 +1,6 @@
 
 .loginContainer{
-  background: #ffffff;
+  background: var(--color-background-main);
   /* padding: 2em;
   width: 80vw;
   height: 80vh; */
@@ -12,26 +12,27 @@
 }
 .container {
   background: #fff;
-  margin: 20px 50px 50px 60px;
+  margin: 50px 50px 50px 50px;
   padding: 30px;
-  /* margin: 5em; */
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  
+  border-radius: var(--radius-md);
+  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+  box-shadow: var(--shadow-md);
   width: 50%;
   height: 460px;
-  border: 1px solid rgb(176, 176, 176);
+  /* border: 1px solid rgb(176, 176, 176); */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  /* flex:2; */
+ 
 }
 
 .docRegisterImg{
   margin-left: 10%;
   /* min-width: 180px;
   min-height: 150px; */
-  width: 70%;
-  height: 70%;
+  width: 40%;
+  height: 400px;
 }
 .tabs {
   display: flex;
@@ -46,13 +47,13 @@
   width: 8%;
   cursor: pointer;
   transition: background 0.3s ease;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
 .tab-btn.active {
-  background: #007bff;
-  color: white;
-  border-radius: 4px;
+  background: var(--color-primary);
+  color: var(--color-background-white);
+  border-radius: var(--radius-sm);
 }
 
 .form-container {
@@ -69,16 +70,16 @@
   padding: 10px;
   margin: 10px 0;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
 }
 
 .form-container button {
   width: 100%;
   padding: 10px;
-  background: #007bff;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-background-white);
   border: none;
-  border-radius: 5px;
+  border-radius:var(--radius-sm);
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -90,16 +91,16 @@
 .role-btn {
   width: 100%;
   padding: 10px;
-  background: #28a745;
-  color: white;
+  background: var(--color-accent);
+  color: var(--color-background-white);
   border: none;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   margin-top: 1px;
 }
 
 .role-btn:hover {
-  background: #218838;
+  background:var(--color-accent-hover);
 }
 
 
@@ -112,7 +113,7 @@
   cursor: pointer;
 }
 .forget:hover{
-  color: rgb(20, 106, 205);
+  color: var(--color-primary-hover);
 }
 .login-h1{
   font-size: 20px;
@@ -140,8 +141,8 @@
 }
 
 .tab-btn.active {
-  background: #007bff;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-background-white);
 }
 
 .form-container {
@@ -154,37 +155,37 @@
   padding: 10px;
   margin: 10px 0;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
 }
 
 .form-container button {
   width: 100%;
   padding: 10px;
-  background: #007bff;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-background-white);
   border: none;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 .form-container button:hover {
-  background: #0056b3;
+  background: var(--color-primary-hover);
 }
 
 .role-btn {
   width: 100%;
   padding: 10px;
-  background: #28a745;
-  color: white;
+  background: var(--color-accent);
+  color: var(--color-background-white);
   border: none;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   margin-top: 10px;
 }
 
 .role-btn:hover {
-  background: #218838;
+  background: var(--color-accent-hover);
 }
 
 .login-change{
