@@ -813,35 +813,29 @@ const DocDashboard = () => {
 
   return (
     // {sidepanel}
-    <div className="flex h-screen bg-gray-50">
-    <div
-className={`
-  bg-white shadow-lg flex flex-col transition-all duration-300
-  ${isSidebarOpen ? "w-60" : "w-12 sm:w-60"}
-${isSidebarOpen ? "fixed sm:relative top-0 left-0 z-50" : "relative"}
-  
-  h-full
-`}
->
-
-
-      {/* Sidebar Header */}
-      <div className="p-4 border-b flex items-center justify-between sm:justify-start cursor-pointer">
-      <span
-  onClick={toggleSidebar}
-  className="cursor-pointer sm:inline block"
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="w-6 h-6 text-gray-800"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={2}
+    <div className="flex h-screen bg-white">
+  {/* Sidebar */}
+  <div
+    className={`
+      bg-white shadow-lg flex flex-col transition-all duration-300
+      ${isSidebarOpen ? "w-40" : "w-12 sm:w-60"}
+      h-full
+    `}
   >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-  </svg>
-</span>
+    {/* Sidebar Header */}
+    <div className="p-4 border-b flex items-center justify-between sm:justify-start cursor-pointer bg-white   ">
+      <span onClick={toggleSidebar} className="cursor-pointer sm:inline block">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-6 h-6 bg-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </span>
 
         <div className="flex items-center sm:block hidden ">
           <svg
@@ -867,15 +861,15 @@ ${isSidebarOpen ? "fixed sm:relative top-0 left-0 z-50" : "relative"}
   <li key={item.name}>
     <button
       onClick={() => {
-        setActivePage(item.name); // Set the active page
+        setActivePage(item.name); 
         if (window.innerWidth < 640) {
-          setIsSidebarOpen(false); // Close sidebar if screen width is mobile (<640px)
+          setIsSidebarOpen(false); 
         }
       }}
       className={`group flex items-center px-2 py-3 w-full text-left transition-all duration-200 ${
         activePage === item.name
           ? "bg-blue-50 text-blue-600 border-r-4 border-blue-600"
-          : "text-gray-600 hover:bg-gray-100"
+          : "bg-white bg-white"
       }`}
     >
       <span className="mr-3 group-hover:text-blue-600 group-hover:scale-110">
@@ -902,7 +896,7 @@ ${isSidebarOpen ? "fixed sm:relative top-0 left-0 z-50" : "relative"}
           className={`group flex items-center px-4 py-3 w-full text-left transition-all duration-200 ${
             activePage === "Profile"
               ? "bg-blue-50 text-blue-600 border-r-4 border-blue-600"
-              : "text-gray-600 hover:bg-gray-100"
+              : "bg-white hover:bg-white"
           }`}
         >
           <span className="mr-0 sm:mr-3 transition-all duration-200 group-hover:text-blue-600 group-hover:scale-110">

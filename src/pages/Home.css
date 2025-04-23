@@ -742,6 +742,7 @@ label {
   border-radius: var(--border-radius);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
   width: 81vw;
+  margin-top: 90px;
   transition: all 0.3s ease-in-out;
 }
 
