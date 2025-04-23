@@ -473,6 +473,7 @@ label {
 .app-title {
   font-size: 2rem;
   margin-bottom: 10px;
+  margin-left: 50px;
   
 }
 .app-description {
@@ -679,9 +680,10 @@ label {
   background: #ffffff;
   border: 1px solid #e5e7eb;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-  padding: 32px;
+  /* padding: 32px; */
   transition: box-shadow 0.3s ease;
-  max-width: 100%;
+  /* max-width: 90vw; */
+  width: 81vw;
   align-items: center;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -739,7 +741,7 @@ label {
   background: rgb(255, 253, 253);
   border-radius: var(--border-radius);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-  width: 90vw;
+  width: 81vw;
   transition: all 0.3s ease-in-out;
 }
 
