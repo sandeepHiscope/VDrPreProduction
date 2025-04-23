@@ -44,7 +44,7 @@
     background-color: #4992a9;
     color: rgb(255, 255, 255);
     padding-top: 60px;
-    transition: 0.3s; /* Smooth transition for opening/closing */
+    transition: var(--transition-slide) ; /* Smooth transition for opening/closing */
     z-index: 1;
     border-radius: 10px;
   }
@@ -59,7 +59,7 @@
     font-size: 20px;
     color: white;
     display: block;
-    transition: 0.3s;
+    transition: var(--transition-slide);
   }
   
   .sidebar a:hover {
@@ -76,7 +76,7 @@
     background-color: #4992a9;
     color: white;
     border: none;
-    transition: 0.3s;
+    transition: var(--transition-slide);
     border-radius: 10px;
     z-index: 1;
   }
@@ -182,7 +182,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: --transition-background-color, -transition-slide;
     user-select: none;
   }
   
