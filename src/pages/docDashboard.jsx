@@ -818,7 +818,8 @@ const DocDashboard = () => {
 className={`
   bg-white shadow-lg flex flex-col transition-all duration-300
   ${isSidebarOpen ? "w-60" : "w-12 sm:w-60"}
-  ${isSidebarOpen ? "fixed sm:relative top-25 z-50 sm:top-0 sm:z-auto" : "relative"}
+${isSidebarOpen ? "fixed sm:relative top-0 left-0 z-50" : "relative"}
+  
   h-full
 `}
 >
