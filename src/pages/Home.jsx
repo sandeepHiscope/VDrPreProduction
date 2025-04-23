@@ -135,7 +135,37 @@ function Homepage() {
           <CardsSlider />
         </div>
 
+        {/* Opinion Section */}
+        {/* <div
+          className="opinion-container bg-neutral-200 w-3/4 h-90 flex flex-col justify-around items-center p-2
+         rounded-2xl "
+        >
+          <div className="buttonapos">
+            <button
+              onClick={() => showSlides("doctor")}
+              className="cursor-pointer p-2 rounded-sm ease-in-out hover:bg-gray-900  hover:text-amber-50 "
+            >
+              Doctor's Opinion
+            </button>
+            <button
+              onClick={() => showSlides("patient")}
+              className="cursor-pointer p-2 rounded-sm ease-in-out hover:bg-gray-900  hover:text-amber-50 "
+            >
+              Patient's Opinion
+            </button>
+          </div>
         
+
+          <div className="opinion-header text-2xl">
+            {activeSlides === "doctor"
+              ? "Opinions from Our Doctors"
+              : "Opinions from Our Patients"}
+          </div>
+
+          <div className="opinion-slides text-3xl">
+            <div className="opinion-slide">{slides[currentSlideIndex]}</div>
+          </div>
+        </div> */}
 
         {/* Testimonials Section */}
         <section className="content-section testimonials-section">
@@ -149,10 +179,7 @@ function Homepage() {
             <div className="testimonial-card">
               <div className="testimonial-content">
                 <p>
-                  "After struggling to find a specialist I could trust, this
-                  platform matched me with a doctor who not only had the right
-                  credentials but truly listened to my concerns. The peace of
-                  mind knowing they've been thoroughly vetted is priceless."
+                Very helpful and easy to use. I booked an appointment within minutes and got proper consultation from home. Saved time and stress. Highly recommend!"
                 </p>
               </div>
               <div className="testimonial-author">
@@ -160,7 +187,7 @@ function Homepage() {
                   <img src={tempImg} alt="Sarah M." />
                 </div>
                 <div className="author-info">
-                  <h4>Sarah M.</h4>
+                  <h4>p.praveen sindhu</h4>
                   <p>Patient since 2023</p>
                 </div>
               </div>
@@ -168,10 +195,7 @@ function Homepage() {
             <div className="testimonial-card">
               <div className="testimonial-content">
                 <p>
-                  "As a physician, I appreciate the rigorous verification
-                  process. It ensures that patients connect with qualified
-                  professionals and helps maintain the integrity of our
-                  profession in an era of misinformation."
+                "Best experience with online healthcare. The app is smooth, doctors are professional, and reports were easy to access. Felt taken care of."
                 </p>
               </div>
               <div className="testimonial-author">
@@ -179,7 +203,7 @@ function Homepage() {
                   <img src={tempImg} alt="Dr. James L." />
                 </div>
                 <div className="author-info">
-                  <h4>Dr. James L.</h4>
+                  <h4>Dr.L.v.s vishnuvardhanreddy.</h4>
                   <p>Cardiologist, Verified Provider</p>
                 </div>
               </div>
@@ -187,10 +211,7 @@ function Homepage() {
             <div className="testimonial-card">
               <div className="testimonial-content">
                 <p>
-                  "When my daughter needed specialized care, I couldn't risk
-                  choosing the wrong doctor. This platform gave me confidence in
-                  my choice with transparent verification and real patient
-                  reviews. The care she received was exceptional."
+                "Game changer for health issues. Especially during busy weeks, having a doctor a tap away really helped. Prescriptions were clear and timely."
                 </p>
               </div>
               <div className="testimonial-author">
@@ -198,12 +219,11 @@ function Homepage() {
                   <img src={tempImg} alt="Robert K." />
                 </div>
                 <div className="author-info">
-                  <h4>Robert K.</h4>
+                  <h4>k.Anjaneyulu</h4>
                   <p>Parent of patient</p>
                 </div>
               </div>
             </div>
-          
           </div>
         </section>
 
