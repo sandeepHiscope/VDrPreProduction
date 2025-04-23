@@ -33,7 +33,7 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: var(--neutral-800);
   line-height: 1.6;
-  background-color: var(--neutral-50);
+  background-color: var(--background-color-main);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -87,7 +87,7 @@ p {
   width: 80px;
   background-color: var(--color-primary);
   margin: 0 auto;
-  border-radius: 2px;
+  border-radius: var(--radius-xs);
 }
 
 /* Hero Section */
@@ -206,11 +206,11 @@ p {
 }
 
 .problem-card {
-  border-left: 6px solid var(--danger);
+  border-left: 6px solid var(--color-error);
 }
 
 .solution-card {
-  border-left: 6px solid var(--success);
+  border-left: 6px solid var(--color-success);
 }
 
 .problem-card h3, .solution-card h3 {
@@ -235,11 +235,11 @@ p {
 }
 
 .problem-card .icon {
-  color: var(--danger);
+  color: var(--color-error);
 }
 
 .solution-card .icon {
-  color: var(--success);
+  color: var(--color-success );
 }
 
 /* Process Section */
@@ -307,7 +307,7 @@ p {
 
 .badge-text h4 {
   margin-bottom: 0.25rem;
-  color: var(--success);
+  color: var(--color-success);
 }
 
 .badge-text p {
@@ -353,7 +353,7 @@ p {
 .feature-card {
   background-color: white;
   padding: 2rem;
-  border-radius: var(--border-radius);
+  border-radius: var(--radius-md);
   box-shadow: var(--card-shadow);
   transition: var(--transition-slide),box-shadow 0.3s ease;
   height: 100%;
@@ -388,7 +388,7 @@ p {
 .testimonial-card {
   background-color: var(--background-color-card);
   padding: 2rem;
-  border-radius: var(--border-radius);
+  border-radius: var(--radius-md);
   box-shadow: var(--card-shadow);
 }
 
@@ -466,13 +466,13 @@ p {
 }
 
 .primary-cta {
-  background-color: var(--accent-color);
+  background-color: var(--color-primary);
   color: white;
   font-size: 1.125rem;
   font-weight: 600;
   padding: 1rem 2rem;
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: var(--radius-md);
   cursor: pointer;
   transition: background-color 0.3s, var(--transition-slide);
 }
@@ -489,7 +489,7 @@ p {
   font-weight: 600;
   padding: 1rem 2rem;
   border: 2px solid white;
-  border-radius: var(--border-radius);
+  border-radius: var(--radius-md);
   cursor: pointer;
   transition: background-color }
 
