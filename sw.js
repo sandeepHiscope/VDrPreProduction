@@ -1,1 +1,165 @@
-if(!self.define){let e,s={};const n=(n,i)=>(n=new URL(n+".js",i).href,s[n]||new Promise((s=>{if("document"in self){const e=document.createElement("script");e.src=n,e.onload=s,document.head.appendChild(e)}else e=n,importScripts(n),s()})).then((()=>{let e=s[n];if(!e)throw new Error(`Module ${n} didn’t register its module`);return e})));self.define=(i,r)=>{const o=e||("document"in self?document.currentScript.src:"")||location.href;if(s[o])return;let l={};const a=e=>n(e,o),t={module:{uri:o},exports:l,require:a};s[o]=Promise.all(i.map((e=>t[e]||a(e)))).then((e=>(r(...e),l)))}}define(["./workbox-9744ce2b"],(function(e){"use strict";self.skipWaiting(),e.clientsClaim(),e.precacheAndRoute([{url:"assets/applestore-Cu7mKKom.png",revision:null},{url:"assets/appoitment1-CkQvwIf7.png",revision:null},{url:"assets/Cardiologist-cZ8iY0U0.png",revision:null},{url:"assets/Dentist-CsosU8cD.png",revision:null},{url:"assets/Dermatologist-Dbut2G6o.png",revision:null},{url:"assets/Diagnostics-CgRycQes.png",revision:null},{url:"assets/docRegister-BG5kZBsZ.png",revision:null},{url:"assets/doctor-C170axdU.png",revision:null},{url:"assets/Gastrologist-yhLMSjSy.png",revision:null},{url:"assets/general physicians-CTDpYPjJ.png",revision:null},{url:"assets/googleplay-BUhxKhMk.png",revision:null},{url:"assets/gynaecologist-B3aEz_7L.png",revision:null},{url:"assets/index-BGyk2M7Q.js",revision:null},{url:"assets/index-Dt3uUGhs.css",revision:null},{url:"assets/microInsuranceImg-D1RAtdya.png",revision:null},{url:"assets/Neurologist-bHPvFUm_.png",revision:null},{url:"assets/Orthopedist-BRUvIPWT.png",revision:null},{url:"assets/patientrecord-Bye-QaUA.png",revision:null},{url:"assets/Pediatrician-Dtvqwu-z.png",revision:null},{url:"assets/physiotherapist-CXqDCq7f.png",revision:null},{url:"assets/pulmonologist-Cd-4V-Mj.png",revision:null},{url:"assets/VDrlogo-CRW56y9G.png",revision:null},{url:"assets/VDrlogoBg-PYm9THcq.png",revision:null},{url:"assets/workbox-window.prod.es5-B9K5rw8f.js",revision:null},{url:"icons/android-chrome-192x192.png",revision:"a98e716193a70fee6ce925b43643fb0f"},{url:"icons/android-chrome-512x512.png",revision:"ba17ec6cb838046745a28968d4b6bb01"},{url:"icons/apple-touch-icon.png",revision:"221003bd3d3c8dd1f894f3317357338f"},{url:"icons/VDr copy.svg",revision:"d8529e8bba4e2d8d9df038710158b750"},{url:"icons/VDr-96x96.png",revision:"2932fc20bb38b6a2a95ec6974f154a6a"},{url:"icons/vdr.ico",revision:"42daeed8fb7e3e65f07acbb3f090812a"},{url:"icons/vdr.svg",revision:"d8529e8bba4e2d8d9df038710158b750"},{url:"icons/web-app-manifest-192x192.png",revision:"f0a99780c7a458ab16a8a2169fa3914e"},{url:"icons/web-app-manifest-512x512.png",revision:"764266f632c23d9e53271d9a73b09852"},{url:"index.html",revision:"ef95cf36c029ac33f5edd6ece46e1b3c"},{url:"offline.html",revision:"6ce319106a4d8cd0ae5a0d08a07ae540"},{url:"sw.js",revision:"19c47baab57acac9132e889e598403af"},{url:"vdrDesk.png",revision:"111c4f1a43d90ae09261308b8c76c48e"},{url:"VDrlogo.png",revision:"ef1e3dffff6b95197e3972caea694c49"},{url:"vdrMobile.png",revision:"2058c82a3e38d571b05413b27d2f82f1"},{url:"offline.html",revision:"6ce319106a4d8cd0ae5a0d08a07ae540"},{url:"icons/web-app-manifest-192x192.png",revision:"f0a99780c7a458ab16a8a2169fa3914e"},{url:"icons/web-app-manifest-512x512.png",revision:"764266f632c23d9e53271d9a73b09852"},{url:"manifest.webmanifest",revision:"31009b24e79a3c2e02d294e8bed9364d"}],{}),e.cleanupOutdatedCaches(),e.registerRoute(new e.NavigationRoute(e.createHandlerBoundToURL("/index.html"),{denylist:[/^\/api\//]})),e.registerRoute(/^https:\/\/fonts\.googleapis\.com/,new e.StaleWhileRevalidate({cacheName:"google-fonts-stylesheets",plugins:[]}),"GET"),e.registerRoute(/^https:\/\/fonts\.gstatic\.com/,new e.CacheFirst({cacheName:"google-fonts-webfonts",plugins:[new e.ExpirationPlugin({maxEntries:30,maxAgeSeconds:31536e3})]}),"GET"),e.registerRoute((({request:e})=>"document"===e.destination),new e.NetworkFirst({cacheName:"pages",plugins:[new e.ExpirationPlugin({maxEntries:50,maxAgeSeconds:604800})]}),"GET"),e.registerRoute((({request:e})=>["style","script","worker"].includes(e.destination)),new e.StaleWhileRevalidate({cacheName:"assets",plugins:[new e.ExpirationPlugin({maxEntries:100,maxAgeSeconds:2592e3})]}),"GET"),e.registerRoute((({url:e})=>e.origin===self.location.origin&&e.pathname.endsWith(".png")),new e.CacheFirst({cacheName:"images",plugins:[new e.ExpirationPlugin({maxEntries:50,maxAgeSeconds:2592e3})]}),"GET")}));
+import { precacheAndRoute } from 'workbox-precaching';
+
+// Injects manifest from VitePWA plugin
+precacheAndRoute(self.__WB_MANIFEST);
+
+const CACHE_NAME = 'healthcare-pwa-cache-v1';
+const urlsToCache = [
+  '/',
+  '/index.html',
+  '/App.jsx',
+  '/main.jsx',
+  '/index.css',
+  '/assets/logo.png', // Your static assets
+  '/assets/logo.png',
+  '/assets/icons/healthcare-icon.png',
+  '/assets/icons/healthcare-badge.png',
+  '/offline.html',  // Ensure offline access to a fallback page
+  // Add more files as needed
+];
+
+// Install Service Worker
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then((cache) => {
+        console.log('Service Worker: Caching static assets');
+        return cache.addAll(urlsToCache);
+      })
+  );
+});
+
+// Activate Service Worker
+self.addEventListener('activate', (event) => {
+  const cacheWhitelist = [CACHE_NAME];
+  
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (!cacheWhitelist.includes(cacheName)) {
+            console.log('Service Worker: Deleting old cache', cacheName);
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});
+
+// Fetch event (offline-first caching strategy)
+self.addEventListener('fetch', (event) => {
+  if (event.request.url.includes('/api/')) {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          const clonedResponse = response.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, clonedResponse);
+          });
+          return response;
+        })
+        .catch(() => {
+          return caches.match(event.request);
+        })
+    );
+  } else {
+    event.respondWith(
+      caches.match(event.request)
+        .then((cachedResponse) => {
+          return cachedResponse || fetch(event.request);
+        })
+    );
+  }
+});
+
+// Background Sync Example (to handle failed API calls when offline)
+self.addEventListener('sync', (event) => {
+  if (event.tag === 'sync-api-calls') {
+    event.waitUntil(
+      console.log('Syncing failed API calls...')
+    );
+  }
+});
+
+// Push Notifications Example
+self.addEventListener('push', (event) => {
+  const title = event.data ? event.data.text() : 'Healthcare Update';
+  const options = {
+    body: 'You have an update in your healthcare app.',
+    icon: '/assets/icons/healthcare-icon.png',
+    badge: '/assets/icons/healthcare-badge.png',
+  };
+
+  event.waitUntil(
+    self.registration.showNotification(title, options)
+  );
+});
+
+// Workbox Precaching and Routing
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.0.0/workbox-sw.js');
+
+if (workbox) {
+  workbox.skipWaiting();
+  workbox.clientsClaim();
+
+  // Precache assets (images and routes)
+  workbox.precaching.precacheAndRoute([
+    { url: '/index.html', revision: 'ef95cf36c029ac33f5edd6ece46e1b3c' },
+    { url: '/offline.html', revision: '6ce319106a4d8cd0ae5a0d08a07ae540' },
+    { url: '/assets/logo.png', revision: 'a98e716193a70fee6ce925b43643fb0f' },
+    { url: '/assets/icons/healthcare-icon.png', revision: 'b2b4e3f0fb1b54282f924cb3001c66e3' },
+    { url: '/assets/icons/healthcare-badge.png', revision: '4a5d2ef938bf90e242fa3e65f5b26fc9' },
+    // Add more static assets as needed
+  ]);
+
+  // Cache Google Fonts with Stale-While-Revalidate
+  workbox.routing.registerRoute(
+    /^https:\/\/fonts\.googleapis\.com/,
+    new workbox.strategies.StaleWhileRevalidate({
+      cacheName: 'google-fonts-stylesheets',
+    })
+  );
+
+  // Cache images with CacheFirst strategy
+  workbox.routing.registerRoute(
+    ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.png'),
+    new workbox.strategies.CacheFirst({
+      cacheName: 'images',
+      plugins: [
+        new workbox.expiration.ExpirationPlugin({
+          maxEntries: 50,
+          maxAgeSeconds: 2592e3,
+        }),
+      ],
+    })
+  );
+
+  // Cache JavaScript, CSS, and other assets with Stale-While-Revalidate
+  workbox.routing.registerRoute(
+    ({ request }) => ['style', 'script', 'worker'].includes(request.destination),
+    new workbox.strategies.StaleWhileRevalidate({
+      cacheName: 'assets',
+      plugins: [
+        new workbox.expiration.ExpirationPlugin({
+          maxEntries: 100,
+          maxAgeSeconds: 2592e3,
+        }),
+      ],
+    })
+  );
+
+  // Cache pages with NetworkFirst strategy
+  workbox.routing.registerRoute(
+    ({ request }) => request.destination === 'document',
+    new workbox.strategies.NetworkFirst({
+      cacheName: 'pages',
+      plugins: [
+        new workbox.expiration.ExpirationPlugin({
+          maxEntries: 50,
+          maxAgeSeconds: 604800, // 1 week
+        }),
+      ],
+    })
+  );
+}
