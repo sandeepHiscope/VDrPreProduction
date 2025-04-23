@@ -1,88 +1,33 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ScrollingCardsContainer.css";
-import doctorCategories from "../data/doctorCategories";
+import cardsData from "../data/cardsData";
 
 export default function ScrollingCardsContainer() {
-  const containerRef = useRef(null);
-  const cardRef = useRef(null);
-  const autoScrollInterval = useRef(null);
-  const [isHovering, setIsHovering] = useState(false);
+  const [paused, setPaused] = useState(false);
 
-  useEffect(() => {
-    startAutoScroll();
-    return () => stopAutoScroll();
-  }, []);
-
-  const getCardFullWidth = () => {
-    return cardRef.current?.getBoundingClientRect().width || 0;
-  };
-
-  const startAutoScroll = () => {
-    stopAutoScroll(); // Clear previous interval
-    autoScrollInterval.current = setInterval(() => {
-      if (!isHovering && containerRef.current && cardRef.current) {
-        const container = containerRef.current;
-        const cardWidth = getCardFullWidth();
-
-        // Reset if near end
-        if (
-          container.scrollLeft + container.offsetWidth >=
-          container.scrollWidth - cardWidth
-        ) {
-          container.scrollTo({ left: 0, behavior: "auto" });
-        } else {
-          container.scrollBy({ left: cardWidth, behavior: "smooth" });
-        }
-      }
-    }, 1000);
-  };
-
-  const stopAutoScroll = () => {
-    if (autoScrollInterval.current) {
-      clearInterval(autoScrollInterval.current);
-    }
-  };
-
-  const scroll = (direction) => {
-    if (!containerRef.current || !cardRef.current) return;
-    const cardWidth = getCardFullWidth();
-    containerRef.current.scrollBy({
-      left: direction === "left" ? -cardWidth : cardWidth,
-      behavior: "smooth",
-    });
-  };
+  // You can tweak this speed factor (in seconds per card)
+  const secondsPerCard = 1;
+  const totalCards = cardsData.length * 3; // because we are doubling cards
+  const totalDuration = totalCards * secondsPerCard;
 
   return (
-    <div className="scrollingCardsContainer">
-      <button className="scroll-btn left" onClick={() => scroll("left")}>◀</button>
+    <div
+      className={`slider-container ${paused ? "paused" : ""}`}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    > 
       <div
-        className="cards-container"
-        ref={containerRef}
-        onMouseEnter={() => {
-          setIsHovering(true);
-          stopAutoScroll();
-        }}
-        onMouseLeave={() => {
-          setIsHovering(false);
-          startAutoScroll();
-        }}
+        className="slider-track"
+        style={{ animationDuration: `${totalDuration}s` }}
       >
-        {doctorCategories.map((product, index) => (
-          <div
-            className="scrollingcard"
-            key={index}
-            ref={index === 0 ? cardRef : null}
-          >
-            <img src={product.image} alt={product.name} className="product-image" />
-            <div className="card-content">
-              <h3>{product.name}</h3>
-              <p>{product.description}</p>
-              <p>₹{product.price}</p>
-            </div>
+        <h1>Doctors Based on Your Needs</h1>
+        {[...cardsData, ...cardsData].map((card, i) => (
+          <div className="ScrollingCard" key={i}>
+            <img src={card.img} alt={card.title} />
+            <h3 className="cardTitle">{card.title}</h3>
           </div>
         ))}
       </div>
-      <button className="scroll-btn right" onClick={() => scroll("right")}>▶</button>
     </div>
   );
 }

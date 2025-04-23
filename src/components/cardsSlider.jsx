@@ -41,12 +41,13 @@ const CardsSlider = () => {
       <div className="slider-container" ref={scrollRef}>
         {cardsData.map((item, index) => (
           <div className="slide-item" key={index}>
-            <div className="slide-title">{item.title}</div>
             <img src={item.img} alt={item.title} />
-            <div className="slide-description">{item.description}</div>
+            <div className="slide-title">{item.title}</div>
+
+            <div className="slide-description">{item.description}</div> {/* Un-commented the description */}
             <div className="slide-buttons">
-              <button className="online-button">Online</button>
-              <button className="clinic-button">Clinic</button>
+              {/* <button className="online-button">Online</button>
+              <button className="clinic-button">Clinic</button> */}
             </div>
           </div>
         ))}

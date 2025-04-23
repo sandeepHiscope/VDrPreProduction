@@ -4,13 +4,13 @@ body {
   padding: 0;
   overflow-x: hidden;
 }
-
+ 
 .expert-slider-section {
   position: relative;
   padding: 2em 0;
   width: 100%;
   overflow: hidden;
-  background-color: #fff;
+  background-color: #d4ed7b;
   box-sizing: border-box;
 }
 
@@ -41,6 +41,7 @@ body {
   padding: 1rem;
   box-sizing: border-box;
   max-width: 100%;
+  background: #aaf6c1;
 }
 
 .slider-container::-webkit-scrollbar {
