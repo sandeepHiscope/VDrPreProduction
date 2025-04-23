@@ -13,6 +13,7 @@ import "./docDashboard.css"
 
 
 
+
 const menuItems = [
   { name: "Dashboard", icon: <Calendar className="w-5 h-5 text-neutral-900" /> },
   { name: "Appointments", icon: <Clock className="w-5 h-5  text-neutral-900" /> },
@@ -26,6 +27,11 @@ const menuItems = [
 
 const DocDashboard = () => {
   const [activePage, setActivePage] = useState("Dashboard");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   // Mock data for the dashboard
   const upcomingAppointments = [
@@ -808,94 +814,139 @@ const DocDashboard = () => {
   return (
     // {sidepanel}
     <div className="flex h-screen bg-gray-50">
-      <div className="w-24 sm:w-60 bg-white shadow-lg flex flex-col h-full transition-all duration-300">
-    <div className="p-4 border-b flex items-center justify-center sm:justify-start">
-      <svg
-        viewBox="0 0 24 24"
-        width="24"
-        height="24"
-        stroke="currentColor"
-        strokeWidth="2"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="mr-0 sm:mr-2"
-      >
-        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-      </svg>
-      <span className="font-bold text-lg hidden sm:inline">Doctor</span>
-    </div>
+    <div
+className={`
+  bg-white shadow-lg flex flex-col transition-all duration-300
+  ${isSidebarOpen ? "w-60" : "w-12 sm:w-60"}
+  ${isSidebarOpen ? "fixed sm:relative top-129 z-50 sm:top-0 sm:z-auto" : "relative"}
+  h-full
+`}
+>
 
-    {/* Menu Items */}
-    <nav className="py-4 flex-grow">
-      <ul>
+
+      {/* Sidebar Header */}
+      <div className="p-4 border-b flex items-center justify-between sm:justify-start cursor-pointer">
+      <span
+  onClick={toggleSidebar}
+  className="cursor-pointer sm:inline block"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-6 h-6 text-gray-800"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth={2}
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+  </svg>
+</span>
+
+        <div className="flex items-center sm:block hidden ">
+          <svg
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            stroke="currentColor"
+            strokeWidth="2"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="mr-2"
+          >
+          </svg>
+  
+        </div>
+      </div>
+
+      {/* Menu Items */}
+      <nav className="py-4 ">
+        <ul>
         {menuItems.map((item) => (
-          <li key={item.name}>
-            <button
-              onClick={() => setActivePage(item.name)}
-              className={`group flex items-center px-4 py-3 w-full text-left transition-all duration-200 ${
-                activePage === item.name
-                  ? "bg-blue-50 text-blue-600 border-r-4 border-blue-600"
-                  : "text-gray-600 hover:bg-gray-100"
-              }`}
-            >
-              <span className="mr-0 sm:mr-3 transition-all duration-200 group-hover:text-blue-600 group-hover:scale-110">
-                {item.icon}
-              </span>
-              <span className="hidden sm:inline transition-colors duration-200 group-hover:text-blue-600">
-                {item.name}
-              </span>
-            </button>
-          </li>
-        ))}
-      </ul>
-    </nav>
-
-    {/* Footer */}
-    <div className="mt-auto border-t text-neutral-900">
-      <button
-        onClick={() => setActivePage("Profile")}
-        className={`group flex items-center px-4 py-3 w-full text-left transition-all duration-200 ${
-          activePage === "Profile"
-            ? "bg-blue-50 text-blue-600 border-r-4 border-blue-600"
-            : "text-gray-600 hover:bg-gray-100"
+  <li key={item.name}>
+    <button
+      onClick={() => {
+        setActivePage(item.name); // Set the active page
+        if (window.innerWidth < 640) {
+          setIsSidebarOpen(false); // Close sidebar if screen width is mobile (<640px)
+        }
+      }}
+      className={`group flex items-center px-2 py-3 w-full text-left transition-all duration-200 ${
+        activePage === item.name
+          ? "bg-blue-50 text-blue-600 border-r-4 border-blue-600"
+          : "text-gray-600 hover:bg-gray-100"
+      }`}
+    >
+      <span className="mr-3 group-hover:text-blue-600 group-hover:scale-110">
+        {item.icon}
+      </span>
+      <span
+        className={`transition-all group-hover:text-blue-600 ${
+          !isSidebarOpen && "hidden sm:inline"
         }`}
       >
-        <span className="mr-0 sm:mr-3 transition-all duration-200 group-hover:text-blue-600 group-hover:scale-110">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-            />
-          </svg>
-        </span>
-        <span className="hidden sm:inline group-hover:text-blue-600">Profile</span>
-      </button>
+        {item.name}
+      </span>
+    </button>
+  </li>
+))}
 
-      <button
-        onClick={() => alert("Logged out successfully")}
-        className="group flex items-center px-4 py-3 w-full text-left text-black hover:bg-gray-100 transition-all duration-200"
-      >
-        <span className="mr-0 sm:mr-3 transition-all duration-200 group-hover:text-red-600 group-hover:scale-110">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-            />
-          </svg>
-        </span>
-        <span className="hidden sm:inline group-hover:text-red-600">Logout</span>
-      </button>
+        </ul>
+      </nav>
+
+      {/* Footer */}
+      <div className="mt-auto border-t text-neutral-900">
+        <button
+          onClick={() => setActivePage("Profile")}
+          className={`group flex items-center px-4 py-3 w-full text-left transition-all duration-200 ${
+            activePage === "Profile"
+              ? "bg-blue-50 text-blue-600 border-r-4 border-blue-600"
+              : "text-gray-600 hover:bg-gray-100"
+          }`}
+        >
+          <span className="mr-0 sm:mr-3 transition-all duration-200 group-hover:text-blue-600 group-hover:scale-110">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+              />
+            </svg>
+          </span>
+          <span
+            className={`hidden sm:inline transition-colors duration-200 group-hover:text-blue-600 ${!isSidebarOpen && "hidden"}`}
+          >
+            Profile
+          </span>
+        </button>
+
+        <button
+          onClick={() => alert("Logged out successfully")}
+          className="group flex items-center px-4 py-3 w-full text-left text-black hover:bg-gray-100 transition-all duration-200"
+        >
+          <span className="mr-0 sm:mr-3 transition-all duration-200 group-hover:text-red-600 group-hover:scale-110">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+              />
+            </svg>
+          </span>
+          <span
+            className={`hidden sm:inline transition-colors duration-200 group-hover:text-red-600 ${!isSidebarOpen && "hidden"}`}
+          >
+            Logout
+          </span>
+        </button>
+      </div>
     </div>
-  </div>
 
-  {/* Main content */}
-  <div className="flex-1 overflow-auto">{renderContent()}</div>
-</div>
+    {/* Main content */}
+    <div className="flex-1 overflow-auto">{renderContent()}</div>
+  </div>
 
   );
 };
