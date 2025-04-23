@@ -2,6 +2,7 @@
   .doctor-card1 {
     max-width: 800px;
     height: auto;
+
     margin: 60px auto;
     padding: 2rem 1.5rem 1.5rem;
     border-radius: 12px;
@@ -113,7 +114,7 @@
     background-color: #4caf50;
     color: white;
     cursor: pointer;
-    transition: background 0.2s;
+    transition:--transition-background-color 0.2s;
   }
 
   .rate-btn1 {
@@ -128,7 +129,7 @@
     background-color: #4caf50;
     color: white;
     cursor: pointer;
-    transition: background 0.2s;
+  --transition-background-color: background-color 0.3s ease;
   }
   
   .book-btn:hover,

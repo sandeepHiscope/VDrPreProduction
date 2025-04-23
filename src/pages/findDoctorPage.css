@@ -140,8 +140,7 @@
   color: white;
   width: 20px;
   border: none;
-  padding: 10px;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   cursor: pointer;
     transition: background-color 0.3s;
   margin-top: 200px; /* Align button to the bottom of the card */
@@ -150,7 +149,7 @@
 }
 
 .book-btn:hover {
-  background-color: #45a049;
+  background-color: var(--color-accent-hover);
 }
 
 /* No Results Message */
@@ -216,7 +215,7 @@
     /* text-align: center; */
   }
   .book-btn {
-    background-color: #3864c9;
+    background-color:var(--color-accent);
     width: 30%;
     font-size: auto;
     /* margin-top: center; */
@@ -291,7 +290,7 @@
   }
 
   .book-btn {
-    background-color: #4238c9;
+    background-color: var(--color-accent);
     width: 60%;
     margin-left: 25%;
     align-content: center;

@@ -7,46 +7,53 @@ import { IoReorderThreeOutline } from "react-icons/io5";
 import { ImCross } from "react-icons/im";
 import { Home, Search, Shield, Bell, ShoppingBag, User, ShieldQuestion } from "lucide-react";
 import { icon } from "@fortawesome/fontawesome-svg-core";
+import { FaUserDoctor } from "react-icons/fa6";
+
 
 const NAV_LINKS = [
   {
     to: "/findDoctorPage",
     label: "Find a Doctor",
-    icon: <Search className="icon w-5 h-5 mr-2 text-neutral-900" />,
+    icon: <Search className="headericons" />,
   },
   {
     to: "/verifyDoc",
-    label: "Verify Doc",
+    label: "Scan Doc",
     icon: <Shield className="icon w-5 h-5 mr-2 text-neutral-900" />,
   },
   {
     to: "/sosPage",
     label: "SOS",
-    icon: <Bell className="icon w-5 h-5 mr-2 text-neutral-900" />,
+    icon: <Bell className="headericons" />,
     className: "sos-link",
   },
   
   {
     to: "/whyVDr",
     label: "Why VDr",
-     icon: <ShieldQuestion className="icon w-5 h-5 mr-2 text-neutral-900" />,
+
+    icon: <ShieldQuestion className="headericons" />,
+    external: true,
+
   },
   {
     href: "https://vdr-door-delivery-medicines.netlify.app/",
     label: "Doorstep Meds",
-    icon: <ShoppingBag className="icon w-5 h-5 mr-2 text-neutral-900" />,
+    icon: <ShoppingBag className="headericons" />,
     external: true,
   },
   {
     href: "https://vdr-insurance.netlify.app/",
     label: "Insurance",
-    icon: <Shield className="icon w-5 h-5 mr-2 text-neutral-900" />,
+    icon: <Shield className="headericons" />,
     external: true,
   },
 
   {
     to: "/docDashboard",
     label: "DocDashboard",
+    icon:<FaUserDoctor  className="headericons"/>
+
   },
 ];
 
