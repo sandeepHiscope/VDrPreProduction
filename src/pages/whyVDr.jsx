@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './whyVDr.css';
 import FounderPage from "./ourFoundersPage"
 import tempImg from "../assets/Images/foundersImg/kiran.jpg"
-import tempDoc from "../assets/Images/headerImages/docImg3.jpg"
+// import tempDoc from "../assets/Images/headerImages/docImg3.jpg"
+import tempDoc from "../assets/Images/headerImages/doc1.jpg"
 
 const WhyVDr = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
