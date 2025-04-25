@@ -30,12 +30,12 @@ const NAV_LINKS = [
     icon: <Shield className="headericons" />,
 
   },
-  {
-    to: "/whyVDr",
-    label: "Why VDr",
+  // {
+  //   to: "/whyVDr",
+  //   label: "Why VDr",
 
-    icon: <ShieldQuestion className="headericons" />,
-  },
+  //   icon: <ShieldQuestion className="headericons" />,
+  // },
   {
     to: "/sosPage",
     label: "SOS",
