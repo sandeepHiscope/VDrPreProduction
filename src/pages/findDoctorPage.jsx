@@ -4,9 +4,34 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./findDoctorPage.css";
 import indianStates from "../data/indianStates";
 import doctorDetails from "../data/doctorDetails";
-import defaultUser from "../assets/Images/commonImg/VDrlogo.png"; 
+import defaultUser from "../assets/Images/commonImg/VDrlogo.png";
 
 const GET_DOCTOR_API_URL = "http://localhost:8080/api/doctorsverification/all";
+
+// Mapping for fuzzy match
+const specialityKeywords = {
+  Cardiologist: ["cardiologist", "cardiology", "heart"],
+  Dentist: ["dentist", "dental", "teeth"],
+  Gynaecologist: ["gynaecologist", "gynecology", "obgyn"],
+  Dermatologist: ["dermatologist", "skin"],
+  Neurologist: ["neurologist", "neuro"],
+  Orthopedist: ["orthopedist", "orthopedic", "bones"],
+  Pediatrician: ["pediatrician", "child"],
+  Pulmonologist: ["pulmonologist", "lungs", "respiratory"],
+  Gastroenterologist: ["gastroenterologist", "gastro", "digestive"],
+  Physiotherapist: ["physiotherapist", "physio"],
+  "General Physician": ["general physician", "physician", "gp"],
+  Diagnostics: ["diagnostics", "lab"]
+};
+
+const normalize = (str) => str?.toString().trim().toLowerCase() || "";
+
+const matchSpeciality = (doctorSpeciality, searchQuery) => {
+  const normDoctor = normalize(doctorSpeciality);
+  const normSearch = normalize(searchQuery);
+  const keywords = specialityKeywords[normSearch] || [normSearch];
+  return keywords.some((keyword) => normDoctor.includes(keyword));
+};
 
 const FindDoctorPage = () => {
   const navigate = useNavigate();
@@ -27,7 +52,6 @@ const FindDoctorPage = () => {
         const response = await fetch(GET_DOCTOR_API_URL);
         const data = await response.json();
         setDoctors(data);
-        console.log("Fetched doctors:", data);
       } catch (error) {
         console.error("Error fetching doctors:", error);
       } finally {
@@ -49,15 +73,14 @@ const FindDoctorPage = () => {
   const filteredDoctors = [
     ...doctors.filter(
       (doctor) =>
-        doctor.medicalSpeciality.toLowerCase().includes(searchQuery.toLowerCase()) &&
-        (selectedState === "" || doctor.state?.toLowerCase() === selectedState.toLowerCase())
+        matchSpeciality(doctor.medicalSpeciality, searchQuery) &&
+        (selectedState === "" || normalize(doctor.state) === normalize(selectedState))
     ),
     ...doctorDetails
       .filter(
         (doc) =>
-          typeof doc.speciality === "string" &&
-          doc.speciality.toLowerCase().includes(searchQuery.toLowerCase()) &&
-          (selectedState === "" || (doc.Address && doc.Address.toLowerCase().includes(selectedState.toLowerCase())))
+          matchSpeciality(doc.speciality, searchQuery) &&
+          (selectedState === "" || normalize(doc.Address).includes(normalize(selectedState)))
       )
       .map((doc, index) => ({
         id: `dummy-${index}`,
@@ -110,7 +133,11 @@ const FindDoctorPage = () => {
             <p>Loading doctors...</p>
           ) : filteredDoctors.length > 0 ? (
             filteredDoctors.map((doctor) => (
-              <div key={doctor.id} className="doctor-card" onClick={() => doctorProfile(doctor)}>
+              <div
+                key={doctor.id}
+                className="doctor-card"
+                onClick={() => doctorProfile(doctor)}
+              >
                 <img
                   src={
                     doctor.doctorPhoto
@@ -122,19 +149,17 @@ const FindDoctorPage = () => {
                 />
                 <div className="doctor-info">
                   <h3>Dr. {doctor.fullName.toUpperCase()}</h3>
-                  <p><strong>Specialty: </strong> {doctor.medicalSpeciality}</p>
-                  <p><strong>Experience: </strong> {doctor.experience} years</p>
-                  <p><strong>Location: </strong> {doctor.city}, {doctor.state}, {doctor.country}</p>
-                  <p><strong>Hospital: </strong> {doctor.hospitalCurrentWorking}</p>
-                  <p><strong>License: </strong> {doctor.medicalLicenseNumber}</p>
+                  <p><strong>Specialty:</strong> {doctor.medicalSpeciality}</p>
+                  <p><strong>Experience:</strong> {doctor.experience} years</p>
+                  <p><strong>Location:</strong> {doctor.city}, {doctor.state}, {doctor.country}</p>
+                  <p><strong>Hospital:</strong> {doctor.hospitalCurrentWorking}</p>
+                  <p><strong>License:</strong> {doctor.medicalLicenseNumber}</p>
                 </div>
                 <button className="book-btn">Book Appointment</button>
               </div>
             ))
           ) : (
-            <p className="no-results">
-              No doctors found. Please refine your search.
-            </p>
+            <p className="no-results">No doctors found. Please refine your search.</p>
           )}
         </div>
       </div>

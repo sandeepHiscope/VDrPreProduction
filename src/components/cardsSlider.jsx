@@ -9,9 +9,7 @@ const CardsSlider = () => {
   const navigate = useNavigate();
 
   const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -300, behavior: "smooth" });
-    }
+    scrollRef.current?.scrollBy({ left: -300, behavior: "smooth" });
   };
 
   const scrollRight = () => {
