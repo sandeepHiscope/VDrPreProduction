@@ -680,19 +680,19 @@ label {
   border: 1px solid #e5e7eb;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
   /* padding: 32px; */
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease in-out;
   /* max-width: 90vw; */
   width: 81vw;
   align-items: center;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
 
 }
 
-.download-section:hover{
+/* .download-section:hover{
   transform: scale(1.03);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
-}
+} */
 @media(max-width:1100px){
   .opinion-slides{
     font-size: 25px;

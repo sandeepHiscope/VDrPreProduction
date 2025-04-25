@@ -19,8 +19,21 @@ const NAV_LINKS = [
   {
     to: "/verifyDoc",
     label: "Scan Doc",
+<<<<<<< Updated upstream
     icon: <Shield className="icon w-5 h-5 mr-2 text-neutral-900" />,
   },
+=======
+
+    icon: <Shield className="headericons" />,
+
+  },
+  // {
+  //   to: "/whyVDr",
+  //   label: "Why VDr",
+
+  //   icon: <ShieldQuestion className="headericons" />,
+  // },
+>>>>>>> Stashed changes
   {
     to: "/sosPage",
     label: "SOS",

@@ -1,7 +1,7 @@
 const DoctorDetails = [
     {
       "name": "A-02130936-Tharun Tharun",
-      "speciality": "Paediatric",
+      "speciality": "Cardiologist",
       "locality": "LB Nagar",
       "Address": "Samraksha hospital, Chaitanyapuri, Telangana, 500060.0",
       "phone": NaN,
@@ -9,7 +9,7 @@ const DoctorDetails = [
     },
     {
       "name": "A-02130938-Pavan Kumar Pavan Kumar",
-      "speciality": "GP",
+      "speciality": "Gastroenterologist",
       "locality": "LB Nagar",
       "Address": "Sri Sai Balaji hospital, Chaitanyapuri, Telangana, 500060.0",
       "phone": NaN,
@@ -17,7 +17,7 @@ const DoctorDetails = [
     },
     {
       "name": "A-02130940-Vamshi Krishna Vamshi Krishna",
-      "speciality": "Ortho",
+      "speciality": "Gastroenterologist",
       "locality": "LB Nagar",
       "Address": "Omni hospital, Chaitanyapuri, Telangana, 500060.0",
       "phone": NaN,
@@ -25,7 +25,7 @@ const DoctorDetails = [
     },
     {
       "name": "A-02191280-Krishna Chaitanya Doctor",
-      "speciality": "GP",
+      "speciality": "Dentist",
       "locality": "LB Nagar",
       "Address": "Kamineni Hospital, Inner Ring Rd, Suryodaya Colony, Chaitanyapuri, Telangana, 500060.0",
       "phone": 8897656245.0,
@@ -33,7 +33,7 @@ const DoctorDetails = [
     },
     {
       "name": "A-02191281-Murali Gorati",
-      "speciality": "GP",
+      "speciality": "Dentist",
       "locality": "LB Nagar",
       "Address": "Kamineni Hospital, Inner Ring Rd, Suryodaya Colony, Chaitanyapuri, Telangana, 500060.0",
       "phone": 8008034622.0,

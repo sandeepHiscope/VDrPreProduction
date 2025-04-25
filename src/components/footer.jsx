@@ -45,6 +45,16 @@ const Footer = () => {
         </div>
         </div>
         </div>
+<<<<<<< Updated upstream
+=======
+        <div className="footer-contact">
+          <a href="tel:+1"><FaPhoneAlt /> +91 1234567890 </a>
+          <a href="mailto:support@verifieddoctor.com"><FaEnvelope /> support@verifieddoctor.com</a>
+        </div>
+      </div>
+
+    <p2 className="copyright">© 2025 Verified-Doctor. All rights reserved.</p2>
+>>>>>>> Stashed changes
     </footer>
   );
 };
