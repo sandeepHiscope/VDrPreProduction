@@ -1,3 +1,4 @@
+// src/pages/FindDoctorPage.js
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./findDoctorPage.css";
@@ -40,7 +41,7 @@ const FindDoctorPage = () => {
   const queryParams = new URLSearchParams(location.search);
   const specialityFromURL = queryParams.get("speciality") || "";
 
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(specialityFromURL);
   const [selectedState, setSelectedState] = useState("");
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -57,18 +58,17 @@ const FindDoctorPage = () => {
         setLoading(false);
       }
     };
-
     fetchDoctors();
   }, []);
 
   useEffect(() => {
-    if (!loading) {
+    if (specialityFromURL) {
       setSearchQuery(specialityFromURL);
       if (listRef.current) {
         listRef.current.scrollIntoView({ behavior: "smooth" });
       }
     }
-  }, [specialityFromURL, loading]);
+  }, [specialityFromURL]);
 
   const filteredDoctors = [
     ...doctors.filter(
@@ -114,7 +114,6 @@ const FindDoctorPage = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-
           <select
             className="state-dropdown"
             value={selectedState}
@@ -148,7 +147,6 @@ const FindDoctorPage = () => {
                   alt={`Dr. ${doctor.fullName}`}
                   className="doctor-image"
                 />
-
                 <div className="doctor-info">
                   <h3>Dr. {doctor.fullName.toUpperCase()}</h3>
                   <p><strong>Specialty:</strong> {doctor.medicalSpeciality}</p>

@@ -11,7 +11,7 @@ const DoctorDetails = [
       "name": "A-02130938-Pavan Kumar Pavan Kumar",
       "speciality": "Gastroenterologist",
       "locality": "LB Nagar",
-      "Address": "Sri Sai Balaji hospital, Chaitanyapuri, Telangana, 500060.0",
+      "Address": "Karnataka",
       "phone": NaN,
       "email": "dr.pavankumar04@gmail.com"
     },
@@ -19,7 +19,7 @@ const DoctorDetails = [
       "name": "A-02130940-Vamshi Krishna Vamshi Krishna",
       "speciality": "Gastroenterologist",
       "locality": "LB Nagar",
-      "Address": "Omni hospital, Chaitanyapuri, Telangana, 500060.0",
+      "Address": "Himachal Pradesh",
       "phone": NaN,
       "email": NaN
     },
@@ -27,7 +27,7 @@ const DoctorDetails = [
       "name": "A-02191280-Krishna Chaitanya Doctor",
       "speciality": "Dentist",
       "locality": "LB Nagar",
-      "Address": "Kamineni Hospital, Inner Ring Rd, Suryodaya Colony, Chaitanyapuri, Telangana, 500060.0",
+      "Address": "Madhya Pradesh",
       "phone": 8897656245.0,
       "email": "drchaitanyak9@gmail.com"
     },

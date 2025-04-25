@@ -8,18 +8,15 @@ export default defineConfig({
     react(),
     tailwindcss(),
     VitePWA({
-      registerType: "prompt", // Changed from autoUpdate to prompt for more control
-      injectRegister: "auto", // This will handle injection of register
-      filename: "sw.js", // Explicit filename
-      strategies: "generateSW", // Use the generateSW strategy
+      registerType: "autoUpdate", // Automatically updates without user prompt
+      injectRegister: "auto", // Automatically injects registration code
+      strategies: "generateSW", // Let Workbox generate the service worker
       includeAssets: [
         "favicon.svg",
         "robots.txt",
         "offline.html",
         "icons/web-app-manifest-192x192.png",
         "icons/web-app-manifest-512x512.png",
-        "screenshots/desktop.png",
-        "screenshots/mobile.png",
       ],
       manifest: {
         name: "Verified Doctor App",
@@ -67,11 +64,10 @@ export default defineConfig({
         ],
       },
       workbox: {
-        swDest: "sw.js", // Ensure the service worker is generated at the root
-        globDirectory: "dist", // Output directory
+        globDirectory: "dist",
         globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
-        navigateFallback: "/index.html", // Fallback for SPA
-        navigateFallbackDenylist: [/^\/api\//], // Don't fallback API routes
+        navigateFallback: "/index.html",
+        navigateFallbackDenylist: [/^\/api\//],
         skipWaiting: true,
         clientsClaim: true,
         runtimeCaching: [
