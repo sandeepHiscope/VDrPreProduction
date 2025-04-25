@@ -1,11 +1,6 @@
-<<<<<<< Updated upstream
-import React, { useState, useEffect } from "react";
-=======
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
->>>>>>> Stashed changes
 import "./findDoctorPage.css";
-import { useNavigate } from "react-router-dom";
 import indianStates from "../data/indianStates";
 import doctorDetails from "../data/doctorDetails";
 import defaultUser from "../assets/Images/commonImg/VDrlogo.png";
@@ -38,8 +33,6 @@ const matchSpeciality = (doctorSpeciality, searchQuery) => {
 };
 
 const FindDoctorPage = () => {
-<<<<<<< Updated upstream
-=======
   const navigate = useNavigate();
   const location = useLocation();
   const listRef = useRef(null);
@@ -47,12 +40,10 @@ const FindDoctorPage = () => {
   const queryParams = new URLSearchParams(location.search);
   const specialityFromURL = queryParams.get("speciality") || "";
 
->>>>>>> Stashed changes
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedState, setSelectedState] = useState("");
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDoctors = async () => {
@@ -70,8 +61,6 @@ const FindDoctorPage = () => {
     fetchDoctors();
   }, []);
 
-<<<<<<< Updated upstream
-=======
   useEffect(() => {
     if (!loading) {
       setSearchQuery(specialityFromURL);
@@ -81,7 +70,6 @@ const FindDoctorPage = () => {
     }
   }, [specialityFromURL, loading]);
 
->>>>>>> Stashed changes
   const filteredDoctors = [
     ...doctors.filter(
       (doctor) =>
@@ -109,7 +97,6 @@ const FindDoctorPage = () => {
         email: doc.email || "not mentioned"
       }))
   ];
-  
 
   const doctorProfile = (doctor) => {
     navigate(`/doctorID/${doctor.id}`, { state: { doctor } });
@@ -142,7 +129,7 @@ const FindDoctorPage = () => {
           </select>
         </div>
 
-        <div className="doctor-list">
+        <div className="doctor-list" ref={listRef}>
           {loading ? (
             <p>Loading doctors...</p>
           ) : filteredDoctors.length > 0 ? (

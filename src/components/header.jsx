@@ -5,10 +5,17 @@ import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
 import HeaderImages from "../data/headerImages";
 import { IoReorderThreeOutline } from "react-icons/io5";
 import { ImCross } from "react-icons/im";
-import { Home, Search, Shield, Bell, ShoppingBag, User, ShieldQuestion } from "lucide-react";
+import {
+  Home,
+  Search,
+  Shield,
+  Bell,
+  ShoppingBag,
+  User,
+  ShieldQuestion,
+} from "lucide-react";
 import { icon } from "@fortawesome/fontawesome-svg-core";
 import { FaUserDoctor } from "react-icons/fa6";
-
 
 const NAV_LINKS = [
   {
@@ -19,35 +26,21 @@ const NAV_LINKS = [
   {
     to: "/verifyDoc",
     label: "Scan Doc",
-<<<<<<< Updated upstream
     icon: <Shield className="icon w-5 h-5 mr-2 text-neutral-900" />,
   },
-=======
-
-    icon: <Shield className="headericons" />,
-
-  },
-  // {
-  //   to: "/whyVDr",
-  //   label: "Why VDr",
-
-  //   icon: <ShieldQuestion className="headericons" />,
-  // },
->>>>>>> Stashed changes
   {
     to: "/sosPage",
     label: "SOS",
     icon: <Bell className="headericons" />,
     className: "sos-link",
   },
-  
+
   {
     to: "/whyVDr",
     label: "Why VDr",
 
     icon: <ShieldQuestion className="headericons" />,
     external: true,
-
   },
   {
     href: "https://vdr-door-delivery-medicines.netlify.app/",
@@ -65,8 +58,7 @@ const NAV_LINKS = [
   {
     to: "/docDashboard",
     label: "DocDashboard",
-    icon:<FaUserDoctor  className="headericons"/>
-
+    icon: <FaUserDoctor className="headericons" />,
   },
 ];
 
