@@ -65,7 +65,7 @@ export default defineConfig({
       },
       workbox: {
         globDirectory: "dist",
-        globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
+        globPatterns: ["**/*.{js,css,html,ico,png,svg,jpg,jpeg,webp,avif}"],
         navigateFallback: "/index.html",
         navigateFallbackDenylist: [/^\/api\//],
         skipWaiting: true,
@@ -113,9 +113,11 @@ export default defineConfig({
             },
           },
           {
-            urlPattern: ({ url }) =>
-              url.origin === self.location.origin &&
-              url.pathname.endsWith(".png"),
+            // urlPattern: ({ url }) =>
+            //   url.origin === self.location.origin &&
+            //   url.pathname.endsWith(".png"),
+            urlPattern: ({ url, request }) =>
+              url.origin === self.location.origin && request.destination === "image",
             handler: "CacheFirst",
             options: {
               cacheName: "images",
