@@ -28,6 +28,7 @@ const VerifyDoc = () => {
       return false;
     }
   };
+  
 
   const handleNewScan = (data) => {
     setResult(data);

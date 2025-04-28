@@ -18,7 +18,7 @@ const WhyVDr = () => {
     const handleScroll = () => {
       setScrollPosition(window.scrollY);
     };
-    
+
 
     window.addEventListener('scroll', handleScroll);
     return () => {
@@ -96,7 +96,7 @@ const WhyVDr = () => {
           <div className="text-column">
             <h3>Our Vision</h3>
             <p>
-            We imagine a world where everyone can easily find and trust a good doctor. Our platform started with a simple but important question:
+            we imagine a world where everyone can easily find and trust a good doctor. Our platform started with a simple but important question:
             </p>
             <h4>
             How can we help people connect with doctors who are qualified, honest, and truly care?
