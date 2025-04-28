@@ -18,6 +18,7 @@ const WhyVDr = () => {
     const handleScroll = () => {
       setScrollPosition(window.scrollY);
     };
+    
 
     window.addEventListener('scroll', handleScroll);
     return () => {
@@ -95,14 +96,13 @@ const WhyVDr = () => {
           <div className="text-column">
             <h3>Our Vision</h3>
             <p>
-              We envision a world where everyone has access to trusted healthcare providers. 
-              Our platform was born from a single question: How can we ensure that patients 
-              connect with qualified, ethical, and trustworthy doctors?
+            We imagine a world where everyone can easily find and trust a good doctor. Our platform started with a simple but important question:
             </p>
+            <h4>
+            How can we help people connect with doctors who are qualified, honest, and truly care?
+            </h4>
             <p>
-              Founded by a team of healthcare professionals and technology experts who experienced 
-              firsthand the challenges of finding reliable medical care, we're committed to 
-              transforming the healthcare landscape.
+            Our team includes healthcare workers and tech experts who have faced the same struggles many people do—long searches, confusing choices, and worrying if a doctor is really the right one. That’s why we created this app.
             </p>
           </div>
           <div className="image-column">
