@@ -66,7 +66,7 @@
 
 .footer-icon:hover {
   transform: scale(1.2);
-  color: var(--color-accent);
+  color: var(--color-primary-hover);
 }
 
 /* Links Section */
@@ -78,7 +78,7 @@
 .footer-links h4 {
   font-size: 1.1rem;
   margin-bottom: 1rem;
-  color: #f1f5f9;
+  color:  var(--color-primary-text);
 }
 
 .footer-links ul {
@@ -90,13 +90,13 @@
 .footer-links ul li {
   margin-bottom: 0.5rem;
   font-size: 0.95rem;
-  color: #cbd5e1;
+  color:var(--color-primary);
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
 .footer-links ul li:hover {
-  color: #06d6a0;
+  color: var(--color-primary-hover);
 }
 
 /* Newsletter Subscription */
@@ -111,14 +111,14 @@
   margin: 0.5rem 0;
   border-radius: 5px;
   border: 1px solid #2d3748;
-  background-color: #2d3748;
-  color: #f9fafb;
+  background-color:var(--color-background-card);
+  color: var(--color-primary-text);
 }
 
 .footer-subscribe-button {
   width: 100%;
   padding: 0.75rem;
-  background-color: #06d6a0;
+  background-color: var(--color-accent);
   border: none;
   color: white;
   font-size: 1rem;
@@ -128,7 +128,7 @@
 }
 
 .footer-subscribe-button:hover {
-  background-color: #02a99b;
+  background-color: var(--color-accent-hover);
 }
 
 /* Footer Bottom Section */
@@ -152,13 +152,13 @@
 /* Contact Info Links */
 .footer-contact a {
   display: block;
-  color: #94a3b8;
+  color: var(--color-primary-text );
   margin-top: 0rem;
   text-decoration: none;
 }
 
 .footer-contact a:hover {
-  color: #06d6a0;
+  color: var(--color-primary-hover);
 }
 
 /* Back to Top Button */
@@ -167,7 +167,7 @@
   bottom: 20px;
   right: 20px;
   font-size: 2rem;
-  background: #06d6a0;
+  background: var(--color-accent);
   color: white;
   padding: 0.5rem;
   border-radius: 50%;
@@ -205,7 +205,7 @@
 }
 .footer-iconarrow:hover {
   transform: scale(1.2);
-  color: #06d6a0;
+  color: var(--color-primary-hover);
 }
 .copyright{
   margin-left: 40%;
