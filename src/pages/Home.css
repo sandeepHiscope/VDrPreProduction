@@ -803,8 +803,9 @@ label {
 
 .categoriesSection {
   text-align: center;
-  padding: 40px 20px;
+  padding: 20px;
   width: 90%;
+  margin: 0;
 }
 
 .categoryList {

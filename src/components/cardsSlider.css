@@ -1,9 +1,7 @@
-/* Prevent global horizontal overflow */
 
 
 .expert-slider-section {
   position: relative;
-  padding: 2em 0;
   width: 97%;
   overflow: hidden;
   /* background-color: #d4ed7b; */
@@ -42,7 +40,8 @@
   overflow-x: hidden;
   scroll-behavior:smooth;
 
-  transition: ease-in-out 1sec;
+  transition: ease-in-out 1s;
+  
 }
 
 .slider-container::-webkit-scrollbar {
