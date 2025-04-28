@@ -102,8 +102,21 @@ const WhyVDr = () => {
             How can we help people connect with doctors who are qualified, honest, and truly care?
             </h4>
             <p>
-            Our team includes healthcare workers and tech experts who have faced the same struggles many people do—long searches, confusing choices, and worrying if a doctor is really the right one. That’s why we created this app.
+            Our team includes healthcare workers and tech experts who have faced the same struggles many people do—long searches, confusing choices, and worrying if a doctor is really the right one. That’s why we created VDr.
             </p>
+            <h5>
+            Here’s why people use it:
+
+            </h5>
+            <p>-To find trusted doctors faster, without spending hours searching or guessing.</p> 
+            <p> -To read honest from real patients who have been there.</p>
+            <p> -To book appointments easily, with just a few taps—no waiting on hold.</p>
+           <p>-To feel confident knowing their doctor is verified and qualified.</p>
+           <p>-To save time, stress, and avoid bad experiences with the wrong care.</p>
+           <p>-The app patients trust — when it matters most.
+           </p>
+
+            
           </div>
           <div className="image-column">
             <div className="image-container">
@@ -308,9 +321,11 @@ const WhyVDr = () => {
           <div className="testimonial-card">
             <div className="testimonial-content">
               <p>
-                "After struggling to find a specialist I could trust, this platform matched 
-                me with a doctor who not only had the right credentials but truly listened 
-                to my concerns. The peace of mind knowing they've been thoroughly vetted is priceless."
+              This app respects my privacy. I could discuss my personal health issues openly without feeling uncomfortable. I trust them completely."
+
+Reason: Safe and confidential care.
+
+
               </p>
             </div>
             <div className="testimonial-author">
@@ -318,7 +333,7 @@ const WhyVDr = () => {
                 <img src={tempImg} alt="Sarah M." />
               </div>
               <div className="author-info">
-                <h4>Sarah M.</h4>
+                <h4>j.Saradha</h4>
                 <p>Patient since 2023</p>
               </div>
             </div>
@@ -336,7 +351,7 @@ const WhyVDr = () => {
                 <img src={tempImg} alt="Dr. James L." />
               </div>
               <div className="author-info">
-                <h4>Dr. James L.</h4>
+                <h4>Dr.p.v.s chary</h4>
                 <p>Cardiologist, Verified Provider</p>
               </div>
             </div>
@@ -344,17 +359,20 @@ const WhyVDr = () => {
           <div className="testimonial-card">
             <div className="testimonial-content">
               <p>
-                "When my daughter needed specialized care, I couldn't risk choosing the wrong 
-                doctor. This platform gave me confidence in my choice with transparent verification 
-                and real patient reviews. The care she received was exceptional."
+            Every doctor I’ve spoken to through this app has been polite, knowledgeable, and genuine. That’s why I trust this app for my health needs now."
+
+Reason: Consistently high-quality service.
+
+
               </p>
             </div>
             <div className="testimonial-author">
               <div className="author-image">
                 <img src={tempImg} alt="Robert K." />
+
               </div>
               <div className="author-info">
-                <h4>Robert K.</h4>
+                <h4>k.vishnuvardhan</h4>
                 <p>Parent of patient</p>
               </div>
             </div>
