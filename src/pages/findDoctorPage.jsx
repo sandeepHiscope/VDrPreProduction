@@ -8,7 +8,6 @@ import defaultUser from "../assets/Images/commonImg/VDrlogo.png";
 
 const GET_DOCTOR_API_URL = "http://localhost:8080/api/doctorsverification/all";
 
-// Mapping for fuzzy match
 const specialityKeywords = {
   Cardiologist: ["cardiologist", "cardiology", "heart"],
   Dentist: ["dentist", "dental", "teeth"],
@@ -62,44 +61,54 @@ const FindDoctorPage = () => {
   }, []);
 
   useEffect(() => {
-    if (specialityFromURL) {
-      setSearchQuery(specialityFromURL);
-      if (listRef.current) {
-        listRef.current.scrollIntoView({ behavior: "smooth" });
-      }
+    setSearchQuery(specialityFromURL);
+    if (specialityFromURL && listRef.current) {
+      listRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [specialityFromURL]);
 
-  const filteredDoctors = [
-    ...doctors.filter(
-      (doctor) =>
-        matchSpeciality(doctor.medicalSpeciality, searchQuery) &&
-        (selectedState === "" || normalize(doctor.state) === normalize(selectedState))
-    ),
-    ...doctorDetails
-      .filter(
-        (doc) =>
-          matchSpeciality(doc.speciality, searchQuery) &&
-          (selectedState === "" || normalize(doc.Address).includes(normalize(selectedState)))
-      )
-      .map((doc, index) => ({
-        id: `dummy-${index}`,
-        fullName: doc.name || "not mentioned",
-        medicalSpeciality: doc.speciality || "not mentioned",
-        experience: "not mentioned",
-        city: doc.locality || "not mentioned",
-        state: "not mentioned",
-        country: "India",
-        hospitalCurrentWorking: doc.Address || "not mentioned",
-        medicalLicenseNumber: "not mentioned",
-        doctorPhoto: null,
-        phone: isNaN(doc.phone) ? "not mentioned" : doc.phone,
-        email: doc.email || "not mentioned"
-      }))
-  ];
+  const getFilteredDoctors = () => {
+    const normalizedSearch = normalize(searchQuery);
+
+    return [
+      ...doctors.filter(
+        (doctor) =>
+          matchSpeciality(doctor.medicalSpeciality, normalizedSearch) &&
+          (selectedState === "" || normalize(doctor.state) === normalize(selectedState))
+      ),
+      ...doctorDetails
+        .filter(
+          (doc) =>
+            matchSpeciality(doc.speciality, normalizedSearch) &&
+            (selectedState === "" ||
+              normalize(doc.Address).includes(normalize(selectedState)))
+        )
+        .map((doc, index) => ({
+          id: `dummy-${index}`,
+          fullName: doc.name || "Not Mentioned",
+          medicalSpeciality: doc.speciality || "Not Mentioned",
+          experience: "Not Mentioned",
+          city: doc.locality || "Not Mentioned",
+          state: "Not Mentioned",
+          country: "India",
+          hospitalCurrentWorking: doc.Address || "Not Mentioned",
+          medicalLicenseNumber: "Not Mentioned",
+          doctorPhoto: null,
+          phone: isNaN(doc.phone) ? "Not Mentioned" : doc.phone,
+          email: doc.email || "Not Mentioned"
+        }))
+    ];
+  };
+
+  const filteredDoctors = getFilteredDoctors();
 
   const doctorProfile = (doctor) => {
     navigate(`/doctorID/${doctor.id}`, { state: { doctor } });
+  };
+
+  const getDoctorImage = (doctorPhoto) => {
+    if (!doctorPhoto) return defaultUser;
+    return doctorPhoto.startsWith("http") ? doctorPhoto : `data:image/jpeg;base64,${doctorPhoto}`;
   };
 
   return (
@@ -139,21 +148,17 @@ const FindDoctorPage = () => {
                 onClick={() => doctorProfile(doctor)}
               >
                 <img
-                  src={
-                    doctor.doctorPhoto
-                      ? `data:image/jpeg;base64,${doctor.doctorPhoto}`
-                      : defaultUser
-                  }
+                  src={getDoctorImage(doctor.doctorPhoto)}
                   alt={`Dr. ${doctor.fullName}`}
                   className="doctor-image"
                 />
                 <div className="doctor-info">
-                  <h3>Dr. {doctor.fullName.toUpperCase()}</h3>
-                  <p><strong>Specialty:</strong> {doctor.medicalSpeciality}</p>
-                  <p><strong>Experience:</strong> {doctor.experience} years</p>
-                  <p><strong>Location:</strong> {doctor.city}, {doctor.state}, {doctor.country}</p>
-                  <p><strong>Hospital:</strong> {doctor.hospitalCurrentWorking}</p>
-                  <p><strong>License:</strong> {doctor.medicalLicenseNumber}</p>
+                  <h3>Dr. {doctor.fullName?.toUpperCase() || "Not Mentioned"}</h3>
+                  <p><strong>Specialty:</strong> {doctor.medicalSpeciality || "Not Mentioned"}</p>
+                  <p><strong>Experience:</strong> {doctor.experience} {doctor.experience !== "Not Mentioned" && "years"}</p>
+                  <p><strong>Location:</strong> {doctor.city}, {doctor.state !== "Not Mentioned" ? doctor.state : ""} {doctor.country}</p>
+                  <p><strong>Hospital:</strong> {doctor.hospitalCurrentWorking || "Not Mentioned"}</p>
+                  <p><strong>License:</strong> {doctor.medicalLicenseNumber || "Not Mentioned"}</p>
                 </div>
                 <button className="book-btn">Book Appointment</button>
               </div>

@@ -152,13 +152,12 @@ const MainHeader = () => {
                 </Link>
               )
             )}
-            <button
-              className="login-button-header nav-link flex items-center"
-              onClick={handleLoginClick}
-            >
-              <User className="icon w-5 h-5 mr-2 text-neutral-900" />{" "}
-              Login/Signup
-            </button>
+           <button
+  className="login-button-header nav-link text-neutral-900"
+  onClick={handleLoginClick}
+>
+  Login/Signup
+</button>
           </div>
         </div>
       </nav>

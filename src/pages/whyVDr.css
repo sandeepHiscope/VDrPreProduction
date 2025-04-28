@@ -224,7 +224,7 @@ p {
 
 .problem-card li, .solution-card li {
   display: flex;
-  align-items: flex-start;
+  align-items: left;
   margin-bottom: 1rem;
 }
 
@@ -512,6 +512,7 @@ p {
     }
     .Probletext{
       font-size: 12px;
+      text-align: center;
     }
     .problem-card, .solution-card {
      
@@ -539,9 +540,17 @@ p {
       font-size: 1.5rem;
       margin-bottom: 1rem;
     }
-    .Probletext{
-      font-size: 10px;
-    }
+ .Probletext {
+  font-size: 10px;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .Probletext {
+    text-align: start;
+  }
+}
+
     .problem-card, .solution-card {
      
       height: 89%;

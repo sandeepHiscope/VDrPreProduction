@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import cardsData from "../data/cardsData";
 import "./cardsSlider.css";
+import FindDoctorPage from "../pages/findDoctorPage";
 
 const CardsSlider = () => {
   const scrollRef = useRef(null);
@@ -26,7 +27,7 @@ const CardsSlider = () => {
   };
 
   const handleCardClick = (category) => {
-    navigate(`/find-doctor?speciality=${encodeURIComponent(category)}`);
+    navigate(`/FindDoctorPage?speciality=${encodeURIComponent(category)}`);
   };
 
   useEffect(() => {
