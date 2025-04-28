@@ -12,6 +12,7 @@ import indiaUsaStates from "../data/indiaUsaStates";
 import doctorCategories from "../data/doctorCategories";
 import tempImg from "../assets/Images/foundersImg/kiran.jpg";
 import ScrollingCardsContainer from "../components/ScrollingCardsContainer";
+import FindDoctorPage from "./findDoctorPage";
 
 function Homepage() {
   const [isHomePageRendered, setIsHomePageRendered] = useState(false);
@@ -133,8 +134,10 @@ function Homepage() {
         {/* Cards Slider Section */}
         {/* <div className="SlidingSecContainer"> */}
           <CardsSlider />
-<section className="categoriesSection">
+
         <h2>More Categories to help you</h2>
+        <section className="categorySection">
+
         <ul className="categoryList">
           <li className="categoryItem">Dentist</li>
           <li className="categoryItem">Cardiologist</li>
