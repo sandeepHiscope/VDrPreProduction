@@ -1,10 +1,12 @@
 /* Main Footer Styles */
 .footer {
-  background: linear-gradient(135deg, #1a202c, #2b2f3c, #4a5568);
-  color: #f9fafb;
+  /* background: linear-gradient(135deg, #1a202c, #2b2f3c, #4a5568); */
+  background-color: var(--color-background-main);
+  color: var(--color-primary-text);
   padding: 1rem 2rem;
   font-family: 'Inter', 'Segoe UI', sans-serif;
   box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
+  /* box-shadow: var(--shadow-xl); */
   position: relative;
 }
 
@@ -36,13 +38,13 @@
 .app-name {
   font-size: 1.7rem;
   font-weight: 700;
-  color: #06d6a0;
+  color: var(--color-accent);
   margin: 0;
 }
 
 .tagline {
   font-size: 0.95rem;
-  color: #94a3b8;
+  color: var(--color-primary-text);
   margin-top: 0.5rem;
 }
 
@@ -57,14 +59,14 @@
 
 .footer-icon {
   font-size: 1.8rem;
-  color: #e2e8f0;
+  color: var(--color-primary);
   transition: transform 0.3s ease, color 0.3s ease;
   cursor: pointer;
 }
 
 .footer-icon:hover {
   transform: scale(1.2);
-  color: #06d6a0;
+  color: var(--color-accent);
 }
 
 /* Links Section */
