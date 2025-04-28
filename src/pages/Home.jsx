@@ -134,7 +134,25 @@ function Homepage() {
         {/* <div className="SlidingSecContainer"> */}
           <CardsSlider />
         {/* </div> */}
-
+<section className="categoriesSection">
+        <h2>More Categories</h2>
+        <ul className="categoryList">
+          <li className="categoryItem">Dentist</li>
+          <li className="categoryItem">Cardiologist</li>
+          <li className="categoryItem">Dermatologist</li>
+          <li className="categoryItem">Pediatrician</li>
+          <li className="categoryItem">Orthopedic</li>
+          <li className="categoryItem">General Physician</li>
+          <li className="categoryItem">ENT Specialist</li>
+          <li className="categoryItem">Gynecologist</li>
+          <li className="categoryItem">Urologist</li>
+          <li className="categoryItem">Neurologist</li>
+          <li className="categoryItem">Psychiatrist</li>
+          <li className="categoryItem">Oncologist</li>
+          <li className="categoryItem">Gastroenterologist</li>
+        </ul>
+          
+      </section>
    
         {/* Testimonials (reviews) Section */}
         <section className="content-section testimonials-section">

@@ -800,3 +800,27 @@ label {
 }
 .SlidingSecContainer{
 }
+
+.categoriesSection {
+  text-align: center;
+  padding: 40px 20px;
+  width: 90%;
+}
+
+.categoryList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.categoryItem {
+  background: white;
+  color: black;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+  text-align: center;
+}
