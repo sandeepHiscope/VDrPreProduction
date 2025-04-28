@@ -55,7 +55,7 @@ const Footer = () => {
             onChange={(e) => setEmail(e.target.value)}
             className="footer-email-input"
           />
-          <button onClick={handleSubscribe} className="footer-subscribe-button">Subscribe</button>
+        <Link to="userDashboard" ><button onClick={handleSubscribe} className="footer-subscribe-button">Subscribe</button></Link> 
         </div>
         <div className="footer-contact">
           <a href="tel:+1234567890"><FaPhoneAlt /> +1 234 567 890</a>

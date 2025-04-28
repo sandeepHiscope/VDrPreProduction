@@ -22,6 +22,7 @@ import DocDashboard from "./pages/docDashboard";
 import ScrollToTop from "./components/scrollToTop";
 import WhyVDr from "./pages/whyVDr";
 import InstallPromptToast from "./hooks/InstallPromptToast.jsx";
+import UserDashboard from "./pages/userDashboard.jsx";
 
 
 const App = () => {
@@ -71,6 +72,8 @@ const App = () => {
             <Route path="/QRCodeGenerator" element={<QRCodeGenerator />} />
             <Route path="/docDashboard" element={<DocDashboard />} />
             <Route path="/whyVDr" element={<WhyVDr />} />
+            <Route path="/userDashboard" element={<UserDashboard />} />
+
           </Routes>
         </div>
         <Footer />
