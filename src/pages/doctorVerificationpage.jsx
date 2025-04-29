@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import "./doctorVerificationpage.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 
 const DoctorVerification = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const doctorEmail = location.state?.email || "";
+
   const [formData, setFormData] = useState({
     fullName: "",
     medicalLicenseNumber: "",
@@ -47,7 +50,8 @@ const DoctorVerification = () => {
     setIsSubmitting(true);
 
     const formDataToSend = new FormData();
-    
+
+     formDataToSend.append('email', doctorEmail);
     formDataToSend.append('fullName', formData.fullName);
     formDataToSend.append('medicalLicenseNumber', formData.medicalLicenseNumber);
     formDataToSend.append('medicalSpeciality', formData.medicalSpecialty);
@@ -74,34 +78,15 @@ const DoctorVerification = () => {
       formDataToSend.append('doctorPhoto', formData.doctorPhoto);
     }
 
-    try {
-      const response = await fetch("http://localhost:8080/api/doctorsverification/register", {
+   try {
+      const response = await fetch("http://localhost:8080/doctorverfication/save", {
         method: "POST",
         body: formDataToSend,
       });
 
       if (response.ok) {
-        alert("Doctor verification form submitted successfully!");
-        setFormData({
-          fullName: "",
-          medicalLicenseNumber: "",
-          medicalLicense: null,
-          medicalSpecialty: "",
-          boardCertificate: null,
-          educationBackground: "",
-          educationCertificates: null,
-          hospitalWorking: "",
-          experience: "",
-          hospitalClinic: "",
-          complaints: "",
-          description: "",
-          country: "",
-          state: "",
-          city: "",
-          doctorPhoto: null
-        });
-        // navigate("/findDoctorPage");
-        navigate("/docDashboard")
+        alert("Doctor verification submitted successfully!");
+        navigate("/docDashboard");
       } else {
         const error = await response.text();
         throw new Error(error || "Submission failed");

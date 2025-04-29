@@ -32,8 +32,8 @@ const Login = () => {
 
     const LOGIN_API_URL =
       role === "doctor"
-        ? "http://localhost:8080/doctors/login"
-        : "http://localhost:8080/users/login";
+        ? "http://localhost:8080/doctor/login"
+        : "http://localhost:8080/user/login";
 
     try {
       const response = await fetch(LOGIN_API_URL, {
@@ -44,13 +44,13 @@ const Login = () => {
 
       if (response.ok) {
         const data = await response.text();
-        alert(`WELCOME LOGIN SUCCESSFUL!`);
-            if(role === "doctor") {
-             navigate("/doctorVerificationpage");
-             }
-           else {
-             navigate("/findDoctorPage");
-             }
+        alert("WELCOME LOGIN SUCCESSFUL!");
+        if (role === "doctor") {
+          navigate("/doctorVerificationpage", { state: { email: formData.email } });
+        } else {
+          alert("User login successful!");
+          navigate("/findDoctorPage");
+        }
       } else {
         const errorMessage = await response.text();
         alert(`Login failed: ${errorMessage}`);
@@ -77,8 +77,8 @@ const Login = () => {
 
     const REGISTER_API_URL =
       role === "doctor"
-        ? "http://localhost:8080/doctors/register"
-        : "http://localhost:8080/users/register";
+        ? "http://localhost:8080/doctor/register"
+        : "http://localhost:8080/user/register";
 
     try {
       const response = await fetch(REGISTER_API_URL, {
@@ -91,7 +91,6 @@ const Login = () => {
         alert("Registration successful!");
         setFormData({ username: "", email: "", password: "" });
         setRole("");
-        // navigate("/doctorVerificationpage");
       } else {
         const errorMessage = await response.text();
         alert(`Registration failed: ${errorMessage}`);
@@ -115,7 +114,6 @@ const Login = () => {
   const showDoctorForm = () => setRole("doctor");
   const showUserForm = () => setRole("user");
   const goBack = () => setRole("");
-
   return (
     <div className="loginContainer">
       <div className="registerI">
