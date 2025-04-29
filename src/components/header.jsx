@@ -27,7 +27,7 @@ const NAV_LINKS = [
   },
   {
     to: "/verifyDoc",
-    label: "Scan Doc",
+    label: "Verify Doc",
 
     icon: <Shield className="headericons" />,
 
