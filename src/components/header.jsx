@@ -5,6 +5,8 @@ import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
 import HeaderImages from "../data/headerImages";
 import { IoReorderThreeOutline } from "react-icons/io5";
 import { ImCross } from "react-icons/im";
+import { FaUser } from "react-icons/fa";
+
 import {
   Home,
   Search,
@@ -70,6 +72,11 @@ const NAV_LINKS = [
     to: "/docDashboard",
     label: "DocDashboard",
     icon: <FaUserDoctor className="headericons" />,
+  },
+  {
+    to: "/userDashboard",
+    label: "UserDashboard",
+    icon: <FaUser className="headericons" />,
   },
 ];
 
