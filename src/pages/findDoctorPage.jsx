@@ -6,7 +6,7 @@ import indianStates from "../data/indianStates";
 import doctorDetails from "../data/doctorDetails";
 import defaultUser from "../assets/Images/commonImg/VDrlogo.png";
 
-const GET_DOCTOR_API_URL = "http://localhost:8080/api/doctorsverification/all";
+const GET_DOCTOR_API_URL = "http://localhost:8080/doctorverfication/all";
 
 const specialityKeywords = {
   Cardiologist: ["cardiologist", "cardiology", "heart"],
