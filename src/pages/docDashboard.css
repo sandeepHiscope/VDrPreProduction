@@ -1,17 +1,18 @@
-/* 
-
 .dashboard-container {
   display: flex;
   min-height: 100vh;
   font-family: sans-serif;
+  position: relative;
+  position: relative;
 }
 
-
-
+/* Toggle button: Hidden on desktop, visible on mobile */
+/* Toggle button: Hidden on desktop, visible on mobile */
 .toggle-button {
   display: none;
   position: absolute;
-  top: 10px;
+  /* top: 10px; */
+  /* top: 10px; */
   left: 10px;
   background: #333;
   color: white;
@@ -21,13 +22,25 @@
   cursor: pointer;
 }
 
+/* Sidebar: visible by default */
+/* Sidebar: visible by default */
 .sidebar {
-  width: auto;
+  width: 180px; /* reduced sidebar width */
+  width: 180px; /* reduced sidebar width */
   background-color: #f3f4f6;
-  padding: 0px;
+  padding: 0;
+  padding: 0;
   border-right: 1px solid #ddd;
+  transition: left 0.3s ease;
+  position: relative;
+  left: 0;
+  transition: left 0.3s ease;
+  position: relative;
+  left: 0;
 }
 
+/* Menu items */
+/* Menu items */
 .menu-item {
   display: flex;
   align-items: center;
@@ -47,18 +60,15 @@
   background-color: #d1d5db;
 }
 
-.icon {
-  width: 20px;
-  height: 20px;
-  color: #111;
-}
-
+/* Main content */
+/* Main content */
 .main-content {
   flex-grow: 1;
   padding: 20px;
 }
 
-/* Responsive */
+/* Responsive: Mobile */
+/* Responsive: Mobile */
 @media (max-width: 768px) {
   .toggle-button {
     display: block;
@@ -67,9 +77,9 @@
   .sidebar {
     position: fixed;
     top: 0;
-    left: -250px;
+    left: -180px;
+    left: -180px;
     height: 100%;
-    transition: left 0.3s ease;
     z-index: 99;
   }
 
@@ -78,10 +88,13 @@
   }
 
   .main-content {
-    margin-left: 0;
     padding-top: 60px;
   }
 }
+
+
+
+
 
 .dashboard-content {
   width: 100%;
