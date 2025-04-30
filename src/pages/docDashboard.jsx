@@ -648,108 +648,75 @@ const DocDashboard = () => {
   );
 
   return (
-    <div className={`docDashboard-container ${isSidebarOpen ? "docDashboard-sidebar-open" : ""}`}>
-  <button className="docDashboard-toggle-button" onClick={toggleSidebar}>
-    ☰
-  </button>
-
-  <div className="docDashboard-sidebar">
-    <div className="docDashboard-sidebar-header">
-      <h2>VDR</h2>
-    </div>
-    <nav className="docDashboard-menu-li">
-      <ul className="docDashboard-menu-list">
-        {menuItems.map((item) => (
-          <li key={item.name}>
-            <div
-              className={`docDashboard-menu-item ${
-                activePage === item.name ? "docDashboard-active" : ""
-              }`}
-              onClick={() => {
-                setActivePage(item.name);
-                if (window.innerWidth < 768) {
-                  setIsSidebarOpen(false);
-                }
-              }}
-            >
-              {item.icon}
-              <span>{item.name}</span>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </nav>
-
-        {/* Footer */}
-        {/* Footer */}
-        <div className="docDashboard-footer">
-          <div
-            className={`docDashboard-footer-btn ${
-              activePage === "Profile" ? "active" : ""
-            }`}
-            onClick={() => setActivePage("Profile")}
-          >
-            <span className="docDashboard-footer-btn-icon">
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+    <div className="docDashboard-container">
+    {/* Toggle Button for Mobile */}
+    <button className="docDashboard-toggle-button" onClick={toggleSidebar}>
+      ☰
+    </button>
+  
+    {/* Sidebar */}
+    <div className={`docDashboard-sidebar ${isSidebarOpen ? "docDashboard-sidebar-open" : ""}`}>
+      <div className="docDashboard-sidebar-header">
+        {/* Optional Header Title */}
+        <span className="docDashboard-sidebar-title">Menu</span>
+      </div>
+  
+      {/* Navigation Menu */}
+      <nav className="docDashboard-menu-li">
+        <ul className="docDashboard-menu-list">
+          {menuItems.map((item) => (
+            <li key={item.name}>
+              <div
+                className={`docDashboard-menu-item ${
+                  activePage === item.name ? "docDashboard-active" : ""
+                }`}
+                onClick={() => {
+                  setActivePage(item.name);
+                  if (window.innerWidth < 768) {
+                    setIsSidebarOpen(false);
+                  }
+                }}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                />
-              </svg>
-            </span>
-            <span
-              className={`docDashboard-footer-btn-name ${
-                !isSidebarOpen ? "hidden" : ""
-              }`}
-            >
-              Profile
-            </span>
-          </div>
-
-          <div
-            className="docDashboard-footer-btn docDashboard-logout"
-            onClick={() => alert("Logged out successfully")}
-          >
-            <span className="docDashboard-footer-btn-icon">
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                />
-              </svg>
-            </span>
-            <span
-              className={`docDashboard-logout-btn-name ${
-                !isSidebarOpen ? "hidden" : ""
-              }`}
-            >
-              Logout
-            </span>
-          </div>
+                {item.icon}
+                <span>{item.name}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </nav>
+  
+      {/* Footer Buttons */}
+      <div className="docDashboard-footer">
+        <div
+          className={`docDashboard-footer-btn ${activePage === "Profile" ? "active" : ""}`}
+          onClick={() => {
+            setActivePage("Profile");
+            if (window.innerWidth < 768) setIsSidebarOpen(false);
+          }}
+        >
+          <span className="docDashboard-footer-btn-icon">{/* Profile Icon */}</span>
+          <span className="docDashboard-footer-btn-name">Profile</span>
         </div>
-
-        
-      </div>
-
-      <div className="main-content">
-        <h1>{activePage}</h1>
-        {renderContent()}
+  
+        <div
+          className="docDashboard-footer-btn docDashboard-logout"
+          onClick={() => {
+            alert("Logged out successfully");
+            if (window.innerWidth < 768) setIsSidebarOpen(false);
+          }}
+        >
+          <span className="docDashboard-footer-btn-icon">{/* Logout Icon */}</span>
+          <span className="docDashboard-footer-btn-name">Logout</span>
+        </div>
       </div>
     </div>
+  
+    {/* Main Content */}
+    <div className="docDashboard-main-content">
+      {renderContent()}
+    </div>
+  </div>
+  
   );
 };
 
