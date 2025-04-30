@@ -563,7 +563,7 @@ const DocDashboard = () => {
   const Profile = () => (
     <div className="doctor-profile-container">
   <h1 className="doctor-profile-title">Doctor Profile</h1>
-  <div className="doctor-card">
+  <div className="doctor-card1">
     
     {/* Header Section */}
     <div className="doctor-header">
