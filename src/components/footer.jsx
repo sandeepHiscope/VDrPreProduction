@@ -28,10 +28,14 @@ const Footer = () => {
           <a href="https://x.com/"><FaTwitter title="Twitter" className="footer-icon" /></a>
           <a href="https://in.indeed.com/"> <FaLinkedinIn title="LinkedIn" className="footer-icon" /></a>
           <a href="https://www.instagram.com/"> <FaInstagram title="Instagram" className="footer-icon" /></a>
+          <div className="footer-contact">
+          <a href="tel:+1234567890"><FaPhoneAlt /> +1 234 567 890</a>
+          <a href="mailto:support@verifieddoctor.com"><FaEnvelope /> support@verifieddoctor.com</a>
+        </div>
         </div>
         <a href="#">  <FaArrowUp title="Back to Top" className="footer-iconarrow" /></a>
 
-
+{/* 
         <div className="footer-links">
           <h4>Explore</h4>
           <ul>
@@ -43,7 +47,7 @@ const Footer = () => {
             <Link to="/insurancePage"><li>Insurance</li></Link>
             <Link to="/docDashboard"><li>DocDashboard</li></Link>
           </ul>
-        </div>
+        </div> */}
 
         {/* Newsletter Subscription */}
         <div className="footer-subscription">
@@ -57,10 +61,7 @@ const Footer = () => {
           />
           <button onClick={handleSubscribe} className="footer-subscribe-button">Subscribe</button>
         </div>
-        <div className="footer-contact">
-          <a href="tel:+1234567890"><FaPhoneAlt /> +1 234 567 890</a>
-          <a href="mailto:support@verifieddoctor.com"><FaEnvelope /> support@verifieddoctor.com</a>
-        </div>
+        
       </div>
 
     <p2 className="copyright">© 2025 Verified-Doctor. All rights reserved.</p2>
