@@ -38,11 +38,11 @@
   margin-right: 45px;
   object-fit: cover;
   border-radius: 20px;
-  transition: var(--transition-slide);
+  transition: transform 0.3s ease;
 }
 
 .founderpage-founder-img:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .founderpage-founder-h2 {
