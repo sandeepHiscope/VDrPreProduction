@@ -136,7 +136,7 @@ function Homepage() {
           <CardsSlider />
 
         <h2>More Categories to help you</h2>
-        <section          className="categorySection">
+        <section className="categorySection">
 
         <ul className="categoryList">
           <li className="categoryItem">Dentist</li>
