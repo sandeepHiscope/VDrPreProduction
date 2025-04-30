@@ -283,48 +283,552 @@ function Homepage() {
     <div class="faq-item">
       <input type="checkbox" id="faq1" />
       <label for="faq1">
-        What is your refund policy?
+      Can I search for doctors by specialty, location, or availability?
         <span class="icon">+</span>
       </label>
       <div class="faq-content">
-        We offer a full refund within 30 days of purchase if you're not satisfied with our service. Please contact support for more details.
+        yes You can search for doctors by specialty, location, and availability using our advanced search filters. Just enter your criteria in the search bar, and we'll show you the best matches.
       </div>
     </div>
 
     <div class="faq-item">
       <input type="checkbox" id="faq2" />
+
       <label for="faq2">
-        How do I get customer support?
+      How does the video consultation work, and is it secure?
         <span class="icon">+</span>
       </label>
       <div class="faq-content">
-        You can reach our support team 24/7 via email or through the support chat on our website.
+        our video consultations are conducted through a secure platform that ensures your privacy. After booking, you'll receive a link to join the consultation at the scheduled time. Just click the link, and you're in!
       </div>
     </div>
 
     <div class="faq-item">
       <input type="checkbox" id="faq3" />
       <label for="faq3">
-        Can I upgrade my plan later?
+      Is there an option to choose between in-clinic and online consultation?
         <span class="icon">+</span>
       </label>
       <div class="faq-content">
-        Absolutely! You can upgrade or downgrade your plan anytime through your account settings. Changes take effect immediately.
+       yes, you can choose between in-clinic and online consultations based on your preference. Just select your choice when booking an appointment.
       </div>
     </div>
 
     <div class="faq-item">
       <input type="checkbox" id="faq4" />
       <label for="faq4">
-        Is my data secure?
+      How does the video consultation work, and is it secure?
         <span class="icon">+</span>
       </label>
       <div class="faq-content">
-        Yes. We use bank-level encryption, regular audits, and comply with GDPR and other global privacy regulations to keep your data safe.
+        our video consultations are conducted through a secure platform that ensures your privacy. After booking, you'll receive a link to join the consultation at the scheduled time. Just click the link, and you're in!
       </div>
     </div>
-  </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
       </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Does the app send reminders for upcoming appointments?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, the app sends reminders for upcoming appointments to ensure you never miss a consultation. You can also set custom reminders based on your preferences.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Does the app support uploading medical reports, lab results, or images for the doctor to view?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, you can upload medical reports, lab results, and images directly through the app. This allows the doctor to review your medical history and provide better recommendations during your consultation.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      How do I know if the doctors listed are verified and qualified?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        all doctors listed on our platform are verified and qualified professionals. We conduct thorough background checks and verify their credentials to ensure you receive the best care possible.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      What happens if a doctor cancels or misses the appointment?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        if a doctor cancels or misses the appointment, we will notify you immediately and help you reschedule with another available doctor. Your satisfaction is our priority.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Is my personal and health information secure and private on your platform?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, we take your privacy seriously. All personal and health information is encrypted and stored securely. We adhere to strict data protection regulations to ensure your information remains confidential.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Is the consultation fee the same for all doctors?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        no, consultation fees may vary based on the doctor's specialty, experience, and location. You can view the consultation fee for each doctor before booking an appointment.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I pay after the consultation or is it prepaid only?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        the consultation fee is typically prepaid to confirm your appointment. However, some doctors may offer post-consultation payment options. Please check with the doctor for their specific payment policies.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Are there any subscription plans or packages for regular checkups?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, we offer subscription plans and packages for regular checkups. These plans provide discounted rates for multiple consultations and are designed to help you maintain your health over time.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      What payment methods are accepted (e.g., UPI, card, wallet)?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        we accept various payment methods, including UPI, credit/debit cards, and digital wallets. You can choose your preferred payment method during the booking process.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Do you offer any discounts or first-time user benefits?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, we often have promotions and discounts for first-time users. You can check our website or app for any ongoing offers and apply them during the booking process.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I access the app on multiple devices (e.g., tablet + phone)?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, you can access the app on multiple devices using the same account. Your data will sync across all devices, allowing you to manage your appointments and health information seamlessly.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" />
+      <label for="faq4">
+      Can I get a digital prescription after my consultation?
+        <span class="icon">+</span>
+      </label>
+      <div class="faq-content">
+        yes, after your consultation, the doctor will provide you with a digital prescription that you can access through your account. This makes it easy to keep track of your medications and follow-up care.
+      </div>
+    </div>
+
+  </div>/// FAQ Section ending
+      
+  
+  </div>
     </>
   );
 }
