@@ -1,0 +1,20 @@
+.symptom-list{
+    color: #252d37;
+    text-align: center;
+    background-color:#f9f9f9;
+    box-shadow: 6px 0 18px rgba(0, 0, 0, 0.1);
+    border-radius: 0 16px 16px 0;
+    width: 45%;
+    height: 700px;
+}
+.sidetext{
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #252d37;
+}
+.indexli{
+    color: blue;
+}
+

@@ -4,6 +4,7 @@ import "./findDoctorPage.css";
 import indianStates from "../data/indianStates";
 import doctorDetails from "../data/doctorDetails";
 import defaultUser from "../assets/Images/commonImg/VDrlogo.png";
+import FiltrationSideBar from "../components/filterationSideBar";
 
 const GET_DOCTOR_API_URL = "http://localhost:8080/doctorverfication/all";
 
@@ -112,8 +113,12 @@ const FindDoctorPage = () => {
 
   return (
     <>
+   
       <div className="header-placeholder"></div>
+     
       <div className="findDoctorPage-main-container">
+      <FiltrationSideBar/>
+      <div className="con">
         <div className="findDoctorPage-search-bar-container1">
           <input
             type="text"
@@ -137,6 +142,7 @@ const FindDoctorPage = () => {
         </div>
 
         <div className="doctor-list" ref={listRef}>
+       
           {loading ? (
             <p>Loading doctors...</p>
           ) : filteredDoctors.length > 0 ? (
@@ -166,6 +172,7 @@ const FindDoctorPage = () => {
             <p className="no-results">No doctors found. Please refine your search.</p>
           )}
         </div>
+      </div>
       </div>
     </>
   );
