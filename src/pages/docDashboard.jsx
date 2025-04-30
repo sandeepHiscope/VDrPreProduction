@@ -19,7 +19,6 @@ const menuItems = [
   { name: "Services", icon: <FileText className="icon" /> },
   { name: "Insurance", icon: <Shield className="icon" /> },
   { name: "SOS Alerts", icon: <Bell className="icon" /> },
-
 ];
 
 const DocDashboard = () => {
@@ -562,123 +561,135 @@ const DocDashboard = () => {
   // Profile component
   const Profile = () => (
     <div className="doctor-profile-container">
-  <h1 className="doctor-profile-title">Doctor Profile</h1>
-  <div className="doctor-card1">
-    
-    {/* Header Section */}
-    <div className="doctor-header">
-      <div className="doctor-header-content">
-        <div className="doctor-avatar">
-          <svg className="doctor-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-          </svg>
+      <h1 className="doctor-profile-title">Doctor Profile</h1>
+      <div className="doctor-card1">
+        {/* Header Section */}
+        <div className="doctor-header">
+          <div className="doctor-header-content">
+            <div className="doctor-avatar">
+              <svg
+                className="doctor-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                />
+              </svg>
+            </div>
+            <div className="doctor-info">
+              <h2 className="doctor-name">Dr.Pavan</h2>
+              <p className="doctor-role">General Practitioner</p>
+              <p className="doctor-license">License #: MD12345</p>
+            </div>
+            <div className="doctor-edit">
+              <button className="edit-button">Edit Profile</button>
+            </div>
+          </div>
         </div>
-        <div className="doctor-info">
-          <h2 className="doctor-name">Dr.Pavan</h2>
-          <p className="doctor-role">General Practitioner</p>
-          <p className="doctor-license">License #: MD12345</p>
+
+        {/* Personal Information */}
+        <div className="doctor-section">
+          <h3 className="section-title">Personal Information</h3>
+          <div className="info-grid">
+            <div>
+              <p className="info-label">Email</p>
+              <p>dr.reynolds@example.com</p>
+            </div>
+            <div>
+              <p className="info-label">Phone</p>
+              <p>+1 (555) 123-4567</p>
+            </div>
+            <div>
+              <p className="info-label">Address</p>
+              <p>123 Medical Center Drive, Suite 456</p>
+            </div>
+            <div>
+              <p className="info-label">Specialization</p>
+              <p>Family Medicine</p>
+            </div>
+          </div>
         </div>
-        <div className="doctor-edit">
-          <button className="edit-button">Edit Profile</button>
+
+        {/* Schedule */}
+        <div className="doctor-section border-top">
+          <h3 className="section-title">Schedule & Availability</h3>
+          <div className="schedule-grid">
+            <div className="schedule-box">
+              <p className="schedule-day">Monday - Friday</p>
+              <p className="schedule-time">9:00 AM - 5:00 PM</p>
+            </div>
+            <div className="schedule-box">
+              <p className="schedule-day">Saturday</p>
+              <p className="schedule-time">10:00 AM - 2:00 PM</p>
+            </div>
+            <div className="schedule-box">
+              <p className="schedule-day">Sunday</p>
+              <p className="schedule-time">Closed</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Account Settings */}
+        <div className="doctor-section border-top">
+          <h3 className="section-title">Account Settings</h3>
+          <div className="settings-links">
+            <button className="settings-link">Change Password</button>
+            <button className="settings-link">Notification Preferences</button>
+            <button className="settings-link">Two-Factor Authentication</button>
+          </div>
         </div>
       </div>
     </div>
-
-    {/* Personal Information */}
-    <div className="doctor-section">
-      <h3 className="section-title">Personal Information</h3>
-      <div className="info-grid">
-        <div>
-          <p className="info-label">Email</p>
-          <p>dr.reynolds@example.com</p>
-        </div>
-        <div>
-          <p className="info-label">Phone</p>
-          <p>+1 (555) 123-4567</p>
-        </div>
-        <div>
-          <p className="info-label">Address</p>
-          <p>123 Medical Center Drive, Suite 456</p>
-        </div>
-        <div>
-          <p className="info-label">Specialization</p>
-          <p>Family Medicine</p>
-        </div>
-      </div>
-    </div>
-
-    {/* Schedule */}
-    <div className="doctor-section border-top">
-      <h3 className="section-title">Schedule & Availability</h3>
-      <div className="schedule-grid">
-        <div className="schedule-box">
-          <p className="schedule-day">Monday - Friday</p>
-          <p className="schedule-time">9:00 AM - 5:00 PM</p>
-        </div>
-        <div className="schedule-box">
-          <p className="schedule-day">Saturday</p>
-          <p className="schedule-time">10:00 AM - 2:00 PM</p>
-        </div>
-        <div className="schedule-box">
-          <p className="schedule-day">Sunday</p>
-          <p className="schedule-time">Closed</p>
-        </div>
-      </div>
-    </div>
-
-    {/* Account Settings */}
-    <div className="doctor-section border-top">
-      <h3 className="section-title">Account Settings</h3>
-      <div className="settings-links">
-        <button className="settings-link">Change Password</button>
-        <button className="settings-link">Notification Preferences</button>
-        <button className="settings-link">Two-Factor Authentication</button>
-      </div>
-    </div>
-  </div>
-</div>
-
   );
 
   return (
-    <div className={`dashboard-container ${isSidebarOpen ? "sidebar-open" : ""}`}>
-    <button className="toggle-button" onClick={toggleSidebar}>
-      ☰
-    </button>
+    <div className={`docDashboard-container ${isSidebarOpen ? "docDashboard-sidebar-open" : ""}`}>
+  <button className="docDashboard-toggle-button" onClick={toggleSidebar}>
+    ☰
+  </button>
 
-    <div className="sidebar">
-      <div className="sidebar-header">
-        <h2>VDR</h2>
-      </div>
-      <nav className="menu">
-        <ul className="menu-list">
-          {menuItems.map((item) => (
-            <li key={item.name}>
-              <div
-                className={`menu-item ${activePage === item.name ? "active" : ""}`}
-                onClick={() => {
-                  setActivePage(item.name);
-                  if (window.innerWidth < 768) {
-                    setIsSidebarOpen(false);
-                  }
-                }}
-              >
-                {item.icon}
-                <span>{item.name}</span>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </nav>
-  
+  <div className="docDashboard-sidebar">
+    <div className="docDashboard-sidebar-header">
+      <h2>VDR</h2>
+    </div>
+    <nav className="docDashboard-menu-li">
+      <ul className="docDashboard-menu-list">
+        {menuItems.map((item) => (
+          <li key={item.name}>
+            <div
+              className={`docDashboard-menu-item ${
+                activePage === item.name ? "docDashboard-active" : ""
+              }`}
+              onClick={() => {
+                setActivePage(item.name);
+                if (window.innerWidth < 768) {
+                  setIsSidebarOpen(false);
+                }
+              }}
+            >
+              {item.icon}
+              <span>{item.name}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </nav>
 
         {/* Footer */}
-        <div className="footer">
+        {/* Footer */}
+        <div className="docDashboard-footer">
           <div
-            className={`footer-btn ${activePage === "Profile" ? "active" : ""}`}
+            className={`docDashboard-footer-btn ${
+              activePage === "Profile" ? "active" : ""
+            }`}
             onClick={() => setActivePage("Profile")}
           >
-            <span className="footer-btn-icon">
+            <span className="docDashboard-footer-btn-icon">
               <svg
                 className="w-5 h-5"
                 fill="none"
@@ -694,17 +705,19 @@ const DocDashboard = () => {
               </svg>
             </span>
             <span
-              className={`footer-btn-name ${!isSidebarOpen ? "hidden" : ""}`}
+              className={`docDashboard-footer-btn-name ${
+                !isSidebarOpen ? "hidden" : ""
+              }`}
             >
               Profile
             </span>
           </div>
 
           <div
-            className="footer-btn logout"
+            className="docDashboard-footer-btn docDashboard-logout"
             onClick={() => alert("Logged out successfully")}
           >
-            <span className="footer-btn-icon">
+            <span className="docDashboard-footer-btn-icon">
               <svg
                 className="w-5 h-5"
                 fill="none"
@@ -720,12 +733,16 @@ const DocDashboard = () => {
               </svg>
             </span>
             <span
-              className={`logout-btn-name ${!isSidebarOpen ? "hidden" : ""}`}
+              className={`docDashboard-logout-btn-name ${
+                !isSidebarOpen ? "hidden" : ""
+              }`}
             >
               Logout
             </span>
           </div>
         </div>
+
+        
       </div>
 
       <div className="main-content">
