@@ -9,7 +9,7 @@ import {
   Shield,
   Bell,
 } from "lucide-react";
-import "./docdashboard.css";
+import "../pages/docDashboard.css";
 const menuItems = [
   { name: "Dashboard", icon: <Calendar className="icon" /> },
   { name: "Appointments", icon: <Clock className="icon" /> },
