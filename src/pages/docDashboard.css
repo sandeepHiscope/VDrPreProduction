@@ -1235,31 +1235,37 @@ color: #3b82f6;
 color: #171717;
 }
 /* Sidebar container */
+/* Container Layout */
 .docDashboard-container {
   display: flex;
   height: 100vh;
   background-color: white;
+  position: relative;
 }
 
+/* Sidebar default (visible on desktop) */
 .docDashboard-sidebar {
   background-color: #ffffff;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
   width: 12rem;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
+/* Sidebar expanded (optional if you want toggle width) */
 .docDashboard-sidebar.docDashboard-sidebar-open {
   width: 15rem;
 }
 
+/* Sidebar header */
 .docDashboard-sidebar-header {
-  padding: 1rem;
+  padding: 0.75rem;
   border-bottom: 1px solid #e5e7eb;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 
+/* Menu List */
 .docDashboard-menu-li {
   padding: 1rem;
 }
@@ -1287,6 +1293,7 @@ color: #171717;
   font-weight: bold;
 }
 
+/* Toggle Button (Hidden on Desktop) */
 .docDashboard-toggle-button {
   display: none;
   position: absolute;
@@ -1296,29 +1303,35 @@ color: #171717;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
+  z-index: 1100;
 }
 
+/* Main Content */
+.docDashboard-main-content {
+  flex: 1;
+  overflow: auto;
+  padding: 1rem;
+}
+
+/* ----- Responsive Styles for Mobile ----- */
 @media (max-width: 768px) {
+  /* Show toggle button */
   .docDashboard-toggle-button {
     display: block;
   }
 
+  /* Hide sidebar by default */
   .docDashboard-sidebar {
     position: absolute;
-    left: -12rem;
     top: 0;
+    left: -12rem;
     height: 100%;
     z-index: 1000;
     transition: left 0.3s ease;
   }
 
+  /* Show sidebar when open */
   .docDashboard-sidebar.docDashboard-sidebar-open {
     left: 0;
   }
-}
-
-.docDashboard-main-content {
-  flex: 1;
-  overflow: auto;
-  padding: 1rem;
 }
