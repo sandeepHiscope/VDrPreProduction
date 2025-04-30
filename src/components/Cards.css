@@ -17,20 +17,27 @@
 }
 
 
+.founder-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
 .founder-details img {
     width: 150px; 
     height: 150px;
+    margin-top: 13px;
     border-radius: 50%; 
     object-fit: cover; 
     margin-bottom: 10px;
     transition: transform 0.3s ease;
 }
 
-
 .founder-details img:hover {
     transform: scale(1.1); 
 }
-
 
 .founder-details h3 {
     font-size: 20px;
@@ -44,6 +51,14 @@
     color: #555;
     margin: 5px 0;
 }
+
+@media (min-width: 768px) {
+    .founder-details {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
 
 .founder-details:hover {
     transform: scale(1.05);

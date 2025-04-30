@@ -5,6 +5,8 @@ import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
 import HeaderImages from "../data/headerImages";
 import { IoReorderThreeOutline } from "react-icons/io5";
 import { ImCross } from "react-icons/im";
+import { FaUser } from "react-icons/fa";
+
 import {
   Home,
   Search,
@@ -12,45 +14,69 @@ import {
   Bell,
   ShoppingBag,
   User,
+  ShieldQuestion,
 } from "lucide-react";
+import { icon } from "@fortawesome/fontawesome-svg-core";
+import { FaUserDoctor } from "react-icons/fa6";
 
 const NAV_LINKS = [
   {
     to: "/findDoctorPage",
     label: "Find a Doctor",
-    icon: <Search className="icon w-5 h-5 mr-2 text-neutral-900" />,
+    icon: <Search className="headericons" />,
   },
   {
     to: "/verifyDoc",
     label: "Verify Doc",
-    icon: <Shield className="icon w-5 h-5 mr-2 text-neutral-900" />,
+
+    icon: <Shield className="headericons" />,
+
   },
+  // {
+  //   to: "/whyVDr",
+  //   label: "Why VDr",
+
+  //   icon: <ShieldQuestion className="headericons" />,
+  // },
   {
     to: "/sosPage",
     label: "SOS",
-    icon: <Bell className="icon w-5 h-5 mr-2 text-neutral-900" />,
+    icon: <Bell className="headericons" />,
     className: "sos-link",
   },
+  
+
+  {
+    to: "/whyVDr",
+    label: "Why VDr",
+
+    icon: <ShieldQuestion className="headericons" />,
+   
+
+  },
+
   {
     href: "https://vdr-door-delivery-medicines.netlify.app/",
     label: "Doorstep Meds",
-    icon: <ShoppingBag className="icon w-5 h-5 mr-2 text-neutral-900" />,
+    icon: <ShoppingBag className="headericons" />,
     external: true,
   },
   {
     href: "https://vdr-insurance.netlify.app/",
     label: "Insurance",
-    icon: <Shield className="icon w-5 h-5 mr-2 text-neutral-900" />,
+    icon: <Shield className="headericons" />,
     external: true,
   },
-  
-  {
-    to: "/whyVDr",
-    label: "Why VDr",
-  },
+
   {
     to: "/docDashboard",
     label: "DocDashboard",
+    icon: <FaUserDoctor className="headericons" />,
+  },
+  {
+    to: "/userDashboard",
+    label: "UserDashboard",
+    icon: <FaUser className="headericons" />,
   },
 ];
 
@@ -113,7 +139,9 @@ const MainHeader = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`nav-link flex items-center ${link.className || ""}`}
+                  className={`nav-link flex items-center ${
+                    link.className || ""
+                  }`}
                   onClick={handleNavClick}
                 >
                   {link.icon} {link.label}
@@ -122,19 +150,21 @@ const MainHeader = () => {
                 <Link
                   key={index}
                   to={link.to}
-                  className={`nav-link flex items-center ${link.className || ""}`}
+                  className={`nav-link flex items-center ${
+                    link.className || ""
+                  }`}
                   onClick={handleNavClick}
                 >
                   {link.icon} {link.label}
                 </Link>
               )
             )}
-            <button
-              className="login-button-header nav-link flex items-center"
-              onClick={handleLoginClick}
-            >
-              <User className="icon w-5 h-5 mr-2 text-neutral-900" /> Login/Signup
-            </button>
+           <button
+  className="login-button-header nav-link text-neutral-900"
+  onClick={handleLoginClick}
+>
+  Login/Signup
+</button>
           </div>
         </div>
       </nav>

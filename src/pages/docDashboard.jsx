@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import {
   Calendar,
   Clock,
@@ -10,6 +11,9 @@ import {
   Bell,
 } from "lucide-react";
 import "./docDashboard.css"
+
+
+
 
 const menuItems = [
   { name: "Dashboard", icon: <Calendar className="w-5 h-5 text-neutral-900" /> },
@@ -24,23 +28,29 @@ const menuItems = [
 
 const DocDashboard = () => {
   const [activePage, setActivePage] = useState("Dashboard");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   // Mock data for the dashboard
   const upcomingAppointments = [
     {
-      name: "John Smith",
+      name: "indhu yadav",
       time: "5:30 am",
       type: "patient",
       date: "04 apr. at 9:40",
     },
     {
-      name: "Mary Johnson",
+      name: "Teju ",
       time: "5:30 am",
       type: "prescription",
       date: "24 apr. at 2:45",
     },
     {
-      name: "James Williams",
+      name: "Ramesh",
       time: "5:30 am",
       type: "insurance",
       date: "19 apr. at 2:05",
@@ -49,12 +59,12 @@ const DocDashboard = () => {
 
   const recentUpdates = [
     {
-      name: "John Smith",
+      name: "Jony",
       action: "New prescription created",
       date: "May at 9:50 PM",
     },
-    { name: "James Williams", action: "Completed teleconsultation", date: "" },
-    { name: "Patricia Brown", action: "Resolved SOS alert", date: "" },
+    { name: "Raj", action: "Completed teleconsultation", date: "" },
+    { name: "Tinku", action: "Resolved SOS alert", date: "" },
   ];
 
   // Function to render different pages based on active state
@@ -287,7 +297,7 @@ const DocDashboard = () => {
                 </thead>
                 <tbody className="divide-y">
                   <tr>
-                    <td className="p-3">John Smith</td>
+                    <td className="p-3">Raja singh</td>
                     <td className="p-3">P-001</td>
                     <td className="p-3">Apr 04, 2025</td>
                     <td className="p-3">
@@ -300,7 +310,7 @@ const DocDashboard = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td className="p-3">Mary Johnson</td>
+                    <td className="p-3">Salman</td>
                     <td className="p-3">P-002</td>
                     <td className="p-3">Apr 24, 2025</td>
                     <td className="p-3">
@@ -313,7 +323,7 @@ const DocDashboard = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td className="p-3">James Williams</td>
+                    <td className="p-3">Sowmith</td>
                     <td className="p-3">P-003</td>
                     <td className="p-3">Apr 19, 2025</td>
                     <td className="p-3">
@@ -333,7 +343,7 @@ const DocDashboard = () => {
             <div className="md:hidden space-y-4">
               <div className="border rounded-lg p-4 shadow-sm bg-gray-50">
                 <div className="mb-2">
-                  <span className="font-semibold">Name:</span> John Smith
+                  <span className="font-semibold">Name:</span> Raju
                 </div>
                 <div className="mb-2">
                   <span className="font-semibold">ID:</span> P-001
@@ -354,7 +364,7 @@ const DocDashboard = () => {
         
               <div className="border rounded-lg p-4 shadow-sm bg-gray-50">
                 <div className="mb-2">
-                  <span className="font-semibold">Name:</span> Mary Johnson
+                  <span className="font-semibold">Name:</span> Raja singh
                 </div>
                 <div className="mb-2">
                   <span className="font-semibold">ID:</span> P-002
@@ -375,7 +385,7 @@ const DocDashboard = () => {
         
               <div className="border rounded-lg p-4 shadow-sm bg-gray-50">
                 <div className="mb-2">
-                  <span className="font-semibold">Name:</span> James Williams
+                  <span className="font-semibold">Name:</span> Sowmith
                 </div>
                 <div className="mb-2">
                   <span className="font-semibold">ID:</span> P-003
@@ -430,7 +440,7 @@ const DocDashboard = () => {
         </thead>
         <tbody className="divide-y">
           <tr>
-            <td className="p-3">John Smith</td>
+            <td className="p-3">Indhu yadav</td>
             <td className="p-3">Amoxicillin</td>
             <td className="p-3">500mg, 3x daily</td>
             <td className="p-3">Apr 04, 2025</td>
@@ -441,7 +451,7 @@ const DocDashboard = () => {
             </td>
           </tr>
           <tr>
-            <td className="p-3">Mary Johnson</td>
+            <td className="p-3">Teju</td>
             <td className="p-3">Lisinopril</td>
             <td className="p-3">10mg, daily</td>
             <td className="p-3">Apr 24, 2025</td>
@@ -459,7 +469,7 @@ const DocDashboard = () => {
     <div className="md:hidden space-y-4">
       <div className="border rounded-lg p-4 bg-gray-50 shadow-sm">
         <div className="mb-1">
-          <span className="font-semibold">Patient:</span> John Smith
+          <span className="font-semibold">Patient:</span> Indhu yadav
         </div>
         <div className="mb-1">
           <span className="font-semibold">Medication:</span> Amoxicillin
@@ -480,7 +490,7 @@ const DocDashboard = () => {
 
       <div className="border rounded-lg p-4 bg-gray-50 shadow-sm">
         <div className="mb-1">
-          <span className="font-semibold">Patient:</span> Mary Johnson
+          <span className="font-semibold">Patient:</span> Teju
         </div>
         <div className="mb-1">
           <span className="font-semibold">Medication:</span> Lisinopril
@@ -516,7 +526,7 @@ const DocDashboard = () => {
                 <div className="py-3">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
                     <div>
-                      <div className="font-medium">John Smith</div>
+                      <div className="font-medium">Indhu yadav</div>
                       <div className="text-sm text-gray-500">04 Apr. at 9:40</div>
                     </div>
                     <button className="bg-blue-500 text-white px-4 py-2 sm:px-3 sm:py-1 rounded text-sm w-full sm:w-auto">
@@ -527,7 +537,7 @@ const DocDashboard = () => {
                 <div className="py-3">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
                     <div>
-                      <div className="font-medium">Mary Johnson</div>
+                      <div className="font-medium">Teju</div>
                       <div className="text-sm text-gray-500">24 Apr. at 2:45</div>
                     </div>
                     <button className="bg-blue-500 text-white px-4 py-2 sm:px-3 sm:py-1 rounded text-sm w-full sm:w-auto">
@@ -545,7 +555,7 @@ const DocDashboard = () => {
                 <div className="py-3">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
                     <div>
-                      <div className="font-medium">James Williams</div>
+                      <div className="font-medium">Jony</div>
                       <div className="text-sm text-gray-500">19 Apr. at 2:05</div>
                     </div>
                     <button className="bg-gray-100 text-gray-700 px-4 py-2 sm:px-3 sm:py-1 rounded text-sm w-full sm:w-auto">
@@ -556,7 +566,7 @@ const DocDashboard = () => {
                 <div className="py-3">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
                     <div>
-                      <div className="font-medium">Patricia Brown</div>
+                      <div className="font-medium">Raj</div>
                       <div className="text-sm text-gray-500">15 Apr. at 11:30</div>
                     </div>
                     <button className="bg-gray-100 text-gray-700 px-4 py-2 sm:px-3 sm:py-1 rounded text-sm w-full sm:w-auto">
@@ -599,21 +609,21 @@ const DocDashboard = () => {
           <tbody className="divide-y">
             {[
               {
-                name: "John Smith",
+                name: "Indhu yadav",
                 date: "Apr 04, 2025 - 9:40 AM",
                 type: "Check-up",
                 status: "Confirmed",
                 statusClass: "bg-green-100 text-green-800",
               },
               {
-                name: "Mary Johnson",
+                name: "Teju",
                 date: "Apr 24, 2025 - 2:45 PM",
                 type: "Prescription",
                 status: "Pending",
                 statusClass: "bg-yellow-100 text-yellow-800",
               },
               {
-                name: "James Williams",
+                name: "Ramesh",
                 date: "Apr 19, 2025 - 2:05 PM",
                 type: "Follow-up",
                 status: "Confirmed",
@@ -723,7 +733,7 @@ const DocDashboard = () => {
                   </svg>
                 </div>
                 <div className="text-center sm:text-left">
-                  <h2 className="text-lg sm:text-xl font-bold">Dr. Sarah Reynolds</h2>
+                  <h2 className="text-lg sm:text-xl font-bold">Dr.Pavan</h2>
                   <p className="text-gray-600">General Practitioner</p>
                   <p className="text-gray-600">License #: MD12345</p>
                 </div>
@@ -805,95 +815,135 @@ const DocDashboard = () => {
 
   return (
     // {sidepanel}
-    <div className="flex h-screen bg-gray-50">
-      <div className="w-24 sm:w-60 bg-white shadow-lg flex flex-col h-full transition-all duration-300">
-    <div className="p-4 border-b flex items-center justify-center sm:justify-start">
-      <svg
-        viewBox="0 0 24 24"
-        width="24"
-        height="24"
-        stroke="currentColor"
-        strokeWidth="2"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="mr-0 sm:mr-2"
-      >
-        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-      </svg>
-      <span className="font-bold text-lg hidden sm:inline">Doctor</span>
-    </div>
+    <div className="flex h-screen bg-white">
+  {/* Sidebar */}
+  <div
+    className={`
+      bg-white shadow-lg flex flex-col transition-all duration-300
+      ${isSidebarOpen ? "w-40" : "w-12 sm:w-60"}
+      h-full
+    `}
+  >
+    {/* Sidebar Header */}
+    <div className="p-4 border-b flex items-center justify-between sm:justify-start cursor-pointer bg-red-200  ">
+      <span onClick={toggleSidebar} className="cursor-pointer sm:inline block">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-6 h-6 bg-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </span>
 
-    {/* Menu Items */}
-    <nav className="py-4 flex-grow">
-      <ul>
+        <div className="flex items-center sm:block hidden ">
+          <svg
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            stroke="currentColor"
+            strokeWidth="2"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="mr-2"
+          >
+          </svg>
+  
+        </div>
+      </div>
+
+      {/* Menu Items */}
+      <nav className="py-4 ">
+        <ul>
         {menuItems.map((item) => (
-          <li key={item.name}>
-            <button
-              onClick={() => setActivePage(item.name)}
-              className={`group flex items-center px-4 py-3 w-full text-left transition-all duration-200 ${
-                activePage === item.name
-                  ? "bg-blue-50 text-blue-600 border-r-4 border-blue-600"
-                  : "text-gray-600 hover:bg-gray-100"
-              }`}
-            >
-              <span className="mr-0 sm:mr-3 transition-all duration-200 group-hover:text-blue-600 group-hover:scale-110">
-                {item.icon}
-              </span>
-              <span className="hidden sm:inline transition-colors duration-200 group-hover:text-blue-600">
-                {item.name}
-              </span>
-            </button>
-          </li>
-        ))}
-      </ul>
-    </nav>
-
-    {/* Footer */}
-    <div className="mt-auto border-t text-neutral-900">
-      <button
-        onClick={() => setActivePage("Profile")}
-        className={`group flex items-center px-4 py-3 w-full text-left transition-all duration-200 ${
-          activePage === "Profile"
-            ? "bg-blue-50 text-blue-600 border-r-4 border-blue-600"
-            : "text-gray-600 hover:bg-gray-100"
+  <li key={item.name}>
+    <button
+      onClick={() => {
+        setActivePage(item.name); 
+        if (window.innerWidth < 640) {
+          setIsSidebarOpen(false); 
+        }
+      }}
+      className={`group flex items-center px-2 py-3 w-full text-left transition-all duration-200 ${
+        activePage === item.name
+          ? "bg-white text-blue-600 border-r-4 border-blue-600"
+          : "bg-white bg-white"
+      }`}
+    >
+      <span className="mr-3 group-hover:text-blue-600 group-hover:scale-110">
+        {item.icon}
+      </span>
+      <span
+        className={`transition-all group-hover:text-blue-600 ${
+          !isSidebarOpen && "hidden sm:inline"
         }`}
       >
-        <span className="mr-0 sm:mr-3 transition-all duration-200 group-hover:text-blue-600 group-hover:scale-110">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-            />
-          </svg>
-        </span>
-        <span className="hidden sm:inline group-hover:text-blue-600">Profile</span>
-      </button>
+        {item.name}
+      </span>
+    </button>
+  </li>
+))}
 
-      <button
-        onClick={() => alert("Logged out successfully")}
-        className="group flex items-center px-4 py-3 w-full text-left text-black hover:bg-gray-100 transition-all duration-200"
-      >
-        <span className="mr-0 sm:mr-3 transition-all duration-200 group-hover:text-red-600 group-hover:scale-110">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-            />
-          </svg>
-        </span>
-        <span className="hidden sm:inline group-hover:text-red-600">Logout</span>
-      </button>
+        </ul>
+      </nav>
+
+      {/* Footer */}
+      <div className="mt-auto border-t text-neutral-900">
+        <button
+          onClick={() => setActivePage("Profile")}
+          className={`group flex items-center px-4 py-3 w-full text-left transition-all duration-200 ${
+            activePage === "Profile"
+              ? "bg-blue-50 text-blue-600 border-r-4 border-blue-600"
+              : "bg-white hover:bg-white"
+          }`}
+        >
+          <span className="mr-0 sm:mr-3 transition-all duration-200 group-hover:text-blue-600 group-hover:scale-110">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+              />
+            </svg>
+          </span>
+          <span
+            className={`hidden sm:inline transition-colors duration-200 group-hover:text-blue-600 ${!isSidebarOpen && "hidden"}`}
+          >
+            Profile
+          </span>
+        </button>
+
+        <button
+          onClick={() => alert("Logged out successfully")}
+          className="group flex items-center px-4 py-3 w-full text-left text-black hover:bg-gray-100 transition-all duration-200"
+        >
+          <span className="mr-0 sm:mr-3 transition-all duration-200 group-hover:text-red-600 group-hover:scale-110">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+              />
+            </svg>
+          </span>
+          <span
+            className={`hidden sm:inline transition-colors duration-200 group-hover:text-red-600 ${!isSidebarOpen && "hidden"}`}
+          >
+            Logout
+          </span>
+        </button>
+      </div>
     </div>
-  </div>
 
-  {/* Main content */}
-  <div className="flex-1 overflow-auto">{renderContent()}</div>
-</div>
+    {/* Main content */}
+    <div className="flex-1 overflow-auto">{renderContent()}</div>
+  </div>
 
   );
 };

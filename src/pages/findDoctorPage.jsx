@@ -1,18 +1,49 @@
-import React, { useState, useEffect } from "react";
+// src/pages/FindDoctorPage.js
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./findDoctorPage.css";
-import { useNavigate } from "react-router-dom";
 import indianStates from "../data/indianStates";
 import doctorDetails from "../data/doctorDetails";
-import defaultUser from "../assets/Images/commonImg/VDrlogo.png"; 
+import defaultUser from "../assets/Images/commonImg/VDrlogo.png";
 
-const GET_DOCTOR_API_URL = "http://localhost:8080/api/doctorsverification/all";
+const GET_DOCTOR_API_URL = "http://localhost:8080/doctorverfication/all";
+
+const specialityKeywords = {
+  Cardiologist: ["cardiologist", "cardiology", "heart"],
+  Dentist: ["dentist", "dental", "teeth"],
+  Gynaecologist: ["gynaecologist", "gynecology", "obgyn"],
+  Dermatologist: ["dermatologist", "skin"],
+  Neurologist: ["neurologist", "neuro"],
+  Orthopedist: ["orthopedist", "orthopedic", "bones"],
+  Pediatrician: ["pediatrician", "child"],
+  Pulmonologist: ["pulmonologist", "lungs", "respiratory"],
+  Gastroenterologist: ["gastroenterologist", "gastro", "digestive"],
+  Physiotherapist: ["physiotherapist", "physio"],
+  "General Physician": ["general physician", "physician", "gp"],
+  Diagnostics: ["diagnostics", "lab"]
+};
+
+const normalize = (str) => str?.toString().trim().toLowerCase() || "";
+
+const matchSpeciality = (doctorSpeciality, searchQuery) => {
+  const normDoctor = normalize(doctorSpeciality);
+  const normSearch = normalize(searchQuery);
+  const keywords = specialityKeywords[normSearch] || [normSearch];
+  return keywords.some((keyword) => normDoctor.includes(keyword));
+};
 
 const FindDoctorPage = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const listRef = useRef(null);
+
+  const queryParams = new URLSearchParams(location.search);
+  const specialityFromURL = queryParams.get("speciality") || "";
+
+  const [searchQuery, setSearchQuery] = useState(specialityFromURL);
   const [selectedState, setSelectedState] = useState("");
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDoctors = async () => {
@@ -20,49 +51,64 @@ const FindDoctorPage = () => {
         const response = await fetch(GET_DOCTOR_API_URL);
         const data = await response.json();
         setDoctors(data);
-        console.log("Fetched doctors:", data);
       } catch (error) {
         console.error("Error fetching doctors:", error);
       } finally {
         setLoading(false);
       }
     };
-
     fetchDoctors();
   }, []);
 
-  const filteredDoctors = [
-    ...doctors.filter(
-      (doctor) =>
-        doctor.medicalSpeciality.toLowerCase().includes(searchQuery.toLowerCase()) &&
-        (selectedState === "" || doctor.state?.toLowerCase() === selectedState.toLowerCase())
-    ),
-    ...doctorDetails
-      .filter(
-        (doc) =>
-          typeof doc.speciality === "string" &&
-          doc.speciality.toLowerCase().includes(searchQuery.toLowerCase()) &&
-          (selectedState === "" || (doc.Address && doc.Address.toLowerCase().includes(selectedState.toLowerCase())))
-      )
-      .map((doc, index) => ({
-        id: `dummy-${index}`,
-        fullName: doc.name || "not mentioned",
-        medicalSpeciality: doc.speciality || "not mentioned",
-        experience: "not mentioned",
-        city: doc.locality || "not mentioned",
-        state: "not mentioned",
-        country: "India",
-        hospitalCurrentWorking: doc.Address || "not mentioned",
-        medicalLicenseNumber: "not mentioned",
-        doctorPhoto: null,
-        phone: isNaN(doc.phone) ? "not mentioned" : doc.phone,
-        email: doc.email || "not mentioned"
-      }))
-  ];
-  
+  useEffect(() => {
+    setSearchQuery(specialityFromURL);
+    if (specialityFromURL && listRef.current) {
+      listRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [specialityFromURL]);
+
+  const getFilteredDoctors = () => {
+    const normalizedSearch = normalize(searchQuery);
+
+    return [
+      ...doctors.filter(
+        (doctor) =>
+          matchSpeciality(doctor.medicalSpeciality, normalizedSearch) &&
+          (selectedState === "" || normalize(doctor.state) === normalize(selectedState))
+      ),
+      ...doctorDetails
+        .filter(
+          (doc) =>
+            matchSpeciality(doc.speciality, normalizedSearch) &&
+            (selectedState === "" ||
+              normalize(doc.Address).includes(normalize(selectedState)))
+        )
+        .map((doc, index) => ({
+          id: `dummy-${index}`,
+          fullName: doc.name || "Not Mentioned",
+          medicalSpeciality: doc.speciality || "Not Mentioned",
+          experience: "Not Mentioned",
+          city: doc.locality || "Not Mentioned",
+          state: "Not Mentioned",
+          country: "India",
+          hospitalCurrentWorking: doc.Address || "Not Mentioned",
+          medicalLicenseNumber: "Not Mentioned",
+          doctorPhoto: null,
+          phone: isNaN(doc.phone) ? "Not Mentioned" : doc.phone,
+          email: doc.email || "Not Mentioned"
+        }))
+    ];
+  };
+
+  const filteredDoctors = getFilteredDoctors();
 
   const doctorProfile = (doctor) => {
     navigate(`/doctorID/${doctor.id}`, { state: { doctor } });
+  };
+
+  const getDoctorImage = (doctorPhoto) => {
+    if (!doctorPhoto) return defaultUser;
+    return doctorPhoto.startsWith("http") ? doctorPhoto : `data:image/jpeg;base64,${doctorPhoto}`;
   };
 
   return (
@@ -77,7 +123,6 @@ const FindDoctorPage = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-
           <select
             className="state-dropdown"
             value={selectedState}
@@ -92,37 +137,34 @@ const FindDoctorPage = () => {
           </select>
         </div>
 
-        <div className="doctor-list">
+        <div className="doctor-list" ref={listRef}>
           {loading ? (
             <p>Loading doctors...</p>
           ) : filteredDoctors.length > 0 ? (
             filteredDoctors.map((doctor) => (
-              <div key={doctor.id} className="doctor-card" onClick={() => doctorProfile(doctor)}>
+              <div
+                key={doctor.id}
+                className="doctor-card"
+                onClick={() => doctorProfile(doctor)}
+              >
                 <img
-                  src={
-                    doctor.doctorPhoto
-                      ? `data:image/jpeg;base64,${doctor.doctorPhoto}`
-                      : defaultUser
-                  }
+                  src={getDoctorImage(doctor.doctorPhoto)}
                   alt={`Dr. ${doctor.fullName}`}
                   className="doctor-image"
                 />
-
                 <div className="doctor-info">
-                  <h3>Dr. {doctor.fullName.toUpperCase()}</h3>
-                  <p><strong>Specialty: </strong> {doctor.medicalSpeciality}</p>
-                  <p><strong>Experience: </strong> {doctor.experience} years</p>
-                  <p><strong>Location: </strong> {doctor.city}, {doctor.state}, {doctor.country}</p>
-                  <p><strong>Hospital: </strong> {doctor.hospitalCurrentWorking}</p>
-                  <p><strong>License: </strong> {doctor.medicalLicenseNumber}</p>
+                  <h3>Dr. {doctor.fullName?.toUpperCase() || "Not Mentioned"}</h3>
+                  <p><strong>Specialty:</strong> {doctor.medicalSpeciality || "Not Mentioned"}</p>
+                  <p><strong>Experience:</strong> {doctor.experience} {doctor.experience !== "Not Mentioned" && "years"}</p>
+                  <p><strong>Location:</strong> {doctor.city}, {doctor.state !== "Not Mentioned" ? doctor.state : ""} {doctor.country}</p>
+                  <p><strong>Hospital:</strong> {doctor.hospitalCurrentWorking || "Not Mentioned"}</p>
+                  <p><strong>License:</strong> {doctor.medicalLicenseNumber || "Not Mentioned"}</p>
                 </div>
                 <button className="book-btn">Book Appointment</button>
               </div>
             ))
           ) : (
-            <p className="no-results">
-              No doctors found. Please refine your search.
-            </p>
+            <p className="no-results">No doctors found. Please refine your search.</p>
           )}
         </div>
       </div>

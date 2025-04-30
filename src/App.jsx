@@ -9,7 +9,6 @@ import LoginAndRegistration from "./pages/loginAndRegistrationPage";
 import IndividualRegisterPage from "./pages/individualRegisterPage";
 import SosPage from "./pages/sosPage";
 import DoctorRegisterPage from "./pages/doctorRegisterPage";
-import FounderPage from "./pages/ourFoundersPage";
 import HomeDeliveryMedicine from "./pages/demoPage";
 import Insurance from "./pages/insurancePage";
 import DoctorProfilePage from "./pages/doctorProfilePage";
@@ -22,13 +21,15 @@ import QRCodeGenerator from "./pages/QRCodeGenerator";
 import DocDashboard from "./pages/docDashboard";
 import ScrollToTop from "./components/scrollToTop";
 import WhyVDr from "./pages/whyVDr";
-import { useSWUpdateToast } from "./sw-update";
+import InstallPromptToast from "./hooks/InstallPromptToast.jsx";
+import UserDashboard from "./pages/userDashboard.jsx";
+
 
 const App = () => {
   const [location, setLocation] = useState();
   const currentUrl = window.location.href;
   console.log(`url:${currentUrl}`);
-  const { showUpdate, reload, setShowUpdate } = useSWUpdateToast();
+
 
   useEffect(() => {
     setLocation(currentUrl);
@@ -71,21 +72,16 @@ const App = () => {
             <Route path="/QRCodeGenerator" element={<QRCodeGenerator />} />
             <Route path="/docDashboard" element={<DocDashboard />} />
             <Route path="/whyVDr" element={<WhyVDr />} />
+            <Route path="/userDashboard" element={<UserDashboard />} />
+
           </Routes>
         </div>
         <Footer />
       </Router>
-      {showUpdate && (
-        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-4 py-2 rounded-xl shadow-lg z-50 flex items-center space-x-2">
-          <span>New version available.</span>
-          <button className="underline" onClick={reload}>
-            Refresh
-          </button>
-          <button onClick={() => setShowUpdate(false)} className="ml-2 text-sm">
-            ✕
-          </button>
-        </div>
-      )}
+
+      
+      <InstallPromptToast />
+      
     </>
   );
 };

@@ -17,61 +17,73 @@ const cardsData = [
     title: "Cardiologist",
     img: CardiologistImg,
     description: "Expert Care for a Healthier Heart",
+    category: "Cardiologist"
   },
   {
     title: "Gynaecologist",
     img: GynaecologistImg,
     description: "Women's health, expert care",
+    category: "Gynaecologist"
   },
   {
     title: "Dentist",
     img: DentistImg,
     description: "Strong Teeth,Bright Smiles",
+    category: "Dentist"
   },
   {
     title: "Gastroenterologist",
     img: GastroenterologistImg,
     description: "Digestive health, better comfort",
+    category: "Gastroenterologist"
   },
   {
     title: "Orthopedist",
     img: OrthopedistImg,
     description: "Stronger bones, better mobility",
+    category: "Orthopedist"
   },
   {
     title: "Diagnostics",
     img: DiagnosticsImg,
     description: "Precise tests, accurate results.",
+    category: "Diagnostics"
   },
   {
     title: "Dermatologist",
     img: DermatologistImg,
     description: "Healthy skin, glowing confidence",
+    category: "Dermatologist"
   },
   {
     title: "General Physician",
     img: GeneralPhysicianImg,
     description: "Comprehensive care, healthy living",
+    category: "General Physician"
   },
   {
     title: "Neurologist",
     img: NeurologistImg,
     description: "Your brain, our priority",
+    category: "Neurologist"
   },
   {
     title: "Physiotherapist",
     img: PhysiotherapistImg,
     description: "Restoring movement, improving life",
+    category: "Physiotherapist"
   },
   {
     title: "Pediatrician",
     img: PediatricianImg,
     description: "Caring for children's wellness",
+    category: "Pediatrician"
   },
   {
     title: "Pulmonologist",
     img: PulmonologistImg,
     description: "Breathing easy, health restored",
+    category: "Pulmonologist"
   },
 ];
 

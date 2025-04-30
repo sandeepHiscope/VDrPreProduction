@@ -1,17 +1,12 @@
-/* Prevent global horizontal overflow */
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
+
 
 .expert-slider-section {
   position: relative;
-  padding: 2em 0;
-  width: 100%;
+  width: 97%;
   overflow: hidden;
-  background-color: #fff;
+  /* background-color: #d4ed7b; */
   box-sizing: border-box;
+  margin: 1em;
 }
 
 .section-title {
@@ -41,6 +36,12 @@ body {
   padding: 1rem;
   box-sizing: border-box;
   max-width: 100%;
+  margin: 1em 2em;
+  overflow-x: hidden;
+  scroll-behavior:smooth;
+
+  transition: ease-in-out 1s;
+  
 }
 
 .slider-container::-webkit-scrollbar {
@@ -58,6 +59,9 @@ body {
   scroll-snap-align: start;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
+  text-align: center;
+  cursor: pointer;
+  scroll-behavior: smooth;
 }
 
 .slide-item img {
@@ -72,6 +76,7 @@ body {
   font-size: 1.2rem;
   color: #202020;
   margin-bottom: 8px;
+  font-weight: bold;
 }
 
 .slide-description {
@@ -118,22 +123,25 @@ body {
 
 .slider-navigation {
   position: absolute;
-  top: 50%;
-  width: 100%;
+  top: 55%;
+  left: 0%;
+  width: 99.3%;
   display: flex;
   justify-content: space-between;
   transform: translateY(-50%);
   pointer-events: none;
-  padding: 0 1rem;
+  padding: 0;
   box-sizing: border-box;
+  /* background: #000; */
 }
 
 .slider-navigation button {
   pointer-events: auto;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(122, 122, 122, 0.5);
+  height: 100%;
   color: #fff;
   border: none;
-  padding: 10px 15px;
+  padding: 10px 10px;
   font-size: 1.5rem;
   border-radius: 5px;
   cursor: pointer;
@@ -193,5 +201,4 @@ body {
   .section-title {
     font-size: 1rem;
   }
-  
 }

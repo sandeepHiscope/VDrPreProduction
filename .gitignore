@@ -6,7 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-
 node_modules
 dist
 dist-ssr
@@ -22,4 +21,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-src/assets/Images/comingSoonPage/bag2.jpg
+# Vite and Vite PWA
+dist/
+dev-dist/
+.vite/
+.vite-pwa-temp/
+sw.js
+sw.ts
+workbox-*.js

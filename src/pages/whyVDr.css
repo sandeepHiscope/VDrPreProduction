@@ -33,7 +33,7 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: var(--neutral-800);
   line-height: 1.6;
-  background-color: var(--neutral-50);
+  background-color: var(--background-color-main);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -87,7 +87,7 @@ p {
   width: 80px;
   background-color: var(--color-primary);
   margin: 0 auto;
-  border-radius: 2px;
+  border-radius: var(--radius-xs);
 }
 
 /* Hero Section */
@@ -146,7 +146,7 @@ p {
   border: none;
   border-radius: var(--border-radius);
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: --transition-background-color 0.3s, var(--transition-slide);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -206,11 +206,11 @@ p {
 }
 
 .problem-card {
-  border-left: 6px solid var(--danger);
+  border-left: 6px solid var(--color-error);
 }
 
 .solution-card {
-  border-left: 6px solid var(--success);
+  border-left: 6px solid var(--color-success);
 }
 
 .problem-card h3, .solution-card h3 {
@@ -224,7 +224,7 @@ p {
 
 .problem-card li, .solution-card li {
   display: flex;
-  align-items: flex-start;
+  align-items: left;
   margin-bottom: 1rem;
 }
 
@@ -235,11 +235,11 @@ p {
 }
 
 .problem-card .icon {
-  color: var(--danger);
+  color: var(--color-error);
 }
 
 .solution-card .icon {
-  color: var(--success);
+  color: var(--color-success );
 }
 
 /* Process Section */
@@ -259,7 +259,7 @@ p {
   padding: 2rem;
   border-radius: var(--border-radius);
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: var(--transition-slide), box-shadow 0.3s ease;
 }
 
 .step-card:hover {
@@ -307,7 +307,7 @@ p {
 
 .badge-text h4 {
   margin-bottom: 0.25rem;
-  color: var(--success);
+  color: var(--color-success);
 }
 
 .badge-text p {
@@ -353,9 +353,9 @@ p {
 .feature-card {
   background-color: white;
   padding: 2rem;
-  border-radius: var(--border-radius);
+  border-radius: var(--radius-md);
   box-shadow: var(--card-shadow);
-  transition: transform 0.3s ease;
+  transition: var(--transition-slide),box-shadow 0.3s ease;
   height: 100%;
 }
 
@@ -388,7 +388,7 @@ p {
 .testimonial-card {
   background-color: var(--background-color-card);
   padding: 2rem;
-  border-radius: var(--border-radius);
+  border-radius: var(--radius-md);
   box-shadow: var(--card-shadow);
 }
 
@@ -466,15 +466,15 @@ p {
 }
 
 .primary-cta {
-  background-color: var(--accent-color);
+  background-color: var(--color-primary);
   color: white;
   font-size: 1.125rem;
   font-weight: 600;
   padding: 1rem 2rem;
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s, var(--transition-slide);
 }
 
 .primary-cta:hover {
@@ -489,7 +489,7 @@ p {
   font-weight: 600;
   padding: 1rem 2rem;
   border: 2px solid white;
-  border-radius: var(--border-radius);
+  border-radius: var(--radius-md);
   cursor: pointer;
   transition: background-color }
 
@@ -512,6 +512,7 @@ p {
     }
     .Probletext{
       font-size: 12px;
+      text-align: center;
     }
     .problem-card, .solution-card {
      
@@ -539,9 +540,17 @@ p {
       font-size: 1.5rem;
       margin-bottom: 1rem;
     }
-    .Probletext{
-      font-size: 10px;
-    }
+ .Probletext {
+  font-size: 10px;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .Probletext {
+    text-align: start;
+  }
+}
+
     .problem-card, .solution-card {
      
       height: 89%;
