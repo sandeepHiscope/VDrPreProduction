@@ -22,8 +22,13 @@ import DocDashboard from "./pages/docDashboard";
 import ScrollToTop from "./components/scrollToTop";
 import WhyVDr from "./pages/whyVDr";
 import InstallPromptToast from "./hooks/InstallPromptToast.jsx";
+<<<<<<< Updated upstream
 import UserDashboard from "./pages/userDashboard.jsx";
 import FounderPage from "./pages/ourFoundersPage";
+=======
+import FounderPage from "./pages/ourFoundersPage";
+
+>>>>>>> Stashed changes
 
 const App = () => {
   const [location, setLocation] = useState();
