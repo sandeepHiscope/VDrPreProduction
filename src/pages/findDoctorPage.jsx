@@ -113,17 +113,17 @@ const FindDoctorPage = () => {
   return (
     <>
       <div className="header-placeholder"></div>
-      <div className="main-container">
-        <div className="search-bar-container1">
+      <div className="findDoctorPage-main-container">
+        <div className="findDoctorPage-search-bar-container1">
           <input
             type="text"
             placeholder="Search by specialization"
-            className="specialization-search1"
+            className="findDoctorPage-specialization-search1"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
           <select
-            className="state-dropdown"
+            className="findDoctorPage-state-dropdown"
             value={selectedState}
             onChange={(e) => setSelectedState(e.target.value)}
           >
