@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./loginAndRegistrationPage.css";
 import { useNavigate } from "react-router-dom";
 import Googlelogo from "../assets/icons/google.png";
 import DoctorVerification from "./doctorVerificationpage";
 import docRegister from "../assets/Images/docRegister.png";
+import { LoginContext } from "../context/loginContext";
 
 const Login = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("login");
   const [role, setRole] = useState("");
+  const { isLoggedIn, login, logout, isUser, isDoctor, setUser, setIsDoctor} = useContext(LoginContext);
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -46,7 +49,10 @@ const Login = () => {
         const data = await response.text();
         alert("WELCOME LOGIN SUCCESSFUL!");
         if (role === "doctor") {
-          navigate("/doctorVerificationpage", { state: { email: formData.email } });
+          setIsDoctor(true);
+          navigate("/doctorVerificationpage", {
+            state: { email: formData.email },
+          });
         } else {
           alert("User login successful!");
           navigate("/findDoctorPage");
@@ -149,7 +155,7 @@ const Login = () => {
               <div className="role-selection">
                 <p>Select Role to Login:</p>
                 <button className="role-btn" onClick={showDoctorForm}>
-                HealthCare Professional
+                  HealthCare Professional
                 </button>
                 <button className="role-btn" onClick={showUserForm}>
                   User
@@ -211,7 +217,7 @@ const Login = () => {
           </div>
         )}
 
-        {(activeTab === "register" && role) && (
+        {activeTab === "register" && role && (
           <div className="form-container">
             <h2>{role === "doctor" ? "Doctor" : "User"} Registration</h2>
             <form onSubmit={handleRegister}>
