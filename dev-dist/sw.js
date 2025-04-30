@@ -80,7 +80,11 @@ define(['./workbox-e328c5da'], (function (workbox) { 'use strict';
   workbox.precacheAndRoute([{
     "url": "/index.html",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "revision": "0.d8565cjdeno"
+=======
+    "revision": "0.ma1mpgbfrm"
+>>>>>>> Stashed changes
 =======
     "revision": "0.ma1mpgbfrm"
 >>>>>>> Stashed changes
