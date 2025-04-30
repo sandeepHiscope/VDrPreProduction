@@ -1,4 +1,3 @@
-// src/pages/FindDoctorPage.js
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./findDoctorPage.css";
@@ -6,7 +5,7 @@ import indianStates from "../data/indianStates";
 import doctorDetails from "../data/doctorDetails";
 import defaultUser from "../assets/Images/commonImg/VDrlogo.png";
 
-const GET_DOCTOR_API_URL = "http://localhost:8080/api/doctorsverification/all";
+const GET_DOCTOR_API_URL = "http://localhost:8080/doctorverfication/all";
 
 const specialityKeywords = {
   Cardiologist: ["cardiologist", "cardiology", "heart"],
@@ -114,17 +113,17 @@ const FindDoctorPage = () => {
   return (
     <>
       <div className="header-placeholder"></div>
-      <div className="main-container">
-        <div className="search-bar-container1">
+      <div className="findDoctorPage-main-container">
+        <div className="findDoctorPage-search-bar-container1">
           <input
             type="text"
             placeholder="Search by specialization"
-            className="specialization-search1"
+            className="findDoctorPage-specialization-search1"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
           <select
-            className="state-dropdown"
+            className="findDoctorPage-state-dropdown"
             value={selectedState}
             onChange={(e) => setSelectedState(e.target.value)}
           >
