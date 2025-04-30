@@ -650,7 +650,7 @@ const DocDashboard = () => {
       <div className="sidebar-header">
         <h2>VDR</h2>
       </div>
-      <nav className="menu">
+      <nav className="menu-li">
         <ul className="menu-list">
           {menuItems.map((item) => (
             <li key={item.name}>
