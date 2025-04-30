@@ -2,3 +2,6 @@ Folders → kebab-case(lowercase with dashes → user-card/, login-page/)
 Components → PascalCase(UserCard.jsx)
 Everything else → camelCase (ALL_CAPS for constants)(fetchData.js)
 
+use these before pullrequest
+npm run build
+npx serve -s dist

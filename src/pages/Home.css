@@ -805,6 +805,7 @@ label {
   text-align: center;
   padding: 20px;
   width: 90%;
+  cursor: pointer;
   margin: 0;
 }
 
@@ -813,6 +814,7 @@ label {
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
+  cursor: pointer;
   margin-top: 20px;
 }
 
@@ -850,3 +852,4 @@ label {
   width: fit-content;
   text-align: center;
 }
+
