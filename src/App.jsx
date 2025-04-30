@@ -22,6 +22,8 @@ import DocDashboard from "./pages/docDashboard";
 import ScrollToTop from "./components/scrollToTop";
 import WhyVDr from "./pages/whyVDr";
 import InstallPromptToast from "./hooks/InstallPromptToast.jsx";
+import FounderPage from "./pages/ourFoundersPage";
+import UserDashboard from "./pages/userDashboard";
 
 
 const App = () => {
@@ -62,7 +64,8 @@ const App = () => {
               path="/doctorRegisterPage"
               element={<DoctorRegisterPage />}
             />
-            {/* <Route path="/FounderPage" element={<FounderPage />} /> */}
+            <Route path="/FounderPage" element={<FounderPage />} />
+            <Route path="/FounderPage" element={<FounderPage />} />
             <Route path="/insurancePage" element={<Insurance />} />
             <Route path="/demoPage" element={<HomeDeliveryMedicine />} />
             <Route path="/doctorProfilePage" element={<DoctorProfilePage />} />
@@ -71,6 +74,8 @@ const App = () => {
             <Route path="/QRCodeGenerator" element={<QRCodeGenerator />} />
             <Route path="/docDashboard" element={<DocDashboard />} />
             <Route path="/whyVDr" element={<WhyVDr />} />
+            <Route path="/userDashboard" element={<UserDashboard />} />
+
           </Routes>
         </div>
         <Footer />

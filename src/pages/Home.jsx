@@ -9,7 +9,7 @@ import GooglePlayLogo from "../assets/icons/apps/googleplay.png";
 import AppStoreLogo from "../assets/icons/apps/applestore.png";
 import CardsSlider from "../components/cardsSlider";
 import indiaUsaStates from "../data/indiaUsaStates";
-import doctorCategories from "../data/doctorCategories";
+import topDoctorSpecialtiesIndia from "../data/topDoctorSpecialtiesIndia";
 import tempImg from "../assets/Images/foundersImg/kiran.jpg";
 import ScrollingCardsContainer from "../components/ScrollingCardsContainer";
 import FindDoctorPage from "./findDoctorPage";
@@ -23,10 +23,6 @@ function Homepage() {
   }, []);
 
   // Function to handle button click
-  const handleButtonClick = (store) => {
-    alert(`Redirecting to ${store}`);
-    // Add your redirection logic here
-  };
 
   // Define state for country, state, and search input
   const [country, setCountry] = useState("");
@@ -51,7 +47,7 @@ function Homepage() {
 
     // Filter doctor types based on query
     if (query) {
-      const filtered = doctorCategories.filter((doctor) =>
+      const filtered = topDoctorSpecialtiesIndia.filter((doctor) =>
         doctor.toLowerCase().includes(query.toLowerCase())
       );
       setFilteredDoctors(filtered);
@@ -136,7 +132,7 @@ function Homepage() {
           <CardsSlider />
 
         <h2>More Categories to help you</h2>
-        <section className="categorySection">
+        <section          className="categorySection">
 
         <ul className="categoryList">
           <li className="categoryItem">Dentist</li>

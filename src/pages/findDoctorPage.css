@@ -1,5 +1,4 @@
-/* Main Container */
-.main-container {
+.findDoctorPage-main-container {
   padding: 20px;
   max-width: 1200px;
   height: auto;
@@ -15,7 +14,7 @@
   /* height: 550px; */
 }
 /* Search Bar Container */
-.search-bar-container1 {
+.findDoctorPage-search-bar-container1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,11 +24,11 @@
 }
 
 /* Specialization Search Bar */
-.specialization-search1 {
+.findDoctorPage-specialization-search1 {
   padding: 12px 15px;
   flex: 1;
   min-width: 200px;
-  border: var(--border-width-medium) var(--border-style-solid) var(	--border-color-default); 
+  border: var(--border-width-medium) var(--border-style-solid) var(--border-color-default); 
   border-radius: var(--radius-md);
   font-size: 16px;
   outline: none;
@@ -38,7 +37,7 @@
 }
 
 /* State Dropdown Search Bar */
-.state-dropdown {
+.findDoctorPage-state-dropdown {
   padding: 12px 15px;
   flex: 1;
   min-width: 200px;
