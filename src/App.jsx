@@ -23,7 +23,7 @@ import ScrollToTop from "./components/scrollToTop";
 import WhyVDr from "./pages/whyVDr";
 import InstallPromptToast from "./hooks/InstallPromptToast.jsx";
 import UserDashboard from "./pages/userDashboard.jsx";
-
+import FounderPage from "./pages/ourFoundersPage";
 
 const App = () => {
   const [location, setLocation] = useState();
@@ -63,7 +63,7 @@ const App = () => {
               path="/doctorRegisterPage"
               element={<DoctorRegisterPage />}
             />
-            {/* <Route path="/FounderPage" element={<FounderPage />} /> */}
+            <Route path="/FounderPage" element={<FounderPage />} />
             <Route path="/insurancePage" element={<Insurance />} />
             <Route path="/demoPage" element={<HomeDeliveryMedicine />} />
             <Route path="/doctorProfilePage" element={<DoctorProfilePage />} />
@@ -76,7 +76,7 @@ const App = () => {
 
           </Routes>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
 
       
