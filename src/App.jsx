@@ -29,11 +29,14 @@ import LoginContextProvider, { LoginContext } from "./context/loginContext.jsx";
 const App = () => {
   const [location, setLocation] = useState();
   const currentUrl = window.location.href;
-  console.log(`url:${currentUrl}`);
 
   useEffect(() => {
     setLocation(currentUrl);
   }, [currentUrl]);
+
+  useEffect(() => {
+    console.log(`url:${currentUrl}`);
+  }, []);
 
   return (
     <>
