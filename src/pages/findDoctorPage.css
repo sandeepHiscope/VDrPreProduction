@@ -2,11 +2,16 @@
   padding: 20px;
   max-width: 1200px;
   height: auto;
-  margin: 80px auto 20px; /* Add margin to avoid overlap with header */
+  /* margin: 80px auto 20px;  */
   box-sizing: border-box;
   /* overflow-x: hidden; */
   /* height: a; Fixed height to ensure visibility */
   background: var(--color-background-main);
+  display: flex;
+  gap:80px;
+}
+.con{
+  display:inline;
 }
 
 .header-placeholder {

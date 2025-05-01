@@ -1,71 +1,76 @@
-import React, { useState } from 'react';
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaArrowUp, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
 import './footer.css';
-import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
-import { Link } from "react-router-dom";
 
-const Footer = () => {
-  const [email, setEmail] = useState('');
+const Footer = () => (
+  <footer className="footer">
+    
 
-  const handleSubscribe = () => {
-    if (email) {
-      alert(`Subscribed with email: ${email}`);
-      setEmail('');
-    }
-  };
-
-  return (
-    <footer className="footer">
-      <div className="footer-top">
-        <div className="footer-brand">
-          <img src={VDrLogo} alt="App Logo" className="footer-logo" />
-          <h2 className="app-name">Verified-Doctor</h2>
-          <p className="tagline">Trusted Care, Anytime, Anywhere, Always.</p>
-        </div>
-
-        <div className="footer-icons">
-          <a href="https://www.facebook.com/"> <FaFacebookF title="Facebook" className="footer-icon" /></a>
-          <a href="https://x.com/"><FaTwitter title="Twitter" className="footer-icon" /></a>
-          <a href="https://in.indeed.com/"> <FaLinkedinIn title="LinkedIn" className="footer-icon" /></a>
-          <a href="https://www.instagram.com/"> <FaInstagram title="Instagram" className="footer-icon" /></a>
-        </div>
-        <a href="#">  <FaArrowUp title="Back to Top" className="footer-iconarrow" /></a>
-
-
-        <div className="footer-links">
-          <h4>Explore</h4>
-          <ul>
-            <Link to="/findDoctorPage"><li>Find a Doctor</li></Link>
-            <Link to="/verifyDoc"><li>Verify Doc</li></Link>
-            <Link to="/sosPage"><li>SOS</li></Link>
-            <Link to="/whyVDr"><li>Why VDr</li></Link>
-            <Link to="/findDoctorPage"><li>Doorstep Meds</li></Link>
-            <Link to="/insurancePage"><li>Insurance</li></Link>
-            <Link to="/docDashboard"><li>DocDashboard</li></Link>
-          </ul>
-        </div>
-
-        {/* Newsletter Subscription */}
-        <div className="footer-subscription">
-          <h4>Stay Updated</h4>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="footer-email-input"
-          />
-          <button onClick={handleSubscribe} className="footer-subscribe-button">Subscribe</button>
-        </div>
-        <div className="footer-contact">
-          <a href="tel:+1234567890"><FaPhoneAlt /> +1 234 567 890</a>
-          <a href="mailto:support@verifieddoctor.com"><FaEnvelope /> support@verifieddoctor.com</a>
-        </div>
+    {/* Main columns */}
+    <div className="footer__content">
+      <div className="footer__col footer__col--about">
+        <h3>VDr</h3>
+        <p>
+          Your trusted health companion, connecting you with verified, background-checked doctors for quality care.
+        </p>
       </div>
 
-    <p2 className="copyright">© 2025 Verified-Doctor. All rights reserved.</p2>
-    </footer>
-  );
-};
+      <div className="footer__col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/doctors">Our Doctors</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div className="footer__col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="/faq">FAQs</a></li>
+          <li><a href="/help-center">Help Center</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div className="footer__col">
+        <h4>Connect</h4>
+        <div className="footer__social">
+          <a href="#"><img src="/icons/facebook.svg" alt="Facebook" /></a>
+          <a href="#"><img src="/icons/linkedin.svg" alt="LinkedIn" /></a>
+          <a href="#"><img src="/icons/twitter.svg" alt="Twitter" /></a>
+          <a href="#"><img src="/icons/instagram.svg" alt="Instagram" /></a>
+        </div>
+        <p>Email: <a href="mailto:support@vdr.health">support@vdr.health</a></p>
+        <p>Phone: <a href="tel:+919876543210">+91 98765 43210</a></p>
+      </div>
+      {/* Newsletter signup */}
+    <div className="footer__newsletter">
+      <h2 className="footer__newsletter-title">Stay Informed</h2>
+      <p className="footer__newsletter-text">
+        Subscribe to get health tips and VDr updates straight to your inbox.
+      </p>
+      <form className="footer__newsletter-form" onSubmit={e => e.preventDefault()}>
+        <input
+          type="email"
+          placeholder="Enter your email"
+          aria-label="Email address"
+          required
+        />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    </div>
+
+    {/* Bottom legal bar */}
+    <div className="footer__bottom">
+      <p>&copy; {new Date().getFullYear()} Hiscope Entreprises. All rights reserved.</p>
+      <div className="footer__legal">
+        <a href="/terms">Terms of Service</a>
+        <a href="/privacy">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer;
