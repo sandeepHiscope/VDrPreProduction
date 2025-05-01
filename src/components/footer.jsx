@@ -45,7 +45,7 @@ const Footer = () => (
         <p>Phone: <a href="tel:+919876543210">+91 98765 43210</a></p>
       </div>
       {/* Newsletter signup */}
-    <div className="footer__newsletter">
+    {/* <div className="footer__newsletter">
       <h2 className="footer__newsletter-title">Stay Informed</h2>
       <p className="footer__newsletter-text">
         Subscribe to get health tips and VDr updates straight to your inbox.
@@ -59,7 +59,7 @@ const Footer = () => (
         />
         <button type="submit">Subscribe</button>
       </form>
-    </div>
+    </div> */}
     </div>
 
     {/* Bottom legal bar */}
