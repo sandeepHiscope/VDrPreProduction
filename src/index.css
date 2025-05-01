@@ -100,7 +100,6 @@ body {
   color: #333;
 
   cursor: url("./assets/cursor/custuomCursor.cur"), auto;
-  /* cursor: url("./assets/cursor/custompointer.cur"), pointer; */
 
 }
 ::selection {
