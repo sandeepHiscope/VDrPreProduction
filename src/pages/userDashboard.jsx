@@ -1,17 +1,24 @@
 import { useState } from 'react';
-import { Menu, X,User,LogOut, Calendar, FileText, Pill, Bell, ChevronRight, Download, Clock } from 'lucide-react';
-import Mohan from "../assets/Images/foundersImg/mohan.jpg";
+import { Menu, X, User, LogOut, Calendar, FileText, Pill, Bell, ChevronRight, Download, Clock } from 'lucide-react';
 import "./userDashboard.css";
+import Mohan from "../assets/Images/foundersImg/mohan.jpg";
 
-
-export default function PatientDashboard() {
+export default function userDashboard() {
   const [isOpen, setIsOpen] = useState(true);
   const [activeTab, setActiveTab] = useState('consultation');
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
 
-
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleLogout = () => {
+    setShowLogoutPopup(false);
+    alert("Logged out successfully");
+  };
+
+  const handleCancelLogout = () => {
+    setShowLogoutPopup(false);
   };
 
   const renderContent = () => {
@@ -24,7 +31,7 @@ export default function PatientDashboard() {
         return <PrescriptionSection />;
       case 'notification':
         return <NotificationSection />;
-        case 'profile':
+      case 'profile':
         return <ProfileSection />;
       case 'logout':
         return <LogoutPopup show={showLogoutPopup} onConfirm={handleLogout} onCancel={handleCancelLogout} />;
@@ -32,147 +39,136 @@ export default function PatientDashboard() {
         return <ConsultationSection />;
     }
   };
-  const handleLogout = () => {
-    setShowLogoutPopup(false);
-    alert("Logged out successfully");
-  };
-
-  const handleCancelLogout = () => {
-    setShowLogoutPopup(false);
-  };
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="patientDashboard-container">
       {/* Sidebar */}
-      <div className={`bg-white shadow-lg transition-all duration-300 ${isOpen ? 'w-64' : 'w-20'}`}>
-        <div className="p-4 flex justify-between items-center border-b">
-          {isOpen && <h2 className="font-bold text-blue-800">UserPortal</h2>}
-          <button onClick={toggleSidebar} className="p-2 rounded-full hover:bg-gray-200">
+      <div className={`patientSidebar ${isOpen ? 'patientSidebar-open' : 'patientSidebar-collapsed'}`}>
+        <div className="patientSidebar-header">
+          {isOpen && <h2 className="patientSidebar-title">UserPortal</h2>}
+          <button onClick={toggleSidebar} className="patientSidebar-toggle">
             {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
-        
-        <div className="py-4 flex flex-col ">
-          <NavItem 
-            icon={<Calendar />} 
-            title="Consultation" 
-            isOpen={isOpen} 
-            isActive={activeTab === 'consultation'} 
-            onClick={() => setActiveTab('consultation')} 
+    
+        <div className="patientSidebar-nav">
+          <NavItem
+            icon={<Calendar />}
+            title="Consultation"
+            isOpen={isOpen}
+            isActive={activeTab === 'consultation'}
+            onClick={() => setActiveTab('consultation')}
           />
-          <NavItem 
-            icon={<FileText />} 
-            title="Diagnosis Reports" 
-            isOpen={isOpen} 
-            isActive={activeTab === 'diagnosis'} 
-            onClick={() => setActiveTab('diagnosis')} 
+          <NavItem
+            icon={<FileText />}
+            title="Diagnosis Reports"
+            isOpen={isOpen}
+            isActive={activeTab === 'diagnosis'}
+            onClick={() => setActiveTab('diagnosis')}
           />
-          <NavItem 
-            icon={<Pill />} 
-            title="Prescriptions" 
-            isOpen={isOpen} 
-            isActive={activeTab === 'prescription'} 
-            onClick={() => setActiveTab('prescription')} 
+          <NavItem
+            icon={<Pill />}
+            title="Prescriptions"
+            isOpen={isOpen}
+            isActive={activeTab === 'prescription'}
+            onClick={() => setActiveTab('prescription')}
           />
-          <NavItem 
-            icon={<Bell />} 
-            title="Notifications" 
-            isOpen={isOpen} 
-            isActive={activeTab === 'notification'} 
-            onClick={() => setActiveTab('notification')} 
+          <NavItem
+            icon={<Bell />}
+            title="Notifications"
+            isOpen={isOpen}
+            isActive={activeTab === 'notification'}
+            onClick={() => setActiveTab('notification')}
           />
-          <NavItem 
-            icon={<User />} 
-            title="Profile" 
-            isOpen={isOpen} 
-            isActive={activeTab === 'profile'} 
-            onClick={() => setActiveTab('profile')} 
-            className="bg-amber-600"
+          <NavItem
+            icon={<User />}
+            title="Profile"
+            isOpen={isOpen}
+            isActive={activeTab === 'profile'}
+            onClick={() => setActiveTab('profile')}
+            className="patientNavItem-highlight"
           />
-
-            <NavItem 
-            icon={<LogOut />} 
-            title="Logout" 
-            isOpen={isOpen} 
-            isActive={activeTab === 'logout'} 
-            onClick={() => setShowLogoutPopup(true)} 
+          <NavItem
+            icon={<LogOut />}
+            title="Logout"
+            isOpen={isOpen}
+            isActive={activeTab === 'logout'}
+            onClick={() => setShowLogoutPopup(true)}
           />
-
-         
         </div>
       </div>
-      
+    
       {/* Main Content */}
-      <div className="flex-1 overflow-auto ">
-        <div className="p-6">
-          <h1 className="text-2xl font-bold text-gray-800 mb-6">Patient Dashboard</h1>
+      <div className="patientMain-content">
+        <div className="patientMain-inner">
+          <h1 className="patientMain-heading">Patient Dashboard</h1>
           {renderContent()}
         </div>
       </div>
     </div>
   );
 }
-function ProfileSection() {
-    return (
-      <div className="bg-white p-6 rounded-lg shadow-md">
-        <div className="flex items-center mb-6">
-          <img src={Mohan} alt="Patient" className="w-20 h-20 rounded-full mr-4" />
-          <div>
-            <h3 className="text-xl font-semibold text-gray-800">Mohan Kumar</h3>
-            <p className="text-gray-600">Age: 30</p>
-          </div>
-        </div>
-        <div>
-          <h4 className="text-lg font-medium text-gray-800 mb-2">Personal Information</h4>
-          <ul className="space-y-2 text-gray-600">
-            <li>Email: mohan.kumar@example.com</li>
-            <li>Phone: +123 456 7890</li>
-            <li>Address: 123, Main Street, City, Country</li>
-          </ul>
-        </div>
-        <button className="mt-4 text-blue-600 hover:text-blue-800">Change Settings</button>
-      </div>
-    );
-  }
-  
 
-function NavItem({ icon, title, isOpen, isActive, onClick }) {
+function NavItem({ icon, title, isOpen, isActive, onClick, className = '' }) {
   return (
     <div 
-      className={`flex items-center px-4 py-3 cursor-pointer transition-colors ${isActive ? 'bg-blue-100 text-blue-700 border-r-4 border-blue-700' : 'text-gray-700 hover:bg-gray-100'}`}
+      className={`navItem ${isActive ? 'navItem-active' : ''} ${className}`}
       onClick={onClick}
     >
-      <div className="text-xl">{icon}</div>
-      {isOpen && <span className="ml-4 text-sm font-medium">{title}</span>}
+      <div className="navItem-icon">{icon}</div>
+      {isOpen && <span className="navItem-title">{title}</span>}
+    </div>
+  );
+}
+
+function ProfileSection() { 
+  return (
+    <div className="profileCard">
+      <div className="profileHeader">
+        <img src={Mohan} alt="Patient" className="profileImage" />
+        <div>
+          <h3 className="profileName">Mohan Kumar</h3>
+          <p className="profileAge">Age: 30</p>
+        </div>
+      </div>
+      <div>
+        <h4 className="profileSectionTitle">Personal Information</h4>
+        <ul className="profileDetails">
+          <li>Email: mohan.kumar@example.com</li>
+          <li>Phone: +123 456 7890</li>
+          <li>Address: 123, Main Street, City, Country</li>
+        </ul>
+      </div>
+      <button className="profileSettingsBtn">Change Settings</button>
     </div>
   );
 }
 
 function ConsultationCard({ date, time, patient, status, type }) {
   const statusColors = {
-    completed: 'bg-green-100 text-green-800',
-    upcoming: 'bg-blue-100 text-blue-800',
-    scheduled: 'bg-yellow-100 text-yellow-800'
+    completed: 'consultation-status-completed',
+    upcoming: 'consultation-status-upcoming',
+    scheduled: 'consultation-status-scheduled',
   };
-  
+
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 mb-4">
-      <div className="flex justify-between items-start mb-3">
+    <div className="consultationCardContainer">
+      <div className="consultationCardHeader">
         <div>
-          <h3 className="font-semibold text-lg text-gray-800">{patient}</h3>
-          <div className="flex items-center text-gray-600 text-sm mt-1">
-            <Clock size={14} className="mr-1" />
+          <h3 className="consultationCardPatientName">{patient}</h3>
+          <div className="consultationCardTimeInfo">
+            <Clock size={14} className="consultationClockIcon" />
             <span>{date} at {time}</span>
           </div>
         </div>
-        <span className={`px-2 py-1 rounded-full text-xs font-medium ${statusColors[status]}`}>
+        <span className={`consultationCardStatus ${statusColors[status]}`}>
           {status.charAt(0).toUpperCase() + status.slice(1)}
         </span>
       </div>
-      <p className="text-sm text-gray-600 mb-3">
+      <p className="consultationCardTypeText">
         {type === 'video' ? 'Video Consultation' : 'In-person Appointment'}
       </p>
-      <button className="text-blue-600 text-sm font-medium flex items-center hover:text-blue-800">
+      <button className="consultationCardButton">
         View Details <ChevronRight size={16} />
       </button>
     </div>
@@ -196,32 +192,32 @@ function ConsultationSection() {
       { id: 6, patient: 'Jessica Taylor', date: '15 May 2025', time: '1:45 PM', status: 'scheduled', type: 'in-person' }
     ]
   };
-  
+
   return (
     <div>
-      <div className="flex space-x-4 mb-6">
-        <button 
-          className={`px-4 py-2 rounded-lg text-sm font-medium ${activeFilter === 'past' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'}`}
+      <div className="consultationFilterButtonGroup">
+        <button
+          className={`consultationFilterButton ${activeFilter === 'past' ? 'consultationFilterButtonActive' : ''}`}
           onClick={() => setActiveFilter('past')}
         >
           Past
         </button>
-        <button 
-          className={`px-4 py-2 rounded-lg text-sm font-medium ${activeFilter === 'upcoming' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'}`}
+        <button
+          className={`consultationFilterButton ${activeFilter === 'upcoming' ? 'consultationFilterButtonActive' : ''}`}
           onClick={() => setActiveFilter('upcoming')}
         >
           Upcoming
         </button>
-        <button 
-          className={`px-4 py-2 rounded-lg text-sm font-medium ${activeFilter === 'scheduled' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'}`}
+        <button
+          className={`consultationFilterButton ${activeFilter === 'scheduled' ? 'consultationFilterButtonActive' : ''}`}
           onClick={() => setActiveFilter('scheduled')}
         >
           Scheduled
         </button>
       </div>
-      
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {consultations[activeFilter].map(consultation => (
+  
+      <div className="consultationCardGrid">
+        {consultations[activeFilter].map((consultation) => (
           <ConsultationCard key={consultation.id} {...consultation} />
         ))}
       </div>
@@ -238,31 +234,31 @@ function DiagnosisSection() {
   ];
   
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
-      <div className="p-4 border-b">
-        <h2 className="text-xl font-semibold text-gray-800">Diagnosis Reports</h2>
+    <div className="diagnosisReportContainer">
+      <div className="diagnosisReportHeader">
+        <h2 className="diagnosisReportTitle">Diagnosis Reports</h2>
       </div>
-      <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+      <div className="diagnosisReportTableWrapper">
+        <table className="diagnosisReportTable">
+          <thead className="diagnosisReportTableHead">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Report Name</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Size</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+              <th className="diagnosisReportTh">Report Name</th>
+              <th className="diagnosisReportTh">Date</th>
+              <th className="diagnosisReportTh">Type</th>
+              <th className="diagnosisReportTh">Size</th>
+              <th className="diagnosisReportTh">Action</th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {reports.map(report => (
+          <tbody className="diagnosisReportTableBody">
+            {reports.map((report) => (
               <tr key={report.id}>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{report.name}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{report.date}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{report.type}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{report.size}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  <button className="text-blue-600 hover:text-blue-900 flex items-center">
-                    <Download size={16} className="mr-1" /> Download
+                <td className="diagnosisReportTd name">{report.name}</td>
+                <td className="diagnosisReportTd">{report.date}</td>
+                <td className="diagnosisReportTd">{report.type}</td>
+                <td className="diagnosisReportTd">{report.size}</td>
+                <td className="diagnosisReportTd action">
+                  <button className="diagnosisDownloadBtn">
+                    <Download size={16} className="diagnosisDownloadIcon" /> Download
                   </button>
                 </td>
               </tr>
@@ -287,35 +283,37 @@ function PrescriptionSection() {
       { id: 4, name: 'Omeprazole', dosage: '20mg', frequency: 'Once daily before breakfast', duration: '30 days', notes: 'For acid reflux' }
     ]
   };
-  
+
   return (
     <div>
-      <div className="flex space-x-4 mb-6">
+      <div className="prescriptionFilterButtons">
         <button 
-          className={`px-4 py-2 rounded-lg text-sm font-medium ${activeFilter === 'current' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'}`}
+          className={`prescriptionFilterBtn ${activeFilter === 'current' ? 'active' : ''}`}
           onClick={() => setActiveFilter('current')}
         >
           Current
         </button>
         <button 
-          className={`px-4 py-2 rounded-lg text-sm font-medium ${activeFilter === 'past' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'}`}
+          className={`prescriptionFilterBtn ${activeFilter === 'past' ? 'active' : ''}`}
           onClick={() => setActiveFilter('past')}
         >
           Past
         </button>
       </div>
-      
-      <div className="bg-white rounded-lg shadow-md">
-        {prescriptions[activeFilter].map(prescription => (
-          <div key={prescription.id} className="p-4 border-b last:border-b-0">
-            <div className="flex justify-between items-start">
+  
+      <div className="prescriptionListContainer">
+        {prescriptions[activeFilter].map((prescription) => (
+          <div key={prescription.id} className="prescriptionCard">
+            <div className="prescriptionCardHeader">
               <div>
-                <h3 className="font-semibold text-lg text-gray-800">{prescription.name}</h3>
-                <p className="text-gray-600 mt-1">{prescription.dosage} - {prescription.frequency}</p>
-                <p className="text-gray-600">Duration: {prescription.duration}</p>
-                <p className="text-gray-500 text-sm mt-2">{prescription.notes}</p>
+                <h3 className="prescriptionName">{prescription.name}</h3>
+                <p className="prescriptionDetails">
+                  {prescription.dosage} - {prescription.frequency}
+                </p>
+                <p className="prescriptionDetails">Duration: {prescription.duration}</p>
+                <p className="prescriptionNotes">{prescription.notes}</p>
               </div>
-              <button className="text-blue-600 text-sm font-medium flex items-center hover:text-blue-800">
+              <button className="prescriptionViewBtn">
                 View Details <ChevronRight size={16} />
               </button>
             </div>
@@ -333,11 +331,11 @@ function NotificationSection() {
     { id: 3, type: 'reminder', message: 'Don\'t forget to review Michael Brown\'s prescription', time: '1 day ago' },
     { id: 4, type: 'appointment', message: 'Jessica Taylor rescheduled appointment to May 15th at 1:45 PM', time: '2 days ago' }
   ];
-  
+
   return (
-    <div className="bg-white rounded-lg shadow-md">
-      <div className="p-4 border-b">
-        <h2 className="text-xl font-semibold text-gray-800">Notifications</h2>
+    <div className="notificationsContainer">
+      <div className="notificationsHeader">
+        <h2 className="notificationsTitle">Notifications</h2>
       </div>
       <div>
         {notifications.map(notification => {
@@ -347,35 +345,52 @@ function NotificationSection() {
           switch (notification.type) {
             case 'appointment':
               icon = <Calendar size={20} />;
-              bgColor = 'bg-blue-100';
+              bgColor = 'appointmentBgColor';
               break;
             case 'report':
               icon = <FileText size={20} />;
-              bgColor = 'bg-green-100';
+              bgColor = 'reportBgColor';
               break;
             case 'reminder':
               icon = <Bell size={20} />;
-              bgColor = 'bg-yellow-100';
+              bgColor = 'reminderBgColor';
               break;
             default:
               icon = <Bell size={20} />;
-              bgColor = 'bg-gray-100';
+              bgColor = 'defaultBgColor';
           }
           
           return (
-            <div key={notification.id} className="p-4 border-b last:border-b-0 hover:bg-gray-50">
-              <div className="flex">
-                <div className={`${bgColor} p-3 rounded-full mr-4`}>
+            <div key={notification.id} className="notificationCard">
+              <div className="notificationContent">
+                <div className={`${bgColor} iconContainer`}>
                   {icon}
                 </div>
                 <div>
-                  <p className="text-gray-800">{notification.message}</p>
-                  <p className="text-gray-500 text-sm mt-1">{notification.time}</p>
+                  <p className="notificationMessage">{notification.message}</p>
+                  <p className="notificationTime">{notification.time}</p>
                 </div>
               </div>
             </div>
           );
         })}
+      </div>
+    </div>
+  );
+}
+
+function LogoutPopup({ show, onConfirm, onCancel }) {
+  if (!show) return null;
+  
+  return (
+    <div className="logoutPopupOverlay">
+      <div className="logoutPopupContent">
+        <h3>Confirm Logout</h3>
+        <p>Are you sure you want to logout?</p>
+        <div className="logoutPopupButtons">
+          <button className="logoutCancelButton" onClick={onCancel}>Cancel</button>
+          <button className="logoutConfirmButton" onClick={onConfirm}>Logout</button>
+        </div>
       </div>
     </div>
   );
