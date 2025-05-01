@@ -8,7 +8,10 @@ import {
   Video,
   Shield,
   Bell,
+  User,
+  LogOut
 } from "lucide-react";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../pages/docDashboard.css";
 const menuItems = [
   { name: "Dashboard", icon: <Calendar className="icon" /> },
@@ -19,6 +22,9 @@ const menuItems = [
   { name: "Services", icon: <FileText className="icon" /> },
   { name: "Insurance", icon: <Shield className="icon" /> },
   { name: "SOS Alerts", icon: <Bell className="icon" /> },
+  { name: "Profile", icon: <User className="icon" /> },
+{ name: "Logout", icon: <LogOut className="icon" /> },
+ 
 ];
 
 const DocDashboard = () => {
@@ -663,52 +669,33 @@ const DocDashboard = () => {
   
       {/* Navigation Menu */}
       <nav className="docDashboard-menu-li">
-        <ul className="docDashboard-menu-list">
-          {menuItems.map((item) => (
-            <li key={item.name}>
-              <div
-                className={`docDashboard-menu-item ${
-                  activePage === item.name ? "docDashboard-active" : ""
-                }`}
-                onClick={() => {
-                  setActivePage(item.name);
-                  if (window.innerWidth < 768) {
-                    setIsSidebarOpen(false);
-                  }
-                }}
-              >
-                {item.icon}
-                <span>{item.name}</span>
-              </div>
-            </li>
-          ))}
-        </ul>
+      <ul className="docDashboard-menu-list">
+  {menuItems.map((item) => (
+    <li key={item.name}>
+      <div
+        className={`docDashboard-menu-item ${
+          activePage === item.name ? "docDashboard-active" : ""
+        } ${item.name === "Logout" ? "docDashboard-logout" : ""}`}
+        onClick={() => {
+          if (item.name === "Logout") {
+            alert("Logged out successfully");
+          } else {
+            setActivePage(item.name);
+          }
+          if (window.innerWidth < 768) {
+            setIsSidebarOpen(false);
+          }
+        }}
+      >
+        {item.icon}
+        <span>{item.name}</span>
+      </div>
+    </li>
+  ))}
+</ul>
+
       </nav>
   
-      {/* Footer Buttons */}
-      <div className="docDashboard-footer">
-        <div
-          className={`docDashboard-footer-btn ${activePage === "Profile" ? "active" : ""}`}
-          onClick={() => {
-            setActivePage("Profile");
-            if (window.innerWidth < 768) setIsSidebarOpen(false);
-          }}
-        >
-          <span className="docDashboard-footer-btn-icon">{/* Profile Icon */}</span>
-          <span className="docDashboard-footer-btn-name">Profile</span>
-        </div>
-  
-        <div
-          className="docDashboard-footer-btn docDashboard-logout"
-          onClick={() => {
-            alert("Logged out successfully");
-            if (window.innerWidth < 768) setIsSidebarOpen(false);
-          }}
-        >
-          <span className="docDashboard-footer-btn-icon">{/* Logout Icon */}</span>
-          <span className="docDashboard-footer-btn-name">Logout</span>
-        </div>
-      </div>
     </div>
   
     {/* Main Content */}
