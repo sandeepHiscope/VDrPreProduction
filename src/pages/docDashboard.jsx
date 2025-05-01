@@ -676,7 +676,7 @@ const DocDashboard = () => {
       <ul className="docDashboard-menu-list">
   {menuItems.map((item) => (
     <li key={item.name}>
-      <div
+      <div  
         className={`docDashboard-menu-item ${
           activePage === item.name ? "docDashboard-active" : ""
         } ${item.name === "Logout" ? "docDashboard-logout" : ""}`}
