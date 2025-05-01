@@ -24,7 +24,7 @@ import WhyVDr from "./pages/whyVDr";
 import InstallPromptToast from "./hooks/InstallPromptToast.jsx";
 import UserDashboard from "./pages/userDashboard";
 import LoginContextProvider from "./context/loginContext.jsx";
-import PrivateRoute from "./context/PrivateRoute.jsx";
+import PrivateRoute from "./context/privateRoute.jsx"
 
 const App = () => {
   const [location, setLocation] = useState();
