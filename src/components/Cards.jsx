@@ -4,7 +4,6 @@ import './Cards.css';
 const Cards = ({ details }) => {
     const { name, role, image } = details;
 
-    console.log("Rendering Card Component for:", name);
     return (
         <li className="founder-details">
             <img src={image} alt={`${name}`}  />
