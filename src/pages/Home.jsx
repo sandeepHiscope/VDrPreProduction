@@ -17,7 +17,7 @@ function Homepage() {
   const [isHomePageRendered, setIsHomePageRendered] = useState(false);
 
   useEffect(() => {
-    console.log("Home Page Rendered");
+    // console.log("Home Page Rendered");
     setIsHomePageRendered(true);
   }, []);
 
@@ -111,6 +111,7 @@ function Homepage() {
           <div className="searchbar-container">
             <input
               type="text"
+              id="home-search-bar"
               placeholder="Search for Doctors near by you"
               className="searchbar-input"
             />
@@ -128,30 +129,28 @@ function Homepage() {
 
         {/* Cards Slider Section */}
         {/* <div className="SlidingSecContainer"> */}
-          <CardsSlider />
+        <CardsSlider />
 
         <h2>More Categories to help you</h2>
-        <section          className="categorySection">
+        <section className="categorySection">
+          <ul className="categoryList">
+            <li className="categoryItem">Dentist</li>
+            <li className="categoryItem">Cardiologist</li>
+            <li className="categoryItem">Dermatologist</li>
+            <li className="categoryItem">Pediatrician</li>
+            <li className="categoryItem">Orthopedic</li>
+            <li className="categoryItem">General Physician</li>
+            <li className="categoryItem">ENT Specialist</li>
+            <li className="categoryItem">Gynecologist</li>
+            <li className="categoryItem">Urologist</li>
+            <li className="categoryItem">Neurologist</li>
+            <li className="categoryItem">Psychiatrist</li>
+            <li className="categoryItem">Oncologist</li>
+            <li className="categoryItem">Gastroenterologist</li>
+          </ul>
+        </section>
 
-        <ul className="categoryList">
-          <li className="categoryItem">Dentist</li>
-          <li className="categoryItem">Cardiologist</li>
-          <li className="categoryItem">Dermatologist</li>
-          <li className="categoryItem">Pediatrician</li>
-          <li className="categoryItem">Orthopedic</li>
-          <li className="categoryItem">General Physician</li>
-          <li className="categoryItem">ENT Specialist</li>
-          <li className="categoryItem">Gynecologist</li>
-          <li className="categoryItem">Urologist</li>
-          <li className="categoryItem">Neurologist</li>
-          <li className="categoryItem">Psychiatrist</li>
-          <li className="categoryItem">Oncologist</li>
-          <li className="categoryItem">Gastroenterologist</li>
-        </ul>
-          
-      </section>
-
-      <section className="symptomsSection">
+        <section className="symptomsSection">
           <h2>Based on Symptoms</h2>
           <ul className="symptomsList">
             <li className="symptomsItem">Toothache</li>
@@ -176,7 +175,7 @@ function Homepage() {
             <li className="symptomsItem">Fatigue</li>
           </ul>
         </section>
-   
+
         {/* Testimonials (reviews) Section */}
         <section className="content-section testimonials-section">
           <div className="section-header">
@@ -189,7 +188,9 @@ function Homepage() {
             <div className="testimonial-card">
               <div className="testimonial-content">
                 <p>
-                Very helpful and easy to use. I booked an appointment within minutes and got proper consultation from home. Saved time and stress. Highly recommend!"
+                  Very helpful and easy to use. I booked an appointment within
+                  minutes and got proper consultation from home. Saved time and
+                  stress. Highly recommend!"
                 </p>
               </div>
               <div className="testimonial-author">
@@ -205,7 +206,9 @@ function Homepage() {
             <div className="testimonial-card">
               <div className="testimonial-content">
                 <p>
-                "Best experience with online healthcare. The app is smooth, doctors are professional, and reports were easy to access. Felt taken care of."
+                  "Best experience with online healthcare. The app is smooth,
+                  doctors are professional, and reports were easy to access.
+                  Felt taken care of."
                 </p>
               </div>
               <div className="testimonial-author">
@@ -221,7 +224,9 @@ function Homepage() {
             <div className="testimonial-card">
               <div className="testimonial-content">
                 <p>
-                "Game changer for health issues. Especially during busy weeks, having a doctor a tap away really helped. Prescriptions were clear and timely."
+                  "Game changer for health issues. Especially during busy weeks,
+                  having a doctor a tap away really helped. Prescriptions were
+                  clear and timely."
                 </p>
               </div>
               <div className="testimonial-author">
@@ -270,74 +275,81 @@ function Homepage() {
           </div>
         </div>
 
-        <div class="faq-container">
-    <div class="faq-header">
-      <h2>Frequently Asked Questions</h2>
-    </div>
+        <div className="faq-container">
+          <div className="faq-header">
+            <h2>Frequently Asked Questions</h2>
+          </div>
 
-    <div class="faq-item">
-      <input type="checkbox" id="faq1" />
-      <label for="faq1">
-      Can I search for doctors by specialty, location, or availability?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-        yes You can search for doctors by specialty, location, and availability using our advanced search filters. Just enter your criteria in the search bar, and we'll show you the best matches.
+          <div className="faq-item">
+            <input type="checkbox" id="faq1" />
+            <label htmlFor="faq1">
+              Can I search for doctors by specialty, location, or availability?
+              <span className="icon">+</span>
+            </label>
+            <div className="faq-content">
+              yes You can search for doctors by specialty, location, and
+              availability using our advanced search filters. Just enter your
+              criteria in the search bar, and we'll show you the best matches.
+            </div>
+          </div>
+
+          <div className="faq-item">
+            <input type="checkbox" id="faq2" />
+
+            <label htmlFor="faq2">
+              How does the video consultation work, and is it secure?
+              <span className="icon">+</span>
+            </label>
+            <div className="faq-content">
+              our video consultations are conducted through a secure platform
+              that ensures your privacy. After booking, you'll receive a link to
+              join the consultation at the scheduled time. Just click the link,
+              and you're in!
+            </div>
+          </div>
+
+          <div className="faq-item">
+            <input type="checkbox" id="faq3" />
+            <label htmlFor="faq3">
+              Is there an option to choose between in-clinic and online
+              consultation?
+              <span className="icon">+</span>
+            </label>
+            <div className="faq-content">
+              yes, you can choose between in-clinic and online consultations
+              based on your preference. Just select your choice when booking an
+              appointment.
+            </div>
+          </div>
+
+          <div className="faq-item">
+            <input type="checkbox" id="faq4" />
+            <label htmlFor="faq4">
+              How does the video consultation work, and is it secure?
+              <span className="icon">+</span>
+            </label>
+            <div className="faq-content">
+              our video consultations are conducted through a secure platform
+              that ensures your privacy. After booking, you'll receive a link to
+              join the consultation at the scheduled time. Just click the link,
+              and you're in!
+            </div>
+          </div>
+
+          <div className="faq-item">
+            <input type="checkbox" id="faq5" />
+            <label htmlFor="faq5">
+              Does the app send reminders for upcoming appointments?
+              <span className="icon">+</span>
+            </label>
+            <div className="faq-content">
+              yes, the app sends reminders for upcoming appointments to ensure
+              you never miss a consultation. You can also set custom reminders
+              based on your preferences.
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="faq-item">
-      <input type="checkbox" id="faq2" />
-
-      <label for="faq2">
-      How does the video consultation work, and is it secure?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-        our video consultations are conducted through a secure platform that ensures your privacy. After booking, you'll receive a link to join the consultation at the scheduled time. Just click the link, and you're in!
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <input type="checkbox" id="faq3" />
-      <label for="faq3">
-      Is there an option to choose between in-clinic and online consultation?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-       yes, you can choose between in-clinic and online consultations based on your preference. Just select your choice when booking an appointment.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <input type="checkbox" id="faq4" />
-      <label for="faq4">
-      How does the video consultation work, and is it secure?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-        our video consultations are conducted through a secure platform that ensures your privacy. After booking, you'll receive a link to join the consultation at the scheduled time. Just click the link, and you're in!
-      </div>
-    </div>
-    
-    <div class="faq-item">
-      <input type="checkbox" id="faq4" />
-      <label for="faq4">
-      Does the app send reminders for upcoming appointments?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-        yes, the app sends reminders for upcoming appointments to ensure you never miss a consultation. You can also set custom reminders based on your preferences.
-      </div>
-    </div>
-   
-  
-    
-
-  </div>
-      
-  
-  </div>
     </>
   );
 }

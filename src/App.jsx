@@ -23,7 +23,7 @@ import ScrollToTop from "./components/scrollToTop";
 import WhyVDr from "./pages/whyVDr";
 import InstallPromptToast from "./hooks/InstallPromptToast.jsx";
 import UserDashboard from "./pages/userDashboard";
-import LoginContextProvider, { LoginContext } from "./context/loginContext.jsx";
+import LoginContextProvider from "./context/loginContext.jsx";
 import PrivateRoute from "./context/PrivateRoute.jsx";
 
 const App = () => {
