@@ -58,7 +58,8 @@ const MainHeader = () => {
   const [position, setPosition] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-  const { isLoggedIn, login, logout } = useContext(LoginContext);
+  const { isLoggedIn, isUser, isDoctor, setUser, setDoctor, setLogin } =
+    useContext(LoginContext);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -79,7 +80,22 @@ const MainHeader = () => {
   const handleNavClick = () => {
     setIsOpen(false);
   };
-
+  const docLogged = () => {
+    setDoctor(true);
+    setUser(false);
+    setLogin(true);
+    window.alert("Doctor logged in successfully!");
+  };
+  const userLogged = () => {
+    setUser(true);
+    setDoctor(false);
+    setLogin(true);
+    window.alert("User logged in successfully!");
+  };
+  const loggedOut = () => {
+    setLogin(false);
+    window.alert("Logged out successfully!");
+  };
   return (
     <section className="header-section">
       <button
@@ -132,9 +148,27 @@ const MainHeader = () => {
                 </Link>
               )
             )}
+            <button
+              className="nav-link flex items-center cursor-pointer"
+              onClick={docLogged}
+            >
+              Doc login ✅
+            </button>
+            <button
+              className="nav-link flex items-center cursor-pointer"
+              onClick={userLogged}
+            >
+              User login ✅
+            </button>
+            <button
+              className="nav-link flex items-center cursor-pointer"
+              onClick={loggedOut}
+            >
+              Logout ❌
+            </button>
 
             {isLoggedIn ? (
-              <>
+              isDoctor ? (
                 <Link
                   to="/docDashboard"
                   className="nav-link flex items-center text-blue-600"
@@ -142,6 +176,7 @@ const MainHeader = () => {
                 >
                   <FaUserDoctor className="headericons" /> DocDashboard
                 </Link>
+              ) : (
                 <Link
                   to="/userDashboard"
                   className="nav-link flex items-center text-blue-600"
@@ -149,8 +184,7 @@ const MainHeader = () => {
                 >
                   <FaUser className="headericons" /> UserDashboard
                 </Link>
-                
-              </>
+              )
             ) : (
               <button
                 className="login-button-header nav-link text-green-600"
