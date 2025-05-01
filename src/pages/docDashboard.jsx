@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
+import { LoginContext } from "../context/loginContext";
+import { useNavigate } from "react-router-dom";
 import {
   Calendar,
   Clock,
@@ -30,10 +32,12 @@ const menuItems = [
 const DocDashboard = () => {
   const [activePage, setActivePage] = useState("Dashboard");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  const { isLoggedIn, isUser, isDoctor, setUser, setDoctor, setLogin } =
+  useContext(LoginContext);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+  const navigateTo = useNavigate();
 
   const upcomingAppointments = [
     {
@@ -678,7 +682,20 @@ const DocDashboard = () => {
         } ${item.name === "Logout" ? "docDashboard-logout" : ""}`}
         onClick={() => {
           if (item.name === "Logout") {
-            alert("Logged out successfully");
+
+
+
+            if (window.confirm("Are you sure you want to logout?")) {
+              console.log("Verified  bro, you  logged out from dashboard sussefully ")
+              alert("Verified one , youve Logged out successfully");
+              setLogin(false);
+              navigateTo("/loginAndRegistrationPage");
+            } else {
+              console.log("Verified bro canceled logout");
+            }
+
+
+            
           } else {
             setActivePage(item.name);
           }

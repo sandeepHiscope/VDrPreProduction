@@ -8,7 +8,7 @@ import Login from "./loginAndRegistrationPage";
 // import IndividualRegisterPage from "./individualRegisterPage";
 import SosPage from "./sosPage";
 import DoctorRegisterPage from "./doctorRegisterPage";
-import FounderPage from "./ourFoundersPage";
+import FounderPage from "../components/ourFoundersPage";
 import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
 
 const IndividualRegisterPage = () => {

@@ -54,6 +54,7 @@ const NAV_LINKS = [
 ];
 
 const MainHeader = () => {
+  
   const [currentImage, setCurrentImage] = useState(0);
   const [position, setPosition] = useState(0);
   const [isOpen, setIsOpen] = useState(false);

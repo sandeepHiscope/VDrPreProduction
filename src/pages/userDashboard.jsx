@@ -1,20 +1,31 @@
-import { useState } from 'react';
+import { useState ,useContext,useEffect} from 'react';
 import { Menu, X, User, LogOut, Calendar, FileText, Pill, Bell, ChevronRight, Download, Clock } from 'lucide-react';
 import "./userDashboard.css";
 import Mohan from "../assets/Images/foundersImg/mohan.jpg";
-
+import { LoginContext } from '../context/loginContext';
+import { useNavigate } from 'react-router-dom';
 export default function userDashboard() {
   const [isOpen, setIsOpen] = useState(true);
   const [activeTab, setActiveTab] = useState('consultation');
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
-
+  const { isLoggedIn, isUser, isDoctor, setUser, setDoctor, setLogin } =
+  useContext(LoginContext); 
+  const navigateTo=useNavigate();
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
   const handleLogout = () => {
     setShowLogoutPopup(false);
-    alert("Logged out successfully");
+    
+    if (window.confirm("Are you sure you want to logout?")) {
+      console.log("user bro, you  logged out from dashboard sussefully ")
+      alert("Bro youve Logged out successfully");
+      setLogin(false);
+      navigateTo("/loginAndRegistrationPage");
+    } else {
+      console.log("User canceled logout");
+    }
   };
 
   const handleCancelLogout = () => {
@@ -93,7 +104,7 @@ export default function userDashboard() {
             title="Logout"
             isOpen={isOpen}
             isActive={activeTab === 'logout'}
-            onClick={() => setShowLogoutPopup(true)}
+            onClick={() => {setShowLogoutPopup(true);handleLogout();}}
           />
         </div>
       </div>
@@ -389,7 +400,15 @@ function LogoutPopup({ show, onConfirm, onCancel }) {
         <p>Are you sure you want to logout?</p>
         <div className="logoutPopupButtons">
           <button className="logoutCancelButton" onClick={onCancel}>Cancel</button>
-          <button className="logoutConfirmButton" onClick={onConfirm}>Logout</button>
+          <button
+            className="logoutConfirmButton"
+            onClick={() => {
+              onConfirm();
+              handleLogout();
+            }}
+          >
+            Logout
+          </button>
         </div>
       </div>
     </div>
