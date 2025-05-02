@@ -1,5 +1,3 @@
-///Tailwind css used in this region
-
 import React, { useState, useEffect } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
@@ -13,25 +11,37 @@ import topDoctorSpecialtiesIndia from "../data/topDoctorSpecialtiesIndia";
 import tempImg from "../assets/Images/foundersImg/kiran.jpg";
 import ScrollingCardsContainer from "../components/ScrollingCardsContainer";
 import FindDoctorPage from "./findDoctorPage";
+import { IoReorderThreeOutline } from "react-icons/io5";
+import { ImCross } from "react-icons/im";
+import  Headerimage from "../data/headerImages";
+
 function Homepage() {
   const [isHomePageRendered, setIsHomePageRendered] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [position, setPosition] = useState(50);
+  const [currentImage, setCurrentImage] = useState(0);
+  
+  // Sample header images array - replace with your actual images
+  const HeaderImages = [
+    { img: "/path-to-image1.jpg" },
+    { img: "/path-to-image2.jpg" },
+    { img: "/path-to-image3.jpg" }
+  ];
+
+  const toggleSlide = () => {
+    setIsOpen(!isOpen);
+  };
 
   useEffect(() => {
     // console.log("Home Page Rendered");
     setIsHomePageRendered(true);
   }, []);
 
-  // Function to handle button click
-
   // Define state for country, state, and search input
   const [country, setCountry] = useState("");
   const [selectedState, setSelectedState] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredDoctors, setFilteredDoctors] = useState([]);
-
-  // States for India and USA
-
-  // List of doctor types
 
   // Update state dropdown based on selected country
   const updateStates = (e) => {
@@ -61,18 +71,31 @@ function Homepage() {
     setFilteredDoctors([]); // Hide suggestions after selection
   };
 
-  // doctoropinio
-  const questions = document.querySelectorAll(".faq-question");
-
-  questions.forEach((question) => {
-    question.addEventListener("click", () => {
-      const answer = question.nextElementSibling;
-      const icon = question.querySelector("open-icon");
-
-      answer.classList.toggle("open");
-      icon.classList.toggle("rotate");
-    });
-  });
+  // FAQ functionality moved to useEffect to avoid DOM direct manipulation
+  useEffect(() => {
+    const questions = document.querySelectorAll(".faq-question");
+    
+    if (questions.length > 0) {
+      questions.forEach((question) => {
+        question.addEventListener("click", () => {
+          const answer = question.nextElementSibling;
+          const icon = question.querySelector(".open-icon");
+          
+          if (answer && icon) {
+            answer.classList.toggle("open");
+            icon.classList.toggle("rotate");
+          }
+        });
+      });
+      
+      // Cleanup function
+      return () => {
+        questions.forEach((question) => {
+          question.removeEventListener("click", () => {});
+        });
+      };
+    }
+  }, [isHomePageRendered]);
 
   const [activeSlides, setActiveSlides] = useState("doctor");
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
@@ -106,6 +129,24 @@ function Homepage() {
 
   return (
     <>
+      <div className="header-section">
+        <button
+          className="toggle-button"
+          onClick={toggleSlide}
+          aria-label="Toggle Menu"
+        >
+          {isOpen ? <ImCross className="secicon" /> : <IoReorderThreeOutline />}
+        </button>
+        
+        <div
+          className="header-background"
+          style={{
+            backgroundImage: `url(${Headerimage[currentImage].img})`,
+            backgroundPosition: `right ${position}% top 0%`,
+          }}
+        ></div>
+      </div>
+      
       <div className="homepage-container flex flex-col justify-center items-center">
         <Link to="/findDoctorPage">
           <div className="searchbar-container">
@@ -114,6 +155,8 @@ function Homepage() {
               id="home-search-bar"
               placeholder="Search for Doctors near by you"
               className="searchbar-input"
+              value={searchQuery}
+              onChange={handleSearchChange}
             />
             <button className="searchbar-button">
               <svg
@@ -127,8 +170,22 @@ function Homepage() {
           </div>
         </Link>
 
+        {/* Display filtered doctor suggestions */}
+        {filteredDoctors.length > 0 && (
+          <div className="doctor-suggestions">
+            {filteredDoctors.map((doctor, index) => (
+              <div
+                key={index}
+                className="doctor-suggestion-item"
+                onClick={() => selectDoctorType(doctor)}
+              >
+                {doctor}
+              </div>
+            ))}
+          </div>
+        )}
+
         {/* Cards Slider Section */}
-        {/* <div className="SlidingSecContainer"> */}
         <CardsSlider />
 
         <h2>More Categories to help you</h2>
@@ -150,32 +207,6 @@ function Homepage() {
           </ul>
         </section>
 
-        <section className="symptomsSection">
-          <h2>Based on Symptoms</h2>
-          <ul className="symptomsList">
-            <li className="symptomsItem">Toothache</li>
-            <li className="symptomsItem">Chest Pain</li>
-            <li className="symptomsItem">Skin Rash</li>
-            <li className="symptomsItem">Fever</li>
-            <li className="symptomsItem">Joint Pain</li>
-            <li className="symptomsItem">Cough</li>
-            <li className="symptomsItem">Hearing Loss</li>
-            <li className="symptomsItem">Irregular Periods</li>
-            <li className="symptomsItem">Urinary Issues</li>
-            <li className="symptomsItem">Headache</li>
-            <li className="symptomsItem">Anxiety</li>
-            <li className="symptomsItem">Lump or Swelling</li>
-            <li className="symptomsItem">Abdominal Pain</li>
-            <li className="symptomsItem">Back Pain</li>
-            <li className="symptomsItem">Hair Loss</li>
-            <li className="symptomsItem">Allergies</li>
-            <li className="symptomsItem">Weight Loss</li>
-            <li className="symptomsItem">Nausea</li>
-            <li className="symptomsItem">Vision Problems</li>
-            <li className="symptomsItem">Fatigue</li>
-          </ul>
-        </section>
-
         {/* Testimonials (reviews) Section */}
         <section className="content-section testimonials-section">
           <div className="section-header">
@@ -190,15 +221,15 @@ function Homepage() {
                 <p>
                   Very helpful and easy to use. I booked an appointment within
                   minutes and got proper consultation from home. Saved time and
-                  stress. Highly recommend!"
+                  stress. Highly recommend!
                 </p>
               </div>
               <div className="testimonial-author">
                 <div className="author-image">
-                  <img src={tempImg} alt="Sarah M." />
+                  <img src={tempImg} alt="P. Praveen Sindhu" />
                 </div>
                 <div className="author-info">
-                  <h4>p.praveen sindhu</h4>
+                  <h4>P. Praveen Sindhu</h4>
                   <p>Patient since 2023</p>
                 </div>
               </div>
@@ -213,10 +244,10 @@ function Homepage() {
               </div>
               <div className="testimonial-author">
                 <div className="author-image">
-                  <img src={tempImg} alt="Dr. James L." />
+                  <img src={tempImg} alt="Dr. L.V.S Vishnuvardhan Reddy" />
                 </div>
                 <div className="author-info">
-                  <h4>Dr.L.v.s vishnuvardhanreddy.</h4>
+                  <h4>Dr. L.V.S Vishnuvardhan Reddy</h4>
                   <p>Cardiologist, Verified Provider</p>
                 </div>
               </div>
@@ -231,10 +262,10 @@ function Homepage() {
               </div>
               <div className="testimonial-author">
                 <div className="author-image">
-                  <img src={tempImg} alt="Robert K." />
+                  <img src={tempImg} alt="K. Anjaneyulu" />
                 </div>
                 <div className="author-info">
-                  <h4>k.Anjaneyulu</h4>
+                  <h4>K. Anjaneyulu</h4>
                   <p>Parent of patient</p>
                 </div>
               </div>
@@ -243,14 +274,13 @@ function Homepage() {
         </section>
 
         {/* App Download Section */}
-        <div className="download-section ">
-          <div className="download-container m-8 w-3/4 flex justify-evenly  items-center p-2 rounded-2xl">
+        <div className="download-section">
+          <div className="download-container m-8 w-3/4 flex justify-evenly items-center p-2 rounded-2xl">
             <div className="app-preview">
               <img
                 src={VDrLogo}
-                height="400px"
-                width="900px"
                 alt="App Preview"
+                className="h-40 w-40"
               />
             </div>
             <div className="app-info">
@@ -261,12 +291,12 @@ function Homepage() {
               </p>
               <div className="store-buttons">
                 <div className="store-button">
-                  <Link>
+                  <Link to="#">
                     <img src={GooglePlayLogo} alt="Google Play Store" />
                   </Link>
                 </div>
                 <div className="store-button">
-                  <Link>
+                  <Link to="#">
                     <img src={AppStoreLogo} alt="Apple App Store" />
                   </Link>
                 </div>
@@ -275,6 +305,7 @@ function Homepage() {
           </div>
         </div>
 
+        {/* FAQ Section */}
         <div className="faq-container">
           <div className="faq-header">
             <h2>Frequently Asked Questions</h2>
@@ -282,12 +313,12 @@ function Homepage() {
 
           <div className="faq-item">
             <input type="checkbox" id="faq1" />
-            <label htmlFor="faq1">
+            <label htmlFor="faq1" className="faq-question">
               Can I search for doctors by specialty, location, or availability?
-              <span className="icon">+</span>
+              <span className="icon open-icon">+</span>
             </label>
             <div className="faq-content">
-              yes You can search for doctors by specialty, location, and
+              Yes, you can search for doctors by specialty, location, and
               availability using our advanced search filters. Just enter your
               criteria in the search bar, and we'll show you the best matches.
             </div>
@@ -295,13 +326,12 @@ function Homepage() {
 
           <div className="faq-item">
             <input type="checkbox" id="faq2" />
-
-            <label htmlFor="faq2">
+            <label htmlFor="faq2" className="faq-question">
               How does the video consultation work, and is it secure?
-              <span className="icon">+</span>
+              <span className="icon open-icon">+</span>
             </label>
             <div className="faq-content">
-              our video consultations are conducted through a secure platform
+              Our video consultations are conducted through a secure platform
               that ensures your privacy. After booking, you'll receive a link to
               join the consultation at the scheduled time. Just click the link,
               and you're in!
@@ -310,13 +340,13 @@ function Homepage() {
 
           <div className="faq-item">
             <input type="checkbox" id="faq3" />
-            <label htmlFor="faq3">
+            <label htmlFor="faq3" className="faq-question">
               Is there an option to choose between in-clinic and online
               consultation?
-              <span className="icon">+</span>
+              <span className="icon open-icon">+</span>
             </label>
             <div className="faq-content">
-              yes, you can choose between in-clinic and online consultations
+              Yes, you can choose between in-clinic and online consultations
               based on your preference. Just select your choice when booking an
               appointment.
             </div>
@@ -324,12 +354,12 @@ function Homepage() {
 
           <div className="faq-item">
             <input type="checkbox" id="faq4" />
-            <label htmlFor="faq4">
+            <label htmlFor="faq4" className="faq-question">
               How does the video consultation work, and is it secure?
-              <span className="icon">+</span>
+              <span className="icon open-icon">+</span>
             </label>
             <div className="faq-content">
-              our video consultations are conducted through a secure platform
+              Our video consultations are conducted through a secure platform
               that ensures your privacy. After booking, you'll receive a link to
               join the consultation at the scheduled time. Just click the link,
               and you're in!
@@ -338,14 +368,37 @@ function Homepage() {
 
           <div className="faq-item">
             <input type="checkbox" id="faq5" />
-            <label htmlFor="faq5">
+            <label htmlFor="faq5" className="faq-question">
               Does the app send reminders for upcoming appointments?
-              <span className="icon">+</span>
+              <span className="icon open-icon">+</span>
             </label>
             <div className="faq-content">
-              yes, the app sends reminders for upcoming appointments to ensure
+              Yes, the app sends reminders for upcoming appointments to ensure
               you never miss a consultation. You can also set custom reminders
               based on your preferences.
+            </div>
+          </div>
+        </div>
+
+        {/* Testimonial Slider Section */}
+        <div className="testimonial-slider-section">
+          <div className="testimonial-tabs">
+            <button 
+              className={`tab ${activeSlides === "doctor" ? "active" : ""}`}
+              onClick={() => showSlides("doctor")}
+            >
+              Doctor Opinions
+            </button>
+            <button 
+              className={`tab ${activeSlides === "patient" ? "active" : ""}`}
+              onClick={() => showSlides("patient")}
+            >
+              Patient Stories
+            </button>
+          </div>
+          <div className="testimonial-slider">
+            <div className="testimonial-slide">
+              {slides[currentSlideIndex]}
             </div>
           </div>
         </div>
