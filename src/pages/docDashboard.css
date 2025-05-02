@@ -1,17 +1,15 @@
-/* 
-
 .dashboard-container {
   display: flex;
   min-height: 100vh;
   font-family: sans-serif;
+  position: relative;
 }
 
-
-
+/* Toggle button: Hidden on desktop, visible on mobile */
 .toggle-button {
   display: none;
   position: absolute;
-  top: 10px;
+  /* top: 10px; */
   left: 10px;
   background: #333;
   color: white;
@@ -21,13 +19,18 @@
   cursor: pointer;
 }
 
+/* Sidebar: visible by default */
 .sidebar {
-  width: auto;
+  width: 180px; /* reduced sidebar width */
   background-color: #f3f4f6;
-  padding: 0px;
+  padding: 0;
   border-right: 1px solid #ddd;
+  transition: left 0.3s ease;
+  position: relative;
+  left: 0;
 }
 
+/* Menu items */
 .menu-item {
   display: flex;
   align-items: center;
@@ -47,18 +50,13 @@
   background-color: #d1d5db;
 }
 
-.icon {
-  width: 20px;
-  height: 20px;
-  color: #111;
-}
-
+/* Main content */
 .main-content {
   flex-grow: 1;
   padding: 20px;
 }
 
-/* Responsive */
+/* Responsive: Mobile */
 @media (max-width: 768px) {
   .toggle-button {
     display: block;
@@ -67,9 +65,8 @@
   .sidebar {
     position: fixed;
     top: 0;
-    left: -250px;
+    left: -180px;
     height: 100%;
-    transition: left 0.3s ease;
     z-index: 99;
   }
 
@@ -78,10 +75,11 @@
   }
 
   .main-content {
-    margin-left: 0;
     padding-top: 60px;
   }
 }
+
+
 
 .dashboard-content {
   width: 100%;
@@ -993,51 +991,25 @@ transition: all 0.2s ease;
 display: none;
 }
 
-/* Footer styles */
-.footer {
-background: #ffffff;
-margin-top: auto;
-border-top: 1px solid #e5e7eb;
+
+
+.docDashboard-logout span,
+.docDashboard-logout svg {
+  color: #ef4444;
 }
 
-.footer-btn {
-background: #fafcfb;
-display: flex;
-align-items: center;
-padding: 0.75rem 1.5rem;
-width: 75%;
-text-align: left;
-transition: all 0.2s ease;
-}
-.footer-btn-name{
-color: #111;
-}
-.footer-btn:hover {
-background-color: #f3f4f6;
-}
-
-.footer-btn.active {
-/* background-color: #e7f3fe; */
-color: #3b82f6;
-border-right: 4px solid #3b82f6;
-}
-
-.footer-btn.logout:hover {
-color: #ef4444;
-}
-
-.footer-btn-icon {
-margin-right: 1rem;
-transition: all 0.2s ease;
-}
-
-.footer-btn-name {
-transition: all 0.2s ease;
-color: #111;
+.docDashboard-logout:hover span,
+.docDashboard-logout:hover svg {
+  color: #dc2626;
 }
 
 
-
+/* Main content */
+.docDashboard-main-content {
+  flex: 1;
+  overflow: auto;
+  padding: 1rem;
+}
 /* Main content area */
 .main-content {
 flex: 1;
@@ -1228,4 +1200,101 @@ color: #3b82f6;
 
 .mobile-appointment-card .cancel-btn {
 color: #171717;
-} 
+}
+
+.docDashboard-container {
+  display: flex;
+  height: 100vh;
+  background-color: white;
+  position: relative;
+}
+
+
+.docDashboard-sidebar {
+  background-color: #ffffff;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  width: 13rem;
+  transition: all 0.3s ease;
+}
+
+
+.docDashboard-sidebar.docDashboard-sidebar-open {
+  width: 15rem;
+}
+
+
+.docDashboard-sidebar-header {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+}
+
+.docDashboard-menu-item {
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; 
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border-radius: 0.25rem;
+  color: #111;
+  width: 220px; 
+}
+
+.docDashboard-menu-item:hover {
+  background-color: #e0f2fe; 
+  color: #2563eb; 
+}
+
+.docDashboard-menu-item.docDashboard-active {
+  background-color: #dbeafe; 
+  font-weight: bold;
+  color: #1d4ed8; 
+  border-left: 4px solid #3b82f6;
+}
+
+
+.docDashboard-toggle-button {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+/* Main Content */
+.docDashboard-main-content {
+  flex: 1;
+  overflow: auto;
+  padding: 1rem;
+}
+
+
+@media (max-width: 768px) {
+  .docDashboard-toggle-button {
+    display: block;
+  }
+
+
+  .docDashboard-sidebar {
+    position: absolute;
+    top: 0;
+    left: -12rem;
+    height: 100%;
+    z-index: 1000;
+    transition: left 0.3s ease;
+  }
+
+ 
+  .docDashboard-sidebar.docDashboard-sidebar-open {
+    left: 0;
+    
+  }
+}

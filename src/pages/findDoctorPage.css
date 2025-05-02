@@ -1,12 +1,17 @@
 .findDoctorPage-main-container {
   padding: 20px;
-  max-width: 1200px;
+  max-width: 100%;
   height: auto;
-  margin: 80px auto 20px; /* Add margin to avoid overlap with header */
+  /* margin: 80px auto 20px;  */
   box-sizing: border-box;
   /* overflow-x: hidden; */
   /* height: a; Fixed height to ensure visibility */
   background: var(--color-background-main);
+  display: flex;
+  gap:50px;
+}
+.con{
+  display:inline;
 }
 
 .header-placeholder {
@@ -301,3 +306,76 @@
     margin-top: 60px;
   }
 }
+/* the code is for the selected one  */
+.selected-one{
+  background-color:#d1d1d1;
+  box-shadow: 6px 0 18px rgba(1, 1, 1, 0.1);
+  border-radius: 0 16px 16px 0;
+  width: 55%;
+  height: 700px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.selected-one-head{
+  color: #2d2828;
+  font-size: 20px;
+  padding: 20px;
+}
+.selected-list{
+  color: aqua;
+  margin-left: 39px;
+}
+.sub-head-selected{
+  color: #252d37;
+  font-size: 20px;
+}
+.cross-icons{
+  color: #252d37;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease, font-size 0.3s ease;
+}
+.cross-icons:hover{
+  color:red;
+  font-size: 25px;
+}
+.symptoms-text{
+  color:#252d37;
+  font-size: 20px;}
+ .symptoms-text:hover{
+  color: #146282;
+  
+ } 
+/* code for the filtration of the code  */
+
+.symptom-list{
+  color: #252d37;
+  text-align: center;
+  background-color:#f9f9f9;
+  box-shadow: 6px 0 18px rgba(0, 0, 0, 0.1);
+  border-radius: 0 16px 16px 0;
+  width: 55%;
+  height: 2000px;
+  margin: 10px 4%;
+
+}
+.sidetext{
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #252d37;
+}
+.sidetext-dropdown-header{
+  margin-top: 50px;
+  color:rgb(73, 69, 69);
+  font-size: 20px;
+}
+.sidetext-dropdown-header2{
+  color:rgb(73, 69, 69);
+  font-size: 20px;
+  margin-top: 50px;
+}
+

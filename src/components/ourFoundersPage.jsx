@@ -1,7 +1,7 @@
 import React from "react";
 import "./ourFoundersPage.css";
-import Cards from "../components/Cards";
-import Fotter from "../components/footer";
+import Cards from "./Cards";
+import Fotter from "./footer";
 
 // Image imports
 import Anji from "../assets/Images/foundersImg/anji.jpg";
@@ -21,7 +21,8 @@ import Vyshanavi from "../assets/Images/foundersImg/Vaishanavi.jpg";
 const FounderPage = () => {
   const founderDetails = [
     {
-      name: "Anjaneyulu Kadari",role: " Digital Marketing",
+      name: "Anjaneyulu Kadari",
+      role: " Digital Marketing",
       image: Anji,
     },
     { name: "Pavan P", role: "Team Lead", image: Pavan },
