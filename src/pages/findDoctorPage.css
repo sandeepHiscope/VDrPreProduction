@@ -1,3 +1,4 @@
+
 .findDoctorPage-main-container {
   padding: 20px;
   max-width: 100%;
@@ -9,6 +10,7 @@
   background: var(--color-background-main);
   display: flex;
   gap:50px;
+
 }
 .con{
   display:inline;
@@ -308,19 +310,27 @@
 }
 /* the code is for the selected one  */
 .selected-one{
-  background-color:#d1d1d1;
+  background-color:#ffffff;
   box-shadow: 6px 0 18px rgba(1, 1, 1, 0.1);
   border-radius: 0 16px 16px 0;
   width: 55%;
   height: 700px;
   border-radius: 10px;
   text-align: center;
+  position: sticky;
+  top: 0px;
+  right: 0px;
+  margin: 5px 1%;
+  border:2px solid   #7f9af6;
+
 }
 
 .selected-one-head{
-  color: #2d2828;
+  color: #ffffff;
   font-size: 20px;
   padding: 20px;
+  background: linear-gradient(145deg, #2563eb, #1e40af);
+  border-radius: 10px 10px 0 0;
 }
 .selected-list{
   color: aqua;
@@ -352,13 +362,12 @@
 
 .symptom-list{
   color: #252d37;
-  text-align: center;
   background-color:#f9f9f9;
   box-shadow: 6px 0 18px rgba(0, 0, 0, 0.1);
   border-radius: 0 16px 16px 0;
-  width: 55%;
-  height: 2000px;
-  margin: 10px 4%;
+  width: 45%;
+  height: 4000px;
+  margin: 5px 1%;
 
 }
 .sidetext{
@@ -378,4 +387,16 @@
   font-size: 20px;
   margin-top: 50px;
 }
-
+.symptoms-checkedbox{
+  margin-left: 10px;
+}
+.dropdown-header-rating{
+  color: rgb(73, 69, 69);
+    font-size: 20px;
+    margin-top: 50px;
+}
+.dropdown-header-discount{
+  color: rgb(73, 69, 69);
+    font-size: 20px;
+    margin-top: 50px;
+}
