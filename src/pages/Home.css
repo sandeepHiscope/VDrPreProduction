@@ -12,13 +12,6 @@
   flex-direction: column;
   align-items: flex-start;
 }
-/*header icon styling*/
-/* .headericons{
-  width: 20px;
-  height: 20px;
-  color:rgb(186, 178, 178);
-  display: none;
-} */
 .header-background {
   position: absolute;
   top: 0;
