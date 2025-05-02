@@ -51,6 +51,12 @@ const NAV_LINKS = [
     icon: <Shield className="headericons" />,
     external: true,
   },
+  {
+    to: "/doctorAppointment",
+    label: "Book Appointment",
+   
+    icon: <ShieldQuestion className="headericons" />,
+  },
 ];
 
 const MainHeader = () => {
