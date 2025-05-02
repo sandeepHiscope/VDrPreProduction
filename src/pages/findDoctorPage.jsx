@@ -5,6 +5,7 @@ import indianStates from "../data/indianStates";
 import doctorDetails from "../data/doctorDetails";
 import defaultUser from "../assets/Images/commonImg/VDrlogo.png";
 import { RxCross2 } from "react-icons/rx";
+import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 
 
 
@@ -400,13 +401,13 @@ const [showExperienceDropdown, setShowExperienceDropdown] = useState(false);
 
       <div className="findDoctorPage-main-container">
         {/* this code for the filtration side bar  */}
-        <div className="symptom-list">
+        <div className="finddoctor-filter-section ">
           <h3
             className="sidetext-dropdown-header"
             onClick={toggleDropdown}
             style={{ cursor: 'pointer' }}
           >
-            Symptoms {showDropdown ? '🔼' : '🔽'}
+            Symptoms {showDropdown ? <FaChevronUp /> : <FaChevronDown />}
           </h3>
 
           {showDropdown && (
@@ -430,13 +431,13 @@ const [showExperienceDropdown, setShowExperienceDropdown] = useState(false);
           )}
 
           {/* doctors drop down is here  */}
-          <div className="doctor-listtt" style={{ marginTop: '10px' }}>
+          {/* <div className="doctor-listtt" style={{ marginTop: '10px' }}>
   <h3
     className="sidetext-dropdown-header2"
     onClick={toggleDoctorDropdown}
     style={{ cursor: 'pointer' }}
   >
-    Doctor Name {showDoctorDropdown ? '🔼' : '🔽'}
+    Doctor Name {showDropdown ? <FaChevronUp /> : <FaChevronDown />}
   </h3>
 
   {showDoctorDropdown && (
@@ -457,7 +458,7 @@ const [showExperienceDropdown, setShowExperienceDropdown] = useState(false);
       ))}
     </ul>
   )}
-</div>
+</div> */}
          {/* 1. Doctor Specialty Dropdown jsx Copy code */}
          <div className="specialty-listtt" style={{ marginTop: '10px' }}>
   <h3
@@ -465,7 +466,7 @@ const [showExperienceDropdown, setShowExperienceDropdown] = useState(false);
     onClick={toggleSpecialtyDropdown}
     style={{ cursor: 'pointer' }}
   >
-    Specialty {showSpecialtyDropdown ? '🔼' : '🔽'}
+    Specialty {showDropdown ? <FaChevronUp /> : <FaChevronDown />}
   </h3>
 
   {showSpecialtyDropdown && (
@@ -494,7 +495,7 @@ const [showExperienceDropdown, setShowExperienceDropdown] = useState(false);
     onClick={toggleLocationDropdown}
     style={{ cursor: 'pointer' }}
   >
-    Location {showLocationDropdown ? '🔼' : '🔽'}
+    Location {showDropdown ? <FaChevronUp /> : <FaChevronDown />}
   </h3>
 
   {showLocationDropdown && (
@@ -523,7 +524,7 @@ const [showExperienceDropdown, setShowExperienceDropdown] = useState(false);
     onClick={toggleFeeDropdown}
     style={{ cursor: 'pointer' }}
   >
-    Consultation Fee {showFeeDropdown ? '🔼' : '🔽'}
+    Consultation Fee {showDropdown ? <FaChevronUp /> : <FaChevronDown />}
   </h3>
 
   {showFeeDropdown && (
@@ -554,7 +555,7 @@ const [showExperienceDropdown, setShowExperienceDropdown] = useState(false);
         onClick={() => toggleFilterDropdown(setShowRatingDropdown, showRatingDropdown)}
         style={{ cursor: 'pointer' }}
       >
-        Rating {showRatingDropdown ? '🔼' : '🔽'}
+        Rating {showDropdown ? <FaChevronUp /> : <FaChevronDown />}
       </h3>
 
       {showRatingDropdown && (
@@ -577,13 +578,13 @@ const [showExperienceDropdown, setShowExperienceDropdown] = useState(false);
     </div>
 
     {/* Discount Dropdown */}
-    <div className="discount-list" style={{ marginTop: '10px' }}>
+    {/* <div className="discount-list" style={{ marginTop: '10px' }}>
       <h3
         className="dropdown-header-discount"
         onClick={() => toggleFilterDropdown(setShowDiscountDropdown, showDiscountDropdown)}
         style={{ cursor: 'pointer' }}
       >
-        Discount {showDiscountDropdown ? '🔼' : '🔽'}
+        Discount {showDropdown ? <FaChevronUp /> : <FaChevronDown />}
       </h3>
 
       {showDiscountDropdown && (
@@ -603,7 +604,7 @@ const [showExperienceDropdown, setShowExperienceDropdown] = useState(false);
           ))}
         </ul>
       )}
-    </div>
+    </div> */}
 
 {/* Language Dropdown */}
 <div className="language-list" style={{ marginTop: '10px' }}>
@@ -612,7 +613,7 @@ const [showExperienceDropdown, setShowExperienceDropdown] = useState(false);
         onClick={() => toggleFilterDropdown(setShowLanguageDropdown, showLanguageDropdown)}
         style={{ cursor: 'pointer' }}
       >
-        Language {showLanguageDropdown ? '🔼' : '🔽'}
+        Language {showDropdown ? <FaChevronUp /> : <FaChevronDown />}
       </h3>
 
       {showLanguageDropdown && (
@@ -641,7 +642,7 @@ const [showExperienceDropdown, setShowExperienceDropdown] = useState(false);
         onClick={() => toggleFilterDropdown(setShowAvailabilityDropdown, showAvailabilityDropdown)}
         style={{ cursor: 'pointer' }}
       >
-        Availability {showAvailabilityDropdown ? '🔼' : '🔽'}
+        Availability {showDropdown ? <FaChevronUp /> : <FaChevronDown />}
       </h3>
 
       {showAvailabilityDropdown && (
@@ -670,7 +671,7 @@ const [showExperienceDropdown, setShowExperienceDropdown] = useState(false);
         onClick={() => toggleFilterDropdown(setShowExperienceDropdown, showExperienceDropdown)}
         style={{ cursor: 'pointer' }}
       >
-        Experience {showExperienceDropdown ? '🔼' : '🔽'}
+        Experience {showDropdown ? <FaChevronUp /> : <FaChevronDown />}
       </h3>
 
       {showExperienceDropdown && (
