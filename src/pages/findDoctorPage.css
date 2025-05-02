@@ -308,56 +308,6 @@
     margin-top: 60px;
   }
 }
-/* the code is for the selected one  */
-.selected-one{
-  background-color:#ffffff;
-  box-shadow: 6px 0 18px rgba(1, 1, 1, 0.1);
-  border-radius: 0 16px 16px 0;
-  width: 55%;
-  height: 700px;
-  border-radius: 10px;
-  text-align: center;
-  position: sticky;
-  top: 0px;
-  right: 0px;
-  margin: 5px 1%;
-  border:2px solid   #7f9af6;
-
-}
-
-.selected-one-head{
-  color: #ffffff;
-  font-size: 20px;
-  padding: 20px;
-  background: linear-gradient(145deg, #2563eb, #1e40af);
-  border-radius: 10px 10px 0 0;
-}
-.selected-list{
-  color: aqua;
-  margin-left: 39px;
-}
-.sub-head-selected{
-  color: #252d37;
-  font-size: 20px;
-}
-.cross-icons{
-  color: #252d37;
-  font-size: 20px;
-  margin-left: 10px;
-  cursor: pointer;
-  transition: color 0.3s ease, font-size 0.3s ease;
-}
-.cross-icons:hover{
-  color:red;
-  font-size: 25px;
-}
-.symptoms-text{
-  color:#252d37;
-  font-size: 20px;}
- .symptoms-text:hover{
-  color: #146282;
-  
- } 
 /* code for the filtration of the code  */
 
 .symptom-list{
@@ -365,7 +315,7 @@
   background-color:#f9f9f9;
   box-shadow: 6px 0 18px rgba(0, 0, 0, 0.1);
   border-radius: 0 16px 16px 0;
-  width: 45%;
+  width: 35%;
   height: 4000px;
   margin: 5px 1%;
 
