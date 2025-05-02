@@ -6,18 +6,17 @@
 }
 
 /* Toggle button: Hidden on desktop, visible on mobile */
-.toggle-button {
+/* .toggle-button {
   display: none;
   position: absolute;
-  /* top: 10px; */
-  left: 10px;
-  background: #333;
-  color: white;
+  right: 10px;
+  background: #49c7d7;
+  color: rgb(252, 252, 252);
   padding: 8px;
   border: none;
   z-index: 100;
   cursor: pointer;
-}
+} */
 
 /* Sidebar: visible by default */
 .sidebar {
@@ -58,9 +57,9 @@
 
 /* Responsive: Mobile */
 @media (max-width: 768px) {
-  .toggle-button {
+  /* .toggle-button {
     display: block;
-  }
+  } */
 
   .sidebar {
     position: fixed;
@@ -1277,7 +1276,7 @@ color: #171717;
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 648px) {
   .docDashboard-toggle-button {
     display: block;
   }
