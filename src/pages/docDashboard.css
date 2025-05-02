@@ -49,6 +49,8 @@
   background-color: #d1d5db;
 }
 
+
+
 /* Main content */
 .main-content {
   flex-grow: 1;
@@ -806,11 +808,12 @@ height: 6rem;
 display: flex;
 justify-content: center;
 align-items: center;
+overflow: hidden;
 }
 
-.doctor-icon {
-width: 3rem;
-height: 3rem;
+
+
+.docDashboard_doctor-profile_img {
 color: #6b7280;
 }
 
