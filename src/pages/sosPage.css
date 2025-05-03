@@ -84,9 +84,9 @@
   align-items: center;
   font-weight: 800;
   background-color: rgb(157, 150, 150);
-  color: white;
+  color: rgb(0, 0, 0);
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* optional */
+  /* box-shadow: 0 4px 6px rgba(255, 0, 76, 0.1); optional */
 }
 
 .div1_btn:focus {

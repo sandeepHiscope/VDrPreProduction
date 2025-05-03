@@ -4,7 +4,7 @@ import "./sosPage.css";
 
 
 const SosPage = () => {
-  const [count, setCount] = useState("Double click");
+  const [count, setCount] = useState("");
   const [sosActive, setSosActive] = useState(false);
   const [countdownStarted, setCountdownStarted] = useState(false);
   const [infoMessege, setInfoMessege] = useState("");
@@ -58,10 +58,11 @@ const SosPage = () => {
       {/* SOS part */}
       <div className="sos-container">
         <div className="div1">
+        
           {/* <button className="div1_btn" onDoubleClick={handleDoubleClick}> */}
           {/* uncomment the above to turn on the fun ctionality */}
           <button className="div1_btn" >
-            {count}
+            SOS
           </button>
         </div>
         <h2 className="div1-h2">SOS EMERGENCY</h2>

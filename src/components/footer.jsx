@@ -1,4 +1,6 @@
 import './footer.css';
+import GooglePlayLogo from "../assets/icons/apps/googleplay.png";
+import AppStoreLogo from "../assets/icons/apps/applestore.png";
 
 const Footer = () => (
   <footer className="footer">
@@ -9,6 +11,10 @@ const Footer = () => (
           Your trusted health companion, connecting you with verified,
           background-checked doctors for quality care.
         </p>
+        <div className="footerDownloadSection">
+          <img src={GooglePlayLogo}at="GooglePlayLogo"/>
+          <img src={AppStoreLogo}altt="AppStoreLogo" />
+        </div>
       </div>
 
       <div className="footer__col">
@@ -45,7 +51,7 @@ const Footer = () => (
     </div>
 
     <div className="footer__bottom">
-      <p>&copy; {new Date().getFullYear()} Hiscope Enterprises. All rights reserved.</p>
+      <p className='footerCopyright'>&copy; {new Date().getFullYear()} Hiscope Enterprises. All rights reserved.</p>
       <div className="footer__legal">
         <a href="/terms">Terms of Service</a>
         <a href="/privacy">Privacy Policy</a>

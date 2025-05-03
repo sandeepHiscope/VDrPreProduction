@@ -274,7 +274,7 @@ function Homepage() {
         </section>
 
         {/* App Download Section */}
-        <div className="download-section">
+        {/* <div className="download-section">
           <div className="download-container m-8 w-3/4 flex justify-evenly items-center p-2 rounded-2xl">
             <div className="app-preview">
               <img
@@ -303,7 +303,7 @@ function Homepage() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* FAQ Section */}
         <div className="faq-container">
@@ -383,28 +383,7 @@ function Homepage() {
     
         </div>
 
-        {/* Testimonial Slider Section */}
-        <div className="testimonial-slider-section">
-          <div className="testimonial-tabs">
-            <button 
-              className={`tab ${activeSlides === "doctor" ? "active" : ""}`}
-              onClick={() => showSlides("doctor")}
-            >
-              Doctor Opinions
-            </button>
-            <button 
-              className={`tab ${activeSlides === "patient" ? "active" : ""}`}
-              onClick={() => showSlides("patient")}
-            >
-              Patient Stories
-            </button>
-          </div>
-          <div className="testimonial-slider">
-            <div className="testimonial-slide">
-              {slides[currentSlideIndex]}
-            </div>
-          </div>
-        </div>
+        
       </div>
     </>
   );

@@ -652,7 +652,7 @@ const FindDoctorPage = () => {
               value={selectedState}
               onChange={(e) => setSelectedState(e.target.value)}
             >
-              <option value="">Select State</option>
+              <option value="">Searching Doctors in state</option>
               {indianStates.map((state) => (
                 <option key={state} value={state}>
                   {state}
