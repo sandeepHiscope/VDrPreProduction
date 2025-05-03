@@ -526,6 +526,70 @@ const WhyVDr = () => {
         </div>
       </section> */}
       </div>
+
+
+      {/* Frequently Asked Questions */}
+
+      <div className="faq-container">
+          <div className="faq-header">
+            <h2>Frequently Asked Questions</h2>
+          </div>
+
+          <div className="faq-item">
+            <input type="checkbox" id="faq1" />
+            <label htmlFor="faq1">
+           what is VDr?
+              <span className="icon">+</span>
+            </label>
+            <div className="faq-content">
+              VDr is a healthcare platform that connects patients with verified
+              doctors, ensuring a safe and trustworthy experience. We focus on
+              transparency and quality care.
+            </div>
+          </div>
+          <div className="faq-item">
+            <input type="checkbox" id="faq2" />
+            <label htmlFor="faq2">
+              How does VDr ensure the quality of doctors?
+              <span className="icon">+</span>
+            </label>
+            <div className="faq-content">
+              VDr employs a rigorous multi-step verification process that includes background checks, credential verification, and continuous monitoring of doctors' professional standings.
+            </div>
+          </div>
+          <div className="faq-item">
+            <input type="checkbox" id="faq3" />
+            <label htmlFor="faq3">
+              Is VDr available on mobile devices?
+              <span className="icon">+</span>
+            </label>
+            <div className="faq-content">
+              VDr is available on both iOS and Android platforms. You can download the app from the App Store or Google Play Store.
+            </div>
+          </div>
+          <div className="faq-item">
+            <input type="checkbox" id="faq4" />
+            <label htmlFor="faq4">
+            Does the app support uploading medical reports, lab results, or images for the doctor to view?
+              <span className="icon">+</span>
+            </label>
+            <div className="faq-content">
+              Yes, the app allows users to upload medical reports, lab results, and images securely. This feature helps doctors provide more accurate consultations based on your medical history.
+            </div>
+          </div>
+          <div className="faq-item">
+            <input type="checkbox" id="faq5" />
+            <label htmlFor="faq5">
+            What happens if a doctor cancels or misses the appointment?
+              <span className="icon">+</span>
+            </label>
+            <div className="faq-content">
+              If a doctor cancels or misses an appointment, you will be notified immediately. You can reschedule the appointment with the same doctor or choose another available doctor.
+            </div>
+          </div>            
+        
+        </div>
+
       <hr className="text-neutral-400" />
       <h1 className="mainheader">Our Founders</h1>
       <FounderPage />
