@@ -201,8 +201,12 @@ const VerifyDoc = () => {
           <p className="result-text">{result}</p>
         </div>
       )}
+
+
+      
     </div>
-  );
+    );
 };
+
 
 export default VerifyDoc;
