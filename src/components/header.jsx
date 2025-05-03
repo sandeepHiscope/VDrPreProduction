@@ -51,6 +51,12 @@ const NAV_LINKS = [
     icon: <Shield className="headericons" />,
     external: true,
   },
+  {
+    to: "/doctorAppointment",
+    label: "Book Appointment",
+   
+    icon: <ShieldQuestion className="headericons" />,
+  },
 ];
 
 const MainHeader = () => {
@@ -98,22 +104,7 @@ const MainHeader = () => {
     window.alert("Logged out successfully!");
   };
   return (
-    <section className="header-section">
-      <button
-        className="toggle-button"
-        onClick={toggleSlide}
-        aria-label="Toggle Menu"
-      >
-        {isOpen ? <ImCross className="secicon" /> : <IoReorderThreeOutline />}
-      </button>
-
-      <div
-        className="header-background"
-        style={{
-          backgroundImage: `url(${HeaderImages[currentImage].img})`,
-          backgroundPosition: `right ${position}% top 0%`,
-        }}
-      ></div>
+ 
 
       <nav className="nav-container">
         <Link to="/" onClick={handleNavClick}>
@@ -197,7 +188,6 @@ const MainHeader = () => {
           </div>
         </div>
       </nav>
-    </section>
   );
 };
 
