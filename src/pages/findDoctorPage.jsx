@@ -243,7 +243,9 @@ const FindDoctorPage = () => {
           id: `dummy-${index}`,
           fullName: doc.name || "Not Mentioned",
           medicalSpeciality: doc.speciality || "Not Mentioned",
+
           experience: "5", // Added default for demonstration
+
           city: doc.locality || "Not Mentioned",
           state: "Not Mentioned",
           country: "India",
@@ -252,6 +254,7 @@ const FindDoctorPage = () => {
           doctorPhoto: null,
           phone: isNaN(doc.phone) ? "Not Mentioned" : doc.phone,
           email: doc.email || "Not Mentioned",
+
           // Added simulated fields for filtering
           consultationFee: Math.floor(Math.random() * 5000) + 100,
           rating: Math.floor(Math.random() * 5) + 1,
@@ -261,6 +264,7 @@ const FindDoctorPage = () => {
             Math.random() > 0.5 ? 'Evening' : 'Night'
           ]
         }))
+
     ];
     
     // Then apply all the checkbox filters
@@ -677,7 +681,7 @@ const FindDoctorPage = () => {
                     className="doctor-image"
                   />
                   <div className="doctor-info">
-                    <h3>
+                    <h3 className="card-text-head">
                       Dr. {doctor.fullName?.toUpperCase() || "Not Mentioned"}
                     </h3>
                     <p>
@@ -686,20 +690,36 @@ const FindDoctorPage = () => {
                     </p>
                     <p>
                       <strong>Experience:</strong> {doctor.experience}{" "}
-                      {doctor.experience !== "Not Mentioned" && "years"}
+                      {doctor.experience !== "Not Mentioned"}
                     </p>
                     <p>
                       <strong>Location:</strong> {doctor.city},{" "}
                       {doctor.state !== "Not Mentioned" ? doctor.state : ""}{" "}
                       {doctor.country}
                     </p>
-                    <p>
+                    {/* <p>
                       <strong>Hospital:</strong>{" "}
                       {doctor.hospitalCurrentWorking || "Not Mentioned"}
-                    </p>
-                    <p>
+                    </p> */}
+                    {/* <p>
                       <strong>License:</strong>{" "}
                       {doctor.medicalLicenseNumber || "Not Mentioned"}
+                    </p> */}
+                    {/* <p>
+                      <strong>Gender:</strong>{""}
+                      {doctor.gender || "Not Mentioned"}
+                    </p> */}
+                    <p>
+                      <strong>Language: </strong>{""}
+                      {doctor.languages || "Not Mentioned"}
+                    </p>
+                    <p>
+                      <strong>Rating: </strong>{""}
+                      {doctor.rating || "Not Mentioned"}
+                    </p>
+                    <p>
+                      <strong>Consultation Fee: </strong>{""}
+                      {doctor.consultationFee || "Not Mentioned"}
                     </p>
                     {/* Show fee and rating if available */}
                     {doctor.consultationFee && (
