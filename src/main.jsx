@@ -4,6 +4,11 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import { registerSW } from "virtual:pwa-register";
 
+// Suppress Workbox logs
+if ("workbox" in window) {
+  window.workbox.setConfig({ debug: false });
+}
+
 // Register the service worker using Vite PWA's virtual module
 const updateSW = registerSW({
   onNeedRefresh() {

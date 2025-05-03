@@ -1,4 +1,8 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
+import { LoginContext } from "../context/loginContext";
+import { useNavigate } from "react-router-dom";
+import React, { useEffect } from 'react';
+
 import {
   Calendar,
   Clock,
@@ -27,13 +31,56 @@ const menuItems = [
  
 ];
 
+const GET_DOCTORDETAILS_API_URL = "http://localhost:8080/doctorverfication/get/";
+
+const GET_APPOINTMENTS_API_URL = "http://localhost:8080/Appointment/doctor/";
+
+
 const DocDashboard = () => {
   const [activePage, setActivePage] = useState("Dashboard");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  const [doctorProfile, setDoctorProfile] = useState([]);
+  const [doctorAppointments, setDoctorAppointments] = useState(null);
+  const [email, setEmail] = useState("jhon@123gmail.com");
+  const { isLoggedIn, isUser, isDoctor, setUser, setDoctor, setLogin } =
+  useContext(LoginContext);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+  const navigateTo = useNavigate();
+
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const response = await fetch(`${GET_DOCTORDETAILS_API_URL}${email}`);
+        const data = await response.json();
+        console.log("Doctor data:", data);
+        setDoctorProfile(data);
+      } catch (error){
+        console.error("Error fetching doctors:", error); 
+      }
+    };
+    fetchDoctors();
+  }, []);
+  useEffect(() => {
+    const fetchDoctorsAppointments = async () => {
+      try {
+        const response = await fetch(`${GET_APPOINTMENTS_API_URL}${email}`);
+        const AppoinmentData = await response.json();
+        console.log("Doctor appoinment data:", AppoinmentData);
+        setDoctorAppointments(AppoinmentData);
+      } catch (error){
+        console.error("Error fetching doctors:", error); 
+      }
+    };
+    fetchDoctorsAppointments();
+  }, []);
+
+  useEffect(() => {
+    console.log("Doctor profile updated:", doctorProfile);
+    console.log("Doctor appointments updated:", doctorAppointments);
+  }, [doctorProfile], [doctorAppointments]);
+  
 
   const upcomingAppointments = [
     {
@@ -573,24 +620,13 @@ const DocDashboard = () => {
         <div className="doctor-header">
           <div className="doctor-header-content">
             <div className="doctor-avatar">
-              <svg
-                className="doctor-icon"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                />
-              </svg>
+              <img src= {`data:image/jpeg;base64,${doctorProfile.doctorPhoto}`}alt="doctor-image"  className="docDashboard_doctor-profile_img" />
+            
             </div>
             <div className="doctor-info">
-              <h2 className="doctor-name">Dr.Pavan</h2>
-              <p className="doctor-role">General Practitioner</p>
-              <p className="doctor-license">License #: MD12345</p>
+              <h2 className="doctor-name">{doctorProfile.fullName}</h2>
+              <p className="doctor-role">{doctorProfile.medicalSpeciality}</p>
+              <p className="doctor-license">License : {doctorProfile.medicalLicenseNumber}</p>
             </div>
             <div className="doctor-edit">
               <button className="edit-button">Edit Profile</button>
@@ -604,7 +640,7 @@ const DocDashboard = () => {
           <div className="info-grid">
             <div>
               <p className="info-label">Email</p>
-              <p>dr.reynolds@example.com</p>
+              <p>d{doctorProfile.email}</p>
             </div>
             <div>
               <p className="info-label">Phone</p>
@@ -612,11 +648,11 @@ const DocDashboard = () => {
             </div>
             <div>
               <p className="info-label">Address</p>
-              <p>123 Medical Center Drive, Suite 456</p>
+              <p>{doctorProfile.city}, {doctorProfile.state}, {doctorProfile.country}</p>
             </div>
             <div>
               <p className="info-label">Specialization</p>
-              <p>Family Medicine</p>
+              <p>{doctorProfile.medicalSpeciality}</p>
             </div>
           </div>
         </div>
@@ -672,13 +708,26 @@ const DocDashboard = () => {
       <ul className="docDashboard-menu-list">
   {menuItems.map((item) => (
     <li key={item.name}>
-      <div
+      <div  
         className={`docDashboard-menu-item ${
           activePage === item.name ? "docDashboard-active" : ""
         } ${item.name === "Logout" ? "docDashboard-logout" : ""}`}
         onClick={() => {
           if (item.name === "Logout") {
-            alert("Logged out successfully");
+
+
+
+            if (window.confirm("Are you sure you want to logout?")) {
+              console.log("Verified  bro, you  logged out from dashboard sussefully ")
+              alert("Verified one , youve Logged out successfully");
+              setLogin(false);
+              navigateTo("/loginAndRegistrationPage");
+            } else {
+              console.log("Verified bro canceled logout");
+            }
+
+
+            
           } else {
             setActivePage(item.name);
           }

@@ -6,7 +6,7 @@ import Home from "./Home";
 import Login from "./loginAndRegistrationPage";
 import IndividualRegisterPage from "./individualRegisterPage";
 import DoctorRegisterPage from "./doctorRegisterPage";
-import FounderPage from "./ourFoundersPage";
+import FounderPage from "../components/ourFoundersPage";
 import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
 import Fotter from "../components/footer";
 

@@ -1,5 +1,3 @@
-///Tailwind css used in this region
-
 import React, { useState, useEffect } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
@@ -13,26 +11,37 @@ import topDoctorSpecialtiesIndia from "../data/topDoctorSpecialtiesIndia";
 import tempImg from "../assets/Images/foundersImg/kiran.jpg";
 import ScrollingCardsContainer from "../components/ScrollingCardsContainer";
 import FindDoctorPage from "./findDoctorPage";
+import { IoReorderThreeOutline } from "react-icons/io5";
+import { ImCross } from "react-icons/im";
+import  Headerimage from "../data/headerImages";
 
 function Homepage() {
   const [isHomePageRendered, setIsHomePageRendered] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [position, setPosition] = useState(50);
+  const [currentImage, setCurrentImage] = useState(0);
+  
+  // Sample header images array - replace with your actual images
+  const HeaderImages = [
+    { img: "/path-to-image1.jpg" },
+    { img: "/path-to-image2.jpg" },
+    { img: "/path-to-image3.jpg" }
+  ];
+
+  const toggleSlide = () => {
+    setIsOpen(!isOpen);
+  };
 
   useEffect(() => {
-    console.log("Home Page Rendered");
+    // console.log("Home Page Rendered");
     setIsHomePageRendered(true);
   }, []);
-
-  // Function to handle button click
 
   // Define state for country, state, and search input
   const [country, setCountry] = useState("");
   const [selectedState, setSelectedState] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredDoctors, setFilteredDoctors] = useState([]);
-
-  // States for India and USA
-
-  // List of doctor types
 
   // Update state dropdown based on selected country
   const updateStates = (e) => {
@@ -62,18 +71,31 @@ function Homepage() {
     setFilteredDoctors([]); // Hide suggestions after selection
   };
 
-  // doctoropinio
-  const questions = document.querySelectorAll(".faq-question");
-
-  questions.forEach((question) => {
-    question.addEventListener("click", () => {
-      const answer = question.nextElementSibling;
-      const icon = question.querySelector("open-icon");
-
-      answer.classList.toggle("open");
-      icon.classList.toggle("rotate");
-    });
-  });
+  // FAQ functionality moved to useEffect to avoid DOM direct manipulation
+  useEffect(() => {
+    const questions = document.querySelectorAll(".faq-question");
+    
+    if (questions.length > 0) {
+      questions.forEach((question) => {
+        question.addEventListener("click", () => {
+          const answer = question.nextElementSibling;
+          const icon = question.querySelector(".open-icon");
+          
+          if (answer && icon) {
+            answer.classList.toggle("open");
+            icon.classList.toggle("rotate");
+          }
+        });
+      });
+      
+      // Cleanup function
+      return () => {
+        questions.forEach((question) => {
+          question.removeEventListener("click", () => {});
+        });
+      };
+    }
+  }, [isHomePageRendered]);
 
   const [activeSlides, setActiveSlides] = useState("doctor");
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
@@ -107,13 +129,34 @@ function Homepage() {
 
   return (
     <>
+      <div className="header-section">
+        <button
+          className="toggle-button"
+          onClick={toggleSlide}
+          aria-label="Toggle Menu"
+        >
+          {isOpen ? <ImCross className="secicon" /> : <IoReorderThreeOutline />}
+        </button>
+        
+        <div
+          className="header-background"
+          style={{
+            backgroundImage: `url(${Headerimage[currentImage].img})`,
+            backgroundPosition: `right ${position}% top 0%`,
+          }}
+        ></div>
+      </div>
+      
       <div className="homepage-container flex flex-col justify-center items-center">
         <Link to="/findDoctorPage">
           <div className="searchbar-container">
             <input
               type="text"
+              id="home-search-bar"
               placeholder="Search for Doctors near by you"
               className="searchbar-input"
+              value={searchQuery}
+              onChange={handleSearchChange}
             />
             <button className="searchbar-button">
               <svg
@@ -127,57 +170,43 @@ function Homepage() {
           </div>
         </Link>
 
+        {/* Display filtered doctor suggestions */}
+        {filteredDoctors.length > 0 && (
+          <div className="doctor-suggestions">
+            {filteredDoctors.map((doctor, index) => (
+              <div
+                key={index}
+                className="doctor-suggestion-item"
+                onClick={() => selectDoctorType(doctor)}
+              >
+                {doctor}
+              </div>
+            ))}
+          </div>
+        )}
+
         {/* Cards Slider Section */}
-        {/* <div className="SlidingSecContainer"> */}
-          <CardsSlider />
+        <CardsSlider />
 
         <h2>More Categories to help you</h2>
-        <section          className="categorySection">
-
-        <ul className="categoryList">
-          <li className="categoryItem">Dentist</li>
-          <li className="categoryItem">Cardiologist</li>
-          <li className="categoryItem">Dermatologist</li>
-          <li className="categoryItem">Pediatrician</li>
-          <li className="categoryItem">Orthopedic</li>
-          <li className="categoryItem">General Physician</li>
-          <li className="categoryItem">ENT Specialist</li>
-          <li className="categoryItem">Gynecologist</li>
-          <li className="categoryItem">Urologist</li>
-          <li className="categoryItem">Neurologist</li>
-          <li className="categoryItem">Psychiatrist</li>
-          <li className="categoryItem">Oncologist</li>
-          <li className="categoryItem">Gastroenterologist</li>
-        </ul>
-          
-      </section>
-
-      <section className="symptomsSection">
-          <h2>Based on Symptoms</h2>
-          <ul className="symptomsList">
-            <li className="symptomsItem">Toothache</li>
-            <li className="symptomsItem">Chest Pain</li>
-            <li className="symptomsItem">Skin Rash</li>
-            <li className="symptomsItem">Fever</li>
-            <li className="symptomsItem">Joint Pain</li>
-            <li className="symptomsItem">Cough</li>
-            <li className="symptomsItem">Hearing Loss</li>
-            <li className="symptomsItem">Irregular Periods</li>
-            <li className="symptomsItem">Urinary Issues</li>
-            <li className="symptomsItem">Headache</li>
-            <li className="symptomsItem">Anxiety</li>
-            <li className="symptomsItem">Lump or Swelling</li>
-            <li className="symptomsItem">Abdominal Pain</li>
-            <li className="symptomsItem">Back Pain</li>
-            <li className="symptomsItem">Hair Loss</li>
-            <li className="symptomsItem">Allergies</li>
-            <li className="symptomsItem">Weight Loss</li>
-            <li className="symptomsItem">Nausea</li>
-            <li className="symptomsItem">Vision Problems</li>
-            <li className="symptomsItem">Fatigue</li>
+        <section className="categorySection">
+          <ul className="categoryList">
+            <li className="categoryItem">Dentist</li>
+            <li className="categoryItem">Cardiologist</li>
+            <li className="categoryItem">Dermatologist</li>
+            <li className="categoryItem">Pediatrician</li>
+            <li className="categoryItem">Orthopedic</li>
+            <li className="categoryItem">General Physician</li>
+            <li className="categoryItem">ENT Specialist</li>
+            <li className="categoryItem">Gynecologist</li>
+            <li className="categoryItem">Urologist</li>
+            <li className="categoryItem">Neurologist</li>
+            <li className="categoryItem">Psychiatrist</li>
+            <li className="categoryItem">Oncologist</li>
+            <li className="categoryItem">Gastroenterologist</li>
           </ul>
         </section>
-   
+
         {/* Testimonials (reviews) Section */}
         <section className="content-section testimonials-section">
           <div className="section-header">
@@ -190,15 +219,17 @@ function Homepage() {
             <div className="testimonial-card">
               <div className="testimonial-content">
                 <p>
-                Very helpful and easy to use. I booked an appointment within minutes and got proper consultation from home. Saved time and stress. Highly recommend!"
+                  Very helpful and easy to use. I booked an appointment within
+                  minutes and got proper consultation from home. Saved time and
+                  stress. Highly recommend!
                 </p>
               </div>
               <div className="testimonial-author">
                 <div className="author-image">
-                  <img src={tempImg} alt="Sarah M." />
+                  <img src={tempImg} alt="P. Praveen Sindhu" />
                 </div>
                 <div className="author-info">
-                  <h4>p.praveen sindhu</h4>
+                  <h4>P. Praveen Sindhu</h4>
                   <p>Patient since 2023</p>
                 </div>
               </div>
@@ -206,15 +237,17 @@ function Homepage() {
             <div className="testimonial-card">
               <div className="testimonial-content">
                 <p>
-                "Best experience with online healthcare. The app is smooth, doctors are professional, and reports were easy to access. Felt taken care of."
+                  "Best experience with online healthcare. The app is smooth,
+                  doctors are professional, and reports were easy to access.
+                  Felt taken care of."
                 </p>
               </div>
               <div className="testimonial-author">
                 <div className="author-image">
-                  <img src={tempImg} alt="Dr. James L." />
+                  <img src={tempImg} alt="Dr. L.V.S Vishnuvardhan Reddy" />
                 </div>
                 <div className="author-info">
-                  <h4>Dr.L.v.s vishnuvardhanreddy.</h4>
+                  <h4>Dr. L.V.S Vishnuvardhan Reddy</h4>
                   <p>Cardiologist, Verified Provider</p>
                 </div>
               </div>
@@ -222,15 +255,17 @@ function Homepage() {
             <div className="testimonial-card">
               <div className="testimonial-content">
                 <p>
-                "Game changer for health issues. Especially during busy weeks, having a doctor a tap away really helped. Prescriptions were clear and timely."
+                  "Game changer for health issues. Especially during busy weeks,
+                  having a doctor a tap away really helped. Prescriptions were
+                  clear and timely."
                 </p>
               </div>
               <div className="testimonial-author">
                 <div className="author-image">
-                  <img src={tempImg} alt="Robert K." />
+                  <img src={tempImg} alt="K. Anjaneyulu" />
                 </div>
                 <div className="author-info">
-                  <h4>k.Anjaneyulu</h4>
+                  <h4>K. Anjaneyulu</h4>
                   <p>Parent of patient</p>
                 </div>
               </div>
@@ -239,14 +274,13 @@ function Homepage() {
         </section>
 
         {/* App Download Section */}
-        <div className="download-section ">
-          <div className="download-container m-8 w-3/4 flex justify-evenly  items-center p-2 rounded-2xl">
+        <div className="download-section">
+          <div className="download-container m-8 w-3/4 flex justify-evenly items-center p-2 rounded-2xl">
             <div className="app-preview">
               <img
                 src={VDrLogo}
-                height="400px"
-                width="900px"
                 alt="App Preview"
+                className="h-40 w-40"
               />
             </div>
             <div className="app-info">
@@ -257,12 +291,12 @@ function Homepage() {
               </p>
               <div className="store-buttons">
                 <div className="store-button">
-                  <Link>
+                  <Link to="#">
                     <img src={GooglePlayLogo} alt="Google Play Store" />
                   </Link>
                 </div>
                 <div className="store-button">
-                  <Link>
+                  <Link to="#">
                     <img src={AppStoreLogo} alt="Apple App Store" />
                   </Link>
                 </div>
@@ -271,173 +305,104 @@ function Homepage() {
           </div>
         </div>
 
-        <div class="faq-container">
-    <div class="faq-header">
-      <h2>Frequently Asked Questions</h2>
-    </div>
+        {/* FAQ Section */}
+        <div className="faq-container">
+          <div className="faq-header">
+            <h2>Frequently Asked Questions</h2>
+          </div>
 
-    <div class="faq-item">
-      <input type="checkbox" id="faq1" />
-      <label for="faq1">
-      Can I search for doctors by specialty, location, or availability?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-        yes You can search for doctors by specialty, location, and availability using our advanced search filters. Just enter your criteria in the search bar, and we'll show you the best matches.
-      </div>
-    </div>
+          <div className="faq-item">
+            <input type="checkbox" id="faq1" />
+            <label htmlFor="faq1" className="faq-question">
+              Can I search for doctors by specialty, location, or availability?
+              <span className="icon open-icon">+</span>
+            </label>
+            <div className="faq-content">
+              Yes, you can search for doctors by specialty, location, and
+              availability using our advanced search filters. Just enter your
+              criteria in the search bar, and we'll show you the best matches.
+            </div>
+          </div>
 
-    <div class="faq-item">
-      <input type="checkbox" id="faq2" />
+          <div className="faq-item">
+            <input type="checkbox" id="faq2" />
+            <label htmlFor="faq2" className="faq-question">
+              How does the video consultation work, and is it secure?
+              <span className="icon open-icon">+</span>
+            </label>
+            <div className="faq-content">
+              Our video consultations are conducted through a secure platform
+              that ensures your privacy. After booking, you'll receive a link to
+              join the consultation at the scheduled time. Just click the link,
+              and you're in!
+            </div>
+          </div>
 
-      <label for="faq2">
-      How does the video consultation work, and is it secure?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-        our video consultations are conducted through a secure platform that ensures your privacy. After booking, you'll receive a link to join the consultation at the scheduled time. Just click the link, and you're in!
-      </div>
-    </div>
+          <div className="faq-item">
+            <input type="checkbox" id="faq3" />
+            <label htmlFor="faq3" className="faq-question">
+              Is there an option to choose between in-clinic and online
+              consultation?
+              <span className="icon open-icon">+</span>
+            </label>
+            <div className="faq-content">
+              Yes, you can choose between in-clinic and online consultations
+              based on your preference. Just select your choice when booking an
+              appointment.
+            </div>
+          </div>
 
-    <div class="faq-item">
-      <input type="checkbox" id="faq3" />
-      <label for="faq3">
-      Is there an option to choose between in-clinic and online consultation?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-       yes, you can choose between in-clinic and online consultations based on your preference. Just select your choice when booking an appointment.
-      </div>
-    </div>
+          <div className="faq-item">
+            <input type="checkbox" id="faq4" />
+            <label htmlFor="faq4" className="faq-question">
+              How does the video consultation work, and is it secure?
+              <span className="icon open-icon">+</span>
+            </label>
+            <div className="faq-content">
+              Our video consultations are conducted through a secure platform
+              that ensures your privacy. After booking, you'll receive a link to
+              join the consultation at the scheduled time. Just click the link,
+              and you're in!
+            </div>
+          </div>
 
-    <div class="faq-item">
-      <input type="checkbox" id="faq4" />
-      <label for="faq4">
-      How does the video consultation work, and is it secure?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-        our video consultations are conducted through a secure platform that ensures your privacy. After booking, you'll receive a link to join the consultation at the scheduled time. Just click the link, and you're in!
-      </div>
-    </div>
-    
-    <div class="faq-item">
-      <input type="checkbox" id="faq4" />
-      <label for="faq4">
-      Does the app send reminders for upcoming appointments?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-        yes, the app sends reminders for upcoming appointments to ensure you never miss a consultation. You can also set custom reminders based on your preferences.
-      </div>
-    </div>
-    <div class="faq-item">
-      <input type="checkbox" id="faq4" />
-      <label for="faq4">
-      Does the app support uploading medical reports, lab results, or images for the doctor to view?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-        yes, you can upload medical reports, lab results, and images directly through the app. This allows the doctor to review your medical history and provide better recommendations during your consultation.
-      </div>
-    </div>
-    <div class="faq-item">
-      <input type="checkbox" id="faq4" />
-      <label for="faq4">
-      How do I know if the doctors listed are verified and qualified?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-        all doctors listed on our platform are verified and qualified professionals. We conduct thorough background checks and verify their credentials to ensure you receive the best care possible.
-      </div>
-    </div>
-    <div class="faq-item">
-      <input type="checkbox" id="faq4" />
-      <label for="faq4">
-      What happens if a doctor cancels or misses the appointment?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-        if a doctor cancels or misses the appointment, we will notify you immediately and help you reschedule with another available doctor. Your satisfaction is our priority.
-      </div>
-    </div>
-    <div class="faq-item">
-      <input type="checkbox" id="faq4" />
-      <label for="faq4">
-      Is my personal and health information secure and private on your platform?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-        yes, we take your privacy seriously. All personal and health information is encrypted and stored securely. We adhere to strict data protection regulations to ensure your information remains confidential.
-      </div>
-    </div>
-    <div class="faq-item">
-      <input type="checkbox" id="faq4" />
-      <label for="faq4">
-      Is the consultation fee the same for all doctors?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-        no, consultation fees may vary based on the doctor's specialty, experience, and location. You can view the consultation fee for each doctor before booking an appointment.
-      </div>
-    </div>
-    <div class="faq-item">
-      <input type="checkbox" id="faq4" />
-      <label for="faq4">
-      Can I pay after the consultation or is it prepaid only?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-        the consultation fee is typically prepaid to confirm your appointment. However, some doctors may offer post-consultation payment options. Please check with the doctor for their specific payment policies.
-      </div>
-    </div>
-    <div class="faq-item">
-      <input type="checkbox" id="faq4" />
-      <label for="faq4">
-      Are there any subscription plans or packages for regular checkups?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-        yes, we offer subscription plans and packages for regular checkups. These plans provide discounted rates for multiple consultations and are designed to help you maintain your health over time.
-      </div>
-    </div>
-    <div class="faq-item">
-      <input type="checkbox" id="faq4" />
-      <label for="faq4">
-      What payment methods are accepted (e.g., UPI, card, wallet)?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-        we accept various payment methods, including UPI, credit/debit cards, and digital wallets. You can choose your preferred payment method during the booking process.
-      </div>
-    </div>
-    <div class="faq-item">
-      <input type="checkbox" id="faq4" />
-      <label for="faq4">
-      Do you offer any discounts or first-time user benefits?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-        yes, we often have promotions and discounts for first-time users. You can check our website or app for any ongoing offers and apply them during the booking process.
-      </div>
-    </div>
-    <div class="faq-item">
-      <input type="checkbox" id="faq4" />
-      <label for="faq4">
-      Can I access the app on multiple devices (e.g., tablet + phone)?
-        <span class="icon">+</span>
-      </label>
-      <div class="faq-content">
-        yes, you can access the app on multiple devices using the same account. Your data will sync across all devices, allowing you to manage your appointments and health information seamlessly.
-      </div>
-    </div>
-  
-    
+          <div className="faq-item">
+            <input type="checkbox" id="faq5" />
+            <label htmlFor="faq5" className="faq-question">
+              Does the app send reminders for upcoming appointments?
+              <span className="icon open-icon">+</span>
+            </label>
+            <div className="faq-content">
+              Yes, the app sends reminders for upcoming appointments to ensure
+              you never miss a consultation. You can also set custom reminders
+              based on your preferences.
+            </div>
+          </div>
+        </div>
 
-  </div>/// FAQ Section ending
-      
-  
-  </div>
+        {/* Testimonial Slider Section */}
+        <div className="testimonial-slider-section">
+          <div className="testimonial-tabs">
+            <button 
+              className={`tab ${activeSlides === "doctor" ? "active" : ""}`}
+              onClick={() => showSlides("doctor")}
+            >
+              Doctor Opinions
+            </button>
+            <button 
+              className={`tab ${activeSlides === "patient" ? "active" : ""}`}
+              onClick={() => showSlides("patient")}
+            >
+              Patient Stories
+            </button>
+          </div>
+          <div className="testimonial-slider">
+            <div className="testimonial-slide">
+              {slides[currentSlideIndex]}
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

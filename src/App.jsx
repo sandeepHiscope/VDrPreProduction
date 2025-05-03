@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { useEffect, useState, useContext } from "react";
 
 import "./App.css";
-import Homepage from "./pages/Home";
-import DoctorVerification from "./pages/doctorVerificationpage";
+import Homepage from "./pages/Home.jsx";
+import DoctorVerification from "./pages/doctorVerificationpage.jsx";
 import FindDoctorPage from "./pages/findDoctorPage";
 import LoginAndRegistration from "./pages/loginAndRegistrationPage";
 import IndividualRegisterPage from "./pages/individualRegisterPage";
@@ -19,27 +19,32 @@ import VerifyDoc from "./pages/verifyDoc";
 import DoctorID from "./pages/doctorID";
 import QRCodeGenerator from "./pages/QRCodeGenerator";
 import DocDashboard from "./pages/docDashboard";
-import ScrollToTop from "./components/scrollToTop";
+// import ScrollToTop from "./components/scrollToTop";
+import PrivateRoute from "./context/privateRoute.jsx"
 import WhyVDr from "./pages/whyVDr";
 import InstallPromptToast from "./hooks/InstallPromptToast.jsx";
-import FounderPage from "./pages/ourFoundersPage";
 import UserDashboard from "./pages/userDashboard";
 import LoginContextProvider, { LoginContext } from "./context/loginContext.jsx";
+import DoctorAppointment from "./components/doctorAppointment";
 
 const App = () => {
   const [location, setLocation] = useState();
   const currentUrl = window.location.href;
-  console.log(`url:${currentUrl}`);
 
   useEffect(() => {
     setLocation(currentUrl);
   }, [currentUrl]);
 
+  useEffect(() => {
+    console.log(`url:${currentUrl}`);
+  }, []);
+  // const { isLoggedIn, isUser, isDoctor, setUser, setDoctor, setLogin } =
+  //   useContext(LoginContext);
   return (
     <>
       <Router>
         <LoginContextProvider>
-          <ScrollToTop />
+          {/* <ScrollToTop /> */}
           <MainHeader />
           <div className="content-wrapper ">
             <Routes>
@@ -63,20 +68,34 @@ const App = () => {
                 path="/doctorRegisterPage"
                 element={<DoctorRegisterPage />}
               />
-              <Route path="/FounderPage" element={<FounderPage />} />
-              <Route path="/FounderPage" element={<FounderPage />} />
+
               <Route path="/insurancePage" element={<Insurance />} />
-              <Route path="/demoPage" element={<HomeDeliveryMedicine />} />
-              <Route
+              {/* <Route path="/demoPage" element={<HomeDeliveryMedicine />} /> */}
+              {/* <Route
                 path="/doctorProfilePage"
                 element={<DoctorProfilePage />}
-              />
+              /> */}
               <Route path="/mainInsurancePage" element={<MainInsurance />} />
               <Route path="/doctorID/:id" element={<DoctorID />} />
               <Route path="/QRCodeGenerator" element={<QRCodeGenerator />} />
-              <Route path="/docDashboard" element={<DocDashboard />} />
               <Route path="/whyVDr" element={<WhyVDr />} />
-              <Route path="/userDashboard" element={<UserDashboard />} />
+              <Route
+                path="/docDashboard"
+                element={
+                  <PrivateRoute>
+                    <DocDashboard />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/userDashboard"
+                element={
+                  <PrivateRoute>
+                    <UserDashboard />
+                  </PrivateRoute>
+                }
+              />              
+              <Route path="/doctorAppointment" element={<DoctorAppointment />} />
             </Routes>
           </div>
           <Footer />

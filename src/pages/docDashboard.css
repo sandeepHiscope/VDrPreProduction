@@ -6,18 +6,17 @@
 }
 
 /* Toggle button: Hidden on desktop, visible on mobile */
-.toggle-button {
+/* .toggle-button {
   display: none;
   position: absolute;
-  /* top: 10px; */
-  left: 10px;
-  background: #333;
-  color: white;
+  right: 10px;
+  background: #49c7d7;
+  color: rgb(252, 252, 252);
   padding: 8px;
   border: none;
   z-index: 100;
   cursor: pointer;
-}
+} */
 
 /* Sidebar: visible by default */
 .sidebar {
@@ -50,6 +49,8 @@
   background-color: #d1d5db;
 }
 
+
+
 /* Main content */
 .main-content {
   flex-grow: 1;
@@ -58,9 +59,9 @@
 
 /* Responsive: Mobile */
 @media (max-width: 768px) {
-  .toggle-button {
+  /* .toggle-button {
     display: block;
-  }
+  } */
 
   .sidebar {
     position: fixed;
@@ -807,11 +808,12 @@ height: 6rem;
 display: flex;
 justify-content: center;
 align-items: center;
+overflow: hidden;
 }
 
-.doctor-icon {
-width: 3rem;
-height: 3rem;
+
+
+.docDashboard_doctor-profile_img {
 color: #6b7280;
 }
 
@@ -1277,7 +1279,7 @@ color: #171717;
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 648px) {
   .docDashboard-toggle-button {
     display: block;
   }

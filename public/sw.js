@@ -7,6 +7,11 @@ const urlsToCache = [
   "/icons/web-app-manifest-512x512.png",
 ];
 
+// Disable Workbox debug logs
+if (workbox) {
+  workbox.setConfig({ debug: false });
+}
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -39,4 +44,3 @@ self.addEventListener("activate", (event) => {
       )
   );
 });
-

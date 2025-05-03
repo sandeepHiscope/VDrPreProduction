@@ -2,92 +2,84 @@
 /* @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities"; */
+
 * {
   transition: all 0.3s ease-in-out;
 
   /* Colors*/
---color-primary: #007BFF;         /*// Main blue for primary actions*/
---color-primary-hover: #0069D9;   /*// Darker blue on hover*/
---color-accent: #28C76F;          /*// Positive, health-themed green*/
---color-accent-hover: #2ea748;    /*// Darker green on hover*/
---color-secondary: #6C757D;       /*// Secondary button, muted UI*/
---color-third: #DEE2E6;          /*// Darker text, headers*/
- 
- /*Backgrounds*/
---color-background-main: #F8F9FA;       /*// App background*/
---color-background-card: #FFFFFF;       /*// Cards and modals*/
---color-background-muted: #F1F3F5;      /*// Light section backgrounds*/
---color-background-hover: #F0F0F0;      /*// Hover states*/
---color-background-white: #FFFFFF;       /*// Pure white for elements*/
+  --color-primary: #007bff; /*// Main blue for primary actions*/
+  --color-primary-hover: #0069d9; /*// Darker blue on hover*/
+  --color-accent: #28c76f; /*// Positive, health-themed green*/
+  --color-accent-hover: #2ea748; /*// Darker green on hover*/
+  --color-secondary: #6c757d; /*// Secondary button, muted UI*/
+  --color-third: #dee2e6; /*// Darker text, headers*/
 
-     /*Text Colors*/
---color-text-primary: #212529;       /*// Headlines, main text*/
---color-text-secondary: #6C757D;     /* // Subtext, descriptions*/
---color-text-muted: #ADB5BD;         /* // Placeholder or disabled text*/
---color-text-on-primary: #FFFFFF;    /*// Text on primary buttons*/
+  /*Backgrounds*/
+  --color-background-main: #f8f9fa; /*// App background*/
+  --color-background-card: #ffffff; /*// Cards and modals*/
+  --color-background-muted: #f1f3f5; /*// Light section backgrounds*/
+  --color-background-hover: #f0f0f0; /*// Hover states*/
+  --color-background-white: #ffffff; /*// Pure white for elements*/
 
-      /*Border & Divider Colors*/
---color-border: #E0E0E0;             /*// Standard dividers*/
---color-border-strong: #CED4DA;      /*// Card or modal outlines*/
---color-divider: #DEE2E6;            /*// Soft content separators*/
+  /*Text Colors*/
+  --color-text-primary: #212529; /*// Headlines, main text*/
+  --color-text-secondary: #6c757d; /* // Subtext, descriptions*/
+  --color-text-muted: #adb5bd; /* // Placeholder or disabled text*/
+  --color-text-on-primary: #ffffff; /*// Text on primary buttons*/
 
-     /*Status Colors*/
---color-success: #28C76F;        /*// Success states*/
---color-warning: #FF9F43;        /*// Warning or pending states*/
---color-error: #EA5455;         /* // Validation errors, failures*/
---color-info: #00CFE8;          /* // Informational UI*/
-            
-    /*Optional Dark Theme (if you support dark mode)*/
---color-dark-bg: #1E1E2F;
---color-dark-card: #2C2C3E;
---color-dark-text: #E3E3E3;
---color-dark-border: #3A3A50;
+  /*Border & Divider Colors*/
+  --color-border: #e0e0e0; /*// Standard dividers*/
+  --color-border-strong: #ced4da; /*// Card or modal outlines*/
+  --color-divider: #dee2e6; /*// Soft content separators*/
 
---radius-none: 0px;
---radius-xs: 2px;            /*// For very subtle elements, like inputs*/
---radius-sm: 4px;
---radius-md: 8px;           /* // Recommended default for cards, buttons*/
---radius-lg: 12px;
---radius-xl: 16px;
---radius-full: 9999px;      /* // For pills, circles*/
+  /*Status Colors*/
+  --color-success: #28c76f; /*// Success states*/
+  --color-warning: #ff9f43; /*// Warning or pending states*/
+  --color-error: #ea5455; /* // Validation errors, failures*/
+  --color-info: #00cfe8; /* // Informational UI*/
 
+  /*Optional Dark Theme (if you support dark mode)*/
+  --color-dark-bg: #1e1e2f;
+  --color-dark-card: #2c2c3e;
+  --color-dark-text: #e3e3e3;
+  --color-dark-border: #3a3a50;
 
---shadow-none: none;
+  --radius-none: 0px;
+  --radius-xs: 2px; /*// For very subtle elements, like inputs*/
+  --radius-sm: 4px;
+  --radius-md: 8px; /* // Recommended default for cards, buttons*/
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px; /* // For pills, circles*/
 
---shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
---shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
---shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
---shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.12);
---shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.15);
+  --shadow-none: none;
 
---border-width-none: 0;
---border-width-hairline: 0.5px;  /*// Very subtle dividers*/
---border-width-thin: 1px;        /*// Standard element borders*/
---border-width-medium: 2px;      /*// Focused states, buttons*/
---border-width-thick: 4px;       /*// Emphasis or callout boxes*/
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.15);
 
---border-color-default: #E0E0E0;        /*// Normal UI borders*/
---border-color-muted: #F1F3F5;          /*// Soft, low contrast*/
---border-color-strong: #CED4DA;         /*// Card outlines*/
---border-color-focus: #007BFF;          /*// Focused input/active states*/
---border-color-error: #EA5455;          /*// Error highlights*/
---border-color-success: #28C76F;        /*// Success outlines*/
+  --border-width-none: 0;
+  --border-width-hairline: 0.5px; /*// Very subtle dividers*/
+  --border-width-thin: 1px; /*// Standard element borders*/
+  --border-width-medium: 2px; /*// Focused states, buttons*/
+  --border-width-thick: 4px; /*// Emphasis or callout boxes*/
 
---border-style-none: none;
---border-style-solid: solid;
---border-style-dashed: dashed;
---border-style-dotted: dotted;
---border-style-double: double;
+  --border-color-default: #e0e0e0; /*// Normal UI borders*/
+  --border-color-muted: #f1f3f5; /*// Soft, low contrast*/
+  --border-color-strong: #ced4da; /*// Card outlines*/
+  --border-color-focus: #007bff; /*// Focused input/active states*/
+  --border-color-error: #ea5455; /*// Error highlights*/
+  --border-color-success: #28c76f; /*// Success outlines*/
 
-
-
-
-
-
-
-
-
+  --border-style-none: none;
+  --border-style-solid: solid;
+  --border-style-dashed: dashed;
+  --border-style-dotted: dotted;
+  --border-style-double: double;
 }
+
 :root {
   box-sizing: border-box;
   margin: 0;
@@ -104,7 +96,14 @@ body {
   min-height: 30vh;
   position: relative;
 
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #03101a;
   color: #333;
+
+  cursor: url("./assets/cursor/custuomCursor.cur"), auto;
+
+}
+::selection {
+  background: #00a2cf;
+  color: #ffffff;
 }
