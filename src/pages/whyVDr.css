@@ -496,8 +496,15 @@ p {
   border-radius: var(--radius-md);
   cursor: pointer;
   transition: background-color }
+  
+
+  .faq-container{
+    border: 1px solid rgba(178, 178, 178, 0.592);
+    margin: auto;
+  }
 
   .mainheader{
+    margin-top: ;
     text-align: center;
   }
   @media(max-width:800px){
