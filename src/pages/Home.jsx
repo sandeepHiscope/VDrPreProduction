@@ -377,7 +377,10 @@ function Homepage() {
               you never miss a consultation. You can also set custom reminders
               based on your preferences.
             </div>
-          </div>
+          </div>          
+  
+          
+    
         </div>
 
         {/* Testimonial Slider Section */}
