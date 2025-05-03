@@ -91,7 +91,7 @@ const FindDoctorPage = () => {
           id: `dummy-${index}`,
           fullName: doc.name || "Not Mentioned",
           medicalSpeciality: doc.speciality || "Not Mentioned",
-          experience: "Not Mentioned",
+          experience: doc.experience|| "Not Mentioned",
           city: doc.locality || "Not Mentioned",
           state: "Not Mentioned",
           country: "India",
@@ -100,6 +100,10 @@ const FindDoctorPage = () => {
           doctorPhoto: null,
           phone: isNaN(doc.phone) ? "Not Mentioned" : doc.phone,
           email: doc.email || "Not Mentioned",
+          gender:doc.gender|| "Not Mentioned",
+          languages:doc.languages|| "Not Mentioned",
+          rating:doc.rating || "Not Mentioned",
+          consultationFee:doc.consultationFee || "Not Mentioned"
         })),
     ];
   };
@@ -746,7 +750,7 @@ const [showExperienceDropdown, setShowExperienceDropdown] = useState(false);
                     className="doctor-image"
                   />
                   <div className="doctor-info">
-                    <h3>
+                    <h3 className="card-text-head">
                       Dr. {doctor.fullName?.toUpperCase() || "Not Mentioned"}
                     </h3>
                     <p>
@@ -755,20 +759,36 @@ const [showExperienceDropdown, setShowExperienceDropdown] = useState(false);
                     </p>
                     <p>
                       <strong>Experience:</strong> {doctor.experience}{" "}
-                      {doctor.experience !== "Not Mentioned" && "years"}
+                      {doctor.experience !== "Not Mentioned"}
                     </p>
                     <p>
                       <strong>Location:</strong> {doctor.city},{" "}
                       {doctor.state !== "Not Mentioned" ? doctor.state : ""}{" "}
                       {doctor.country}
                     </p>
-                    <p>
+                    {/* <p>
                       <strong>Hospital:</strong>{" "}
                       {doctor.hospitalCurrentWorking || "Not Mentioned"}
-                    </p>
-                    <p>
+                    </p> */}
+                    {/* <p>
                       <strong>License:</strong>{" "}
                       {doctor.medicalLicenseNumber || "Not Mentioned"}
+                    </p> */}
+                    {/* <p>
+                      <strong>Gender:</strong>{""}
+                      {doctor.gender || "Not Mentioned"}
+                    </p> */}
+                    <p>
+                      <strong>Language: </strong>{""}
+                      {doctor.languages || "Not Mentioned"}
+                    </p>
+                    <p>
+                      <strong>Rating: </strong>{""}
+                      {doctor.rating || "Not Mentioned"}
+                    </p>
+                    <p>
+                      <strong>Consultation Fee: </strong>{""}
+                      {doctor.consultationFee || "Not Mentioned"}
                     </p>
                   </div>
                   <button className="book-btn">Book Appointment</button>

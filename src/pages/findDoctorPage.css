@@ -196,6 +196,7 @@
     padding: 15px;
     margin-top: 60px;
   }
+ 
 }
 
 /* Medium Screens (768px - 1080px) */
@@ -230,6 +231,26 @@
     padding: 15px;
     margin-top: 60px;
   }
+  .doctor-image{
+    height: 100px;
+    width: 100px;
+  }
+  .doctor-info p {
+    margin: 0;
+    font-size: 15px;
+    color: #333;
+    
+  }
+  .book-btn {
+    background-color:var(--color-accent);
+    width: 30%;
+    font-size: 10px;
+    /* margin-top: center; */
+  }
+  .card-text-head{
+    font-size: 15px;
+  }
+ 
 }
 
 /* Small Screens (768px and below) */
@@ -307,6 +328,12 @@
     padding: 15px;
     margin-top: 60px;
   }
+   .doctor-info p {
+    margin: 0;
+    font-size: 10px;
+    color: #333;
+    
+  }
 }
 /* code for the filtration of the code  */
 
@@ -361,7 +388,7 @@
   }
 
   .sidetext {
-    font-size: 18px;
+    font-size: 10px;
     margin-top: 16px;
     margin-bottom: 16px;
   }
@@ -377,4 +404,14 @@
   .symptoms-checkedbox {
     margin-left: 8px;
   }
+  .doctor-info p {
+    margin: 0;
+    font-size: 8px;
+    color: #333;
+    
+  }
+  .card-text-head{
+    font-size: 10px;
+  }
+  
 }
