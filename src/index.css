@@ -2,6 +2,7 @@
 /* @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities"; */
+
 * {
   transition: all 0.3s ease-in-out;
 
@@ -100,7 +101,6 @@ body {
   color: #333;
 
   cursor: url("./assets/cursor/custuomCursor.cur"), auto;
-  cursor: url("./assets/cursor/custompointer.cur"), pointer;
 
 }
 ::selection {

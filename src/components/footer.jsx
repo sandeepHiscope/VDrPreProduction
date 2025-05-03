@@ -2,14 +2,12 @@ import './footer.css';
 
 const Footer = () => (
   <footer className="footer">
-    
-
-    {/* Main columns */}
     <div className="footer__content">
-      <div className="footer__col footer__col--about">
+      <div className="footer__col">
         <h3>VDr</h3>
-        <p>
-          Your trusted health companion, connecting you with verified, background-checked doctors for quality care.
+        <p className='footer__description'>
+          Your trusted health companion, connecting you with verified,
+          background-checked doctors for quality care.
         </p>
       </div>
 
@@ -44,27 +42,10 @@ const Footer = () => (
         <p>Email: <a href="mailto:support@vdr.health">support@vdr.health</a></p>
         <p>Phone: <a href="tel:+919876543210">+91 98765 43210</a></p>
       </div>
-      {/* Newsletter signup */}
-    {/* <div className="footer__newsletter">
-      <h2 className="footer__newsletter-title">Stay Informed</h2>
-      <p className="footer__newsletter-text">
-        Subscribe to get health tips and VDr updates straight to your inbox.
-      </p>
-      <form className="footer__newsletter-form" onSubmit={e => e.preventDefault()}>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          aria-label="Email address"
-          required
-        />
-        <button type="submit">Subscribe</button>
-      </form>
-    </div> */}
     </div>
 
-    {/* Bottom legal bar */}
     <div className="footer__bottom">
-      <p>&copy; {new Date().getFullYear()} Hiscope Entreprises. All rights reserved.</p>
+      <p>&copy; {new Date().getFullYear()} Hiscope Enterprises. All rights reserved.</p>
       <div className="footer__legal">
         <a href="/terms">Terms of Service</a>
         <a href="/privacy">Privacy Policy</a>

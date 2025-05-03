@@ -150,31 +150,7 @@ function Homepage() {
           </ul>
         </section>
 
-        <section className="symptomsSection">
-          <h2>Based on Symptoms</h2>
-          <ul className="symptomsList">
-            <li className="symptomsItem">Toothache</li>
-            <li className="symptomsItem">Chest Pain</li>
-            <li className="symptomsItem">Skin Rash</li>
-            <li className="symptomsItem">Fever</li>
-            <li className="symptomsItem">Joint Pain</li>
-            <li className="symptomsItem">Cough</li>
-            <li className="symptomsItem">Hearing Loss</li>
-            <li className="symptomsItem">Irregular Periods</li>
-            <li className="symptomsItem">Urinary Issues</li>
-            <li className="symptomsItem">Headache</li>
-            <li className="symptomsItem">Anxiety</li>
-            <li className="symptomsItem">Lump or Swelling</li>
-            <li className="symptomsItem">Abdominal Pain</li>
-            <li className="symptomsItem">Back Pain</li>
-            <li className="symptomsItem">Hair Loss</li>
-            <li className="symptomsItem">Allergies</li>
-            <li className="symptomsItem">Weight Loss</li>
-            <li className="symptomsItem">Nausea</li>
-            <li className="symptomsItem">Vision Problems</li>
-            <li className="symptomsItem">Fatigue</li>
-          </ul>
-        </section>
+        
 
         {/* Testimonials (reviews) Section */}
         <section className="content-section testimonials-section">
