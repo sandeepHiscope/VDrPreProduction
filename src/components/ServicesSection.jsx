@@ -55,11 +55,11 @@ const services = [
 return (
     <section className="services-section" id="services">
         <div className="services-container">
-            <div className="services-header">
-                <h2>How We Help You</h2>
+            <header className="services-header">
+                <h2>You are our main priority</h2>
                 <div className="services-underline"></div>
-                <p>Discover tailored services designed to make your life happier</p>
-            </div>
+                <p>Our service works together to create a better life for you</p>
+            </header>
             
             <div className="services-content">
                 <div className="services-tabs">
