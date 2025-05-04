@@ -64,41 +64,72 @@ const FindDoctorPage = () => {
   const [showRatingDropdown, setShowRatingDropdown] = useState(false);
   const [showDiscountDropdown, setShowDiscountDropdown] = useState(false);
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
-  const [showAvailabilityDropdown, setShowAvailabilityDropdown] = useState(false);
+  const [showAvailabilityDropdown, setShowAvailabilityDropdown] =
+    useState(false);
   const [showExperienceDropdown, setShowExperienceDropdown] = useState(false);
 
   // Filter data
   const symptoms = [
-    "Headache", "Fatigue", "Cough", "Fever", "Nausea or Vomiting",
-    "Abdominal Pain", "Dizziness", "Shortness of Breath", "Chest Pain",
-    "Back Pain", "Joint or Muscle Pain", "Skin Rash", "Sore Throat",
-    "Nasal Congestion", "Diarrhea", "Constipation", 
-    "Urinary Issues (e.g., frequency, pain)", "Sleep Disturbances",
-    "Mood Changes (e.g., anxiety)", "Weight Changes", "Appetite Changes",
-    "Menstrual Irregularities"
+    "Headache",
+    "Fatigue",
+    "Cough",
+    "Fever",
+    "Nausea or Vomiting",
+    "Abdominal Pain",
+    "Dizziness",
+    "Shortness of Breath",
+    "Chest Pain",
+    "Back Pain",
+    "Joint or Muscle Pain",
+    "Skin Rash",
+    "Sore Throat",
+    "Nasal Congestion",
+    "Diarrhea",
+    "Constipation",
+    "Urinary Issues (e.g., frequency, pain)",
+    "Sleep Disturbances",
+    "Mood Changes (e.g., anxiety)",
+    "Weight Changes",
+    "Appetite Changes",
+    "Menstrual Irregularities",
   ];
-  
+
   const specialties = [
-    "Cardiologist", "Dentist", "Gynaecologist", "Dermatologist", "Neurologist",
-    "Orthopedist", "Pediatrician", "Pulmonologist", "Gastroenterologist",
-    "Physiotherapist", "General Physician", "Diagnostics"
+    "Cardiologist",
+    "Dentist",
+    "Gynaecologist",
+    "Dermatologist",
+    "Neurologist",
+    "Orthopedist",
+    "Pediatrician",
+    "Pulmonologist",
+    "Gastroenterologist",
+    "Physiotherapist",
+    "General Physician",
+    "Diagnostics",
     // Add more from your original list as needed
   ];
-  
+
   const locations = [
-    "Delhi", "Mumbai", "Kolkata", "Kerala", "Bihar", "Rajasthan",
-    "Hyderabad", "Jaipur", "Chennai", "Bengaluru"
+    "Delhi",
+    "Mumbai",
+    "Kolkata",
+    "Kerala",
+    "Bihar",
+    "Rajasthan",
+    "Hyderabad",
+    "Jaipur",
+    "Chennai",
+    "Bengaluru",
     // Add more from your original list as needed
   ];
-  
-  const fees = [
-    100, 200, 300, 500, 1000, 1500, 2000, 3000, 5000
-  ];
-  
+
+  const fees = [100, 200, 300, 500, 1000, 1500, 2000, 3000, 5000];
+
   const ratings = [1, 2, 3, 4, 5];
-  const languages = ['English', 'Hindi', 'Tamil', 'Telugu', 'Marathi'];
-  const availability = ['Morning', 'Afternoon', 'Evening', 'Night'];
-  const experience = ['1-3 years', '3-5 years', '5-10 years', '10+ years'];
+  const languages = ["English", "Hindi", "Tamil", "Telugu", "Marathi"];
+  const availability = ["Morning", "Afternoon", "Evening", "Night"];
+  const experience = ["1-3 years", "3-5 years", "5-10 years", "10+ years"];
 
   useEffect(() => {
     const fetchDoctors = async () => {
@@ -125,18 +156,18 @@ const FindDoctorPage = () => {
   // Helper function to check if a doctor matches the symptom filter
   const matchesSymptomFilter = (doctor) => {
     if (selectedSymptoms.length === 0) return true;
-    
+
     // This is a simplified example. In a real app, you'd need data that maps symptoms to specialties
     const symptomToSpecialtyMap = {
-      "Headache": ["Neurologist"],
+      Headache: ["Neurologist"],
       "Chest Pain": ["Cardiologist"],
       "Skin Rash": ["Dermatologist"],
       "Joint or Muscle Pain": ["Orthopedist", "Physiotherapist"],
       "Abdominal Pain": ["Gastroenterologist"],
-      "Cough": ["Pulmonologist"],
+      Cough: ["Pulmonologist"],
       // Add more mappings as needed
     };
-    
+
     for (const symptom of selectedSymptoms) {
       const specialtiesForSymptom = symptomToSpecialtyMap[symptom] || [];
       if (specialtiesForSymptom.includes(doctor.medicalSpeciality)) {
@@ -149,7 +180,7 @@ const FindDoctorPage = () => {
   // Helper function to check if a doctor matches the specialty filter
   const matchesSpecialtyFilter = (doctor) => {
     if (selectedSpecialties.length === 0) return true;
-    return selectedSpecialties.some(specialty => 
+    return selectedSpecialties.some((specialty) =>
       normalize(doctor.medicalSpeciality).includes(normalize(specialty))
     );
   };
@@ -157,87 +188,99 @@ const FindDoctorPage = () => {
   // Helper function to check if a doctor matches the location filter
   const matchesLocationFilter = (doctor) => {
     if (selectedLocations.length === 0) return true;
-    return selectedLocations.some(location => 
-      normalize(doctor.city).includes(normalize(location)) || 
-      normalize(doctor.state).includes(normalize(location))
+    return selectedLocations.some(
+      (location) =>
+        normalize(doctor.city).includes(normalize(location)) ||
+        normalize(doctor.state).includes(normalize(location))
     );
   };
 
   // Helper function to check if a doctor matches the fee filter
   const matchesFeeFilter = (doctor) => {
     if (selectedFees.length === 0) return true;
-    
+
     // This is a placeholder implementation
-    const doctorFee = doctor.consultationFee || Math.floor(Math.random() * 5000) + 100;
-    
-    return selectedFees.some(fee => doctorFee <= fee);
+    const doctorFee =
+      doctor.consultationFee || Math.floor(Math.random() * 5000) + 100;
+
+    return selectedFees.some((fee) => doctorFee <= fee);
   };
 
   // Helper function to check if a doctor matches the rating filter
   const matchesRatingFilter = (doctor) => {
     if (selectedRatings.length === 0) return true;
-    
+
     // In a real app, you'd have actual rating data for each doctor
     // This is a placeholder implementation
     const doctorRating = doctor.rating || Math.floor(Math.random() * 5) + 1;
-    
+
     return selectedRatings.includes(doctorRating);
   };
 
   // Helper function to check if a doctor matches the language filter
   const matchesLanguageFilter = (doctor) => {
     if (selectedLanguages.length === 0) return true;
-    
+
     // In a real app, you'd have actual language data for each doctor
     // This is a placeholder implementation
-    const doctorLanguages = doctor.languages || ['English'];
-    
-    return selectedLanguages.some(language => doctorLanguages.includes(language));
+    const doctorLanguages = doctor.languages || ["English"];
+
+    return selectedLanguages.some((language) =>
+      doctorLanguages.includes(language)
+    );
   };
 
   // Helper function to check if a doctor matches the availability filter
   const matchesAvailabilityFilter = (doctor) => {
     if (selectedAvailability.length === 0) return true;
-    
+
     // This is a placeholder implementation
-    const doctorAvailability = doctor.availability || ['Morning', 'Evening'];
-    
-    return selectedAvailability.some(time => doctorAvailability.includes(time));
+    const doctorAvailability = doctor.availability || ["Morning", "Evening"];
+
+    return selectedAvailability.some((time) =>
+      doctorAvailability.includes(time)
+    );
   };
 
   // Helper function to check if a doctor matches the experience filter
   const matchesExperienceFilter = (doctor) => {
     if (selectedExperience.length === 0) return true;
-    
+
     // Convert experience years to experience range category
     const getExperienceCategory = (years) => {
-      if (years <= 3) return '1-3 years';
-      if (years <= 5) return '3-5 years';
-      if (years <= 10) return '5-10 years';
-      return '10+ years';
+      if (years <= 3) return "1-3 years";
+      if (years <= 5) return "3-5 years";
+      if (years <= 10) return "5-10 years";
+      return "10+ years";
     };
-    
+
     const doctorExperienceYears = parseInt(doctor.experience) || 5;
-    const doctorExperienceCategory = getExperienceCategory(doctorExperienceYears);
-    
+    const doctorExperienceCategory = getExperienceCategory(
+      doctorExperienceYears
+    );
+
     return selectedExperience.includes(doctorExperienceCategory);
   };
 
   const getFilteredDoctors = () => {
     const normalizedSearch = normalize(searchQuery);
-    
+
     // First, filter doctors based on search query and state
     let filteredResults = [
       ...doctors.filter(
         (doctor) =>
-          (normalizedSearch === "" || matchSpeciality(doctor.medicalSpeciality, normalizedSearch)) &&
-          (selectedState === "" || normalize(doctor.state) === normalize(selectedState))
+          (normalizedSearch === "" ||
+            matchSpeciality(doctor.medicalSpeciality, normalizedSearch)) &&
+          (selectedState === "" ||
+            normalize(doctor.state) === normalize(selectedState))
       ),
       ...doctorDetails
         .filter(
           (doc) =>
-            (normalizedSearch === "" || matchSpeciality(doc.speciality, normalizedSearch)) &&
-            (selectedState === "" || normalize(doc.Address).includes(normalize(selectedState)))
+            (normalizedSearch === "" ||
+              matchSpeciality(doc.speciality, normalizedSearch)) &&
+            (selectedState === "" ||
+              normalize(doc.Address).includes(normalize(selectedState)))
         )
         .map((doc, index) => ({
           id: `dummy-${index}`,
@@ -258,25 +301,25 @@ const FindDoctorPage = () => {
           // Added simulated fields for filtering
           consultationFee: Math.floor(Math.random() * 5000) + 100,
           rating: Math.floor(Math.random() * 5) + 1,
-          languages: ['English', Math.random() > 0.5 ? 'Hindi' : 'Tamil'],
+          languages: ["English", Math.random() > 0.5 ? "Hindi" : "Tamil"],
           availability: [
-            Math.random() > 0.5 ? 'Morning' : 'Afternoon',
-            Math.random() > 0.5 ? 'Evening' : 'Night'
-          ]
-        }))
-
+            Math.random() > 0.5 ? "Morning" : "Afternoon",
+            Math.random() > 0.5 ? "Evening" : "Night",
+          ],
+        })),
     ];
-    
+
     // Then apply all the checkbox filters
-    return filteredResults.filter(doctor => 
-      matchesSymptomFilter(doctor) &&
-      matchesSpecialtyFilter(doctor) &&
-      matchesLocationFilter(doctor) &&
-      matchesFeeFilter(doctor) &&
-      matchesRatingFilter(doctor) &&
-      matchesLanguageFilter(doctor) &&
-      matchesAvailabilityFilter(doctor) &&
-      matchesExperienceFilter(doctor)
+    return filteredResults.filter(
+      (doctor) =>
+        matchesSymptomFilter(doctor) &&
+        matchesSpecialtyFilter(doctor) &&
+        matchesLocationFilter(doctor) &&
+        matchesFeeFilter(doctor) &&
+        matchesRatingFilter(doctor) &&
+        matchesLanguageFilter(doctor) &&
+        matchesAvailabilityFilter(doctor) &&
+        matchesExperienceFilter(doctor)
     );
   };
 
@@ -295,21 +338,21 @@ const FindDoctorPage = () => {
 
   // Generic handler for checkbox changes
   const handleFilterChange = (value, setter) => {
-    setter(prev => 
-      prev.includes(value) 
-        ? prev.filter(item => item !== value) 
+    setter((prev) =>
+      prev.includes(value)
+        ? prev.filter((item) => item !== value)
         : [...prev, value]
     );
   };
 
   // Generic handler for removing selected items
   const removeSelectedItem = (item, setter) => {
-    setter(prev => prev.filter(i => i !== item));
+    setter((prev) => prev.filter((i) => i !== item));
   };
 
   // Generic handler for toggling dropdowns
   const toggleFilterDropdown = (setter) => {
-    setter(prev => !prev);
+    setter((prev) => !prev);
   };
 
   // Clear all filters
@@ -334,70 +377,118 @@ const FindDoctorPage = () => {
         {/* Filter sidebar */}
         <div className="finddoctor-filter-section">
           <div className="filter-header">
-            <h2>Filters</h2>
+            <h2>Filter your Doctors </h2>
             <button className="clear-filters-btn" onClick={clearAllFilters}>
               Clear All
             </button>
           </div>
 
           {/* Selected filters display */}
-          {(selectedSymptoms.length > 0 || 
-            selectedSpecialties.length > 0 || 
-            selectedLocations.length > 0 || 
+          {(selectedSymptoms.length > 0 ||
+            selectedSpecialties.length > 0 ||
+            selectedLocations.length > 0 ||
             selectedFees.length > 0 ||
             selectedRatings.length > 0 ||
             selectedLanguages.length > 0 ||
             selectedAvailability.length > 0 ||
             selectedExperience.length > 0) && (
             <div className="selected-filters">
-              <h3>Applied Filters</h3>
+              <h3 className="applideFiltersHeading">Applied Filters</h3>
               <div className="filter-tags">
-                {selectedSymptoms.map(symptom => (
-                  <span key={symptom} className="filter-tag">
+                {selectedSymptoms.map((symptom) => (
+                  <span key={symptom} className="filter-tag" onClick={() =>
+                    removeSelectedItem(symptom, setSelectedSymptoms)
+                  }>
                     {symptom}
-                    <button onClick={() => removeSelectedItem(symptom, setSelectedSymptoms)}>×</button>
+                    <button className="filter-tag-remove-btn"
+                      onClick={() =>
+                        removeSelectedItem(symptom, setSelectedSymptoms)
+                      }
+                    >
+                      ×
+                    </button>
                   </span>
                 ))}
-                {selectedSpecialties.map(specialty => (
+                {selectedSpecialties.map((specialty) => (
                   <span key={specialty} className="filter-tag">
                     {specialty}
-                    <button onClick={() => removeSelectedItem(specialty, setSelectedSpecialties)}>×</button>
+                    <button
+                      onClick={() =>
+                        removeSelectedItem(specialty, setSelectedSpecialties)
+                      }
+                    >
+                      ×
+                    </button>
                   </span>
                 ))}
-                {selectedLocations.map(location => (
+                {selectedLocations.map((location) => (
                   <span key={location} className="filter-tag">
                     {location}
-                    <button onClick={() => removeSelectedItem(location, setSelectedLocations)}>×</button>
+                    <button
+                      onClick={() =>
+                        removeSelectedItem(location, setSelectedLocations)
+                      }
+                    >
+                      ×
+                    </button>
                   </span>
                 ))}
-                {selectedFees.map(fee => (
+                {selectedFees.map((fee) => (
                   <span key={fee} className="filter-tag">
                     ₹{fee}
-                    <button onClick={() => removeSelectedItem(fee, setSelectedFees)}>×</button>
+                    <button
+                      onClick={() => removeSelectedItem(fee, setSelectedFees)}
+                    >
+                      ×
+                    </button>
                   </span>
                 ))}
-                {selectedRatings.map(rating => (
+                {selectedRatings.map((rating) => (
                   <span key={rating} className="filter-tag">
                     {rating} Star
-                    <button onClick={() => removeSelectedItem(rating, setSelectedRatings)}>×</button>
+                    <button
+                      onClick={() =>
+                        removeSelectedItem(rating, setSelectedRatings)
+                      }
+                    >
+                      ×
+                    </button>
                   </span>
                 ))}
-                {selectedLanguages.map(language => (
+                {selectedLanguages.map((language) => (
                   <span key={language} className="filter-tag">
                     {language}
-                    <button onClick={() => removeSelectedItem(language, setSelectedLanguages)}>×</button>
+                    <button
+                      onClick={() =>
+                        removeSelectedItem(language, setSelectedLanguages)
+                      }
+                    >
+                      ×
+                    </button>
                   </span>
                 ))}
-                {selectedAvailability.map(time => (
+                {selectedAvailability.map((time) => (
                   <span key={time} className="filter-tag">
                     {time}
-                    <button onClick={() => removeSelectedItem(time, setSelectedAvailability)}>×</button>
+                    <button
+                      onClick={() =>
+                        removeSelectedItem(time, setSelectedAvailability)
+                      }
+                    >
+                      ×
+                    </button>
                   </span>
                 ))}
-                {selectedExperience.map(exp => (
+                {selectedExperience.map((exp) => (
                   <span key={exp} className="filter-tag">
                     {exp}
-                    <button onClick={() => removeSelectedItem(exp, setSelectedExperience)}>×</button>
+                    <button
+                      onClick={() =>
+                        removeSelectedItem(exp, setSelectedExperience)
+                      }
+                    >
+                      ×
+                    </button>
                   </span>
                 ))}
               </div>
@@ -407,9 +498,9 @@ const FindDoctorPage = () => {
           {/* Symptoms filter */}
           <div className="filter-section">
             <h3
-              className="sidetext-dropdown-header"
+              className="sidetext-dropdown-heading"
               onClick={() => toggleFilterDropdown(setShowDropdown)}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
             >
               Symptoms {showDropdown ? <FaChevronUp /> : <FaChevronDown />}
             </h3>
@@ -422,7 +513,9 @@ const FindDoctorPage = () => {
                       <input
                         type="checkbox"
                         checked={selectedSymptoms.includes(symptom)}
-                        onChange={() => handleFilterChange(symptom, setSelectedSymptoms)}
+                        onChange={() =>
+                          handleFilterChange(symptom, setSelectedSymptoms)
+                        }
                         className="symptoms-checkedbox"
                       />
                       {symptom}
@@ -436,11 +529,12 @@ const FindDoctorPage = () => {
           {/* Specialty filter */}
           <div className="filter-section">
             <h3
-              className="sidetext-dropdown-header"
+              className="sidetext-dropdown-heading"
               onClick={() => toggleFilterDropdown(setShowSpecialtyDropdown)}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
             >
-              Specialty {showSpecialtyDropdown ? <FaChevronUp /> : <FaChevronDown />}
+              Specialty{" "}
+              {showSpecialtyDropdown ? <FaChevronUp /> : <FaChevronDown />}
             </h3>
 
             {showSpecialtyDropdown && (
@@ -451,7 +545,9 @@ const FindDoctorPage = () => {
                       <input
                         type="checkbox"
                         checked={selectedSpecialties.includes(specialty)}
-                        onChange={() => handleFilterChange(specialty, setSelectedSpecialties)}
+                        onChange={() =>
+                          handleFilterChange(specialty, setSelectedSpecialties)
+                        }
                         className="symptoms-checkedbox"
                       />
                       {specialty}
@@ -465,11 +561,12 @@ const FindDoctorPage = () => {
           {/* Location filter */}
           <div className="filter-section">
             <h3
-              className="sidetext-dropdown-header"
+              className="sidetext-dropdown-heading"
               onClick={() => toggleFilterDropdown(setShowLocationDropdown)}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
             >
-              Location {showLocationDropdown ? <FaChevronUp /> : <FaChevronDown />}
+              Location{" "}
+              {showLocationDropdown ? <FaChevronUp /> : <FaChevronDown />}
             </h3>
 
             {showLocationDropdown && (
@@ -480,7 +577,9 @@ const FindDoctorPage = () => {
                       <input
                         type="checkbox"
                         checked={selectedLocations.includes(location)}
-                        onChange={() => handleFilterChange(location, setSelectedLocations)}
+                        onChange={() =>
+                          handleFilterChange(location, setSelectedLocations)
+                        }
                         className="symptoms-checkedbox"
                       />
                       {location}
@@ -494,11 +593,12 @@ const FindDoctorPage = () => {
           {/* Consultation Fee filter */}
           <div className="filter-section">
             <h3
-              className="sidetext-dropdown-header"
+              className="sidetext-dropdown-heading"
               onClick={() => toggleFilterDropdown(setShowFeeDropdown)}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
             >
-              Consultation Fee {showFeeDropdown ? <FaChevronUp /> : <FaChevronDown />}
+              Consultation Fee{" "}
+              {showFeeDropdown ? <FaChevronUp /> : <FaChevronDown />}
             </h3>
 
             {showFeeDropdown && (
@@ -509,7 +609,9 @@ const FindDoctorPage = () => {
                       <input
                         type="checkbox"
                         checked={selectedFees.includes(fee)}
-                        onChange={() => handleFilterChange(fee, setSelectedFees)}
+                        onChange={() =>
+                          handleFilterChange(fee, setSelectedFees)
+                        }
                         className="symptoms-checkedbox"
                       />
                       ₹{fee} or less
@@ -523,9 +625,9 @@ const FindDoctorPage = () => {
           {/* Rating filter */}
           <div className="filter-section">
             <h3
-              className="sidetext-dropdown-header"
+              className="sidetext-dropdown-heading"
               onClick={() => toggleFilterDropdown(setShowRatingDropdown)}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
             >
               Rating {showRatingDropdown ? <FaChevronUp /> : <FaChevronDown />}
             </h3>
@@ -538,10 +640,12 @@ const FindDoctorPage = () => {
                       <input
                         type="checkbox"
                         checked={selectedRatings.includes(rating)}
-                        onChange={() => handleFilterChange(rating, setSelectedRatings)}
+                        onChange={() =>
+                          handleFilterChange(rating, setSelectedRatings)
+                        }
                         className="symptoms-checkedbox"
                       />
-                      {rating} Star{rating > 1 ? 's' : ''}
+                      {rating} Star{rating > 1 ? "s" : ""}
                     </label>
                   </li>
                 ))}
@@ -552,11 +656,12 @@ const FindDoctorPage = () => {
           {/* Language filter */}
           <div className="filter-section">
             <h3
-              className="sidetext-dropdown-header"
+              className="sidetext-dropdown-heading"
               onClick={() => toggleFilterDropdown(setShowLanguageDropdown)}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
             >
-              Language {showLanguageDropdown ? <FaChevronUp /> : <FaChevronDown />}
+              Language{" "}
+              {showLanguageDropdown ? <FaChevronUp /> : <FaChevronDown />}
             </h3>
 
             {showLanguageDropdown && (
@@ -567,7 +672,9 @@ const FindDoctorPage = () => {
                       <input
                         type="checkbox"
                         checked={selectedLanguages.includes(language)}
-                        onChange={() => handleFilterChange(language, setSelectedLanguages)}
+                        onChange={() =>
+                          handleFilterChange(language, setSelectedLanguages)
+                        }
                         className="symptoms-checkedbox"
                       />
                       {language}
@@ -581,11 +688,12 @@ const FindDoctorPage = () => {
           {/* Availability filter */}
           <div className="filter-section">
             <h3
-              className="sidetext-dropdown-header"
+              className="sidetext-dropdown-heading"
               onClick={() => toggleFilterDropdown(setShowAvailabilityDropdown)}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
             >
-              Availability {showAvailabilityDropdown ? <FaChevronUp /> : <FaChevronDown />}
+              Availability{" "}
+              {showAvailabilityDropdown ? <FaChevronUp /> : <FaChevronDown />}
             </h3>
 
             {showAvailabilityDropdown && (
@@ -596,7 +704,9 @@ const FindDoctorPage = () => {
                       <input
                         type="checkbox"
                         checked={selectedAvailability.includes(time)}
-                        onChange={() => handleFilterChange(time, setSelectedAvailability)}
+                        onChange={() =>
+                          handleFilterChange(time, setSelectedAvailability)
+                        }
                         className="symptoms-checkedbox"
                       />
                       {time}
@@ -610,11 +720,12 @@ const FindDoctorPage = () => {
           {/* Experience filter */}
           <div className="filter-section">
             <h3
-              className="sidetext-dropdown-header"
+              className="sidetext-dropdown-heading"
               onClick={() => toggleFilterDropdown(setShowExperienceDropdown)}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
             >
-              Experience {showExperienceDropdown ? <FaChevronUp /> : <FaChevronDown />}
+              Experience{" "}
+              {showExperienceDropdown ? <FaChevronUp /> : <FaChevronDown />}
             </h3>
 
             {showExperienceDropdown && (
@@ -625,7 +736,9 @@ const FindDoctorPage = () => {
                       <input
                         type="checkbox"
                         checked={selectedExperience.includes(exp)}
-                        onChange={() => handleFilterChange(exp, setSelectedExperience)}
+                        onChange={() =>
+                          handleFilterChange(exp, setSelectedExperience)
+                        }
                         className="symptoms-checkedbox"
                       />
                       {exp}
@@ -662,12 +775,15 @@ const FindDoctorPage = () => {
           </div>
 
           <div className="filter-summary">
-            <p>Found {filteredDoctors.length} doctor{filteredDoctors.length !== 1 ? 's' : ''}</p>
+            <p>
+              Found {filteredDoctors.length} doctor
+              {filteredDoctors.length !== 1 ? "s" : ""}
+            </p>
           </div>
 
           <div className="doctor-list" ref={listRef}>
             {loading ? (
-              <p>Loading doctors...</p>
+              <p>Loading our trusted and verified doctors...</p>
             ) : filteredDoctors.length > 0 ? (
               filteredDoctors.map((doctor) => (
                 <div
@@ -675,11 +791,15 @@ const FindDoctorPage = () => {
                   className="doctor-card"
                   onClick={() => doctorProfile(doctor)}
                 >
-                  <img
+                 <div className="docImgAndBookContainer">
+                 <img
                     src={getDoctorImage(doctor.doctorPhoto)}
                     alt={`Dr. ${doctor.fullName}`}
                     className="doctor-image"
                   />
+                  <button className="book-btn">Book Appointment</button>
+
+                 </div>
                   <div className="doctor-info">
                     <h3 className="card-text-head">
                       Dr. {doctor.fullName?.toUpperCase() || "Not Mentioned"}
@@ -710,15 +830,18 @@ const FindDoctorPage = () => {
                       {doctor.gender || "Not Mentioned"}
                     </p> */}
                     <p>
-                      <strong>Language: </strong>{""}
+                      <strong>Language: </strong>
+                      {""}
                       {doctor.languages || "Not Mentioned"}
                     </p>
                     <p>
-                      <strong>Rating: </strong>{""}
+                      <strong>Rating: </strong>
+                      {""}
                       {doctor.rating || "Not Mentioned"}
                     </p>
                     <p>
-                      <strong>Consultation Fee: </strong>{""}
+                      <strong>Consultation Fee: </strong>
+                      {""}
                       {doctor.consultationFee || "Not Mentioned"}
                     </p>
                     {/* Show fee and rating if available */}
@@ -733,12 +856,11 @@ const FindDoctorPage = () => {
                       </p>
                     )}
                   </div>
-                  <button className="book-btn">Book Appointment</button>
                 </div>
               ))
             ) : (
               <p className="no-results">
-                No doctors found. Please refine your search.
+                The Doctors youre searching for might be under verification process. Please refine your search for now.
               </p>
             )}
           </div>
