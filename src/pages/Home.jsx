@@ -14,7 +14,7 @@ import FindDoctorPage from "./findDoctorPage";
 import { IoReorderThreeOutline } from "react-icons/io5";
 import { ImCross } from "react-icons/im";
 import  Headerimage from "../data/headerImages";
-
+import ServicesSection from "../components/ServicesSection";
 function Homepage() {
   const [isHomePageRendered, setIsHomePageRendered] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -185,6 +185,8 @@ function Homepage() {
           </div>
         )}
 
+        
+
         {/* Cards Slider Section */}
         <CardsSlider />
 
@@ -207,6 +209,8 @@ function Homepage() {
           </ul>
         </section>
 
+        {/* { our services} */}
+        <ServicesSection/>
         {/* Testimonials (reviews) Section */}
         <section className="content-section testimonials-section">
           <div className="section-header">

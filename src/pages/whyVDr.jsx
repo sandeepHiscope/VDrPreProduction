@@ -46,9 +46,9 @@ const WhyVDr = () => {
                 frame++;
                 const progress = frame / totalFrames;
                 setStatsCounter({
-                  doctors: Math.floor(5000 * progress),
-                  verifications: Math.floor(15000 * progress),
-                  users: Math.floor(100000 * progress),
+                  doctors: Math.floor(1000 * progress),
+                  verifications: Math.floor(900 * progress),
+                  users: Math.floor(5000 * progress),
                 });
 
                 if (frame === totalFrames) {
@@ -511,23 +511,10 @@ const WhyVDr = () => {
           </div>
         </section>
 
-        {/* Call To Action Section */}
-        {/* <section className="cta-section">
-        <div className="cta-content">
-          <h2>Join Our Community of Trust</h2>
-          <p>
-            Start your journey to better healthcare with providers who are verified, 
-            trusted, and committed to your wellbeing.
-          </p>
-          <div className="cta-buttons">
-            <button className="primary-cta">Find Your Doctor</button>
-            <button className="secondary-cta">Learn About Our Process</button>
-          </div>
-        </div>
-      </section> */}
+        
       </div>
 
-      {/* Frequently Asked Questions */}
+     
 
       <div className="whyVdr-faq-container">
         <div className="whyVdr-faq-header">
