@@ -15,6 +15,7 @@ import { IoReorderThreeOutline } from "react-icons/io5";
 import { ImCross } from "react-icons/im";
 import  Headerimage from "../data/headerImages";
 import ServicesSection from "../components/ServicesSection";
+
 function Homepage() {
   const [isHomePageRendered, setIsHomePageRendered] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
