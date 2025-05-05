@@ -566,7 +566,43 @@ const FindDoctorPage = () => {
 
   return (
     <div className="find-doctor-page">
-      
+      <div className="search-container">
+        <div className="search-bar-wrapper">
+          
+          <div className="search-input-group">
+            <BiSearchAlt className="search-icon" />
+            <input
+              type="text"
+              placeholder="Search by specialization"
+              className="search-input"
+              value={searchQuery}
+              onChange={(e) => dispatch({ 
+                type: ACTIONS.SET_SEARCH_QUERY, 
+                payload: e.target.value 
+              })}
+            />
+          </div>
+          
+          <div className="search-input-group">
+            <FaLocationArrow className="search-icon" />
+            <select
+              className="state-dropdown"
+              value={selectedState}
+              onChange={(e) => dispatch({ 
+                type: ACTIONS.SET_SELECTED_STATE, 
+                payload: e.target.value 
+              })}
+            >
+              <option value="">All States</option>
+              {indianStates.map((state) => (
+                <option key={state} value={state}>
+                  {state}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </div>
 
       <div className="find-doctor-content">
         {/* Mobile filter toggle button */}
