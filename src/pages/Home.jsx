@@ -13,7 +13,7 @@ import ScrollingCardsContainer from "../components/ScrollingCardsContainer";
 import FindDoctorPage from "./findDoctorPage";
 import { IoReorderThreeOutline } from "react-icons/io5";
 import { ImCross } from "react-icons/im";
-import  Headerimage from "../data/headerImages";
+import Headerimage from "../data/headerImages";
 import ServicesSection from "../components/ServicesSection";
 
 function Homepage() {
@@ -34,8 +34,15 @@ function Homepage() {
   };
 
   useEffect(() => {
-    // console.log("Home Page Rendered");
+    console.log("Home Page Rendered");  
     setIsHomePageRendered(true);
+
+    // Fix for image change logic
+    const interval = setInterval(() => {
+      setCurrentImage((prevImage) => (prevImage + 1) % Headerimage.length);
+    }, 3000); // Change image every 5 seconds
+
+    return () => clearInterval(interval);
   }, []);
 
   // Define state for country, state, and search input
@@ -96,7 +103,14 @@ function Homepage() {
         });
       };
     }
-  }, [isHomePageRendered]);
+
+    // Fix for rendering images
+    const headerBackground = document.querySelector(".header-background");
+    if (headerBackground) {
+      headerBackground.style.backgroundImage = `url(${Headerimage[currentImage].img})`;
+      headerBackground.style.backgroundPosition = `right ${position}% top 0%`;
+    }
+  }, [isHomePageRendered, currentImage, position]);
 
   const [activeSlides, setActiveSlides] = useState("doctor");
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
