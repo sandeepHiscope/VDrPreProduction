@@ -1,13 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import jsQR from "jsqr";
 import "./verifyDoc.css";
-import {
-  FiUpload,
-  FiCamera,
-  FiClock,
-  FiInfo,
-  FiArrowRight,
-} from "react-icons/fi";
+import { FiUpload, FiCamera, FiClock, FiInfo, FiArrowRight } from "react-icons/fi";
 
 const VerifyDoc = () => {
   const videoRef = useRef(null);
@@ -74,6 +68,7 @@ const VerifyDoc = () => {
     }
   };
 
+
   // Continuously grabs frames from the video, scans for QR codes, and calls handleScan on success
   const onScanSuccess = (stream, canvas, video) => {
     const context = canvas.getContext("2d");
@@ -92,6 +87,7 @@ const VerifyDoc = () => {
           if (stream) {
             stream.getTracks().forEach((track) => track.stop());
           }
+
         }
       }
     }, 200);
@@ -108,7 +104,11 @@ const VerifyDoc = () => {
     const canvas = canvasRef.current;
     try {
       const mediaStream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: "environment", zoom: { ideal: 2 } },
+        video: {
+          facingMode: "environment",
+          width: { ideal: 1280 },
+          height: { ideal: 720 },
+        },
       });
       setStream(mediaStream);
       video.srcObject = mediaStream;
@@ -235,9 +235,7 @@ const VerifyDoc = () => {
 
               <div className="vdoc-scanner-actions">
                 <button
-                  className={`vdoc-scan-button ${
-                    scanning ? "vdoc-scanning" : ""
-                  }`}
+                  className={`vdoc-scan-button ${scanning ? "vdoc-scanning" : ""}`}
                   onClick={scanning ? stopScanner : startScanner}
                 >
                   {scanning ? "Stop Scanning" : "Start Camera Scan"}
@@ -258,8 +256,7 @@ const VerifyDoc = () => {
                 <div className="vdoc-redirect-box">
                   <p>
                     Redirecting in{" "}
-                    <span className="vdoc-countdown">{countdown}</span>{" "}
-                    seconds...
+                    <span className="vdoc-countdown">{countdown}</span> seconds...
                   </p>
                   <p className="vdoc-redirect-url">{result}</p>
                   <button
@@ -286,23 +283,15 @@ const VerifyDoc = () => {
               <div className="vdoc-steps">
                 <div className="vdoc-step">
                   <div className="vdoc-step-number">1</div>
-                  <p>
-                    Position the QR code within the scanner frame or upload an
-                    image
-                  </p>
+                  <p>Position the QR code within the scanner frame or upload an image</p>
                 </div>
                 <div className="vdoc-step">
                   <div className="vdoc-step-number">2</div>
-                  <p>
-                    Our scanner will automatically detect and read the QR code
-                  </p>
+                  <p>Our scanner will automatically detect and read the QR code</p>
                 </div>
                 <div className="vdoc-step">
                   <div className="vdoc-step-number">3</div>
-                  <p>
-                    View the decoded information or follow the URL if it's a
-                    link
-                  </p>
+                  <p>View the decoded information or follow the URL if it's a link</p>
                 </div>
               </div>
             </div>
