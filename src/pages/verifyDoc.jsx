@@ -45,81 +45,77 @@ const VerifyDoc = () => {
     }
   };
 
-  const handleNewScan = (data) => {
-    setResult(data);
-
-    // Add to recent scans
-    const newScan = {
-      data: data,
-      timestamp: new Date().toLocaleString(),
-      isUrl: isValidURL(data),
-    };
-
-    const updatedScans = [newScan, ...recentScans.slice(0, 4)];
-    setRecentScans(updatedScans);
-    localStorage.setItem("recentScans", JSON.stringify(updatedScans));
-
-    if (isValidURL(data)) {
-      setRedirecting(true);
-      let timeLeft = 5;
-      const timer = setInterval(() => {
-        setCountdown(timeLeft);
-        if (timeLeft === 0) {
-          clearInterval(timer);
-          window.location.href = data;
-        }
-        timeLeft--;
-      }, 1000);
+  // Handles the result of a successful QR scan
+  const handleScan = (data) => {
+    if (data) {
+      setResult(data);
+      // Add to recent scans
+      const newScan = {
+        data: data,
+        timestamp: new Date().toLocaleString(),
+        isUrl: isValidURL(data)
+      };
+      const updatedScans = [newScan, ...recentScans.slice(0, 4)];
+      setRecentScans(updatedScans);
+      localStorage.setItem("recentScans", JSON.stringify(updatedScans));
+      // If the scanned data is a URL, start redirect countdown
+      if (isValidURL(data)) {
+        setRedirecting(true);
+        let timeLeft = 5;
+        const timer = setInterval(() => {
+          setCountdown(timeLeft);
+          if (timeLeft === 0) {
+            clearInterval(timer);
+            window.location.href = data;
+          }
+          timeLeft--;
+        }, 1000);
+      }
     }
   };
 
+  // Continuously grabs frames from the video, scans for QR codes, and calls handleScan on success
+  const onScanSuccess = (stream, canvas, video) => {
+    const context = canvas.getContext("2d");
+    const interval = setInterval(() => {
+      if (video.readyState === video.HAVE_ENOUGH_DATA) {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+        const code = jsQR(imageData.data, imageData.width, imageData.height);
+        if (code) {
+          clearInterval(interval);
+          handleScan(code.data);
+          setScanning(false);
+          // Stop the camera stream
+          if (stream) {
+            stream.getTracks().forEach((track) => track.stop());
+          }
+        }
+      }
+    }, 200);
+  };
+
+  // Starts the camera, sets up the video and canvas, and begins scanning
   const startScanner = async () => {
     if (!videoRef.current) {
       console.error("Video element not found");
       alert("Error: Video element not found. Please retry.");
       return;
     }
-
     const video = videoRef.current;
     const canvas = canvasRef.current;
-    const context = canvas.getContext("2d");
-    let tickInterval;
-
     try {
       const mediaStream = await navigator.mediaDevices.getUserMedia({
         video: { facingMode: "environment", zoom: { ideal: 2 } },
       });
-
       setStream(mediaStream);
-
-      if (video) {
-        video.srcObject = mediaStream;
-        video.setAttribute("playsinline", true);
-        video.play();
-        setScanning(true);
-      } else {
-        console.error("videoRef.current is null");
-      }
-
-      tickInterval = setInterval(() => {
-        if (video.readyState === video.HAVE_ENOUGH_DATA) {
-          canvas.height = video.videoHeight;
-          canvas.width = video.videoWidth;
-          context.drawImage(video, 0, 0, canvas.width, canvas.height);
-          const imageData = context.getImageData(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-          );
-          const code = jsQR(imageData.data, imageData.width, imageData.height);
-          if (code) {
-            handleNewScan(code.data);
-            setScanning(false);
-            clearInterval(tickInterval);
-          }
-        }
-      }, 200);
+      video.srcObject = mediaStream;
+      video.setAttribute("playsinline", true);
+      video.play();
+      setScanning(true);
+      onScanSuccess(mediaStream, canvas, video);
     } catch (err) {
       console.error("Camera access error:", err);
       alert("Camera access error: " + err.message);
@@ -395,3 +391,6 @@ const VerifyDoc = () => {
 };
 
 export default VerifyDoc;
+/*
+
+*/
