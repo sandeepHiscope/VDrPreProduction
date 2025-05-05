@@ -80,83 +80,58 @@ const DocDashboard = () => {
     console.log("Doctor appointments updated:", doctorAppointments);
   }, [doctorProfile], [doctorAppointments]);
   
-  // Filtering logic
-  const filterAppointments = (status, timeFilter) => {
-    if (!Array.isArray(doctorAppointments)) return [];
-    const now = new Date();
+
+  const upcomingAppointments = [
+    {
+      name: "Indhu Yadav",
+      time: "5:30 AM",
+      type: "Patient",
+      date: "04 Apr at 9:40",
+    },
+    {
+      name: "Teju",
+      time: "5:30 AM",
+      type: "Prescription",
+      date: "24 Apr at 2:45",
+    },
+    {
+      name: "Ramesh",
+      time: "5:30 AM",
+      type: "Insurance",
+      date: "19 Apr at 2:05",
+    },
     
-    return doctorAppointments.filter(appointment => {
-      const appointmentTime = new Date(appointment.appointmentDateTime);
-      return appointment.status === status && timeFilter(appointmentTime, now);
-    }).sort((a, b) => new Date(a.appointmentDateTime) - new Date(b.appointmentDateTime));
-  };
-
-
-   // Upcoming Appointments (Scheduled and future dates)
-   const upcomingAppointments = filterAppointments(
-    'SCHEDULED',
-    (appointmentTime, now) => appointmentTime > now
-  ).map(appointment => ({
-    name: appointment.user?.fullName || 'Patient',
-    time: new Date(appointment.appointmentDateTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-    type: appointment.appointmentType,
-    date: new Date(appointment.appointmentDateTime).toLocaleDateString('en-GB', { 
-      day: 'numeric', 
-      month: 'short', 
-      hour: 'numeric', 
-      minute: '2-digit' 
-    }).replace(',', ' at')
-  }));
-
-  // Recent Updates (Done appointments)
-  const recentUpdates = filterAppointments(
-    'DONE',
-    (appointmentTime, now) => appointmentTime < now
-  ).map(appointment => ({
-    name: appointment.user?.fullName || 'Patient',
-    action: `Appointment ${appointment.status.toLowerCase()}`,
-    date: new Date(appointment.appointmentDateTime).toLocaleDateString('en-GB', {
-      month: 'short',
-      day: 'numeric',
-      hour: 'numeric',
-      minute: '2-digit'
-    })
-  }));
-
-   // Patients data (Completed appointments)
-   const completedAppointments = filterAppointments(
-    'DONE',
-    (appointmentTime, now) => appointmentTime < now
-  );
-
-
-  // Appointments page data (Pending + Scheduled)
-  const allAppointments = [
-    ...filterAppointments('PENDING', () => true),
-    ...filterAppointments('SCHEDULED', () => true)
+      {
+        name: "Ramesh",
+        time: "5:30 AM",
+        type: "Insurance",
+        date: "19 Apr at 2:05",
+      },
+      {
+        name: "Sita",
+        time: "9:00 AM",
+        type: "Cash",
+        date: "20 Apr at 10:15",
+      },
+      {
+        name: "Anil",
+        time: "11:30 AM",
+        type: "Insurance",
+        date: "21 Apr at 11:45",
+      },
+      {
+        name: "Priya",
+        time: "3:00 PM",
+        type: "Online Payment",
+        date: "22 Apr at 3:30",
+      },
+      {
+        name: "Kiran",
+        time: "1:15 PM",
+        type: "Cash",
+        date: "23 Apr at 1:20",
+      },
   ];
-
-
-  // const upcomingAppointments = [
-  //   {
-  //     name: "Indhu Yadav",
-  //     time: "5:30 AM",
-  //     type: "Patient",
-  //     date: "04 Apr at 9:40",
-  //   },
-  //   {
-  //     name: "Teju",
-  //     time: "5:30 AM",
-  //     type: "Prescription",
-  //     date: "24 Apr at 2:45",
-  //   },
-  //   {
-  //     name: "Ramesh",
-  //     time: "5:30 AM",
-  //     type: "Insurance",
-  //     date: "19 Apr at 2:05",
-  //   },
-  // ];
 
   // const recentUpdates = [
   //   {
@@ -168,66 +143,76 @@ const DocDashboard = () => {
   //   { name: "Tinku", action: "Resolved SOS alert", date: "" },
   // ];
 
-    const renderContent = () => {
-      switch (activePage) {
-        case "Dashboard":
-          return (
-            <div className="dashboard-content">
-              <div className="header">
-                <h4 className="title">VDR - Doctor Overview</h4>
-              </div>
-              <div className="dashboard-grid">
-                <div className="main-column">
-                  <div className="card appointments-card">
-                    <div className="card-header">
-                      <h3 className="card-title">Upcoming Appointments</h3>
-                      <div className="card-subtitle">Recent Patient</div>
-                    </div>
-                    <div className="appointment-list">
-                      {upcomingAppointments.length > 0 ? (
-                        upcomingAppointments.map((appointment, idx) => (
-                          <div key={idx} className="appointment-item">
-                            <div className="appointment-info">
-                              <div className="appointment-name">{appointment.name}</div>
-                              <div className="appointment-type">
-                                {appointment.time}, {appointment.type}
-                              </div>
-                            </div>
-                            <div className="appointment-date">
-                              <span>{appointment.date}</span>
-                              <svg className="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                              </svg>
-                            </div>
-                          </div>
-                        ))
-                      ) : (
-                        <div className="no-appointments">No upcoming appointments</div>
-                      )}
-                    </div>
+  const renderContent = () => {
+    switch (activePage) {
+      case "Dashboard":
+        return (
+          <div className="dashboard-content">
+            <div className="header">
+              <h4 className="title">VDR - Doctor Overview</h4>
+            </div>
+
+            <div className="dashboard-grid">
+              <div className="main-column">
+                <div className="card appointments-card">
+                  <div className="card-header">
+                    <h3 className="card-title">Upcoming Appointments</h3>
+                    <div className="card-subtitle">Recent Patient</div>
                   </div>
-  
-                  <div className="services-card">
-                    <div className="card-header">
-                      <h3 className="card-title">Services by Recent Updates</h3>
-                    </div>
-                    <div className="update-list">
-                      {recentUpdates.length > 0 ? (
-                        recentUpdates.map((update, idx) => (
-                          <div key={idx} className="update-item">
-                            <div>
-                              <div className="update-name">{update.name}</div>
-                              <div className="update-action">{update.action}</div>
-                            </div>
-                            <div className="update-date">{update.date}</div>
+
+                  <div className="appointment-list">
+                    {upcomingAppointments.map((appointment, idx) => (
+                      <div key={idx} className="appointment-item">
+                        <div className="appointment-info">
+                          <div className="appointment-name">
+                            {appointment.name}
                           </div>
-                        ))
-                      ) : (
-                        <div className="no-updates">No recent updates</div>
-                      )}
-                    </div>
+                          <div className="appointment-type">
+                            {appointment.time}, {appointment.type}
+                          </div>
+                        </div>
+                        <div className="appointment-date">
+                          <span>{appointment.date}</span>
+                          <svg
+                            className="arrow-icon"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
+
+                {/* <div className="services-card">
+                  <div className="card-header">
+                    <h3 className="card-title">Services by Recent Updates</h3>
+                  </div>
+
+                  <div className="update-list">
+                    {recentUpdates.map((update, idx) => (
+                      <div key={idx} className="update-item">
+                        <div>
+                          <div className="update-name">{update.name}</div>
+                          <div className="update-action">{update.action}</div>
+                        </div>
+                        <div className="update-date">
+                          {update.date || update.name}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div> */}
+              </div>
+
               <div className="right-column">
                 <div className="quick-actions-card">
                   <div className="card-header">
@@ -308,118 +293,111 @@ const DocDashboard = () => {
             </div>
           </div>
         );
-        case "Patients":
-          return (
-            <div className="patients">
-              <h3>Patients</h3>
-              <div className="card">
-                <div className="search">
-                  <input type="text" placeholder="Search patients..." className="search-input" />
-                </div>
-                <div className="table-container">
-                  {completedAppointments.length > 0 ? (
-                    <table className="patient-table">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>ID</th>
-                          <th>Last Visit</th>
-                          <th>Status</th>
-                          <th>Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {completedAppointments.map((appointment, idx) => (
-                          <tr key={idx}>
-                            <td>{appointment.user?.fullName || 'Patient'}</td>
-                            <td>P-00{idx + 1}</td>
-                            <td>
-                              {new Date(appointment.appointmentDateTime).toLocaleDateString()}
-                            </td>
-                            <td className="status active">Completed</td>
-                            <td>
-                              <button className="view-btn">View</button>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  ) : (
-                    <div className="no-patients">No completed appointments</div>
-                  )}
-                </div>
-              </div>
-            </div>
-          );
+      case "Patients":
+        return <Patients />;
       case "Prescriptions":
         return <Prescriptions />;
       case "Teleconsultations":
         return <Teleconsultations />;
-        case "Appointments":
-          return (
-            <div className="appointments-container">
-              <h4 className="appointments-title">Appointments</h4>
-              <div className="appointment-card-wrapper">
-                <div className="appointment-card">
-                  <div className="appointment-header">
-                    <h2 className="appointments-heading">Upcoming Appointments</h2>
-                    <button className="new-appointment-btn">New Appointment</button>
-                  </div>
-                  <div className="appointment-table-wrapper">
-                    {allAppointments.length > 0 ? (
-                      <table className="appointment-table">
-                        <thead className="appointment-table-head">
-                          <tr>
-                            <th className="appointment-table-cell">Patient</th>
-                            <th className="appointment-table-cell">Date & Time</th>
-                            <th className="appointment-table-cell">Type</th>
-                            <th className="appointment-table-cell">Status</th>
-                            <th className="appointment-table-cell">Actions</th>
-                          </tr>
-                        </thead>
-                        <tbody className="appointment-table-body">
-                          {allAppointments.map((appointment, idx) => {
-                            const statusClass = appointment.status.toLowerCase() === 'pending' 
-                              ? 'pending-status' 
-                              : 'scheduled-status';
-                            return (
-                              <tr key={idx}>
-                                <td className="appointment-table-cell">
-                                  {appointment.user?.fullName || 'Patient'}
-                                </td>
-                                <td className="appointment-table-cell">
-                                  {new Date(appointment.appointmentDateTime).toLocaleString()}
-                                </td>
-                                <td className="appointment-table-cell">{appointment.appointmentType}</td>
-                                <td className="appointment-table-cell">
-                                  <span className={`status-badge ${statusClass}`}>
-                                    {appointment.status}
-                                  </span>
-                                </td>
-                                <td className="appointment-table-cell action-buttons">
-                                  <button className="edit-btn">Edit</button>
-                                  <button className="cancel-btn">Cancel</button>
-                                </td>
-                              </tr>
-                            );
-                          })}
-                        </tbody>
-                      </table>
-                    ) : (
-                      <div className="no-appointments">No appointments found</div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
+      case "Appointments":
+        return <Appointments />;
       case "Profile":
         return <Profile />;
       default:
-        return <p>Page not implemented yet.</p>;
+        return (
+          <div className="center-message">
+            <p>No services yet this movement.</p>
+          </div>
+        );
+        
     }
   };
 
+  // Patients component
+  const Patients = () => (
+    <div className="patients">
+      <h3>Patients</h3>
+
+      <div className="card">
+        <div className="search">
+          <input
+            type="text"
+            placeholder="Search patients..."
+            className="search-input"
+          />
+        </div>
+
+        <div className="table-container">
+          <table className="patient-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>ID</th>
+                <th>Last Visit</th>
+                {/* <th>Status</th> */}
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Raja Singh</td>
+                <td>P-001</td>
+                <td>Apr 04, 2025</td>
+                {/* <td className="status active">Active</td> */}
+                <td>
+                  <button className="view-btn">View</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Salman</td>
+                <td>P-002</td>
+                <td>Apr 24, 2025</td>
+                {/* <td className="status active">Active</td> */}
+                <td>
+                  <button className="view-btn">View</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Sowmith</td>
+                <td>P-003</td>
+                <td>Apr 19, 2025</td>
+                {/* <td className="status pending">Pending</td> */}
+                <td>
+                  <button className="view-btn">View</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div className="mobile-card">
+          <div className="card-item">
+            <span className="font-bold">Name:</span> Raju
+            <span className="font-bold">ID:</span> P-001
+            <span className="font-bold">Last Visit:</span> Apr 04, 2025
+            <span className="font-bold">Status:</span> Active
+            <button className="view-btn">View</button>
+          </div>
+
+          <div className="card-item">
+            <span className="font-bold">Name:</span> Raja Singh
+            <span className="font-bold">ID:</span> P-002
+            <span className="font-bold">Last Visit:</span> Apr 24, 2025
+            <span className="font-bold">Status:</span> Active
+            <button className="view-btn">View</button>
+          </div>
+
+          <div className="card-item">
+            <span className="font-bold">Name:</span> Sowmith
+            <span className="font-bold">ID:</span> P-003
+            <span className="font-bold">Last Visit:</span> Apr 19, 2025
+            <span className="font-bold">Status:</span> Pending
+            <button className="view-btn">View</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 
   // Prescriptions component
   const Prescriptions = () => (
@@ -567,51 +545,209 @@ const DocDashboard = () => {
     </div>
   );
 
+  // Appointments component
+  const Appointments = () => {
+    const appointments = [
+      {
+        name: "Indhu yadav",
+        date: "Apr 04, 2025 - 9:40 AM",
+        type: "Check-up",
+        status: "Confirmed",
+        statusClass: "confirmed-status",
+      },
+      {
+        name: "Teju",
+        date: "Apr 24, 2025 - 2:45 PM",
+        type: "Prescription",
+        status: "Pending",
+        statusClass: "pending-status",
+      },
+      {
+        name: "Ramesh",
+        date: "Apr 19, 2025 - 2:05 PM",
+        type: "Follow-up",
+        status: "Confirmed",
+        statusClass: "confirmed-status",
+      },
+    ];
+
+    return (
+      <div className="appointments-container">
+        <h4 className="appointments-title">Appointments</h4>
+
+        <div className="appointment-card-wrapper">
+          <div className="appointment-card">
+            <div className="appointment-header">
+              <h2 className="appointments-heading">Upcoming Appointments</h2>
+              <button className="new-appointment-btn">New Appointment</button>
+            </div>
+
+            {/* Table for larger screens */}
+            <div className="appointment-table-wrapper">
+              <table className="appointment-table">
+                <thead className="appointment-table-head">
+                  <tr>
+                    <th className="appointment-table-cell">Patient</th>
+                    <th className="appointment-table-cell">Date & Time</th>
+                    <th className="appointment-table-cell">Type</th>
+                    {/* <th className="appointment-table-cell">Status</th> */}
+                    <th className="appointment-table-cell">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="appointment-table-body">
+                  {appointments.map((appt, idx) => (
+                    <tr key={idx}>
+                      <td className="appointment-table-cell">{appt.name}</td>
+                      <td className="appointment-table-cell">{appt.date}</td>
+                      <td className="appointment-table-cell">{appt.type}</td>
+                      {/* <td className="appointment-table-cell">
+                        <span className={`status-badge ${appt.statusClass}`}>
+                          {appt.status}
+                        </span>
+                      </td> */}
+                      <td className="appointment-table-cell action-buttons">
+                        {/* <button className="edit-btn">Edit</button>
+                        <button className="cancel-btn">Cancel</button> */}
+                        {/* <div className="action-buttons1"> */}
+                          <button className="tick-btn" title="Confirm">&#10004;</button>
+                          <button className="cross-btn" title="Cancel">&#10006;</button>
+                        {/* </div> */}
+
+
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Stacked layout for mobile */}
+            <div className="mobile-appointment-list">
+              {appointments.map((appt, idx) => (
+                <div key={idx} className="mobile-appointment-card">
+                  <div>
+                    <span>Patient:</span> {appt.name}
+                  </div>
+                  <div>
+                    <span>Date & Time:</span> {appt.date}
+                  </div>
+                  <div>
+                    <span>Type:</span> {appt.type}
+                  </div>
+                  <div>
+                    <span>Status:</span>{" "}
+                    <span className={`status-badge ${appt.statusClass}`}>
+                      {appt.status}
+                    </span>
+                  </div>
+                  <div className="mobile-actions">
+                    <button className="edit-btn">Edit</button>
+                    <button className="cancel-btn">Cancel</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   // Profile component
   const Profile = () => (
     <div className="doctor-profile-container">
       <h1 className="doctor-profile-title">Doctor Profile</h1>
-      <div className="doctor-card1">
+      <div className="doctor-card2">
         {/* Header Section */}
         <div className="doctor-header">
-          <div className="doctor-header-content">
-            <div className="doctor-avatar">
-              <img src= {`data:image/jpeg;base64,${doctorProfile.doctorPhoto}`}alt="doctor-image"  className="docDashboard_doctor-profile_img" />
-            
-            </div>
-            <div className="doctor-info">
-              <h2 className="doctor-name">Dr.{doctorProfile.fullName}</h2>
-              <p className="doctor-role">{doctorProfile.medicalSpeciality}</p>
-              <p className="doctor-license">License : {doctorProfile.medicalLicenseNumber}</p>
-            </div>
-            <div className="doctor-edit">
-              <button className="edit-button">Edit Profile</button>
-            </div>
-          </div>
-        </div>
+  <div className="doctor-header-content">
+    <div className="doctor-avatar">
+      <img
+        src={`data:image/jpeg;base64,${doctorProfile.doctorPhoto}`}
+        alt="doctor-image"
+        className="docDashboard_doctor-profile_img"
+      />
+    </div>
+    <div className="doctor-info">
+      <h2 className="doctor-name">{doctorProfile.fullName}M.Sai</h2>
+      <p className="doctor-role">Speciality:{doctorProfile.medicalSpeciality}Dentist</p>
+      <p className="doctor-license">License: {doctorProfile.medicalLicenseNumber}ML123456789</p>
+    </div>
+    <div className="total-right">
+      <button className="edit-button">Edit Profile</button>
+    </div>
+  </div>
+</div>
+
 
         {/* Personal Information */}
-        <div className="doctor-section">
-          <h3 className="section-title">Personal Information</h3>
-          <div className="info-grid">
-            <div>
-              <p className="info-label">Email</p>
-              <p>{doctorProfile.email}</p>
-            </div>
-            <div>
-              <p className="info-label">Phone</p>
-              <p>+91 {doctorProfile.mobileNumber}</p>
-            </div>
-            <div>
-              <p className="info-label">Address</p>
-              <p>{doctorProfile.personalAddress}</p>
-            </div>
-            <div>
-              <p className="info-label">Specialization</p>
-              <p>{doctorProfile.medicalSpeciality}</p>
-            </div>
-          </div>
-        </div>
+<div className="doctor-section">
+  <h3 className="section-title">Personal Information</h3>
+  <div className="info-grid two-column">
+    <div className="left">
+      <p className="info-label">Email :</p>
+      <p>{doctorProfile.email}</p>
+
+      <p className="info-label">Phone :</p>
+      <p>+1 (555) 123-4567</p>
+      </div>
+      <div className="right">
+      <p className="info-label">Gender :</p>
+      <p>{doctorProfile.gender || "Male"}</p>
+
+      <p className="info-label">Age :</p>
+      <p>{doctorProfile.age || "45"}</p>
+    </div>
+    
+      {/* Reserved for future photo or extra uploads if needed */}
+      
+
+  </div>
+</div>
+<hr className="line" />
+
+{/* Professional Information */}
+<div className="doctor-section">
+  <h3 className="section-title">Professional Information</h3>
+  <div className="info-grid two-column">
+    <div className="left">
+      <p className="info-label">Medical License No</p>
+      <p>ML-123456789</p>
+
+      <p className="info-label">License Expiry</p>
+      <p>2026-12-31</p>
+
+      <p className="info-label">Specialization</p>
+      <p>{doctorProfile.medicalSpeciality}</p>
+
+      <p className="info-label">Current Hospital/Clinic</p>
+      <p>{doctorProfile.currentHospital || "City Health Hospital"}</p>
+
+      <p className="info-label">Clinic/Hospital Address</p>
+      <p>{doctorProfile.clinicAddress || "123 Main Street, Metropolis"}</p>
+
+      <p className="info-label">Complaints or Remarks</p>
+      <select>
+        <option value="">Select Reason</option>
+        <option>Late Response</option>
+        <option>Unavailability</option>
+        <option>Other</option>
+      </select>
+      <textarea placeholder="Add details..."></textarea>
+
+      <p className="info-label">Bio</p>
+      <textarea placeholder="Write a short biography..."></textarea>
+    </div>
+    <div className="right">
+      <p className="info-label">Upload License Document</p>
+      <input type="file" accept=".pdf,.jpg,.png" />
+
+      <p className="info-label">Upload Specialization Certificate</p>
+      <input type="file" accept=".pdf,.jpg,.png" />
+    </div>
+  </div>
+</div>
+
 
         {/* Schedule */}
         <div className="doctor-section border-top">
