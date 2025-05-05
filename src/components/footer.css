@@ -3,7 +3,7 @@
   color: var(--footer-text, #333);
   box-sizing: border-box;
   font-family: Arial, sans-serif;
-  box-shadow: 0 -4px 200px rgba(141, 141, 141, 0.374);
+  box-shadow: 0 4px 200px rgba(37, 37, 37, 0.374);
 }
 
 .footer__content {
@@ -181,5 +181,15 @@
   .footer__legal {
     justify-content: center;
     margin: 0;
+  }
+}
+
+.footerCopyright{
+  margin-left: 40%;
+}
+
+@media(max-width:850px){
+  .footerCopyright{
+    margin-left: 0px;
   }
 }

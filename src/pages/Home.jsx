@@ -32,6 +32,7 @@ function Homepage() {
   const toggleSlide = () => {
     setIsOpen(!isOpen);
   };
+  
 
   useEffect(() => {
     console.log("Home Page Rendered");  
