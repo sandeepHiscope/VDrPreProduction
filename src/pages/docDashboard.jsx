@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { LoginContext } from "../context/loginContext";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import React, { useEffect } from 'react';
 import {
   Calendar,
@@ -547,111 +548,87 @@ const DocDashboard = () => {
 
   // Appointments component
   const Appointments = () => {
-    const appointments = [
-      {
-        name: "Indhu yadav",
-        date: "Apr 04, 2025 - 9:40 AM",
-        type: "Check-up",
-        status: "Confirmed",
-        statusClass: "confirmed-status",
-      },
-      {
-        name: "Teju",
-        date: "Apr 24, 2025 - 2:45 PM",
-        type: "Prescription",
-        status: "Pending",
-        statusClass: "pending-status",
-      },
-      {
-        name: "Ramesh",
-        date: "Apr 19, 2025 - 2:05 PM",
-        type: "Follow-up",
-        status: "Confirmed",
-        statusClass: "confirmed-status",
-      },
-    ];
-
+    const [appointments, setAppointments] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [appointmentCount, setAppointmentCount] = useState(0);
+  
+  
+    useEffect(() => {
+      const fetchAppointments = async () => {
+        try {
+          const response = await axios.get(
+           ` ${GET_APPOINTMENTS_API_URL}${email}`
+          );
+    
+          console.log('API Response:', response.data);
+    
+          // If appointments are wrapped inside a property
+          const appointmentList = Array.isArray(response.data)
+            ? response.data
+            : response.data.appointments || [];
+    
+          setAppointments(appointmentList);
+          setAppointmentCount(appointmentList.length);
+          setLoading(false);
+        } catch (err) {
+          console.error('Error fetching appointments:', err);
+          setError('Failed to fetch appointments.');
+          setLoading(false);
+        }
+      };
+    
+      if (email) {
+        fetchAppointments();
+      } else {
+        setError('Doctor ID not found');
+        setLoading(false);
+      }
+    }, [email]);
+    
+  
+    if (loading) return <div>Loading appointments...</div>;
+    if (error) return <div>{error}</div>;
+  
     return (
-      <div className="appointments-container">
-        <h4 className="appointments-title">Appointments</h4>
-
-        <div className="appointment-card-wrapper">
-          <div className="appointment-card">
-            <div className="appointment-header">
-              <h2 className="appointments-heading">Upcoming Appointments</h2>
-              <button className="new-appointment-btn">New Appointment</button>
-            </div>
-
-            {/* Table for larger screens */}
-            <div className="appointment-table-wrapper">
-              <table className="appointment-table">
-                <thead className="appointment-table-head">
-                  <tr>
-                    <th className="appointment-table-cell">Patient</th>
-                    <th className="appointment-table-cell">Date & Time</th>
-                    <th className="appointment-table-cell">Type</th>
-                    {/* <th className="appointment-table-cell">Status</th> */}
-                    <th className="appointment-table-cell">Actions</th>
-                  </tr>
-                </thead>
-                <tbody className="appointment-table-body">
-                  {appointments.map((appt, idx) => (
-                    <tr key={idx}>
-                      <td className="appointment-table-cell">{appt.name}</td>
-                      <td className="appointment-table-cell">{appt.date}</td>
-                      <td className="appointment-table-cell">{appt.type}</td>
-                      {/* <td className="appointment-table-cell">
-                        <span className={`status-badge ${appt.statusClass}`}>
-                          {appt.status}
-                        </span>
-                      </td> */}
-                      <td className="appointment-table-cell action-buttons">
-                        {/* <button className="edit-btn">Edit</button>
-                        <button className="cancel-btn">Cancel</button> */}
-                        {/* <div className="action-buttons1"> */}
-                          <button className="tick-btn" title="Confirm">&#10004;</button>
-                          <button className="cross-btn" title="Cancel">&#10006;</button>
-                        {/* </div> */}
-
-
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            {/* Stacked layout for mobile */}
-            <div className="mobile-appointment-list">
-              {appointments.map((appt, idx) => (
-                <div key={idx} className="mobile-appointment-card">
-                  <div>
-                    <span>Patient:</span> {appt.name}
-                  </div>
-                  <div>
-                    <span>Date & Time:</span> {appt.date}
-                  </div>
-                  <div>
-                    <span>Type:</span> {appt.type}
-                  </div>
-                  <div>
-                    <span>Status:</span>{" "}
-                    <span className={`status-badge ${appt.statusClass}`}>
-                      {appt.status}
-                    </span>
-                  </div>
-                  <div className="mobile-actions">
-                    <button className="edit-btn">Edit</button>
-                    <button className="cancel-btn">Cancel</button>
-                  </div>
-                </div>
+      <div className="p-4 max-w-4xl mx-auto">
+        <h1 className="text-2xl font-bold mb-4">Doctor Dashboard</h1>
+  
+        <div className="bg-white shadow rounded p-4 mb-6">
+          <h2 className="text-xl font-semibold mb-2">Total Appointments</h2>
+          <p className="text-3xl font-bold text-blue-600">{appointmentCount}</p>
+        </div>
+  
+        <div className="bg-white shadow rounded p-4">
+          <h2 className="text-xl font-semibold mb-4">Appointment List</h2>
+          {appointments.length === 0 ? (
+            <p>No appointments found.</p>
+          ) : (
+            <ul className="space-y-4">
+              {appointments.map((appointment) => (
+                <li
+                  key={appointment.id}
+                  className="border p-4 rounded hover:shadow"
+                >
+                  <p>
+                    <strong>Patient Name:</strong> {appointment.patientName}
+                  </p>
+                  <p>
+                    <strong>Date:</strong>{' '}
+                    {new Date(appointment.appointmentDate).toLocaleString()}
+                  </p>
+                  <p>
+                    <strong>Status:</strong> {appointment.status}
+                  </p>
+                </li>
               ))}
-            </div>
-          </div>
+            </ul>
+          )}
         </div>
       </div>
     );
   };
+  
 
   // Profile component
   const Profile = () => (
@@ -660,95 +637,115 @@ const DocDashboard = () => {
       <div className="doctor-card2">
         {/* Header Section */}
         <div className="doctor-header">
-  <div className="doctor-header-content">
-    <div className="doctor-avatar">
-      <img
-        src={`data:image/jpeg;base64,${doctorProfile.doctorPhoto}`}
-        alt="doctor-image"
-        className="docDashboard_doctor-profile_img"
-      />
-    </div>
-    <div className="doctor-info">
-      <h2 className="doctor-name">{doctorProfile.fullName}M.Sai</h2>
-      <p className="doctor-role">Speciality:{doctorProfile.medicalSpeciality}Dentist</p>
-      <p className="doctor-license">License: {doctorProfile.medicalLicenseNumber}ML123456789</p>
-    </div>
-    <div className="total-right">
-      <button className="edit-button">Edit Profile</button>
-    </div>
-  </div>
-</div>
-
-
+          <div className="doctor-header-content">
+            <div className="doctor-avatar">
+              <img
+                src={`data:image/jpeg;base64,${doctorProfile.doctorPhoto}`}
+                alt="doctor-image"
+                className="docDashboard_doctor-profile_img"
+              />
+            </div>
+            <div className="doctor-info">
+              <h2 className="doctor-name">{doctorProfile.fullName}</h2>
+              <p className="doctor-role">Speciality: {doctorProfile.medicalSpeciality}</p>
+              <p className="doctor-license">License: {doctorProfile.medicalLicenseNumber}</p>
+            </div>
+            <div className="total-right">
+              <button className="edit-button">Edit Profile</button>
+            </div>
+          </div>
+        </div>
+  
         {/* Personal Information */}
-<div className="doctor-section">
-  <h3 className="section-title">Personal Information</h3>
-  <div className="info-grid two-column">
-    <div className="left">
-      <p className="info-label">Email :</p>
-      <p>{doctorProfile.email}</p>
+        <div className="doctor-section">
+          <h3 className="section-title">Personal Information</h3>
+          <div className="info-grid two-column">
+            <ul className="Personal-information-Ul-left">
+              <li>
+              <p className="info-label">Email :</p>
+              <p>{doctorProfile.email}</p>
+              </li>
+              
+              <li>
+              <p className="info-label">Phone :</p>
+              <p>{doctorProfile.mobileNumber}</p>
+              </li>
 
-      <p className="info-label">Phone :</p>
-      <p>+1 (555) 123-4567</p>
-      </div>
-      <div className="right">
-      <p className="info-label">Gender :</p>
-      <p>{doctorProfile.gender || "Male"}</p>
+              <li>
+              <p className="info-label">Gender :</p>
+              <p>{doctorProfile.gender}</p>
+              </li>
+              <li>
+              <p className="info-label">Address :</p>
+              <p>{doctorProfile.personalAddress}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+  
+        <hr className="line" />
+  
+        {/* Professional Information */}
+        <div className="doctor-section">
+          <h3 className="section-title">Professional Information</h3>
+          <div className="info-grid two-column">
+            <ul className="Personal-information-Ul-left">
+              <li>
+              <p className="info-label">Medical License No</p>
+              <p>{doctorProfile.medicalLicenseNumber}</p>
+              </li>
 
-      <p className="info-label">Age :</p>
-      <p>{doctorProfile.age || "45"}</p>
-    </div>
-    
-      {/* Reserved for future photo or extra uploads if needed */}
-      
+              <li>
+              <p className="info-label">License Expiry</p>
+              <p>{doctorProfile.medicalLicenseNumberExpiryDate}</p>
+              </li>
+             
+              <li>
+              <p className="info-label">Specialization</p>
+              <p>{doctorProfile.medicalSpeciality}</p>
+              </li>
+             
+              <li>
+              <p className="info-label">Educational Background</p>
+              <p>{doctorProfile.educationalBackground}</p>
+              </li>
+             <li>
+             <p className="info-label">Experience</p>
+             <p>{doctorProfile.experience} years</p>
+             </li>
 
-  </div>
-</div>
-<hr className="line" />
+             <li>
+             <p className="info-label">Current Hospital/Clinic</p>
+             <p>{doctorProfile.hospitalCurrentWorking}</p>
+             </li>
 
-{/* Professional Information */}
-<div className="doctor-section">
-  <h3 className="section-title">Professional Information</h3>
-  <div className="info-grid two-column">
-    <div className="left">
-      <p className="info-label">Medical License No</p>
-      <p>ML-123456789</p>
+             <li>
+             <p className="info-label">Clinic/Hospital Name</p>
+             <p>{doctorProfile.hospitalOrClinic}</p>
+             </li>
 
-      <p className="info-label">License Expiry</p>
-      <p>2026-12-31</p>
+             <li>
+             <p className="info-label">Clinic/Hospital Address</p>
+             <p>{doctorProfile.hospitalAddress}</p>
+             </li>
 
-      <p className="info-label">Specialization</p>
-      <p>{doctorProfile.medicalSpeciality}</p>
-
-      <p className="info-label">Current Hospital/Clinic</p>
-      <p>{doctorProfile.currentHospital || "City Health Hospital"}</p>
-
-      <p className="info-label">Clinic/Hospital Address</p>
-      <p>{doctorProfile.clinicAddress || "123 Main Street, Metropolis"}</p>
-
-      <p className="info-label">Complaints or Remarks</p>
-      <select>
-        <option value="">Select Reason</option>
-        <option>Late Response</option>
-        <option>Unavailability</option>
-        <option>Other</option>
-      </select>
-      <textarea placeholder="Add details..."></textarea>
-
-      <p className="info-label">Bio</p>
-      <textarea placeholder="Write a short biography..."></textarea>
-    </div>
-    <div className="right">
-      <p className="info-label">Upload License Document</p>
-      <input type="file" accept=".pdf,.jpg,.png" />
-
-      <p className="info-label">Upload Specialization Certificate</p>
-      <input type="file" accept=".pdf,.jpg,.png" />
-    </div>
-  </div>
-</div>
-
-
+             <li>
+             <p className="info-label">Languages Spoken</p>
+             <p>{doctorProfile.launguage}</p>
+             </li>
+             <li>
+             <p className="info-label">Disciplinary Actions</p>
+             <p>{doctorProfile.disciplinaryActions || "None"}</p>
+             </li>
+  
+              <li>
+              <p className="info-label">Bio</p>
+              <p>{doctorProfile.description || "N/A"}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+  
         {/* Schedule */}
         <div className="doctor-section border-top">
           <h3 className="section-title">Schedule & Availability</h3>
@@ -767,7 +764,7 @@ const DocDashboard = () => {
             </div>
           </div>
         </div>
-
+  
         {/* Account Settings */}
         <div className="doctor-section border-top">
           <h3 className="section-title">Account Settings</h3>
@@ -780,6 +777,7 @@ const DocDashboard = () => {
       </div>
     </div>
   );
+  
 
   return (
     <div className="docDashboard-container">
