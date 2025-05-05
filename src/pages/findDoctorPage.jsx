@@ -575,7 +575,7 @@ const FindDoctorPage = () => {
             <input
               type="text"
               placeholder="Search by specialization"
-              className="search-input"
+              className="search-input1"
               value={searchQuery}
               onChange={(e) => dispatch({ 
                 type: ACTIONS.SET_SEARCH_QUERY, 
@@ -829,8 +829,7 @@ const FindDoctorPage = () => {
             
             {filteredDoctors.length > 0 && !loading && (
               <div className="pagination-info">
-                Showing {(currentPage - 1) * DOCTORS_PER_PAGE + 1} - {Math.min(currentPage * DOCTORS_PER_PAGE, filteredDoctors.length)} 
-                of {filteredDoctors.length} doctors
+                Showing {(currentPage - 1) * DOCTORS_PER_PAGE + 1} - {Math.min(currentPage * DOCTORS_PER_PAGE, filteredDoctors.length)}  of {filteredDoctors.length} doctors
               </div>
             )}
           </div>
