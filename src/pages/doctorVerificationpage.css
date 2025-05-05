@@ -93,13 +93,7 @@ height: 5rem;}
   margin-bottom: 15px;
 }
 
-label {
-  font-size: 14px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 5px;
-  display: block;
-}
+
 
 input[type="text"], input[type="file"], select, .doctorVerification-textarea {
   width: 100%;

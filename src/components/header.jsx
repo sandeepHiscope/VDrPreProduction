@@ -20,12 +20,12 @@ import {
 const NAV_LINKS = [
   {
     to: "/findDoctorPage",
-    label: "Find a Doctor",
+    label: "Find a Doc",
     icon: <Search className="headericons" />,
   },
   {
     to: "/verifyDoc",
-    label: "Verify Doc",
+    label: "Verify a Doc",
     icon: <Shield className="headericons" />,
   },
   {
@@ -106,7 +106,14 @@ const MainHeader = () => {
   return (
  
 
-      <nav className="nav-container">
+      <nav className="header-nav-container">
+         <button
+               className="toggle-button"
+               onClick={toggleSlide}
+               aria-label="Toggle Menu"
+             >
+               {isOpen ? <ImCross className="secicon" /> : <IoReorderThreeOutline />}
+             </button>
         <Link to="/" onClick={handleNavClick}>
           <img src={VDrLogo} alt="VDrapp Logo" className="header-logo" />
         </Link>
@@ -118,7 +125,7 @@ const MainHeader = () => {
                 <a
                   key={index}
                   href={link.href}
-                  target="_blank"
+                  target="_self"
                   rel="noopener noreferrer"
                   className={`nav-link flex items-center ${
                     link.className || ""
@@ -184,6 +191,7 @@ const MainHeader = () => {
               >
                 Login/Signup
               </button>
+              
             )}
           </div>
         </div>

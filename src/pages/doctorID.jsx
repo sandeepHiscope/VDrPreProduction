@@ -11,7 +11,7 @@ const DoctorID = () => {
   const doctor = {
     name: stateDoctor?.fullName || "not mentioned",
     license: stateDoctor?.medicalLicenseNumber || "not mentioned",
-    expiry: stateDoctor?.expiry || "not mentioned",
+    expiry: stateDoctor?.medicalLicenseNumberExpiryDate || "not mentioned",
     specialization: stateDoctor?.medicalSpeciality || "not mentioned",
     clinics: stateDoctor?.hospitalCurrentWorking || "not mentioned",
     experience:
@@ -21,9 +21,9 @@ const DoctorID = () => {
     image: stateDoctor?.doctorPhoto
       ? `data:image/jpeg;base64,${stateDoctor.doctorPhoto}`
       : VDrLogo,
-    phone: stateDoctor?.phone || "not mentioned",
+    phone: stateDoctor?.mobileNumber|| "not mentioned",
     email: stateDoctor?.email || "not mentioned",
-    address: stateDoctor?.hospitalCurrentWorking || "not mentioned"
+    address: stateDoctor?.hospitalAddress || "not mentioned"
   };
 
   return (

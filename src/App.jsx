@@ -20,12 +20,13 @@ import DoctorID from "./pages/doctorID";
 import QRCodeGenerator from "./pages/QRCodeGenerator";
 import DocDashboard from "./pages/docDashboard";
 // import ScrollToTop from "./components/scrollToTop";
+import PrivateRoute from "./context/privateRoute.jsx";
 import WhyVDr from "./pages/whyVDr";
 import InstallPromptToast from "./hooks/InstallPromptToast.jsx";
 import UserDashboard from "./pages/userDashboard";
 import LoginContextProvider, { LoginContext } from "./context/loginContext.jsx";
 import DoctorAppointment from "./components/doctorAppointment";
-
+import CookieConsent from "./hooks/CookieConsent.jsx";
 
 const App = () => {
   const [location, setLocation] = useState();
@@ -79,16 +80,32 @@ const App = () => {
               <Route path="/doctorID/:id" element={<DoctorID />} />
               <Route path="/QRCodeGenerator" element={<QRCodeGenerator />} />
               <Route path="/whyVDr" element={<WhyVDr />} />
-              <Route path="/userDashboard" element={<UserDashboard />} />
-              
-              <Route path="/doctorAppointment" element={<DoctorAppointment />} />
-              <Route path="/docDashboard" element={<DocDashboard />} />
+              <Route
+                path="/docDashboard"
+                element={
+                  <PrivateRoute>
+                    <DocDashboard />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/userDashboard"
+                element={
+                  <PrivateRoute>
+                    <UserDashboard />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/doctorAppointment"
+                element={<DoctorAppointment />}
+              />
             </Routes>
           </div>
           <Footer />
         </LoginContextProvider>
       </Router>
-
+      <CookieConsent />
       <InstallPromptToast />
     </>
   );

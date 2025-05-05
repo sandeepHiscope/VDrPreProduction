@@ -1,8 +1,7 @@
-import { useState,useContext } from "react";
+import { useState, useContext } from "react";
 import { LoginContext } from "../context/loginContext";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect } from 'react';
-
 import {
   Calendar,
   Clock,
@@ -15,7 +14,6 @@ import {
   User,
   LogOut
 } from "lucide-react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../pages/docDashboard.css";
 const menuItems = [
   { name: "Dashboard", icon: <Calendar className="icon" /> },
@@ -27,12 +25,11 @@ const menuItems = [
   { name: "Insurance", icon: <Shield className="icon" /> },
   { name: "SOS Alerts", icon: <Bell className="icon" /> },
   { name: "Profile", icon: <User className="icon" /> },
-{ name: "Logout", icon: <LogOut className="icon" /> },
- 
+  { name: "Logout", icon: <LogOut className="icon" /> },
 ];
 
-const GET_DOCTORDETAILS_API_URL = "http://localhost:8080/doctorverfication/get/";
 
+const GET_DOCTORDETAILS_API_URL = "http://localhost:8080/doctorverfication/get/";
 const GET_APPOINTMENTS_API_URL = "http://localhost:8080/Appointment/doctor/";
 
 
@@ -40,8 +37,8 @@ const DocDashboard = () => {
   const [activePage, setActivePage] = useState("Dashboard");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [doctorProfile, setDoctorProfile] = useState([]);
-  const [doctorAppointments, setDoctorAppointments] = useState(null);
-  const [email, setEmail] = useState("jhon@123gmail.com");
+  const [doctorAppointments, setDoctorAppointments] = useState([]);
+  const [email, setEmail] = useState("anjikadari@gmail.com");
   const { isLoggedIn, isUser, isDoctor, setUser, setDoctor, setLogin } =
   useContext(LoginContext);
   const toggleSidebar = () => {
@@ -49,33 +46,35 @@ const DocDashboard = () => {
   };
   const navigateTo = useNavigate();
 
+  //doctor data fecting from the doctor verification data
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
         const response = await fetch(`${GET_DOCTORDETAILS_API_URL}${email}`);
         const data = await response.json();
-        console.log("Doctor data:", data);
         setDoctorProfile(data);
-      } catch (error){
-        console.error("Error fetching doctors:", error); 
+      } catch (error) {
+        console.error("Error fetching doctors:", error);
       }
     };
     fetchDoctors();
-  }, []);
+  }, [email]);
+
+  //doctor appoinment data fetching from the appointment data
   useEffect(() => {
     const fetchDoctorsAppointments = async () => {
       try {
         const response = await fetch(`${GET_APPOINTMENTS_API_URL}${email}`);
-        const AppoinmentData = await response.json();
-        console.log("Doctor appoinment data:", AppoinmentData);
-        setDoctorAppointments(AppoinmentData);
-      } catch (error){
-        console.error("Error fetching doctors:", error); 
+        const data = await response.json();
+        // Handle both array and object responses
+        setDoctorAppointments(data.appointments || data || []);
+      } catch (error) {
+        console.error("Fetch error:", error);
+        setDoctorAppointments([]);
       }
     };
     fetchDoctorsAppointments();
-  }, []);
-
+  }, [email]);
   useEffect(() => {
     console.log("Doctor profile updated:", doctorProfile);
     console.log("Doctor appointments updated:", doctorAppointments);
@@ -134,15 +133,15 @@ const DocDashboard = () => {
       },
   ];
 
-  const recentUpdates = [
-    {
-      name: "Jony",
-      action: "New prescription created",
-      date: "May at 9:50 PM",
-    },
-    { name: "Raj", action: "Completed teleconsultation", date: "" },
-    { name: "Tinku", action: "Resolved SOS alert", date: "" },
-  ];
+  // const recentUpdates = [
+  //   {
+  //     name: "Jony",
+  //     action: "New prescription created",
+  //     date: "May at 9:50 PM",
+  //   },
+  //   { name: "Raj", action: "Completed teleconsultation", date: "" },
+  //   { name: "Tinku", action: "Resolved SOS alert", date: "" },
+  // ];
 
   const renderContent = () => {
     switch (activePage) {
@@ -290,6 +289,7 @@ const DocDashboard = () => {
                   </div>
                 </div>
               </div>
+              
             </div>
           </div>
         );
@@ -783,68 +783,53 @@ const DocDashboard = () => {
 
   return (
     <div className="docDashboard-container">
-    {/* Toggle Button for Mobile */}
-    <button className="docDashboard-toggle-button" onClick={toggleSidebar}>
-      ☰
-    </button>
-  
-    {/* Sidebar */}
-    <div className={`docDashboard-sidebar ${isSidebarOpen ? "docDashboard-sidebar-open" : ""}`}>
-      <div className="docDashboard-sidebar-header">
-        {/* Optional Header Title */}
-        <span className="docDashboard-sidebar-title">Menu</span>
+      {/* Toggle Button for Mobile */}
+      <button className="docDashboard-toggle-button" onClick={toggleSidebar}>
+        ☰
+      </button>
+    
+      {/* Sidebar */}
+      <div className={`docDashboard-sidebar ${isSidebarOpen ? "docDashboard-sidebar-open" : ""}`}>
+        <div className="docDashboard-sidebar-header">
+          <span className="docDashboard-sidebar-title">Menu</span>
+        </div>
+      
+        <nav className="docDashboard-menu-li">
+          <ul className="docDashboard-menu-list">
+            {menuItems.map((item) => (
+              <li key={item.name}>
+                <div  
+                  className={`docDashboard-menu-item ${
+                    activePage === item.name ? "docDashboard-active" : ""
+                  } ${item.name === "Logout" ? "docDashboard-logout" : ""}`}
+                  onClick={() => {
+                    if (item.name === "Logout") {
+                      if (window.confirm("Are you sure you want to logout?")) {
+                        setLogin(false);
+                        navigateTo("/loginAndRegistrationPage");
+                      }
+                    } else {
+                      setActivePage(item.name);
+                    }
+                    if (window.innerWidth < 768) {
+                      setIsSidebarOpen(false);
+                    }
+                  }}
+                >
+                  {item.icon}
+                  <span>{item.name}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
-  
-      {/* Navigation Menu */}
-      <nav className="docDashboard-menu-li">
-      <ul className="docDashboard-menu-list">
-  {menuItems.map((item) => (
-    <li key={item.name}>
-      <div  
-        className={`docDashboard-menu-item ${
-          activePage === item.name ? "docDashboard-active" : ""
-        } ${item.name === "Logout" ? "docDashboard-logout" : ""}`}
-        onClick={() => {
-          if (item.name === "Logout") {
-
-
-
-            if (window.confirm("Are you sure you want to logout?")) {
-              console.log("Verified  bro, you  logged out from dashboard sussefully ")
-              alert("Verified one , youve Logged out successfully");
-              setLogin(false);
-              navigateTo("/loginAndRegistrationPage");
-            } else {
-              console.log("Verified bro canceled logout");
-            }
-
-
-            
-          } else {
-            setActivePage(item.name);
-          }
-          if (window.innerWidth < 768) {
-            setIsSidebarOpen(false);
-          }
-        }}
-      >
-        {item.icon}
-        <span>{item.name}</span>
+    
+      {/* Main Content */}
+      <div className="docDashboard-main-content">
+        {renderContent()}
       </div>
-    </li>
-  ))}
-</ul>
-
-      </nav>
-  
     </div>
-  
-    {/* Main Content */}
-    <div className="docDashboard-main-content">
-      {renderContent()}
-    </div>
-  </div>
-  
   );
 };
 
