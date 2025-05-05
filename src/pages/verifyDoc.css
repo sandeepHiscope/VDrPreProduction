@@ -17,14 +17,16 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: row;
+  justify-content:flex-start;
 }
 
 .vdoc-main-content {
   flex: 1;
   padding: 2rem 1rem;
-  margin-left: 250px; /* Width of the sidebar */
+  /* margin-left: 250px; Width of the sidebar */
   width: calc(100% - 250px);
   overflow-y: auto;
+  margin: 0 10%;
 }
 
 /* Sidebar Styles */
@@ -73,7 +75,7 @@ body {
 .vdoc-side-nav button {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 98%;
   background: none;
   border: none;
   color: #ecf0f1;
@@ -122,9 +124,9 @@ body {
 
 /* Scanner Section */
 .vdoc-scanner-section {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border-radius: 12px;
-  padding: 2rem;
+  padding: 1rem;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   margin-bottom: 2rem;
 }
