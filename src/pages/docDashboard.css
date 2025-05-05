@@ -862,6 +862,7 @@ cursor: pointer;
 
 .doctor-section {
 padding: 1rem;
+color: red;
 }
 
 @media (min-width: 640px) {
@@ -1372,11 +1373,22 @@ color: #171717;
   gap: 30px;
   margin-top: 30px;
 }
-.left{
-  margin-left: 150px;
-  flex: 1;
-  min-width: 280px;
+.Personal-information-Ul-left {
+  width: auto;
+  margin: 0 auto;
 }
+
+.Personal-information-Ul-left li {
+  list-style: none;
+  border-bottom: 1px solid #cccccc4f;
+}
+
+.Personal-information-Ul-left li p{
+  text-align: center;
+  padding-right: 40px;
+  margin: 5px 0; /* optional spacing between p tags */
+}
+
 .right {
   margin-left: 150px;
   flex: 1;
@@ -1386,6 +1398,8 @@ color: #171717;
 .info-label {
   font-weight: bold;
   margin-top: 15px;
+  width: 200px;
+  align-content: start;
 }
 
 textarea {
