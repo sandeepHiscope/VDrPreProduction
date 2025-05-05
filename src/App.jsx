@@ -26,6 +26,7 @@ import UserDashboard from "./pages/userDashboard";
 import LoginContextProvider, { LoginContext } from "./context/loginContext.jsx";
 import DoctorAppointment from "./components/doctorAppointment";
 
+
 const App = () => {
   const [location, setLocation] = useState();
   const currentUrl = window.location.href;
@@ -81,6 +82,7 @@ const App = () => {
               <Route path="/userDashboard" element={<UserDashboard />} />
               
               <Route path="/doctorAppointment" element={<DoctorAppointment />} />
+              <Route path="/docDashboard" element={<DocDashboard />} />
             </Routes>
           </div>
           <Footer />

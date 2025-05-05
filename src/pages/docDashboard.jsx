@@ -101,6 +101,37 @@ const DocDashboard = () => {
       type: "Insurance",
       date: "19 Apr at 2:05",
     },
+    
+      {
+        name: "Ramesh",
+        time: "5:30 AM",
+        type: "Insurance",
+        date: "19 Apr at 2:05",
+      },
+      {
+        name: "Sita",
+        time: "9:00 AM",
+        type: "Cash",
+        date: "20 Apr at 10:15",
+      },
+      {
+        name: "Anil",
+        time: "11:30 AM",
+        type: "Insurance",
+        date: "21 Apr at 11:45",
+      },
+      {
+        name: "Priya",
+        time: "3:00 PM",
+        type: "Online Payment",
+        date: "22 Apr at 3:30",
+      },
+      {
+        name: "Kiran",
+        time: "1:15 PM",
+        type: "Cash",
+        date: "23 Apr at 1:20",
+      },
   ];
 
   const recentUpdates = [
@@ -162,7 +193,7 @@ const DocDashboard = () => {
                   </div>
                 </div>
 
-                <div className="services-card">
+                {/* <div className="services-card">
                   <div className="card-header">
                     <h3 className="card-title">Services by Recent Updates</h3>
                   </div>
@@ -180,7 +211,7 @@ const DocDashboard = () => {
                       </div>
                     ))}
                   </div>
-                </div>
+                </div> */}
               </div>
 
               <div className="right-column">
@@ -273,7 +304,12 @@ const DocDashboard = () => {
       case "Profile":
         return <Profile />;
       default:
-        return <p>Page not implemented yet.</p>;
+        return (
+          <div className="center-message">
+            <p>No services yet this movement.</p>
+          </div>
+        );
+        
     }
   };
 
@@ -298,7 +334,7 @@ const DocDashboard = () => {
                 <th>Name</th>
                 <th>ID</th>
                 <th>Last Visit</th>
-                <th>Status</th>
+                {/* <th>Status</th> */}
                 <th>Actions</th>
               </tr>
             </thead>
@@ -307,7 +343,7 @@ const DocDashboard = () => {
                 <td>Raja Singh</td>
                 <td>P-001</td>
                 <td>Apr 04, 2025</td>
-                <td className="status active">Active</td>
+                {/* <td className="status active">Active</td> */}
                 <td>
                   <button className="view-btn">View</button>
                 </td>
@@ -316,7 +352,7 @@ const DocDashboard = () => {
                 <td>Salman</td>
                 <td>P-002</td>
                 <td>Apr 24, 2025</td>
-                <td className="status active">Active</td>
+                {/* <td className="status active">Active</td> */}
                 <td>
                   <button className="view-btn">View</button>
                 </td>
@@ -325,7 +361,7 @@ const DocDashboard = () => {
                 <td>Sowmith</td>
                 <td>P-003</td>
                 <td>Apr 19, 2025</td>
-                <td className="status pending">Pending</td>
+                {/* <td className="status pending">Pending</td> */}
                 <td>
                   <button className="view-btn">View</button>
                 </td>
@@ -554,7 +590,7 @@ const DocDashboard = () => {
                     <th className="appointment-table-cell">Patient</th>
                     <th className="appointment-table-cell">Date & Time</th>
                     <th className="appointment-table-cell">Type</th>
-                    <th className="appointment-table-cell">Status</th>
+                    {/* <th className="appointment-table-cell">Status</th> */}
                     <th className="appointment-table-cell">Actions</th>
                   </tr>
                 </thead>
@@ -564,14 +600,20 @@ const DocDashboard = () => {
                       <td className="appointment-table-cell">{appt.name}</td>
                       <td className="appointment-table-cell">{appt.date}</td>
                       <td className="appointment-table-cell">{appt.type}</td>
-                      <td className="appointment-table-cell">
+                      {/* <td className="appointment-table-cell">
                         <span className={`status-badge ${appt.statusClass}`}>
                           {appt.status}
                         </span>
-                      </td>
+                      </td> */}
                       <td className="appointment-table-cell action-buttons">
-                        <button className="edit-btn">Edit</button>
-                        <button className="cancel-btn">Cancel</button>
+                        {/* <button className="edit-btn">Edit</button>
+                        <button className="cancel-btn">Cancel</button> */}
+                        {/* <div className="action-buttons1"> */}
+                          <button className="tick-btn" title="Confirm">&#10004;</button>
+                          <button className="cross-btn" title="Cancel">&#10006;</button>
+                        {/* </div> */}
+
+
                       </td>
                     </tr>
                   ))}
@@ -615,47 +657,97 @@ const DocDashboard = () => {
   const Profile = () => (
     <div className="doctor-profile-container">
       <h1 className="doctor-profile-title">Doctor Profile</h1>
-      <div className="doctor-card1">
+      <div className="doctor-card2">
         {/* Header Section */}
         <div className="doctor-header">
-          <div className="doctor-header-content">
-            <div className="doctor-avatar">
-              <img src= {`data:image/jpeg;base64,${doctorProfile.doctorPhoto}`}alt="doctor-image"  className="docDashboard_doctor-profile_img" />
-            
-            </div>
-            <div className="doctor-info">
-              <h2 className="doctor-name">{doctorProfile.fullName}</h2>
-              <p className="doctor-role">{doctorProfile.medicalSpeciality}</p>
-              <p className="doctor-license">License : {doctorProfile.medicalLicenseNumber}</p>
-            </div>
-            <div className="doctor-edit">
-              <button className="edit-button">Edit Profile</button>
-            </div>
-          </div>
-        </div>
+  <div className="doctor-header-content">
+    <div className="doctor-avatar">
+      <img
+        src={`data:image/jpeg;base64,${doctorProfile.doctorPhoto}`}
+        alt="doctor-image"
+        className="docDashboard_doctor-profile_img"
+      />
+    </div>
+    <div className="doctor-info">
+      <h2 className="doctor-name">{doctorProfile.fullName}M.Sai</h2>
+      <p className="doctor-role">Speciality:{doctorProfile.medicalSpeciality}Dentist</p>
+      <p className="doctor-license">License: {doctorProfile.medicalLicenseNumber}ML123456789</p>
+    </div>
+    <div className="total-right">
+      <button className="edit-button">Edit Profile</button>
+    </div>
+  </div>
+</div>
+
 
         {/* Personal Information */}
-        <div className="doctor-section">
-          <h3 className="section-title">Personal Information</h3>
-          <div className="info-grid">
-            <div>
-              <p className="info-label">Email</p>
-              <p>d{doctorProfile.email}</p>
-            </div>
-            <div>
-              <p className="info-label">Phone</p>
-              <p>+1 (555) 123-4567</p>
-            </div>
-            <div>
-              <p className="info-label">Address</p>
-              <p>{doctorProfile.city}, {doctorProfile.state}, {doctorProfile.country}</p>
-            </div>
-            <div>
-              <p className="info-label">Specialization</p>
-              <p>{doctorProfile.medicalSpeciality}</p>
-            </div>
-          </div>
-        </div>
+<div className="doctor-section">
+  <h3 className="section-title">Personal Information</h3>
+  <div className="info-grid two-column">
+    <div className="left">
+      <p className="info-label">Email :</p>
+      <p>{doctorProfile.email}</p>
+
+      <p className="info-label">Phone :</p>
+      <p>+1 (555) 123-4567</p>
+      </div>
+      <div className="right">
+      <p className="info-label">Gender :</p>
+      <p>{doctorProfile.gender || "Male"}</p>
+
+      <p className="info-label">Age :</p>
+      <p>{doctorProfile.age || "45"}</p>
+    </div>
+    
+      {/* Reserved for future photo or extra uploads if needed */}
+      
+
+  </div>
+</div>
+<hr className="line" />
+
+{/* Professional Information */}
+<div className="doctor-section">
+  <h3 className="section-title">Professional Information</h3>
+  <div className="info-grid two-column">
+    <div className="left">
+      <p className="info-label">Medical License No</p>
+      <p>ML-123456789</p>
+
+      <p className="info-label">License Expiry</p>
+      <p>2026-12-31</p>
+
+      <p className="info-label">Specialization</p>
+      <p>{doctorProfile.medicalSpeciality}</p>
+
+      <p className="info-label">Current Hospital/Clinic</p>
+      <p>{doctorProfile.currentHospital || "City Health Hospital"}</p>
+
+      <p className="info-label">Clinic/Hospital Address</p>
+      <p>{doctorProfile.clinicAddress || "123 Main Street, Metropolis"}</p>
+
+      <p className="info-label">Complaints or Remarks</p>
+      <select>
+        <option value="">Select Reason</option>
+        <option>Late Response</option>
+        <option>Unavailability</option>
+        <option>Other</option>
+      </select>
+      <textarea placeholder="Add details..."></textarea>
+
+      <p className="info-label">Bio</p>
+      <textarea placeholder="Write a short biography..."></textarea>
+    </div>
+    <div className="right">
+      <p className="info-label">Upload License Document</p>
+      <input type="file" accept=".pdf,.jpg,.png" />
+
+      <p className="info-label">Upload Specialization Certificate</p>
+      <input type="file" accept=".pdf,.jpg,.png" />
+    </div>
+  </div>
+</div>
+
 
         {/* Schedule */}
         <div className="doctor-section border-top">

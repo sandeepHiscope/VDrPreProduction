@@ -39,7 +39,7 @@ const DoctorID = () => {
         <p><strong>Clinics/Hospitals:</strong> {doctor.clinics}</p>
         <p><strong>Phone            :</strong> {doctor.phone}</p>
         <p><strong>Email            :</strong> {doctor.email}</p>
-        <p><strong>Address          :</strong> {doctor.address}</p>
+        <p><strong>Address           :</strong> {doctor.address}</p>
       </div>
 
       <p className="experience">{doctor.experience}</p>
