@@ -1,14 +1,20 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useReducer, useCallback, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 import "./findDoctorPage.css";
 import indianStates from "../data/indianStates";
 import doctorDetails from "../data/doctorDetails";
 import defaultUser from "../assets/Images/commonImg/VDrlogo.png";
-import { FaChevronUp, FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp, FaStar, FaStarHalfAlt, FaLocationArrow, FaLanguage } from "react-icons/fa";
+import { BiFilterAlt, BiSearchAlt } from "react-icons/bi";
+import { MdClear, MdOutlineCalendarMonth, MdWorkOutline } from "react-icons/md";
+// import { RiMoney2Line } from "react-icons/ri";
 
+// API URL constant
 const GET_DOCTOR_API_URL = "http://localhost:8080/doctorverfication/all";
 
-const specialityKeywords = {
+// Constants for filter data
+const SPECIALITY_KEYWORDS = {
   Cardiologist: ["cardiologist", "cardiology", "heart"],
   Dentist: ["dentist", "dental", "teeth"],
   Gynaecologist: ["gynaecologist", "gynecology", "obgyn"],
@@ -23,252 +29,449 @@ const specialityKeywords = {
   Diagnostics: ["diagnostics", "lab"],
 };
 
+const SYMPTOMS = [
+  "Headache", "Fatigue", "Cough", "Fever", "Nausea or Vomiting",
+  "Abdominal Pain", "Dizziness", "Shortness of Breath", "Chest Pain",
+  "Back Pain", "Joint or Muscle Pain", "Skin Rash", "Sore Throat",
+  "Nasal Congestion", "Diarrhea", "Constipation", "Urinary Issues",
+  "Sleep Disturbances", "Mood Changes", "Weight Changes",
+  "Appetite Changes", "Menstrual Irregularities"
+];
+
+const SPECIALTIES = [
+  "Cardiologist", "Dentist", "Gynaecologist", "Dermatologist",
+  "Neurologist", "Orthopedist", "Pediatrician", "Pulmonologist",
+  "Gastroenterologist", "Physiotherapist", "General Physician", "Diagnostics"
+];
+
+const LOCATIONS = [
+  "Delhi", "Mumbai", "Kolkata", "Kerala", "Bihar", "Rajasthan",
+  "Hyderabad", "Jaipur", "Chennai", "Bengaluru"
+];
+
+const FEES = [100, 200, 300, 500, 1000, 1500, 2000, 3000, 5000];
+const RATINGS = [1, 2, 3, 4, 5];
+const LANGUAGES = ["English", "Hindi", "Tamil", "Telugu", "Marathi"];
+const AVAILABILITY = ["Morning", "Afternoon", "Evening", "Night"];
+const EXPERIENCE = ["1-3 years", "3-5 years", "5-10 years", "10+ years"];
+
+// Symptom to specialty mapping for filtering
+const SYMPTOM_TO_SPECIALTY_MAP = {
+  Headache: ["Neurologist"],
+  "Chest Pain": ["Cardiologist"],
+  "Skin Rash": ["Dermatologist"],
+  "Joint or Muscle Pain": ["Orthopedist", "Physiotherapist"],
+  "Abdominal Pain": ["Gastroenterologist"],
+  Cough: ["Pulmonologist"],
+  "Nasal Congestion": ["Pulmonologist"],
+  "Menstrual Irregularities": ["Gynaecologist"],
+  "Sleep Disturbances": ["Neurologist", "General Physician"],
+  "Urinary Issues": ["General Physician"],
+  "Sore Throat": ["General Physician", "Pulmonologist"]
+};
+
+// Pagination settings
+const DOCTORS_PER_PAGE = 15;
+
+// Helper functions
 const normalize = (str) => str?.toString().trim().toLowerCase() || "";
 
 const matchSpeciality = (doctorSpeciality, searchQuery) => {
   const normDoctor = normalize(doctorSpeciality);
   const normSearch = normalize(searchQuery);
-  const keywords = specialityKeywords[normSearch] || [normSearch];
+  const keywords = SPECIALITY_KEYWORDS[normSearch] || [normSearch];
   return keywords.some((keyword) => normDoctor.includes(keyword));
 };
 
+// Initial filter state
+const initialFilterState = {
+  searchQuery: "",
+  selectedState: "",
+  selectedSymptoms: [],
+  selectedSpecialties: [],
+  selectedLocations: [],
+  selectedFees: [],
+  selectedRatings: [],
+  selectedLanguages: [],
+  selectedAvailability: [],
+  selectedExperience: [],
+  currentPage: 1
+};
+
+// Action types
+const ACTIONS = {
+  SET_SEARCH_QUERY: 'set_search_query',
+  SET_SELECTED_STATE: 'set_selected_state',
+  TOGGLE_FILTER_ITEM: 'toggle_filter_item',
+  REMOVE_FILTER_ITEM: 'remove_filter_item',
+  CLEAR_ALL_FILTERS: 'clear_all_filters',
+  SET_CURRENT_PAGE: 'set_current_page',
+  LOAD_URL_PARAMS: 'load_url_params'
+};
+
+// Filter reducer
+function filterReducer(state, action) {
+  switch (action.type) {
+    case ACTIONS.SET_SEARCH_QUERY:
+      return { ...state, searchQuery: action.payload, currentPage: 1 };
+    
+    case ACTIONS.SET_SELECTED_STATE:
+      return { ...state, selectedState: action.payload, currentPage: 1 };
+    
+    case ACTIONS.TOGGLE_FILTER_ITEM: {
+      const { category, value } = action.payload;
+      const currentValues = state[category];
+      const newValues = currentValues.includes(value)
+        ? currentValues.filter(item => item !== value)
+        : [...currentValues, value];
+      
+      return { ...state, [category]: newValues, currentPage: 1 };
+    }
+    
+    case ACTIONS.REMOVE_FILTER_ITEM: {
+      const { category, value } = action.payload;
+      return { 
+        ...state, 
+        [category]: state[category].filter(item => item !== value),
+        currentPage: 1
+      };
+    }
+    
+    case ACTIONS.CLEAR_ALL_FILTERS:
+      return { 
+        ...initialFilterState,
+        searchQuery: state.searchQuery,
+        selectedState: state.selectedState
+      };
+    
+    case ACTIONS.SET_CURRENT_PAGE:
+      return { ...state, currentPage: action.payload };
+    
+    case ACTIONS.LOAD_URL_PARAMS:
+      return { ...state, ...action.payload, currentPage: 1 };
+    
+    default:
+      return state;
+  }
+}
+
+// Component for filter section to reduce repetition
+const FilterSection = ({ title, items, selectedItems, onToggle, showDropdown, onToggleDropdown, renderItem }) => {
+  return (
+    <div className="filter-section">
+      <div 
+        className="filter-section-header" 
+        onClick={() => onToggleDropdown(title)}
+        data-testid={`toggle-${title.toLowerCase()}`}
+      >
+        <h3 className="filter-section-title">{title}</h3>
+        {showDropdown ? <FaChevronUp /> : <FaChevronDown />}
+      </div>
+
+      {showDropdown && (
+        <ul className="filter-dropdown-content">
+          {items.map((item, index) => (
+            <li key={`${title}-${index}`}>
+              <label className="filter-checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={selectedItems.includes(item)}
+                  onChange={() => onToggle(item)}
+                  className="filter-checkbox"
+                />
+                {renderItem ? renderItem(item) : item}
+              </label>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
+FilterSection.propTypes = {
+  title: PropTypes.string.isRequired,
+  items: PropTypes.array.isRequired,
+  selectedItems: PropTypes.array.isRequired,
+  onToggle: PropTypes.func.isRequired,
+  showDropdown: PropTypes.bool.isRequired,
+  onToggleDropdown: PropTypes.func.isRequired,
+  renderItem: PropTypes.func
+};
+
+// Star rating component
+const StarRating = ({ rating }) => {
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 >= 0.5;
+  
+  return (
+    <div className="star-rating">
+      {[...Array(fullStars)].map((_, i) => (
+        <FaStar key={`star-${i}`} className="star-filled" />
+      ))}
+      {hasHalfStar && <FaStarHalfAlt className="star-half" />}
+      {[...Array(5 - fullStars - (hasHalfStar ? 1 : 0))].map((_, i) => (
+        <FaStar key={`star-empty-${i}`} className="star-empty" />
+      ))}
+    </div>
+  );
+};
+
+StarRating.propTypes = {
+  rating: PropTypes.number.isRequired
+};
+
+// Doctor card component
+const DoctorCard = ({ doctor, onClick }) => {
+  const getDoctorImage = (doctorPhoto) => {
+    if (!doctorPhoto) return defaultUser;
+    return doctorPhoto.startsWith("http")
+      ? doctorPhoto
+      : `data:image/jpeg;base64,${doctorPhoto}`;
+  };
+
+  return (
+    <div className="doctor-card" onClick={() => onClick(doctor)}>
+      <div className="doctor-card-left">
+        <div className="doctor-image-container">
+          <img
+            src={getDoctorImage(doctor.doctorPhoto)}
+            alt={`Dr. ${doctor.fullName}`}
+            className="doctor-image"
+          />
+        </div>
+        <button className="book-appointment-btn">Book Appointment</button>
+      </div>
+      
+      <div className="doctor-info">
+        <h3 className="doctor-name">
+          Dr. {doctor.fullName?.toUpperCase() || "Not Mentioned"}
+        </h3>
+        
+        <div className="doctor-specialty">
+          <span className="info-label">Specialty:</span>
+          <span className="info-value">{doctor.medicalSpeciality || "Not Mentioned"}</span>
+        </div>
+        
+        <div className="doctor-meta-info">
+          <div className="doctor-meta-item">
+            <MdWorkOutline className="meta-icon" />
+            <span>{doctor.experience} {parseInt(doctor.experience) > 1 ? "years" : "year"}</span>
+          </div>
+          
+          <div className="doctor-meta-item">
+            <FaLocationArrow className="meta-icon" />
+            <span>{doctor.city}, {doctor.state !== "Not Mentioned" ? doctor.state : ""}</span>
+          </div>
+
+          <div className="doctor-meta-item">
+            <FaLanguage className="meta-icon" />
+            <span>{(doctor.languages || ["English"]).join(", ")}</span>
+          </div>
+        </div>
+        
+        <div className="doctor-bottom-info">
+          <div className="fee-info">
+            {/* <RiMoney2Line className="meta-icon" /> */}
+            <span>₹{doctor.consultationFee}</span>
+          </div>
+          
+          <div className="rating-info">
+            <StarRating rating={doctor.rating || 0} />
+            <span className="rating-value">({doctor.rating})</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+DoctorCard.propTypes = {
+  doctor: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired
+};
+
+// Main component
 const FindDoctorPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const listRef = useRef(null);
-
+  
+  // Extract URL params
   const queryParams = new URLSearchParams(location.search);
   const specialityFromURL = queryParams.get("speciality") || "";
 
-  const [searchQuery, setSearchQuery] = useState(specialityFromURL);
-  const [selectedState, setSelectedState] = useState("");
+  // Use reducer for filter state management
+  const [filterState, dispatch] = useReducer(filterReducer, {
+    ...initialFilterState,
+    searchQuery: specialityFromURL
+  });
+  
+  // Destructure state for easier access
+  const {
+    searchQuery, selectedState, selectedSymptoms, selectedSpecialties,
+    selectedLocations, selectedFees, selectedRatings, selectedLanguages,
+    selectedAvailability, selectedExperience, currentPage
+  } = filterState;
+
+  // Component state
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  // Filter states
-  const [selectedSymptoms, setSelectedSymptoms] = useState([]);
-  const [selectedSpecialties, setSelectedSpecialties] = useState([]);
-  const [selectedLocations, setSelectedLocations] = useState([]);
-  const [selectedFees, setSelectedFees] = useState([]);
-  const [selectedRatings, setSelectedRatings] = useState([]);
-  const [selectedDiscounts, setSelectedDiscounts] = useState([]);
-  const [selectedLanguages, setSelectedLanguages] = useState([]);
-  const [selectedAvailability, setSelectedAvailability] = useState([]);
-  const [selectedExperience, setSelectedExperience] = useState([]);
-
+  const [error, setError] = useState(null);
+  
   // Dropdown visibility states
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [showSpecialtyDropdown, setShowSpecialtyDropdown] = useState(false);
-  const [showLocationDropdown, setShowLocationDropdown] = useState(false);
-  const [showFeeDropdown, setShowFeeDropdown] = useState(false);
-  const [showRatingDropdown, setShowRatingDropdown] = useState(false);
-  const [showDiscountDropdown, setShowDiscountDropdown] = useState(false);
-  const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
-  const [showAvailabilityDropdown, setShowAvailabilityDropdown] =
-    useState(false);
-  const [showExperienceDropdown, setShowExperienceDropdown] = useState(false);
+  const [dropdownStates, setDropdownStates] = useState({
+    Symptoms: false,
+    Specialty: false,
+    Location: false,
+    "Consultation Fee": false,
+    Rating: false,
+    Language: false,
+    Availability: false,
+    Experience: false
+  });
 
-  // Filter data
-  const symptoms = [
-    "Headache",
-    "Fatigue",
-    "Cough",
-    "Fever",
-    "Nausea or Vomiting",
-    "Abdominal Pain",
-    "Dizziness",
-    "Shortness of Breath",
-    "Chest Pain",
-    "Back Pain",
-    "Joint or Muscle Pain",
-    "Skin Rash",
-    "Sore Throat",
-    "Nasal Congestion",
-    "Diarrhea",
-    "Constipation",
-    "Urinary Issues (e.g., frequency, pain)",
-    "Sleep Disturbances",
-    "Mood Changes (e.g., anxiety)",
-    "Weight Changes",
-    "Appetite Changes",
-    "Menstrual Irregularities",
-  ];
+  // Toggle mobile filter visibility
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
 
-  const specialties = [
-    "Cardiologist",
-    "Dentist",
-    "Gynaecologist",
-    "Dermatologist",
-    "Neurologist",
-    "Orthopedist",
-    "Pediatrician",
-    "Pulmonologist",
-    "Gastroenterologist",
-    "Physiotherapist",
-    "General Physician",
-    "Diagnostics",
-    // Add more from your original list as needed
-  ];
-
-  const locations = [
-    "Delhi",
-    "Mumbai",
-    "Kolkata",
-    "Kerala",
-    "Bihar",
-    "Rajasthan",
-    "Hyderabad",
-    "Jaipur",
-    "Chennai",
-    "Bengaluru",
-    // Add more from your original list as needed
-  ];
-
-  const fees = [100, 200, 300, 500, 1000, 1500, 2000, 3000, 5000];
-
-  const ratings = [1, 2, 3, 4, 5];
-  const languages = ["English", "Hindi", "Tamil", "Telugu", "Marathi"];
-  const availability = ["Morning", "Afternoon", "Evening", "Night"];
-  const experience = ["1-3 years", "3-5 years", "5-10 years", "10+ years"];
-
+  // Fetch doctors on component mount
   useEffect(() => {
     const fetchDoctors = async () => {
+      setLoading(true);
       try {
         const response = await fetch(GET_DOCTOR_API_URL);
+        if (!response.ok) {
+          throw new Error(`API error: ${response.status}`);
+        }
         const data = await response.json();
         setDoctors(data);
       } catch (error) {
         console.error("Error fetching doctors:", error);
+        setError("Failed to load doctors. Please try again later.");
       } finally {
         setLoading(false);
       }
     };
+    
     fetchDoctors();
   }, []);
 
+  // Update search query from URL
   useEffect(() => {
-    setSearchQuery(specialityFromURL);
-    if (specialityFromURL && listRef.current) {
-      listRef.current.scrollIntoView({ behavior: "smooth" });
+    if (specialityFromURL) {
+      dispatch({ 
+        type: ACTIONS.LOAD_URL_PARAMS, 
+        payload: { searchQuery: specialityFromURL } 
+      });
     }
   }, [specialityFromURL]);
 
-  // Helper function to check if a doctor matches the symptom filter
-  const matchesSymptomFilter = (doctor) => {
-    if (selectedSymptoms.length === 0) return true;
+  // Toggle dropdown visibility
+  const toggleFilterDropdown = useCallback((section) => {
+    setDropdownStates(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  }, []);
 
-    // This is a simplified example. In a real app, you'd need data that maps symptoms to specialties
-    const symptomToSpecialtyMap = {
-      Headache: ["Neurologist"],
-      "Chest Pain": ["Cardiologist"],
-      "Skin Rash": ["Dermatologist"],
-      "Joint or Muscle Pain": ["Orthopedist", "Physiotherapist"],
-      "Abdominal Pain": ["Gastroenterologist"],
-      Cough: ["Pulmonologist"],
-      // Add more mappings as needed
+  // Handle filter changes
+  const handleToggleFilter = useCallback((category, value) => {
+    dispatch({ 
+      type: ACTIONS.TOGGLE_FILTER_ITEM, 
+      payload: { category, value } 
+    });
+  }, []);
+
+  // Remove selected filter
+  const removeFilter = useCallback((category, value) => {
+    dispatch({ 
+      type: ACTIONS.REMOVE_FILTER_ITEM, 
+      payload: { category, value } 
+    });
+  }, []);
+
+  // Clear all filters
+  const clearAllFilters = useCallback(() => {
+    dispatch({ type: ACTIONS.CLEAR_ALL_FILTERS });
+  }, []);
+
+  // Filter doctors based on criteria
+  const filteredDoctors = useMemo(() => {
+    const normalizedSearch = normalize(searchQuery);
+    
+    // Helper functions to check if a doctor matches each filter
+    const matchesSymptomFilter = (doctor) => {
+      if (selectedSymptoms.length === 0) return true;
+      
+      return selectedSymptoms.some(symptom => {
+        const specialtiesForSymptom = SYMPTOM_TO_SPECIALTY_MAP[symptom] || [];
+        return specialtiesForSymptom.includes(doctor.medicalSpeciality);
+      });
     };
-
-    for (const symptom of selectedSymptoms) {
-      const specialtiesForSymptom = symptomToSpecialtyMap[symptom] || [];
-      if (specialtiesForSymptom.includes(doctor.medicalSpeciality)) {
-        return true;
-      }
-    }
-    return false;
-  };
-
-  // Helper function to check if a doctor matches the specialty filter
-  const matchesSpecialtyFilter = (doctor) => {
-    if (selectedSpecialties.length === 0) return true;
-    return selectedSpecialties.some((specialty) =>
-      normalize(doctor.medicalSpeciality).includes(normalize(specialty))
-    );
-  };
-
-  // Helper function to check if a doctor matches the location filter
-  const matchesLocationFilter = (doctor) => {
-    if (selectedLocations.length === 0) return true;
-    return selectedLocations.some(
-      (location) =>
+    
+    const matchesSpecialtyFilter = (doctor) => {
+      if (selectedSpecialties.length === 0) return true;
+      return selectedSpecialties.some(specialty => 
+        normalize(doctor.medicalSpeciality).includes(normalize(specialty))
+      );
+    };
+    
+    const matchesLocationFilter = (doctor) => {
+      if (selectedLocations.length === 0) return true;
+      return selectedLocations.some(location => 
         normalize(doctor.city).includes(normalize(location)) ||
         normalize(doctor.state).includes(normalize(location))
-    );
-  };
-
-  // Helper function to check if a doctor matches the fee filter
-  const matchesFeeFilter = (doctor) => {
-    if (selectedFees.length === 0) return true;
-
-    // This is a placeholder implementation
-    const doctorFee =
-      doctor.consultationFee || Math.floor(Math.random() * 5000) + 100;
-
-    return selectedFees.some((fee) => doctorFee <= fee);
-  };
-
-  // Helper function to check if a doctor matches the rating filter
-  const matchesRatingFilter = (doctor) => {
-    if (selectedRatings.length === 0) return true;
-
-    // In a real app, you'd have actual rating data for each doctor
-    // This is a placeholder implementation
-    const doctorRating = doctor.rating || Math.floor(Math.random() * 5) + 1;
-
-    return selectedRatings.includes(doctorRating);
-  };
-
-  // Helper function to check if a doctor matches the language filter
-  const matchesLanguageFilter = (doctor) => {
-    if (selectedLanguages.length === 0) return true;
-
-    // In a real app, you'd have actual language data for each doctor
-    // This is a placeholder implementation
-    const doctorLanguages = doctor.languages || ["English"];
-
-    return selectedLanguages.some((language) =>
-      doctorLanguages.includes(language)
-    );
-  };
-
-  // Helper function to check if a doctor matches the availability filter
-  const matchesAvailabilityFilter = (doctor) => {
-    if (selectedAvailability.length === 0) return true;
-
-    // This is a placeholder implementation
-    const doctorAvailability = doctor.availability || ["Morning", "Evening"];
-
-    return selectedAvailability.some((time) =>
-      doctorAvailability.includes(time)
-    );
-  };
-
-  // Helper function to check if a doctor matches the experience filter
-  const matchesExperienceFilter = (doctor) => {
-    if (selectedExperience.length === 0) return true;
-
-    // Convert experience years to experience range category
-    const getExperienceCategory = (years) => {
-      if (years <= 3) return "1-3 years";
-      if (years <= 5) return "3-5 years";
-      if (years <= 10) return "5-10 years";
-      return "10+ years";
+      );
     };
-
-    const doctorExperienceYears = parseInt(doctor.experience) || 5;
-    const doctorExperienceCategory = getExperienceCategory(
-      doctorExperienceYears
-    );
-
-    return selectedExperience.includes(doctorExperienceCategory);
-  };
-
-  const getFilteredDoctors = () => {
-    const normalizedSearch = normalize(searchQuery);
-
-    // First, filter doctors based on search query and state
-    let filteredResults = [
+    
+    const matchesFeeFilter = (doctor) => {
+      if (selectedFees.length === 0) return true;
+      const doctorFee = doctor.consultationFee || 
+        Math.floor(Math.random() * 5000) + 100;
+      return selectedFees.some(fee => doctorFee <= fee);
+    };
+    
+    const matchesRatingFilter = (doctor) => {
+      if (selectedRatings.length === 0) return true;
+      const doctorRating = doctor.rating || Math.floor(Math.random() * 5) + 1;
+      return selectedRatings.includes(doctorRating);
+    };
+    
+    const matchesLanguageFilter = (doctor) => {
+      if (selectedLanguages.length === 0) return true;
+      const doctorLanguages = doctor.languages || ["English"];
+      return selectedLanguages.some(language => 
+        doctorLanguages.includes(language)
+      );
+    };
+    
+    const matchesAvailabilityFilter = (doctor) => {
+      if (selectedAvailability.length === 0) return true;
+      const doctorAvailability = doctor.availability || ["Morning", "Evening"];
+      return selectedAvailability.some(time => 
+        doctorAvailability.includes(time)
+      );
+    };
+    
+    const matchesExperienceFilter = (doctor) => {
+      if (selectedExperience.length === 0) return true;
+      
+      const getExperienceCategory = (years) => {
+        if (years <= 3) return "1-3 years";
+        if (years <= 5) return "3-5 years";
+        if (years <= 10) return "5-10 years";
+        return "10+ years";
+      };
+      
+      const doctorExperienceYears = parseInt(doctor.experience) || 5;
+      const doctorExperienceCategory = getExperienceCategory(doctorExperienceYears);
+      
+      return selectedExperience.includes(doctorExperienceCategory);
+    };
+    
+    // Combine API doctors with static data
+    let combinedDoctors = [
       ...doctors.filter(
-        (doctor) =>
+        doctor =>
           (normalizedSearch === "" ||
             matchSpeciality(doctor.medicalSpeciality, normalizedSearch)) &&
           (selectedState === "" ||
@@ -276,7 +479,7 @@ const FindDoctorPage = () => {
       ),
       ...doctorDetails
         .filter(
-          (doc) =>
+          doc =>
             (normalizedSearch === "" ||
               matchSpeciality(doc.speciality, normalizedSearch)) &&
             (selectedState === "" ||
@@ -286,9 +489,7 @@ const FindDoctorPage = () => {
           id: `dummy-${index}`,
           fullName: doc.name || "Not Mentioned",
           medicalSpeciality: doc.speciality || "Not Mentioned",
-
-          experience: "5", // Added default for demonstration
-
+          experience: "5",
           city: doc.locality || "Not Mentioned",
           state: "Not Mentioned",
           country: "India",
@@ -297,8 +498,6 @@ const FindDoctorPage = () => {
           doctorPhoto: null,
           phone: isNaN(doc.phone) ? "Not Mentioned" : doc.phone,
           email: doc.email || "Not Mentioned",
-
-          // Added simulated fields for filtering
           consultationFee: Math.floor(Math.random() * 5000) + 100,
           rating: Math.floor(Math.random() * 5) + 1,
           languages: ["English", Math.random() > 0.5 ? "Hindi" : "Tamil"],
@@ -308,10 +507,10 @@ const FindDoctorPage = () => {
           ],
         })),
     ];
-
-    // Then apply all the checkbox filters
-    return filteredResults.filter(
-      (doctor) =>
+    
+    // Apply all filters
+    return combinedDoctors.filter(
+      doctor =>
         matchesSymptomFilter(doctor) &&
         matchesSpecialtyFilter(doctor) &&
         matchesLocationFilter(doctor) &&
@@ -321,171 +520,206 @@ const FindDoctorPage = () => {
         matchesAvailabilityFilter(doctor) &&
         matchesExperienceFilter(doctor)
     );
+  }, [
+    doctors, 
+    searchQuery, 
+    selectedState, 
+    selectedSymptoms, 
+    selectedSpecialties, 
+    selectedLocations, 
+    selectedFees, 
+    selectedRatings, 
+    selectedLanguages, 
+    selectedAvailability, 
+    selectedExperience
+  ]);
+
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredDoctors.length / DOCTORS_PER_PAGE);
+  const paginatedDoctors = filteredDoctors.slice(
+    (currentPage - 1) * DOCTORS_PER_PAGE,
+    currentPage * DOCTORS_PER_PAGE
+  );
+
+  // Handle page change
+  const handlePageChange = (newPage) => {
+    dispatch({ type: ACTIONS.SET_CURRENT_PAGE, payload: newPage });
+    // Scroll to top of results
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const filteredDoctors = getFilteredDoctors();
-
-  const doctorProfile = (doctor) => {
+  // Navigate to doctor profile
+  const navigateToDoctorProfile = (doctor) => {
     navigate(`/doctorID/${doctor.id}`, { state: { doctor } });
   };
 
-  const getDoctorImage = (doctorPhoto) => {
-    if (!doctorPhoto) return defaultUser;
-    return doctorPhoto.startsWith("http")
-      ? doctorPhoto
-      : `data:image/jpeg;base64,${doctorPhoto}`;
-  };
-
-  // Generic handler for checkbox changes
-  const handleFilterChange = (value, setter) => {
-    setter((prev) =>
-      prev.includes(value)
-        ? prev.filter((item) => item !== value)
-        : [...prev, value]
-    );
-  };
-
-  // Generic handler for removing selected items
-  const removeSelectedItem = (item, setter) => {
-    setter((prev) => prev.filter((i) => i !== item));
-  };
-
-  // Generic handler for toggling dropdowns
-  const toggleFilterDropdown = (setter) => {
-    setter((prev) => !prev);
-  };
-
-  // Clear all filters
-  const clearAllFilters = () => {
-    setSelectedSymptoms([]);
-    setSelectedSpecialties([]);
-    setSelectedLocations([]);
-    setSelectedFees([]);
-    setSelectedRatings([]);
-    setSelectedLanguages([]);
-    setSelectedAvailability([]);
-    setSelectedExperience([]);
-    setSearchQuery("");
-    setSelectedState("");
-  };
+  // Check if any filters are applied
+  const hasActiveFilters = 
+    selectedSymptoms.length > 0 ||
+    selectedSpecialties.length > 0 ||
+    selectedLocations.length > 0 ||
+    selectedFees.length > 0 ||
+    selectedRatings.length > 0 ||
+    selectedLanguages.length > 0 ||
+    selectedAvailability.length > 0 ||
+    selectedExperience.length > 0;
 
   return (
-    <>
+    <div className="find-doctor-page">
       <div className="header-placeholder"></div>
 
-      <div className="findDoctorPage-main-container">
-        {/* Filter sidebar */}
-        <div className="finddoctor-filter-section">
+      <div className="search-container">
+        <div className="search-bar-wrapper">
+          <div className="search-input-group">
+            <BiSearchAlt className="search-icon" />
+            <input
+              type="text"
+              placeholder="Search by specialization"
+              className="search-input"
+              value={searchQuery}
+              onChange={(e) => dispatch({ 
+                type: ACTIONS.SET_SEARCH_QUERY, 
+                payload: e.target.value 
+              })}
+            />
+          </div>
+          
+          <div className="search-input-group">
+            <FaLocationArrow className="search-icon" />
+            <select
+              className="state-dropdown"
+              value={selectedState}
+              onChange={(e) => dispatch({ 
+                type: ACTIONS.SET_SELECTED_STATE, 
+                payload: e.target.value 
+              })}
+            >
+              <option value="">All States</option>
+              {indianStates.map((state) => (
+                <option key={state} value={state}>
+                  {state}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div className="find-doctor-content">
+        {/* Mobile filter toggle button */}
+        <button 
+          className="mobile-filter-toggle" 
+          onClick={() => setShowMobileFilters(!showMobileFilters)}
+        >
+          <BiFilterAlt /> {showMobileFilters ? "Hide Filters" : "Show Filters"}
+        </button>
+
+        {/* Filter sidebar - with mobile responsive class */}
+        <aside className={`filter-sidebar ${showMobileFilters ? 'show-mobile' : ''}`}>
           <div className="filter-header">
-            <h2>Filter your Doctors </h2>
-            <button className="clear-filters-btn" onClick={clearAllFilters}>
-              Clear All
-            </button>
+            <h2>Filter Doctors</h2>
+            {hasActiveFilters && (
+              <button className="clear-filters-btn" onClick={clearAllFilters}>
+                <MdClear /> Clear All
+              </button>
+            )}
           </div>
 
           {/* Selected filters display */}
-          {(selectedSymptoms.length > 0 ||
-            selectedSpecialties.length > 0 ||
-            selectedLocations.length > 0 ||
-            selectedFees.length > 0 ||
-            selectedRatings.length > 0 ||
-            selectedLanguages.length > 0 ||
-            selectedAvailability.length > 0 ||
-            selectedExperience.length > 0) && (
+          {hasActiveFilters && (
             <div className="selected-filters">
-              <h3 className="applideFiltersHeading">Applied Filters</h3>
+              <h3>Applied Filters</h3>
               <div className="filter-tags">
                 {selectedSymptoms.map((symptom) => (
-                  <span key={symptom} className="filter-tag" onClick={() =>
-                    removeSelectedItem(symptom, setSelectedSymptoms)
-                  }>
+                  <span key={symptom} className="filter-tag">
                     {symptom}
-                    <button className="filter-tag-remove-btn"
-                      onClick={() =>
-                        removeSelectedItem(symptom, setSelectedSymptoms)
-                      }
+                    <button
+                      className="filter-tag-remove"
+                      onClick={() => removeFilter("selectedSymptoms", symptom)}
                     >
                       ×
                     </button>
                   </span>
                 ))}
+                
                 {selectedSpecialties.map((specialty) => (
                   <span key={specialty} className="filter-tag">
                     {specialty}
                     <button
-                      onClick={() =>
-                        removeSelectedItem(specialty, setSelectedSpecialties)
-                      }
+                      className="filter-tag-remove"
+                      onClick={() => removeFilter("selectedSpecialties", specialty)}
                     >
                       ×
                     </button>
                   </span>
                 ))}
+                
                 {selectedLocations.map((location) => (
                   <span key={location} className="filter-tag">
                     {location}
                     <button
-                      onClick={() =>
-                        removeSelectedItem(location, setSelectedLocations)
-                      }
+                      className="filter-tag-remove"
+                      onClick={() => removeFilter("selectedLocations", location)}
                     >
                       ×
                     </button>
                   </span>
                 ))}
+                
                 {selectedFees.map((fee) => (
                   <span key={fee} className="filter-tag">
                     ₹{fee}
                     <button
-                      onClick={() => removeSelectedItem(fee, setSelectedFees)}
+                      className="filter-tag-remove"
+                      onClick={() => removeFilter("selectedFees", fee)}
                     >
                       ×
                     </button>
                   </span>
                 ))}
+                
                 {selectedRatings.map((rating) => (
                   <span key={rating} className="filter-tag">
-                    {rating} Star
+                    {rating} ★
                     <button
-                      onClick={() =>
-                        removeSelectedItem(rating, setSelectedRatings)
-                      }
+                      className="filter-tag-remove"
+                      onClick={() => removeFilter("selectedRatings", rating)}
                     >
                       ×
                     </button>
                   </span>
                 ))}
+                
                 {selectedLanguages.map((language) => (
                   <span key={language} className="filter-tag">
                     {language}
                     <button
-                      onClick={() =>
-                        removeSelectedItem(language, setSelectedLanguages)
-                      }
+                      className="filter-tag-remove"
+                      onClick={() => removeFilter("selectedLanguages", language)}
                     >
                       ×
                     </button>
                   </span>
                 ))}
+                
                 {selectedAvailability.map((time) => (
                   <span key={time} className="filter-tag">
                     {time}
                     <button
-                      onClick={() =>
-                        removeSelectedItem(time, setSelectedAvailability)
-                      }
+                      className="filter-tag-remove"
+                      onClick={() => removeFilter("selectedAvailability", time)}
                     >
                       ×
                     </button>
                   </span>
                 ))}
+                
                 {selectedExperience.map((exp) => (
                   <span key={exp} className="filter-tag">
                     {exp}
                     <button
-                      onClick={() =>
-                        removeSelectedItem(exp, setSelectedExperience)
-                      }
+                      className="filter-tag-remove"
+                      onClick={() => removeFilter("selectedExperience", exp)}
                     >
                       ×
                     </button>
@@ -495,378 +729,199 @@ const FindDoctorPage = () => {
             </div>
           )}
 
-          {/* Symptoms filter */}
-          <div className="filter-section">
-            <h3
-              className="sidetext-dropdown-heading"
-              onClick={() => toggleFilterDropdown(setShowDropdown)}
-              style={{ cursor: "pointer" }}
-            >
-              Symptoms {showDropdown ? <FaChevronUp /> : <FaChevronDown />}
-            </h3>
-
-            {showDropdown && (
-              <ul className="dropdown-content">
-                {symptoms.map((symptom, index) => (
-                  <li key={index}>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={selectedSymptoms.includes(symptom)}
-                        onChange={() =>
-                          handleFilterChange(symptom, setSelectedSymptoms)
-                        }
-                        className="symptoms-checkedbox"
-                      />
-                      {symptom}
-                    </label>
-                  </li>
-                ))}
-              </ul>
+          {/* Filter sections */}
+          <FilterSection
+            title="Symptoms"
+            items={SYMPTOMS}
+            selectedItems={selectedSymptoms}
+            onToggle={(item) => handleToggleFilter("selectedSymptoms", item)}
+            showDropdown={dropdownStates.Symptoms}
+            onToggleDropdown={toggleFilterDropdown}
+          />
+          
+          <FilterSection
+            title="Specialty"
+            items={SPECIALTIES}
+            selectedItems={selectedSpecialties}
+            onToggle={(item) => handleToggleFilter("selectedSpecialties", item)}
+            showDropdown={dropdownStates.Specialty}
+            onToggleDropdown={toggleFilterDropdown}
+          />
+          
+          <FilterSection
+            title="Location"
+            items={LOCATIONS}
+            selectedItems={selectedLocations}
+            onToggle={(item) => handleToggleFilter("selectedLocations", item)}
+            showDropdown={dropdownStates.Location}
+            onToggleDropdown={toggleFilterDropdown}
+          />
+          
+          <FilterSection
+            title="Consultation Fee"
+            items={FEES}
+            selectedItems={selectedFees}
+            onToggle={(item) => handleToggleFilter("selectedFees", item)}
+            showDropdown={dropdownStates["Consultation Fee"]}
+            onToggleDropdown={toggleFilterDropdown}
+            renderItem={(fee) => `₹${fee} or less`}
+          />
+          
+          <FilterSection
+            title="Rating"
+            items={RATINGS}
+            selectedItems={selectedRatings}
+            onToggle={(item) => handleToggleFilter("selectedRatings", item)}
+            showDropdown={dropdownStates.Rating}
+            onToggleDropdown={toggleFilterDropdown}
+            renderItem={(rating) => (
+              <div className="rating-option">
+                {rating} {rating === 1 ? "Star" : "Stars"}
+              </div>
             )}
-          </div>
-
-          {/* Specialty filter */}
-          <div className="filter-section">
-            <h3
-              className="sidetext-dropdown-heading"
-              onClick={() => toggleFilterDropdown(setShowSpecialtyDropdown)}
-              style={{ cursor: "pointer" }}
-            >
-              Specialty{" "}
-              {showSpecialtyDropdown ? <FaChevronUp /> : <FaChevronDown />}
-            </h3>
-
-            {showSpecialtyDropdown && (
-              <ul className="dropdown-content">
-                {specialties.map((specialty, index) => (
-                  <li key={index}>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={selectedSpecialties.includes(specialty)}
-                        onChange={() =>
-                          handleFilterChange(specialty, setSelectedSpecialties)
-                        }
-                        className="symptoms-checkedbox"
-                      />
-                      {specialty}
-                    </label>
-                  </li>
-                ))}
-              </ul>
+          />
+          
+          <FilterSection
+            title="Language"
+            items={LANGUAGES}
+            selectedItems={selectedLanguages}
+            onToggle={(item) => handleToggleFilter("selectedLanguages", item)}
+            showDropdown={dropdownStates.Language}
+            onToggleDropdown={toggleFilterDropdown}
+          />
+          
+          <FilterSection
+            title="Availability"
+            items={AVAILABILITY}
+            selectedItems={selectedAvailability}
+            onToggle={(item) => handleToggleFilter("selectedAvailability", item)}
+            showDropdown={dropdownStates.Availability}
+            onToggleDropdown={toggleFilterDropdown}
+            renderItem={(time) => (
+              <div className="availability-option">
+                <MdOutlineCalendarMonth className="option-icon" /> {time}
+              </div>
             )}
-          </div>
-
-          {/* Location filter */}
-          <div className="filter-section">
-            <h3
-              className="sidetext-dropdown-heading"
-              onClick={() => toggleFilterDropdown(setShowLocationDropdown)}
-              style={{ cursor: "pointer" }}
-            >
-              Location{" "}
-              {showLocationDropdown ? <FaChevronUp /> : <FaChevronDown />}
-            </h3>
-
-            {showLocationDropdown && (
-              <ul className="dropdown-content">
-                {locations.map((location, index) => (
-                  <li key={index}>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={selectedLocations.includes(location)}
-                        onChange={() =>
-                          handleFilterChange(location, setSelectedLocations)
-                        }
-                        className="symptoms-checkedbox"
-                      />
-                      {location}
-                    </label>
-                  </li>
-                ))}
-              </ul>
+          />
+          
+          <FilterSection
+            title="Experience"
+            items={EXPERIENCE}
+            selectedItems={selectedExperience}
+            onToggle={(item) => handleToggleFilter("selectedExperience", item)}
+            showDropdown={dropdownStates.Experience}
+            onToggleDropdown={toggleFilterDropdown}
+            renderItem={(exp) => (
+              <div className="experience-option">
+                <MdWorkOutline className="option-icon" /> {exp}
+              </div>
             )}
-          </div>
-
-          {/* Consultation Fee filter */}
-          <div className="filter-section">
-            <h3
-              className="sidetext-dropdown-heading"
-              onClick={() => toggleFilterDropdown(setShowFeeDropdown)}
-              style={{ cursor: "pointer" }}
-            >
-              Consultation Fee{" "}
-              {showFeeDropdown ? <FaChevronUp /> : <FaChevronDown />}
-            </h3>
-
-            {showFeeDropdown && (
-              <ul className="dropdown-content">
-                {fees.map((fee, index) => (
-                  <li key={index}>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={selectedFees.includes(fee)}
-                        onChange={() =>
-                          handleFilterChange(fee, setSelectedFees)
-                        }
-                        className="symptoms-checkedbox"
-                      />
-                      ₹{fee} or less
-                    </label>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-
-          {/* Rating filter */}
-          <div className="filter-section">
-            <h3
-              className="sidetext-dropdown-heading"
-              onClick={() => toggleFilterDropdown(setShowRatingDropdown)}
-              style={{ cursor: "pointer" }}
-            >
-              Rating {showRatingDropdown ? <FaChevronUp /> : <FaChevronDown />}
-            </h3>
-
-            {showRatingDropdown && (
-              <ul className="dropdown-content">
-                {ratings.map((rating, index) => (
-                  <li key={index}>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={selectedRatings.includes(rating)}
-                        onChange={() =>
-                          handleFilterChange(rating, setSelectedRatings)
-                        }
-                        className="symptoms-checkedbox"
-                      />
-                      {rating} Star{rating > 1 ? "s" : ""}
-                    </label>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-
-          {/* Language filter */}
-          <div className="filter-section">
-            <h3
-              className="sidetext-dropdown-heading"
-              onClick={() => toggleFilterDropdown(setShowLanguageDropdown)}
-              style={{ cursor: "pointer" }}
-            >
-              Language{" "}
-              {showLanguageDropdown ? <FaChevronUp /> : <FaChevronDown />}
-            </h3>
-
-            {showLanguageDropdown && (
-              <ul className="dropdown-content">
-                {languages.map((language, index) => (
-                  <li key={index}>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={selectedLanguages.includes(language)}
-                        onChange={() =>
-                          handleFilterChange(language, setSelectedLanguages)
-                        }
-                        className="symptoms-checkedbox"
-                      />
-                      {language}
-                    </label>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-
-          {/* Availability filter */}
-          <div className="filter-section">
-            <h3
-              className="sidetext-dropdown-heading"
-              onClick={() => toggleFilterDropdown(setShowAvailabilityDropdown)}
-              style={{ cursor: "pointer" }}
-            >
-              Availability{" "}
-              {showAvailabilityDropdown ? <FaChevronUp /> : <FaChevronDown />}
-            </h3>
-
-            {showAvailabilityDropdown && (
-              <ul className="dropdown-content">
-                {availability.map((time, index) => (
-                  <li key={index}>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={selectedAvailability.includes(time)}
-                        onChange={() =>
-                          handleFilterChange(time, setSelectedAvailability)
-                        }
-                        className="symptoms-checkedbox"
-                      />
-                      {time}
-                    </label>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-
-          {/* Experience filter */}
-          <div className="filter-section">
-            <h3
-              className="sidetext-dropdown-heading"
-              onClick={() => toggleFilterDropdown(setShowExperienceDropdown)}
-              style={{ cursor: "pointer" }}
-            >
-              Experience{" "}
-              {showExperienceDropdown ? <FaChevronUp /> : <FaChevronDown />}
-            </h3>
-
-            {showExperienceDropdown && (
-              <ul className="dropdown-content">
-                {experience.map((exp, index) => (
-                  <li key={index}>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={selectedExperience.includes(exp)}
-                        onChange={() =>
-                          handleFilterChange(exp, setSelectedExperience)
-                        }
-                        className="symptoms-checkedbox"
-                      />
-                      {exp}
-                    </label>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
-
+          />
+        </aside>
         {/* Main content area */}
-        <div className="con">
-          <div className="findDoctorPage-search-bar-container1">
-            <input
-              type="text"
-              placeholder="Search by specialization"
-              className="findDoctorPage-specialization-search1"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <select
-              className="findDoctorPage-state-dropdown"
-              value={selectedState}
-              onChange={(e) => setSelectedState(e.target.value)}
-            >
-              <option value="">Searching Doctors in state</option>
-              {indianStates.map((state) => (
-                <option key={state} value={state}>
-                  {state}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="filter-summary">
-            <p>
-              Found {filteredDoctors.length} doctor
-              {filteredDoctors.length !== 1 ? "s" : ""}
-            </p>
-          </div>
-
-          <div className="doctor-list" ref={listRef}>
-            {loading ? (
-              <p>Loading our trusted and verified doctors...</p>
-            ) : filteredDoctors.length > 0 ? (
-              filteredDoctors.map((doctor) => (
-                <div
-                  key={doctor.id}
-                  className="doctor-card"
-                  onClick={() => doctorProfile(doctor)}
-                >
-                 <div className="docImgAndBookContainer">
-                 <img
-                    src={getDoctorImage(doctor.doctorPhoto)}
-                    alt={`Dr. ${doctor.fullName}`}
-                    className="doctor-image"
-                  />
-                  <button className="book-btn">Book Appointment</button>
-
-                 </div>
-                  <div className="doctor-info">
-                    <h3 className="card-text-head">
-                      Dr. {doctor.fullName?.toUpperCase() || "Not Mentioned"}
-                    </h3>
-                    <p>
-                      <strong>Specialty:</strong>{" "}
-                      {doctor.medicalSpeciality || "Not Mentioned"}
-                    </p>
-                    <p>
-                      <strong>Experience:</strong> {doctor.experience}{" "}
-                      {doctor.experience !== "Not Mentioned"}
-                    </p>
-                    <p>
-                      <strong>Location:</strong> {doctor.city},{" "}
-                      {doctor.state !== "Not Mentioned" ? doctor.state : ""}{" "}
-                      {doctor.country}
-                    </p>
-                    {/* <p>
-                      <strong>Hospital:</strong>{" "}
-                      {doctor.hospitalCurrentWorking || "Not Mentioned"}
-                    </p> */}
-                    {/* <p>
-                      <strong>License:</strong>{" "}
-                      {doctor.medicalLicenseNumber || "Not Mentioned"}
-                    </p> */}
-                    {/* <p>
-                      <strong>Gender:</strong>{""}
-                      {doctor.gender || "Not Mentioned"}
-                    </p> */}
-                    <p>
-                      <strong>Language: </strong>
-                      {""}
-                      {doctor.languages || "Not Mentioned"}
-                    </p>
-                    <p>
-                      <strong>Rating: </strong>
-                      {""}
-                      {doctor.rating || "Not Mentioned"}
-                    </p>
-                    <p>
-                      <strong>Consultation Fee: </strong>
-                      {""}
-                      {doctor.consultationFee || "Not Mentioned"}
-                    </p>
-                    {/* Show fee and rating if available */}
-                    {doctor.consultationFee && (
-                      <p>
-                        <strong>Fee:</strong> ₹{doctor.consultationFee}
-                      </p>
-                    )}
-                    {doctor.rating && (
-                      <p>
-                        <strong>Rating:</strong> {doctor.rating} ★
-                      </p>
-                    )}
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p className="no-results">
-                The Doctors youre searching for might be under verification process. Please refine your search for now.
-              </p>
+        <main className="doctor-results">
+          <div className="results-header">
+            <h2 className="results-title">
+              {loading 
+                ? "Loading doctors..." 
+                : `Found ${filteredDoctors.length} doctor${filteredDoctors.length !== 1 ? "s" : ""}`}
+            </h2>
+            
+            {filteredDoctors.length > 0 && !loading && (
+              <div className="pagination-info">
+                Showing {(currentPage - 1) * DOCTORS_PER_PAGE + 1} - {Math.min(currentPage * DOCTORS_PER_PAGE, filteredDoctors.length)} 
+                of {filteredDoctors.length} doctors
+              </div>
             )}
           </div>
-        </div>
+        
+          {/* Doctor cards section */}
+          <div className="doctor-list">
+            {loading ? (
+              <div className="loading-container">
+                <p>Loading our trusted and verified doctors...</p>
+                {/* You could add a spinner here */}
+              </div>
+            ) : filteredDoctors.length > 0 ? (
+              <>
+                {paginatedDoctors.map((doctor) => (
+                  <DoctorCard 
+                    key={doctor.id} 
+                    doctor={doctor}
+                    onClick={navigateToDoctorProfile}
+                  />
+                ))}
+                
+                {/* Pagination controls */}
+                {totalPages > 1 && (
+                  <div className="pagination-controls">
+                    <button 
+                      className="pagination-btn"
+                      disabled={currentPage === 1}
+                      onClick={() => handlePageChange(currentPage - 1)}
+                    >
+                      &lt; Previous
+                    </button>
+                    
+                    <div className="page-numbers">
+                      {[...Array(totalPages)].map((_, index) => {
+                        const pageNumber = index + 1;
+                        // Only show a window of pages around current page
+                        if (
+                          pageNumber === 1 ||
+                          pageNumber === totalPages ||
+                          (pageNumber >= currentPage - 2 && pageNumber <= currentPage + 2)
+                        ) {
+                          return (
+                            <button
+                              key={pageNumber}
+                              className={`page-number ${pageNumber === currentPage ? 'active' : ''}`}
+                              onClick={() => handlePageChange(pageNumber)}
+                            >
+                              {pageNumber}
+                            </button>
+                          );
+                        }
+                        
+                        // Add ellipsis for skipped pages
+                        if (pageNumber === 2 || pageNumber === totalPages - 1) {
+                          return <span key={pageNumber} className="page-ellipsis">...</span>;
+                        }
+                        
+                        return null;
+                      })}
+                    </div>
+                    
+                    <button 
+                      className="pagination-btn"
+                      disabled={currentPage === totalPages}
+                      onClick={() => handlePageChange(currentPage + 1)}
+                    >
+                      Next &gt;
+                    </button>
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="no-results-container">
+                <p className="no-results">
+                  The doctors you're searching for might be under verification process. 
+                  Please refine your search criteria or try again later.
+                </p>
+                {hasActiveFilters && (
+                  <button 
+                    className="clear-filters-btn-large" 
+                    onClick={clearAllFilters}
+                  >
+                    Clear All Filters
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+        </main>
       </div>
-    </>
+    </div>
   );
 };
 
