@@ -40,29 +40,15 @@ const DoctorID = () => {
           <img src={doctor.image} alt={doctor.name} className="doctor-img" />
           <h2>Dr. {doctor.name.toUpperCase()}</h2>
 
-          <div className="details">
-            <p>
-              <strong>License :</strong> {doctor.license}
-            </p>
-            <p>
-              <strong>Expiry :</strong> {doctor.expiry}
-            </p>
-            <p>
-              <strong>Specialization :</strong> {doctor.specialization}
-            </p>
-            <p>
-              <strong>Clinics/Hospitals:</strong> {doctor.clinics}
-            </p>
-            <p>
-              <strong>Phone :</strong> {doctor.phone}
-            </p>
-            <p>
-              <strong>Email :</strong> {doctor.email}
-            </p>
-            <p>
-              <strong>Address :</strong> {doctor.address}
-            </p>
-          </div>
+      <div className="details">
+        <p><strong>License          :</strong> {doctor.license}</p>
+        <p><strong>Expiry           :</strong> {doctor.expiry}</p>
+        <p><strong>Specialization   :</strong> {doctor.specialization}</p>
+        <p><strong>Clinics/Hospitals:</strong> {doctor.clinics}</p>
+        <p><strong>Phone            :</strong> {doctor.phone}</p>
+        <p><strong>Email            :</strong> {doctor.email}</p>
+        <p><strong>Address           :</strong> {doctor.address}</p>
+      </div>
 
           <p className="experience">{doctor.experience}</p>
 

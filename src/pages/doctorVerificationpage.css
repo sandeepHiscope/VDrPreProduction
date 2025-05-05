@@ -1,0 +1,150 @@
+/* App.css */
+
+.doctorverification-page-container{
+  background-color: #f0f0f0;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.v-drapp {
+  color: #000000;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  position: absolute;
+  right: 83.28%;
+  left: 10.47%;
+  width: 6.25%;
+  bottom: 183px;
+}
+.image-22 {
+  border-radius: 184.5px;
+  width: 8.72%;
+  height: 110.42px;
+  position: absolute;
+  right: 91.28%;
+  left: 0%;
+  bottom: 59.58px;
+  object-fit: cover;
+}
+.doctor-verification {
+  color: #000000;
+  text-align: left;
+  font-family: "OpenSans-Bold", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  position: absolute;
+  right: 394px;
+  top: 177px;
+}
+.group-74 {
+  position: absolute;
+  inset: 0;
+}
+
+.logo{
+  background: #000;
+  width: 8rem;
+  margin: 1rem;
+
+height: 5rem;}
+
+.full-name-span{
+  width: 20rem;
+}
+
+
+.hero-image1{
+  height: 350px;
+  width: 550px;
+  object-fit: cover;
+  position: absolute;
+  top: 80px;
+  left: 10px;
+  }
+
+.doctorverification-container{
+  margin-left: 40%;
+}
+.doctorverification-container1 {
+  background-color: rgba(230, 229, 229, 0.488);
+  padding: 20px;
+  border-radius: 8px;
+  width: 550px;
+  position: sticky;
+  right: 20%;
+  top: 50%;
+  height: 200%;
+  box-shadow:  3px 3px 20px rgb(187,185,185);
+  border: none;
+}
+
+.doctorVerification-h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+
+
+/* input[type="text"], input[type="file"], select, .doctorVerification-textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border: 0.5px solid #a5a1a17a;
+} */
+
+.doctorVerification-textarea {
+  height: 140px;
+  resize: none;
+  position: sticky;
+  top: -10px;
+  overflow: scroll;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:-transition-background-color;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+.image{
+  position: absolute;
+  top:50%;
+  left: 50px;
+  height: 100px;
+  width:100px;
+}
+.image2{
+  height:100px;
+  width:100px;
+
+}
+.from-group-span{
+  color: red;
+}
+
+
+
+
+

@@ -769,19 +769,22 @@ margin-bottom: 1rem;
 }
 }
 
-.doctor-card1 {
+.doctor-card2 {
 background: white;
 border-radius: 0.5rem;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .doctor-header {
-padding: 1rem;
+  
+  width: 100%;
+/* padding: 1rem; */
 border-bottom: 1px solid #ddd;
 }
 
 @media (min-width: 640px) {
 .doctor-header {
+  
   padding: 1.5rem;
 }
 }
@@ -789,7 +792,7 @@ border-bottom: 1px solid #ddd;
 .doctor-header-content {
 display: flex;
 flex-direction: column;
-gap: 1rem;
+gap: 15rem;
 align-items: center;
 }
 
@@ -1139,6 +1142,52 @@ background: none;
 border: none;
 }
 
+.action-buttons1 {
+  display: flex;
+  gap: 10px;
+  opacity: 100%;
+  transition: opacity 0.3s ease;
+  /* background-color: aqua; */
+  width: 100px;
+}
+
+/* Show buttons when parent (e.g., a card or row) is hovered */
+.card:hover .action-buttons1,
+.row:hover .action-buttons1 {
+  opacity: 1;
+}
+
+.tick-btn, .cross-btn {
+  font-size: 18px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  color: rgb(59, 58, 58);
+  cursor: pointer;
+  background-color: #2c2c2d;
+}
+
+.tick-btn {
+  background-color: var(--color-primary);
+ 
+}
+
+.cross-btn {
+  background-color: #dc3545;
+
+}
+
+.tick-btn:hover {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+
+.cross-btn:hover {
+  background-color: #c82333;
+  color: #ffffff;
+}
+
+
 .action-buttons .edit-btn {
 color: #3b82f6;
 }
@@ -1299,4 +1348,149 @@ color: #171717;
     left: 0;
     
   }
+}
+.center-message {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.doctor-section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.info-grid.two-column {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+}
+.left{
+  margin-left: 150px;
+  flex: 1;
+  min-width: 280px;
+}
+.right {
+  margin-left: 150px;
+  flex: 1;
+  min-width: 280px;
+}
+
+.info-label {
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  resize: vertical;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+input[type="file"] {
+  /* background-color: var(--background-color-main); */
+  display: block;
+  margin-top: 10px;
+  border: solid 1px #ccc;
+}
+
+.total-right {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.doctor-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.doctor-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* max-width: 900px;
+  width: 100%;
+  background-color: #f9f9f9; */
+  /* padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.doctor-avatar {
+  flex: 0 0 120px;
+  margin-right: 20px;
+}
+
+.docDashboard_doctor-profile_img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ccc;
+}
+
+.doctor-info {
+  flex: 1;
+}
+
+.doctor-name {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.doctor-role {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.doctor-license {
+  font-size: 16px;
+  color: #777;
+}
+
+/* .total-right {
+  margin-left: auto;
+} */
+
+/* .edit-button {
+  background-color: #007bff;
+  color: white;  
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+} */
+
+.line{
+  color:#dedede
 }
