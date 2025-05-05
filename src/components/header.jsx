@@ -107,6 +107,13 @@ const MainHeader = () => {
  
 
       <nav className="header-nav-container">
+         <button
+               className="toggle-button"
+               onClick={toggleSlide}
+               aria-label="Toggle Menu"
+             >
+               {isOpen ? <ImCross className="secicon" /> : <IoReorderThreeOutline />}
+             </button>
         <Link to="/" onClick={handleNavClick}>
           <img src={VDrLogo} alt="VDrapp Logo" className="header-logo" />
         </Link>
@@ -184,6 +191,7 @@ const MainHeader = () => {
               >
                 Login/Signup
               </button>
+              
             )}
           </div>
         </div>

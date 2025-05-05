@@ -131,13 +131,7 @@ function Homepage() {
   return (
     <>
       <div className="header-section">
-        <button
-          className="toggle-button"
-          onClick={toggleSlide}
-          aria-label="Toggle Menu"
-        >
-          {isOpen ? <ImCross className="secicon" /> : <IoReorderThreeOutline />}
-        </button>
+       
         
         <div
           className="header-background"
