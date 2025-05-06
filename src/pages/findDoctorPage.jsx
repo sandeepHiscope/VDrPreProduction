@@ -240,7 +240,7 @@ const DoctorCard = ({ doctor, onClick }) => {
             className="doctor-image"
           />
         </div>
-        <button className="book-appointment-btn">Book Appointment</button>
+        <button className="book-appointment-btn" >Book Appointment</button>
       </div>
       
       <div className="doctor-info">
