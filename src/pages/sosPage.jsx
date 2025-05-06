@@ -62,6 +62,8 @@ const SosPage = () => {
       <div className="sos-container">
         <div className="div1">
 
+          <button onDoubleClick={handleDoubleClick} className="sos_btn">
+            Activate SOS
           </button>
         </div>
 
@@ -76,10 +78,9 @@ const SosPage = () => {
           </button>
         )}
       </div>
-
-      {/* Footer can be added here if needed */}
     </>
   );
 };
 
 export default SosPage;
+
