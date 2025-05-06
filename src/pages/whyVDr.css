@@ -50,7 +50,7 @@
 }
 
 .why-vdr-page h1 {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   margin-bottom: 1.5rem;
 }
 
@@ -157,6 +157,7 @@
   cursor: pointer;
   transition: --transition-background-color 0.3s, var(--transition-slide);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius:7px;
 }
 
 .why-vdr-page .cta-button:hover {
@@ -212,10 +213,20 @@
   border-radius: var(--border-radius);
   box-shadow: var(--card-shadow);
   height: 100%;
+  background-color: white;
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  transition: var(--transition-slide), box-shadow 0.3s ease;
+}
+.why-vdr-page .problem-card:hover,
+.why-vdr-page .solution-card:hover {
+  transform: translateY(-5px);
 }
 
 .why-vdr-page .problem-card {
   border-left: 6px solid var(--color-error);
+  font-size: 1rem;
+  text-align: left;
 }
 
 .why-vdr-page .solution-card {
@@ -231,6 +242,7 @@
 .why-vdr-page .problem-card ul,
 .why-vdr-page .solution-card ul {
   list-style-type: none;
+
 }
 
 .why-vdr-page .problem-card li,
@@ -238,6 +250,9 @@
   display: flex;
   align-items: left;
   margin-bottom: 1rem;
+  text-align:left;
+  justify-content:left;
+  gap: 20px;
 }
 
 .why-vdr-page .icon {
@@ -272,6 +287,10 @@
   box-shadow: var(--card-shadow);
   position: relative;
   transition: var(--transition-slide), box-shadow 0.3s ease;
+  background-color: white;
+  padding: 2rem;
+  border-radius: var(--radius-md);
+
 }
 
 .why-vdr-page .step-card:hover {
@@ -402,6 +421,14 @@
   padding: 2rem;
   border-radius: var(--radius-md);
   box-shadow: var(--card-shadow);
+  background-color: white;
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  transition: var(--transition-slide), box-shadow 0.3s ease;
+}
+.why-vdr-page .testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow);
 }
 
 .why-vdr-page .testimonial-content {
@@ -514,10 +541,11 @@
 
 .whyVdr-faq-container {
   min-width: 400px;
-  margin: 2em 6em;
+  margin: 2rem 10%;
   padding: 2rem;
   background: rgb(255, 253, 253);
   border-radius: var(--border-radius);
+  border-radius:px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
   width: 81vw;
   margin-top: 90px;
@@ -578,9 +606,18 @@
   max-height: 500px;
   margin-top: 0.5rem;
 }
-.why-vdr-page .mainheader {
+.why-vdr-page .mainheader{
   /* margin-top: ; */
   text-align: center;
+}
+h1.our-founder-and-devs {
+  text-align: center;
+  font-weight: 700;
+  color: #3f3d56;
+  font-size: 2rem;
+  margin-top: 3rem;
+  text-decoration: underline;
+
 }
 @media (max-width: 800px) {
   .why-vdr-page p {
@@ -690,7 +727,7 @@
   }
 
   .why-vdr-page h1 {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
   }
 
   .why-vdr-page h2 {

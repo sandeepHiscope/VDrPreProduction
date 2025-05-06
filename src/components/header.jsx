@@ -52,8 +52,8 @@ const NAV_LINKS = [
     external: true,
   },
   {
-    to: "/doctorAppointment",
-    label: "Book Appointment",
+    to: "/medicalLabTechnicianDashboard",
+    label: "Diagnosis Dash",
    
     icon: <ShieldQuestion className="headericons" />,
   },
@@ -147,7 +147,7 @@ const MainHeader = () => {
                 </Link>
               )
             )}
-            <button
+            {/* <button
               className="nav-link flex items-center cursor-pointer"
               onClick={docLogged}
             >
@@ -164,7 +164,8 @@ const MainHeader = () => {
               onClick={loggedOut}
             >
               Logout ❌
-            </button>
+            </button> */}
+          {/* only dev purpose */}
 
             {isLoggedIn ? (
               isDoctor ? (

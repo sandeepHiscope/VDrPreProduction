@@ -27,6 +27,8 @@ import UserDashboard from "./pages/userDashboard";
 import LoginContextProvider, { LoginContext } from "./context/loginContext.jsx";
 import DoctorAppointment from "./components/doctorAppointment";
 import CookieConsent from "./hooks/CookieConsent.jsx";
+import MedicalLabTechnicianDashboard from "./pages/medicalLabTechnicianDashboard.jsx"
+
 
 const App = () => {
   const [location, setLocation] = useState();
@@ -80,6 +82,8 @@ const App = () => {
               <Route path="/doctorID/:id" element={<DoctorID />} />
               <Route path="/QRCodeGenerator" element={<QRCodeGenerator />} />
               <Route path="/whyVDr" element={<WhyVDr />} />
+              <Route path="/medicalLabTechnicianDashboard" element={<MedicalLabTechnicianDashboard />} />
+
               <Route
                 path="/docDashboard"
                 element={
