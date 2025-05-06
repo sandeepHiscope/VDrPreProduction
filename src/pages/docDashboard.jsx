@@ -668,7 +668,7 @@ const DocDashboard = () => {
     <div className={`docDashboard-sidebar ${isSidebarOpen ? "docDashboard-sidebar-open" : ""}`}>
       <div className="docDashboard-sidebar-header">
         {/* Optional Header Title */}
-        <span className="docDashboard-sidebar-title">Menu</span>
+        {/* <span className="docDashboard-sidebar-title">Menu</span> */}
       </div>
   
       {/* Navigation Menu */}
