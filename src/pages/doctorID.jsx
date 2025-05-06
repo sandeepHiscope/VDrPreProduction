@@ -69,10 +69,9 @@ const DoctorID = () => {
 
           <p className="experience">{doctor.experience}</p>
 
-          <div
-            className="button-group"
-            style={showAppointment ? { width: "50%" } : {}}
-          >
+
+          <div className="button-group" style={showAppointment ? { width: "10" } : {}}>
+
             <button className="book-btn1" onClick={handleBookClick}>
               Book Appointment
             </button>
