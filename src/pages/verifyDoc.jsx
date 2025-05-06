@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import jsQR from "jsqr";
 import "./verifyDoc.css";
-import { FiUpload } from "react-icons/fi";
+import { FiUpload, FiCamera, FiClock, FiInfo, FiArrowRight } from "react-icons/fi";
 
 const VerifyDoc = () => {
   const videoRef = useRef(null);
@@ -11,6 +11,8 @@ const VerifyDoc = () => {
   const [stream, setStream] = useState(null);
   const [redirecting, setRedirecting] = useState(false);
   const [countdown, setCountdown] = useState(5);
+  const [recentScans, setRecentScans] = useState([]);
+  const [activeTab, setActiveTab] = useState("scan");
 
   useEffect(() => {
     return () => {
@@ -20,6 +22,14 @@ const VerifyDoc = () => {
     };
   }, [stream]);
 
+  useEffect(() => {
+    // Load recent scans from localStorage
+    const savedScans = localStorage.getItem("recentScans");
+    if (savedScans) {
+      setRecentScans(JSON.parse(savedScans));
+    }
+  }, []);
+
   const isValidURL = (str) => {
     try {
       new URL(str);
@@ -28,72 +38,84 @@ const VerifyDoc = () => {
       return false;
     }
   };
-  
 
-  const handleNewScan = (data) => {
-    setResult(data);
-
-    if (isValidURL(data)) {
-      setRedirecting(true);
-      let timeLeft = 5;
-      const timer = setInterval(() => {
-        setCountdown(timeLeft);
-        if (timeLeft === 0) {
-          clearInterval(timer);
-          window.location.href = data;
-        }
-        timeLeft--;
-      }, 1000);
+  // Handles the result of a successful QR scan
+  const handleScan = (data) => {
+    if (data) {
+      setResult(data);
+      // Add to recent scans
+      const newScan = {
+        data: data,
+        timestamp: new Date().toLocaleString(),
+        isUrl: isValidURL(data)
+      };
+      const updatedScans = [newScan, ...recentScans.slice(0, 4)];
+      setRecentScans(updatedScans);
+      localStorage.setItem("recentScans", JSON.stringify(updatedScans));
+      // If the scanned data is a URL, start redirect countdown
+      if (isValidURL(data)) {
+        setRedirecting(true);
+        let timeLeft = 5;
+        const timer = setInterval(() => {
+          setCountdown(timeLeft);
+          if (timeLeft === 0) {
+            clearInterval(timer);
+            window.location.href = data;
+          }
+          timeLeft--;
+        }, 1000);
+      }
     }
   };
 
+
+  // Continuously grabs frames from the video, scans for QR codes, and calls handleScan on success
+  const onScanSuccess = (stream, canvas, video) => {
+    const context = canvas.getContext("2d");
+    const interval = setInterval(() => {
+      if (video.readyState === video.HAVE_ENOUGH_DATA) {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+        const code = jsQR(imageData.data, imageData.width, imageData.height);
+        if (code) {
+          clearInterval(interval);
+          handleScan(code.data);
+          setScanning(false);
+          // Stop the camera stream
+          if (stream) {
+            stream.getTracks().forEach((track) => track.stop());
+          }
+
+        }
+      }
+    }, 200);
+  };
+
+  // Starts the camera, sets up the video and canvas, and begins scanning
   const startScanner = async () => {
     if (!videoRef.current) {
       console.error("Video element not found");
       alert("Error: Video element not found. Please retry.");
       return;
     }
-
     const video = videoRef.current;
     const canvas = canvasRef.current;
-    const context = canvas.getContext("2d");
-    let tickInterval;
-
     try {
       const mediaStream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: "environment", zoom: { ideal: 2 } },
+        video: {
+          facingMode: "environment",
+          width: { ideal: 1280 },
+          height: { ideal: 720 },
+        },
       });
-
       setStream(mediaStream);
-
-      if (video) {
-        video.srcObject = mediaStream;
-        video.setAttribute("playsinline", true);
-        video.play();
-        setScanning(true);
-      } else {
-        console.error("videoRef.current is null");
-      }
-
-      tickInterval = setInterval(() => {
-        if (video.readyState === video.HAVE_ENOUGH_DATA) {
-          canvas.height = video.videoHeight;
-          canvas.width = video.videoWidth;
-          context.drawImage(video, 0, 0, canvas.width, canvas.height);
-          const imageData = context.getImageData(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-          );
-          const code = jsQR(imageData.data, imageData.width, imageData.height);
-          if (code) {
-            handleNewScan(code.data);
-            setScanning(false);
-            clearInterval(tickInterval);
-          }
-        }
-      }, 200);
+      video.srcObject = mediaStream;
+      video.setAttribute("playsinline", true);
+      video.play();
+      setScanning(true);
+      onScanSuccess(mediaStream, canvas, video);
     } catch (err) {
       console.error("Camera access error:", err);
       alert("Camera access error: " + err.message);
@@ -142,67 +164,222 @@ const VerifyDoc = () => {
   };
 
   return (
-    <div className="scannerPageContainer">
-      <div className="scannerContainer">
-        <h1 className="title">QR Code Scanner</h1>
-        <p className="instructions">
-          Scan a QR code or upload an image. If it's a URL, you’ll be redirected
-          in 5 seconds.
-        </p>
+    <div className="vdoc-page-container">
+      {/* Sidebar */}
+      <aside className="vdoc-sidebar">
+        <nav className="vdoc-side-nav">
+          <ul>
+            <li className={activeTab === "scan" ? "vdoc-active" : ""}>
+              <button onClick={() => setActiveTab("scan")}>
+                <FiCamera className="vdoc-nav-icon" />
+                <span>Scan</span>
+              </button>
+            </li>
+            <li className={activeTab === "history" ? "vdoc-active" : ""}>
+              <button onClick={() => setActiveTab("history")}>
+                <FiClock className="vdoc-nav-icon" />
+                <span>History</span>
+              </button>
+            </li>
+            <li className={activeTab === "about" ? "vdoc-active" : ""}>
+              <button onClick={() => setActiveTab("about")}>
+                <FiInfo className="vdoc-nav-icon" />
+                <span>About</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </aside>
 
-        <div
-          className="scanner-box"
-          onClick={() => document.getElementById("fileInput").click()}
-        >
-          {!scanning && (
-            <>
-              <span className="upload-icon">
-                <FiUpload size={40} />
-              </span>
-              <span className="upload-text">Click here to upload</span>
-            </>
-          )}
-          <canvas className="scanner-canvas" ref={canvasRef} />
-        </div>
+      <main className="vdoc-main-content">
+        {activeTab === "scan" && (
+          <>
+            <div className="vdoc-scanner-section">
+              <h2 className="vdoc-section-title">QR Code Scanner</h2>
+              <p className="vdoc-instructions">
+                Scan a QR code using your camera or upload an image. If it's a
+                URL, you'll be redirected in 5 seconds.
+              </p>
 
-        <input className="upload-input"
-          id="fileInput"
-          type="file"
-          accept="image/*"
-          style={{ display: "none" }}
-          onChange={handleImageUpload}
-        />
-      </div>
+              <div className="vdoc-scanner-box-container">
+                <div
+                  className="vdoc-scanner-box"
+                  onClick={() =>
+                    document.getElementById("vdoc-fileInput").click()
+                  }
+                >
+                  {!scanning && (
+                    <>
+                      <span className="vdoc-upload-icon">
+                        <FiUpload size={40} />
+                      </span>
+                      <span className="vdoc-upload-text">
+                        Click here to upload
+                      </span>
+                    </>
+                  )}
+                  <canvas className="vdoc-scanner-canvas" ref={canvasRef} />
 
-      {/* Hidden Video Element for Camera Stream */}
-      <video className="ScanningVideo" ref={videoRef} style={{ display: "none" }} playsInline autoPlay />
+                  {/* Scanner guide overlay */}
+                  {scanning && <div className="vdoc-scanner-guide"></div>}
+                </div>
 
-      <div className="scannerButtons">
-        <button className="scan-button" onClick={startScanner}>
-          {scanning ? "Scanning..." : "Scan"}
-        </button>
+                <input
+                  id="vdoc-fileInput"
+                  type="file"
+                  accept="image/*"
+                  style={{ display: "none" }}
+                  onChange={handleImageUpload}
+                />
+              </div>
 
-        {scanning && (
-          <button className="stop-button scan-button" onClick={stopScanner}>
-            Stop
-          </button>
+              <div className="vdoc-scanner-actions">
+                <button
+                  className={`vdoc-scan-button ${scanning ? "vdoc-scanning" : ""}`}
+                  onClick={scanning ? stopScanner : startScanner}
+                >
+                  {scanning ? "Stop Scanning" : "Start Camera Scan"}
+                  <FiCamera className="vdoc-button-icon" />
+                </button>
+              </div>
+
+              {/* Hidden Video Element for Camera Stream */}
+              <video
+                className="vdoc-scanning-video"
+                ref={videoRef}
+                style={{ display: "none" }}
+                playsInline
+                autoPlay
+              />
+
+              {redirecting && (
+                <div className="vdoc-redirect-box">
+                  <p>
+                    Redirecting in{" "}
+                    <span className="vdoc-countdown">{countdown}</span> seconds...
+                  </p>
+                  <p className="vdoc-redirect-url">{result}</p>
+                  <button
+                    className="vdoc-go-now-button"
+                    onClick={() => (window.location.href = result)}
+                  >
+                    Go Now <FiArrowRight />
+                  </button>
+                </div>
+              )}
+
+              {result && !isValidURL(result) && (
+                <div className="vdoc-result-box">
+                  <p className="vdoc-result-label">QR Code Data:</p>
+                  <p className="vdoc-result-text">{result}</p>
+                </div>
+              )}
+            </div>
+
+            <div className="vdoc-how-it-works">
+              <h3>
+                <FiInfo /> How It Works
+              </h3>
+              <div className="vdoc-steps">
+                <div className="vdoc-step">
+                  <div className="vdoc-step-number">1</div>
+                  <p>Position the QR code within the scanner frame or upload an image</p>
+                </div>
+                <div className="vdoc-step">
+                  <div className="vdoc-step-number">2</div>
+                  <p>Our scanner will automatically detect and read the QR code</p>
+                </div>
+                <div className="vdoc-step">
+                  <div className="vdoc-step-number">3</div>
+                  <p>View the decoded information or follow the URL if it's a link</p>
+                </div>
+              </div>
+            </div>
+          </>
         )}
-      </div>
-      {redirecting && (
-        <div className="redirect-box">
-          <p>Redirecting in {countdown} seconds...</p>
-          <p className="redirect-url">{result}</p>
-        </div>
-      )}
 
-      {result && !isValidURL(result) && (
-        <div className="result-box">
-          <p className="result-label">QR Code Data:</p>
-          <p className="result-text">{result}</p>
-        </div>
-      )}
+        {activeTab === "history" && (
+          <div className="vdoc-history-section">
+            <h2 className="vdoc-section-title">
+              <FiClock /> Recent Scans
+            </h2>
+            {recentScans.length > 0 ? (
+              <div className="vdoc-scan-history">
+                {recentScans.map((scan, index) => (
+                  <div className="vdoc-history-item" key={index}>
+                    <div className="vdoc-history-data">
+                      <p className="vdoc-data-preview">
+                        {scan.data.substring(0, 50)}
+                        {scan.data.length > 50 ? "..." : ""}
+                      </p>
+                      <span className="vdoc-scan-time">{scan.timestamp}</span>
+                    </div>
+                    {scan.isUrl && (
+                      <a
+                        href={scan.data}
+                        className="vdoc-history-action"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Visit <FiArrowRight />
+                      </a>
+                    )}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="vdoc-no-history">
+                No recent scans. Start scanning QR codes to build your history.
+              </p>
+            )}
+            {recentScans.length > 0 && (
+              <button
+                className="vdoc-clear-history"
+                onClick={() => {
+                  setRecentScans([]);
+                  localStorage.removeItem("recentScans");
+                }}
+              >
+                Clear History
+              </button>
+            )}
+          </div>
+        )}
+
+        {activeTab === "about" && (
+          <div className="vdoc-about-section">
+            <h2 className="vdoc-section-title">About QR Scanner Pro</h2>
+            <div className="vdoc-about-content">
+              <p>
+                QR Scanner Pro is a fast, reliable, and easy-to-use QR code
+                scanner application. It allows you to scan QR codes using your
+                device's camera or by uploading images.
+              </p>
+
+              <h3>Features</h3>
+              <ul className="vdoc-features-list">
+                <li>Camera scanning of QR codes</li>
+                <li>Image upload scanning</li>
+                <li>URL detection and redirection</li>
+                <li>Scan history tracking</li>
+                <li>Fast and accurate detection</li>
+              </ul>
+
+              <h3>Privacy</h3>
+              <p>
+                Your privacy is important to us. All scanned data remains on
+                your device and is never transmitted to our servers. Your scan
+                history is stored locally in your browser.
+              </p>
+            </div>
+          </div>
+        )}
+      </main>
     </div>
   );
 };
 
 export default VerifyDoc;
+/*
+
+*/

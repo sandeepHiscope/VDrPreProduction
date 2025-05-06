@@ -13,7 +13,8 @@ import ScrollingCardsContainer from "../components/ScrollingCardsContainer";
 import FindDoctorPage from "./findDoctorPage";
 import { IoReorderThreeOutline } from "react-icons/io5";
 import { ImCross } from "react-icons/im";
-import  Headerimage from "../data/headerImages";
+import Headerimage from "../data/headerImages";
+import ServicesSection from "../components/ServicesSection";
 
 function Homepage() {
   const [isHomePageRendered, setIsHomePageRendered] = useState(false);
@@ -31,10 +32,18 @@ function Homepage() {
   const toggleSlide = () => {
     setIsOpen(!isOpen);
   };
+  
 
   useEffect(() => {
-    // console.log("Home Page Rendered");
+    console.log("Home Page Rendered");  
     setIsHomePageRendered(true);
+
+    // Fix for image change logic
+    const interval = setInterval(() => {
+      setCurrentImage((prevImage) => (prevImage + 1) % Headerimage.length);
+    }, 3000); // Change image every 5 seconds
+
+    return () => clearInterval(interval);
   }, []);
 
   // Define state for country, state, and search input
@@ -95,7 +104,14 @@ function Homepage() {
         });
       };
     }
-  }, [isHomePageRendered]);
+
+    // Fix for rendering images
+    const headerBackground = document.querySelector(".header-background");
+    if (headerBackground) {
+      headerBackground.style.backgroundImage = `url(${Headerimage[currentImage].img})`;
+      headerBackground.style.backgroundPosition = `right ${position}% top 0%`;
+    }
+  }, [isHomePageRendered, currentImage, position]);
 
   const [activeSlides, setActiveSlides] = useState("doctor");
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
@@ -130,13 +146,7 @@ function Homepage() {
   return (
     <>
       <div className="header-section">
-        <button
-          className="toggle-button"
-          onClick={toggleSlide}
-          aria-label="Toggle Menu"
-        >
-          {isOpen ? <ImCross className="secicon" /> : <IoReorderThreeOutline />}
-        </button>
+       
         
         <div
           className="header-background"
@@ -185,6 +195,8 @@ function Homepage() {
           </div>
         )}
 
+        
+
         {/* Cards Slider Section */}
         <CardsSlider />
 
@@ -207,6 +219,8 @@ function Homepage() {
           </ul>
         </section>
 
+        {/* { our services} */}
+        <ServicesSection/>
         {/* Testimonials (reviews) Section */}
         <section className="content-section testimonials-section">
           <div className="section-header">
@@ -274,7 +288,7 @@ function Homepage() {
         </section>
 
         {/* App Download Section */}
-        <div className="download-section">
+        {/* <div className="download-section">
           <div className="download-container m-8 w-3/4 flex justify-evenly items-center p-2 rounded-2xl">
             <div className="app-preview">
               <img
@@ -303,7 +317,7 @@ function Homepage() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* FAQ Section */}
         <div className="faq-container">
@@ -377,31 +391,13 @@ function Homepage() {
               you never miss a consultation. You can also set custom reminders
               based on your preferences.
             </div>
-          </div>
+          </div>          
+  
+          
+    
         </div>
 
-        {/* Testimonial Slider Section */}
-        <div className="testimonial-slider-section">
-          <div className="testimonial-tabs">
-            <button 
-              className={`tab ${activeSlides === "doctor" ? "active" : ""}`}
-              onClick={() => showSlides("doctor")}
-            >
-              Doctor Opinions
-            </button>
-            <button 
-              className={`tab ${activeSlides === "patient" ? "active" : ""}`}
-              onClick={() => showSlides("patient")}
-            >
-              Patient Stories
-            </button>
-          </div>
-          <div className="testimonial-slider">
-            <div className="testimonial-slide">
-              {slides[currentSlideIndex]}
-            </div>
-          </div>
-        </div>
+        
       </div>
     </>
   );

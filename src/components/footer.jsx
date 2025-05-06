@@ -1,4 +1,11 @@
 import './footer.css';
+import GooglePlayLogo from "../assets/icons/apps/googleplay.png";
+import AppStoreLogo from "../assets/icons/apps/applestore.png";
+import { FaFacebookF } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
+import { IoLogoTwitter } from "react-icons/io";
+import { FaInstagram } from "react-icons/fa6";
+
 
 const Footer = () => (
   <footer className="footer">
@@ -9,6 +16,10 @@ const Footer = () => (
           Your trusted health companion, connecting you with verified,
           background-checked doctors for quality care.
         </p>
+        <div className="footerDownloadSection">
+          <img src={GooglePlayLogo}at="GooglePlayLogo"/>
+          <img src={AppStoreLogo}altt="AppStoreLogo" />
+        </div>
       </div>
 
       <div className="footer__col">
@@ -34,10 +45,10 @@ const Footer = () => (
       <div className="footer__col">
         <h4>Connect</h4>
         <div className="footer__social">
-          <a href="#"><img src="/icons/facebook.svg" alt="Facebook" /></a>
-          <a href="#"><img src="/icons/linkedin.svg" alt="LinkedIn" /></a>
-          <a href="#"><img src="/icons/twitter.svg" alt="Twitter" /></a>
-          <a href="#"><img src="/icons/instagram.svg" alt="Instagram" /></a>
+          <a href="https://www.facebook.com/"><FaFacebookF /></a>
+          <a href="https://in.linkedin.com/"><FaLinkedinIn /></a>
+          <a href="https://in.linkedin.com/"><IoLogoTwitter /></a>
+          <a href="https://www.instagram.com/"><FaInstagram /></a>
         </div>
         <p>Email: <a href="mailto:support@vdr.health">support@vdr.health</a></p>
         <p>Phone: <a href="tel:+919876543210">+91 98765 43210</a></p>
@@ -45,7 +56,7 @@ const Footer = () => (
     </div>
 
     <div className="footer__bottom">
-      <p>&copy; {new Date().getFullYear()} Hiscope Enterprises. All rights reserved.</p>
+      <p className='footerCopyright'>&copy; {new Date().getFullYear()} Hiscope Enterprises. All rights reserved.</p>
       <div className="footer__legal">
         <a href="/terms">Terms of Service</a>
         <a href="/privacy">Privacy Policy</a>

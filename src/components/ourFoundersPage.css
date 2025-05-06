@@ -6,7 +6,6 @@
 }
 
 .founderpage-founder {
-  background-color: #fff;
   max-width: 1000px;
   display: flex;
   flex-wrap: wrap;
@@ -14,16 +13,18 @@
   padding: 2rem;
   margin: 2rem auto;
   border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   transition: var(--transition-slide);
+  border: #33333310 .5px  solid;
+
 }
 
 .founderpage-founder:hover {
-  transform: scale(1.01);
-}
+  background: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(211, 210, 210, 0.349);}
 
 .founderpage-founder-div-img {
-  flex: 1 1 240px;
+  /* flex: 1 1 240px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,9 +42,7 @@
   transition: transform 0.3s ease;
 }
 
-.founderpage-founder-img:hover {
-  transform: scale(1.1);
-}
+
 
 .founderpage-founder-h2 {
   flex: 2 1 300px;
@@ -79,11 +78,12 @@
 .founderpage-developers-ul {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  gap: 1rem;
   padding: 0;
   list-style: none;
   margin: 0 auto;
   max-width: 1200px;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {
@@ -106,3 +106,62 @@
     font-size: 1.5rem;
   }
 }
+
+
+
+.founderpage-developer-li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    height: 300px; 
+    width: 100%; 
+    border-radius: 8px;
+    /* background-color: white; */
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 20px;
+    transform: scale(1.02);
+
+
+}
+.founderpage-developer-li:hover {
+  background: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(211, 210, 210, 0.349);
+
+}
+
+.founderpage-developer-li img {
+    width: 150px; 
+    height: 150px;
+    margin-top: 13px;
+    border-radius: 50%; 
+    object-fit: cover; 
+    width: 150px; 
+    height: 150px;
+    margin-top: 13px;
+    border-radius: 50%; 
+    object-fit: cover; 
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+    will-change: transform;
+
+    color: #333;
+}
+
+.founderpage-developer-li p {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0;
+}
+
+@media (min-width: 768px) {
+    .founderpage-developer-li {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+
+

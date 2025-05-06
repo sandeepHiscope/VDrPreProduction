@@ -3,7 +3,6 @@ import "./sosPage.css";
 
 // Main SOS Page Component
 const SosPage = () => {
-   const [count, setCount] = useState("Double click");
   const [sosActive, setSosActive] = useState(false);
   const [countdownStarted, setCountdownStarted] = useState(false);
   const [infoMessege, setInfoMessege] = useState("");
@@ -62,11 +61,7 @@ const SosPage = () => {
       {/* Main SOS Section */}
       <div className="sos-container">
         <div className="div1">
-          {/* SOS Button (double-click to activate countdown) */}
-          {/* Uncomment onDoubleClick to enable functionality */}
-          {/* <button className="div1_btn" onDoubleClick={handleDoubleClick}> */}
-          <button className="div1_btn">
-            {count}
+
           </button>
         </div>
 
