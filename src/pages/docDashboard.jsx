@@ -781,68 +781,54 @@ const DocDashboard = () => {
 
   return (
     <div className="docDashboard-container">
-    {/* Toggle Button for Mobile */}
-    <button className="docDashboard-toggle-button" onClick={toggleSidebar}>
-      ☰
-    </button>
-  
-    {/* Sidebar */}
-    <div className={`docDashboard-sidebar ${isSidebarOpen ? "docDashboard-sidebar-open" : ""}`}>
-      <div className="docDashboard-sidebar-header">
-        {/* Optional Header Title */}
-        {/* <span className="docDashboard-sidebar-title">Menu</span> */}
+
+      {/* Toggle Button for Mobile */}
+      <button className="docDashboard-toggle-button" onClick={toggleSidebar}>
+        ☰
+      </button>
+    
+      {/* Sidebar */}
+      <div className={`docDashboard-sidebar ${isSidebarOpen ? "docDashboard-sidebar-open" : ""}`}>
+        <div className="docDashboard-sidebar-header">
+          <span className="docDashboard-sidebar-title">Menu</span>
+        </div>
+      
+        <nav className="docDashboard-menu-li">
+          <ul className="docDashboard-menu-list">
+            {menuItems.map((item) => (
+              <li key={item.name}>
+                <div  
+                  className={`docDashboard-menu-item ${
+                    activePage === item.name ? "docDashboard-active" : ""
+                  } ${item.name === "Logout" ? "docDashboard-logout" : ""}`}
+                  onClick={() => {
+                    if (item.name === "Logout") {
+                      if (window.confirm("Are you sure you want to logout?")) {
+                        setLogin(false);
+                        navigateTo("/loginAndRegistrationPage");
+                      }
+                    } else {
+                      setActivePage(item.name);
+                    }
+                    if (window.innerWidth < 768) {
+                      setIsSidebarOpen(false);
+                    }
+                  }}
+                >
+                  {item.icon}
+                  <span>{item.name}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
-  
-      {/* Navigation Menu */}
-      <nav className="docDashboard-menu-li">
-      <ul className="docDashboard-menu-list">
-  {menuItems.map((item) => (
-    <li key={item.name}>
-      <div  
-        className={`docDashboard-menu-item ${
-          activePage === item.name ? "docDashboard-active" : ""
-        } ${item.name === "Logout" ? "docDashboard-logout" : ""}`}
-        onClick={() => {
-          if (item.name === "Logout") {
-
-
-
-            if (window.confirm("Are you sure you want to logout?")) {
-              console.log("Verified  bro, you  logged out from dashboard sussefully ")
-              alert("Verified one , youve Logged out successfully");
-              setLogin(false);
-              navigateTo("/loginAndRegistrationPage");
-            } else {
-              console.log("Verified bro canceled logout");
-            }
-
-
-            
-          } else {
-            setActivePage(item.name);
-          }
-          if (window.innerWidth < 768) {
-            setIsSidebarOpen(false);
-          }
-        }}
-      >
-        {item.icon}
-        <span>{item.name}</span>
+    
+      {/* Main Content */}
+      <div className="docDashboard-main-content">
+        {renderContent()}
       </div>
-    </li>
-  ))}
-</ul>
-
-      </nav>
-  
     </div>
-  
-    {/* Main Content */}
-    <div className="docDashboard-main-content">
-      {renderContent()}
-    </div>
-  </div>
-  
   );
 };
 
