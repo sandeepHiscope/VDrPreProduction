@@ -38,6 +38,7 @@ const FounderPage = () => {
 
   return (
     <div className="founderPage-main">
+      <h1 className="our-founder-and-devs">Our Founders and Devs</h1>
       <div className="founderpage-founder">
         <div className="founderpage-founder-div-img">
           <img
