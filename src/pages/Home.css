@@ -62,7 +62,15 @@
 }
 
 
+@media(max-width:698px){
+  .header-background{
+    height: 100%;
+  }
+  .header-section{
+    height: 25vh;
 
+  }
+}
 
 
 
@@ -833,4 +841,8 @@
   width: fit-content;
   text-align: center;
 }
-
+@media(max-width:698px){
+  .searchbar-container{
+    display: none;
+  }
+}

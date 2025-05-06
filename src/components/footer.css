@@ -193,3 +193,9 @@
     margin-left: 0px;
   }
 }
+@media(max-width:500px){
+  .footer{
+    display: none;
+  }
+
+}

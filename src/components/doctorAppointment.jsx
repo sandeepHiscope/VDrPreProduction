@@ -171,7 +171,7 @@ const DoctorAppointment = () => {
         </button>
       </div>
 
-      <div className="appointment-content">
+      <div cl2ssName="appointment-content">
         <div className="doctor-header">
           <img src={dummyDoctorData.image} alt="Doctor" className="doctor-image" />
           <div className="doctor-details">
