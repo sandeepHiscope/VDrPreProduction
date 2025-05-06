@@ -35,24 +35,43 @@ const DoctorID = () => {
   return (
     <>
       <div className="viewDocSec">
-        <div className="viewDocSec-doctorDetails" style={showAppointment ? { margin: 0 } : {}}>
+        <div
+          className="viewDocSec-doctorDetails"
+          style={showAppointment ? { margin: 0 } : {}}
+        >
           <img src={VDrLogo} alt="Logo" className="logo" />
           <img src={doctor.image} alt={doctor.name} className="doctor-img" />
           <h2>Dr. {doctor.name.toUpperCase()}</h2>
 
-      <div className="details">
-        <p><strong>License          :</strong> {doctor.license}</p>
-        <p><strong>Expiry           :</strong> {doctor.expiry}</p>
-        <p><strong>Specialization   :</strong> {doctor.specialization}</p>
-        <p><strong>Clinics/Hospitals:</strong> {doctor.clinics}</p>
-        <p><strong>Phone            :</strong> {doctor.phone}</p>
-        <p><strong>Email            :</strong> {doctor.email}</p>
-        <p><strong>Address           :</strong> {doctor.address}</p>
-      </div>
+          <div className="details">
+            <p>
+              <strong>License :</strong> {doctor.license}
+            </p>
+            <p>
+              <strong>Expiry :</strong> {doctor.expiry}
+            </p>
+            <p>
+              <strong>Specialization :</strong> {doctor.specialization}
+            </p>
+            <p>
+              <strong>Clinics/Hospitals:</strong> {doctor.clinics}
+            </p>
+            <p>
+              <strong>Phone :</strong> {doctor.phone}
+            </p>
+            <p>
+              <strong>Email :</strong> {doctor.email}
+            </p>
+            <p>
+              <strong>Address :</strong> {doctor.address}
+            </p>
+          </div>
 
           <p className="experience">{doctor.experience}</p>
 
+
           <div className="button-group" style={showAppointment ? { width: "10" } : {}}>
+
             <button className="book-btn1" onClick={handleBookClick}>
               Book Appointment
             </button>
