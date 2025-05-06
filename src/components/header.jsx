@@ -52,8 +52,8 @@ const NAV_LINKS = [
     external: true,
   },
   {
-    to: "/doctorAppointment",
-    label: "Book Appointment",
+    to: "/medicalLabTechnicianDashboard",
+    label: "Diagnosis Dash",
    
     icon: <ShieldQuestion className="headericons" />,
   },
