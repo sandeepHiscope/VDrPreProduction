@@ -4,6 +4,7 @@ import FounderPage from "../components/ourFoundersPage";
 import tempImg from "../assets/Images/foundersImg/kiran.jpg";
 // import tempDoc from "../assets/Images/headerImages/docImg3.jpg"
 import tempDoc from "../assets/Images/headerImages/doc1.jpg";
+import { useNavigate } from "react-router-dom";
 
 const WhyVDr = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -12,6 +13,7 @@ const WhyVDr = () => {
     verifications: 0,
     users: 0,
   });
+  const navigateTo = useNavigate();
 
   // Handle scroll effects
   useEffect(() => {
@@ -46,9 +48,9 @@ const WhyVDr = () => {
                 frame++;
                 const progress = frame / totalFrames;
                 setStatsCounter({
-                  doctors: Math.floor(5000 * progress),
-                  verifications: Math.floor(15000 * progress),
-                  users: Math.floor(100000 * progress),
+                  doctors: Math.floor(1000 * progress),
+                  verifications: Math.floor(900 * progress),
+                  users: Math.floor(5000 * progress),
                 });
 
                 if (frame === totalFrames) {
@@ -74,7 +76,7 @@ const WhyVDr = () => {
 
   return (
     <>
-      <div className="why-we-container">
+      <div className="why-we-container why-vdr-page">
         {/* Hero Section */}
         <section className="hero-section">
           <div className="hero-content">
@@ -83,7 +85,7 @@ const WhyVDr = () => {
               Connecting you with verified, background-checked doctors committed
               to providing safe and high-quality healthcare.
             </p>
-            <button className="cta-button fade-in-element delay-2">
+            <button className="cta-button fade-in-element delay-2" onClick={() => navigateTo("/findDoctorPage")}>
               Find Your Doctor
             </button>
           </div>
@@ -511,23 +513,79 @@ const WhyVDr = () => {
           </div>
         </section>
 
-        {/* Call To Action Section */}
-        {/* <section className="cta-section">
-        <div className="cta-content">
-          <h2>Join Our Community of Trust</h2>
-          <p>
-            Start your journey to better healthcare with providers who are verified, 
-            trusted, and committed to your wellbeing.
-          </p>
-          <div className="cta-buttons">
-            <button className="primary-cta">Find Your Doctor</button>
-            <button className="secondary-cta">Learn About Our Process</button>
+        
+      </div>
+
+     
+
+      <div className="whyVdr-faq-container">
+        <div className="whyVdr-faq-header">
+          <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div className="whyVdr-faq-item">
+          <input type="checkbox" id="whyVdr-faq1" />
+          <label htmlFor="whyVdr-faq1">
+            what is VDr?
+            <span className="icon">+</span>
+          </label>
+          <div className="whyVdr-faq-content">
+            VDr is a healthcare platform that connects patients with verified
+            doctors, ensuring a safe and trustworthy experience. We focus on
+            transparency and quality care.
           </div>
         </div>
-      </section> */}
+        <div className="whyVdr-faq-item">
+          <input type="checkbox" id="whyVdr-faq2" />
+          <label htmlFor="whyVdr-faq2">
+            How does VDr ensure the quality of doctors?
+            <span className="icon">+</span>
+          </label>
+          <div className="whyVdr-faq-content">
+            VDr employs a rigorous multi-step verification process that includes
+            background checks, credential verification, and continuous
+            monitoring of doctors' professional standings.
+          </div>
+        </div>
+        <div class="whyVdr-faq-item">
+          <input type="checkbox" id="whyVdr-faq3" />
+          <label htmlFor="whyVdr-faq3">
+            Is VDr available on mobile devices?
+            <span class="icon">+</span>
+          </label>
+          <div class="whyVdr-faq-content">
+            VDr is available on both iOS and Android platforms. You can download
+            the app from the App Store or Google Play Store.
+          </div>
+        </div>
+        <div className="whyVdr-faq-item">
+          <input type="checkbox" id="whyVdr-faq4" />
+          <label htmlFor="whyVdr-faq4">
+            Does the app support uploading medical reports, lab results, or
+            images for the doctor to view?
+            <span className="icon">+</span>
+          </label>
+          <div className="whyVdr-faq-content">
+            Yes, the app allows users to upload medical reports, lab results,
+            and images securely. This feature helps doctors provide more
+            accurate consultations based on your medical history.
+          </div>
+        </div>
+        <div className="whyVdr-faq-item">
+          <input type="checkbox" id="whyVdr-faq5" />
+          <label htmlFor="whyVdr-faq5">
+            What happens if a doctor cancels or misses the appointment?
+            <span className="icon">+</span>
+          </label>
+          <div className="whyVdr-faq-content">
+            If a doctor cancels or misses an appointment, you will be notified
+            immediately. You can reschedule the appointment with the same doctor
+            or choose another available doctor.
+          </div>
+        </div>
       </div>
+
       <hr className="text-neutral-400" />
-      <h1 className="mainheader">Our Founders</h1>
       <FounderPage />
     </>
   );

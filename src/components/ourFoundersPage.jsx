@@ -25,13 +25,11 @@ const FounderPage = () => {
       role: " Digital Marketing",
       image: Anji,
     },
-    { name: "Pavan P", role: "Team Lead", image: Pavan },
     { name: "Alekhya Padala", role: "Java Developer", image: Alekhya },
     { name: "Bhadru Lotavath", role: "Java Developer", image: Bhadru },
     { name: "Praveen Puvvala", role: "Java Developer", image: Praveen },
     { name: "KiranVenkat Bishetti", role: "Software Developer", image: Kiran },
     { name: "Mohan Bishetti", role: "Data Analyst, Designer", image: Mohan },
-    { name: "Durga Prasad", role: "Finance Department", image: Durga },
     { name: "Sandeep Kumar M", role: "Full Stack Developer", image: Sandeep },
     { name: "Sai Saketh", role: "Data Engineer", image: SaiSakth },
     { name: "Shiva Banoth", role: "Full Stack Developer", image: Shiva },
@@ -40,6 +38,7 @@ const FounderPage = () => {
 
   return (
     <div className="founderPage-main">
+      <h1 className="our-founder-and-devs">Our Founders and Devs</h1>
       <div className="founderpage-founder">
         <div className="founderpage-founder-div-img">
           <img
@@ -61,8 +60,12 @@ const FounderPage = () => {
       <h2 className="founderpage-developer-h2">DEVELOPERS</h2>
       <div className="founderpage-developers">
         <ul className="founderpage-developers-ul">
-          {founderDetails.map((founder, index) => (
-            <Cards key={index} details={founder} />
+          {founderDetails.map((dev, index) => (
+            <li className="founderpage-developer-li" key={index}>
+              <img src={dev.image} alt={dev.name} />
+              <h3>{dev.name}</h3>
+              <p>{dev.role}</p>
+            </li>
           ))}
         </ul>
       </div>
