@@ -93,23 +93,17 @@ height: 5rem;}
   margin-bottom: 15px;
 }
 
-label {
-  font-size: 14px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 5px;
-  display: block;
-}
 
-input[type="text"], input[type="file"], select, .doctorVerification-textarea {
+
+/* input[type="text"], input[type="file"], select, .doctorVerification-textarea {
   width: 100%;
   padding: 10px;
   font-size: 14px;
-  /* border: 1px solid #ddd; */
+  border: 1px solid #ddd;
   border-radius: 4px;
   box-sizing: border-box;
-  /* border: 0.5px solid #a5a1a17a; */
-}
+  border: 0.5px solid #a5a1a17a;
+} */
 
 .doctorVerification-textarea {
   height: 140px;
@@ -149,6 +143,7 @@ input[type="text"], input[type="file"], select, .doctorVerification-textarea {
 .from-group-span{
   color: red;
 }
+
 
 
 

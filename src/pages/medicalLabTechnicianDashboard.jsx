@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
 import { LoginContext } from "../context/loginContext";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
-import React, { useEffect } from 'react';
+import axios from "axios";
+import React, { useEffect } from "react";
 import {
   Calendar,
   Clock,
@@ -13,15 +13,15 @@ import {
   Shield,
   Bell,
   User,
-  LogOut
+  LogOut,
 } from "lucide-react";
-import "../pages/docDashboard.css";
+import "../pages/medicalLabTechnicianDashboard.css";
 const menuItems = [
   { name: "Dashboard", icon: <Calendar className="icon" /> },
   { name: "Appointments", icon: <Clock className="icon" /> },
   { name: "Patients", icon: <Users className="icon" /> },
-  { name: "Prescriptions", icon: <Clipboard className="icon" /> },
-  { name: "Teleconsultations", icon: <Video className="icon" /> },
+  { name: "Diagnosis Reports", icon: <Clipboard className="icon" /> },
+  // { name: "Teleconsultations", icon: <Video className="icon" /> },
   { name: "Services", icon: <FileText className="icon" /> },
   { name: "Insurance", icon: <Shield className="icon" /> },
   { name: "SOS Alerts", icon: <Bell className="icon" /> },
@@ -29,19 +29,18 @@ const menuItems = [
   { name: "Logout", icon: <LogOut className="icon" /> },
 ];
 
-
-const GET_DOCTORDETAILS_API_URL = "http://localhost:8080/doctorverfication/get/";
+const GET_DOCTORDETAILS_API_URL =
+  "http://localhost:8080/doctorverfication/get/";
 const GET_APPOINTMENTS_API_URL = "http://localhost:8080/Appointment/doctor/";
 
-
-const DocDashboard = () => {
+const MedicalLabTechnicianDashboard = () => {
   const [activePage, setActivePage] = useState("Dashboard");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [doctorProfile, setDoctorProfile] = useState([]);
   const [doctorAppointments, setDoctorAppointments] = useState([]);
   const [email, setEmail] = useState("anjikadari@gmail.com");
   const { isLoggedIn, isUser, isDoctor, setUser, setDoctor, setLogin } =
-  useContext(LoginContext);
+    useContext(LoginContext);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -76,11 +75,14 @@ const DocDashboard = () => {
     };
     fetchDoctorsAppointments();
   }, [email]);
-  useEffect(() => {
-    console.log("Doctor profile updated:", doctorProfile);
-    console.log("Doctor appointments updated:", doctorAppointments);
-  }, [doctorProfile], [doctorAppointments]);
-  
+  useEffect(
+    () => {
+      console.log("Doctor profile updated:", doctorProfile);
+      console.log("Doctor appointments updated:", doctorAppointments);
+    },
+    [doctorProfile],
+    [doctorAppointments]
+  );
 
   const upcomingAppointments = [
     {
@@ -101,37 +103,37 @@ const DocDashboard = () => {
       type: "Insurance",
       date: "19 Apr at 2:05",
     },
-    
-      {
-        name: "Ramesh",
-        time: "5:30 AM",
-        type: "Insurance",
-        date: "19 Apr at 2:05",
-      },
-      {
-        name: "Sita",
-        time: "9:00 AM",
-        type: "Cash",
-        date: "20 Apr at 10:15",
-      },
-      {
-        name: "Anil",
-        time: "11:30 AM",
-        type: "Insurance",
-        date: "21 Apr at 11:45",
-      },
-      {
-        name: "Priya",
-        time: "3:00 PM",
-        type: "Online Payment",
-        date: "22 Apr at 3:30",
-      },
-      {
-        name: "Kiran",
-        time: "1:15 PM",
-        type: "Cash",
-        date: "23 Apr at 1:20",
-      },
+
+    {
+      name: "Ramesh",
+      time: "5:30 AM",
+      type: "Insurance",
+      date: "19 Apr at 2:05",
+    },
+    {
+      name: "Sita",
+      time: "9:00 AM",
+      type: "Cash",
+      date: "20 Apr at 10:15",
+    },
+    {
+      name: "Anil",
+      time: "11:30 AM",
+      type: "Insurance",
+      date: "21 Apr at 11:45",
+    },
+    {
+      name: "Priya",
+      time: "3:00 PM",
+      type: "Online Payment",
+      date: "22 Apr at 3:30",
+    },
+    {
+      name: "Kiran",
+      time: "1:15 PM",
+      type: "Cash",
+      date: "23 Apr at 1:20",
+    },
   ];
 
   // const recentUpdates = [
@@ -150,7 +152,7 @@ const DocDashboard = () => {
         return (
           <div className="dashboard-content">
             <div className="header">
-              <h4 className="title">VDR - Doctor Overview</h4>
+              <h4 className="title">VDR - Medical LabTechnician Dashboard Overview</h4>
             </div>
 
             <div className="dashboard-grid">
@@ -290,7 +292,6 @@ const DocDashboard = () => {
                   </div>
                 </div>
               </div>
-              
             </div>
           </div>
         );
@@ -310,7 +311,6 @@ const DocDashboard = () => {
             <p>No services yet this movement.</p>
           </div>
         );
-        
     }
   };
 
@@ -552,53 +552,53 @@ const DocDashboard = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [appointmentCount, setAppointmentCount] = useState(0);
-  
-  
+
     useEffect(() => {
       const fetchAppointments = async () => {
         try {
           const response = await axios.get(
-           ` ${GET_APPOINTMENTS_API_URL}${email}`
+            ` ${GET_APPOINTMENTS_API_URL}${email}`
           );
-    
-          console.log('API Response:', response.data);
-    
+
+          console.log("API Response:", response.data);
+
           // If appointments are wrapped inside a property
           const appointmentList = Array.isArray(response.data)
             ? response.data
             : response.data.appointments || [];
-    
+
           setAppointments(appointmentList);
           setAppointmentCount(appointmentList.length);
           setLoading(false);
         } catch (err) {
-          console.error('Error fetching appointments:', err);
-          setError('Failed to fetch appointments.');
+          console.error("Error fetching appointments:", err);
+          setError("Failed to fetch appointments.");
           setLoading(false);
         }
       };
-    
+
       if (email) {
         fetchAppointments();
       } else {
-        setError('Doctor ID not found');
+        setError("Doctor ID not found");
         setLoading(false);
       }
     }, [email]);
-    
-  
+
     if (loading) return <div>Loading appointments...</div>;
     if (error) return <div>{error}</div>;
-  
+
     return (
       <div className="p-4 max-w-4xl mx-auto">
-        <h1 className="text-2xl font-bold mb-4">Doctor Dashboard</h1>
-  
+        <h1 className="text-2xl font-bold mb-4">
+          Medical Lab Technician Dashboard
+        </h1>
+
         <div className="bg-white shadow rounded p-4 mb-6">
           <h2 className="text-xl font-semibold mb-2">Total Appointments</h2>
           <p className="text-3xl font-bold text-blue-600">{appointmentCount}</p>
         </div>
-  
+
         <div className="bg-white shadow rounded p-4">
           <h2 className="text-xl font-semibold mb-4">Appointment List</h2>
           {appointments.length === 0 ? (
@@ -614,7 +614,7 @@ const DocDashboard = () => {
                     <strong>Patient Name:</strong> {appointment.patientName}
                   </p>
                   <p>
-                    <strong>Date:</strong>{' '}
+                    <strong>Date:</strong>{" "}
                     {new Date(appointment.appointmentDate).toLocaleString()}
                   </p>
                   <p>
@@ -628,7 +628,6 @@ const DocDashboard = () => {
       </div>
     );
   };
-  
 
   // Profile component
   const Profile = () => (
@@ -647,105 +646,109 @@ const DocDashboard = () => {
             </div>
             <div className="doctor-info">
               <h2 className="doctor-name">{doctorProfile.fullName}</h2>
-              <p className="doctor-role">Speciality: {doctorProfile.medicalSpeciality}</p>
-              <p className="doctor-license">License: {doctorProfile.medicalLicenseNumber}</p>
+              <p className="doctor-role">
+                Speciality: {doctorProfile.medicalSpeciality}
+              </p>
+              <p className="doctor-license">
+                License: {doctorProfile.medicalLicenseNumber}
+              </p>
             </div>
             <div className="total-right">
               <button className="edit-button">Edit Profile</button>
             </div>
           </div>
         </div>
-  
+
         {/* Personal Information */}
         <div className="doctor-section">
           <h3 className="section-title">Personal Information</h3>
           <div className="info-grid two-column">
             <ul className="Personal-information-Ul-left">
               <li>
-              <p className="info-label">Email :</p>
-              <p>{doctorProfile.email}</p>
-              </li>
-              
-              <li>
-              <p className="info-label">Phone :</p>
-              <p>{doctorProfile.mobileNumber}</p>
+                <p className="info-label">Email :</p>
+                <p>{doctorProfile.email}</p>
               </li>
 
               <li>
-              <p className="info-label">Gender :</p>
-              <p>{doctorProfile.gender}</p>
+                <p className="info-label">Phone :</p>
+                <p>{doctorProfile.mobileNumber}</p>
+              </li>
+
+              <li>
+                <p className="info-label">Gender :</p>
+                <p>{doctorProfile.gender}</p>
               </li>
               <li>
-              <p className="info-label">Address :</p>
-              <p>{doctorProfile.personalAddress}</p>
+                <p className="info-label">Address :</p>
+                <p>{doctorProfile.personalAddress}</p>
               </li>
             </ul>
           </div>
         </div>
-  
+
         <hr className="line" />
-  
+
         {/* Professional Information */}
         <div className="doctor-section">
           <h3 className="section-title">Professional Information</h3>
           <div className="info-grid two-column">
             <ul className="Personal-information-Ul-left">
               <li>
-              <p className="info-label">Medical License No</p>
-              <p>{doctorProfile.medicalLicenseNumber}</p>
+                <p className="info-label">Medical License No</p>
+                <p>{doctorProfile.medicalLicenseNumber}</p>
               </li>
 
               <li>
-              <p className="info-label">License Expiry</p>
-              <p>{doctorProfile.medicalLicenseNumberExpiryDate}</p>
+                <p className="info-label">License Expiry</p>
+                <p>{doctorProfile.medicalLicenseNumberExpiryDate}</p>
               </li>
-             
+
               <li>
-              <p className="info-label">Specialization</p>
-              <p>{doctorProfile.medicalSpeciality}</p>
+                <p className="info-label">Specialization</p>
+                <p>{doctorProfile.medicalSpeciality}</p>
               </li>
-             
+
               <li>
-              <p className="info-label">Educational Background</p>
-              <p>{doctorProfile.educationalBackground}</p>
+                <p className="info-label">Educational Background</p>
+                <p>{doctorProfile.educationalBackground}</p>
               </li>
-             <li>
-             <p className="info-label">Experience</p>
-             <p>{doctorProfile.experience} years</p>
-             </li>
-
-             <li>
-             <p className="info-label">Current Hospital/Clinic</p>
-             <p>{doctorProfile.hospitalCurrentWorking}</p>
-             </li>
-
-             <li>
-             <p className="info-label">Clinic/Hospital Name</p>
-             <p>{doctorProfile.hospitalOrClinic}</p>
-             </li>
-
-             <li>
-             <p className="info-label">Clinic/Hospital Address</p>
-             <p>{doctorProfile.hospitalAddress}</p>
-             </li>
-
-             <li>
-             <p className="info-label">Languages Spoken</p>
-             <p>{doctorProfile.launguage}</p>
-             </li>
-             <li>
-             <p className="info-label">Disciplinary Actions</p>
-             <p>{doctorProfile.disciplinaryActions || "None"}</p>
-             </li>
-  
               <li>
-              <p className="info-label">Bio</p>
-              <p>{doctorProfile.description || "N/A"}</p>
+                <p className="info-label">Experience</p>
+                <p>{doctorProfile.experience} years</p>
+              </li>
+
+              <li>
+                <p className="info-label">Current Hospital/Clinic</p>
+                <p>{doctorProfile.hospitalCurrentWorking}</p>
+              </li>
+
+              <li>
+                <p className="info-label">Clinic/Hospital Name</p>
+                <p>{doctorProfile.hospitalOrClinic}</p>
+              </li>
+
+              <li>
+                <p className="info-label">Clinic/Hospital Address</p>
+                <p>{doctorProfile.hospitalAddress}</p>
+              </li>
+
+              <li>
+                <p className="info-label">Languages Spoken</p>
+                <p>{doctorProfile.launguage}</p>
+              </li>
+              <li>
+                <p className="info-label">Disciplinary Actions</p>
+                <p>{doctorProfile.disciplinaryActions || "None"}</p>
+              </li>
+
+              <li>
+                <p className="info-label">Bio</p>
+                <p>{doctorProfile.description || "N/A"}</p>
               </li>
             </ul>
           </div>
         </div>
-  
+
         {/* Schedule */}
         <div className="doctor-section border-top">
           <h3 className="section-title">Schedule & Availability</h3>
@@ -764,7 +767,7 @@ const DocDashboard = () => {
             </div>
           </div>
         </div>
-  
+
         {/* Account Settings */}
         <div className="doctor-section border-top">
           <h3 className="section-title">Account Settings</h3>
@@ -777,73 +780,59 @@ const DocDashboard = () => {
       </div>
     </div>
   );
-  
 
   return (
     <div className="docDashboard-container">
-    {/* Toggle Button for Mobile */}
-    <button className="docDashboard-toggle-button" onClick={toggleSidebar}>
-      ☰
-    </button>
-  
-    {/* Sidebar */}
-    <div className={`docDashboard-sidebar ${isSidebarOpen ? "docDashboard-sidebar-open" : ""}`}>
-      <div className="docDashboard-sidebar-header">
-        {/* Optional Header Title */}
-        {/* <span className="docDashboard-sidebar-title">Menu</span> */}
-      </div>
-  
-      {/* Navigation Menu */}
-      <nav className="docDashboard-menu-li">
-      <ul className="docDashboard-menu-list">
-  {menuItems.map((item) => (
-    <li key={item.name}>
-      <div  
-        className={`docDashboard-menu-item ${
-          activePage === item.name ? "docDashboard-active" : ""
-        } ${item.name === "Logout" ? "docDashboard-logout" : ""}`}
-        onClick={() => {
-          if (item.name === "Logout") {
+      {/* Toggle Button for Mobile */}
+      <button className="docDashboard-toggle-button" onClick={toggleSidebar}>
+        ☰
+      </button>
 
-
-
-            if (window.confirm("Are you sure you want to logout?")) {
-              console.log("Verified  bro, you  logged out from dashboard sussefully ")
-              alert("Verified one , youve Logged out successfully");
-              setLogin(false);
-              navigateTo("/loginAndRegistrationPage");
-            } else {
-              console.log("Verified bro canceled logout");
-            }
-
-
-            
-          } else {
-            setActivePage(item.name);
-          }
-          if (window.innerWidth < 768) {
-            setIsSidebarOpen(false);
-          }
-        }}
+      {/* Sidebar */}
+      <div
+        className={`docDashboard-sidebar ${
+          isSidebarOpen ? "docDashboard-sidebar-open" : ""
+        }`}
       >
-        {item.icon}
-        <span>{item.name}</span>
-      </div>
-    </li>
-  ))}
-</ul>
+        <div className="docDashboard-sidebar-header">
+          <span className="docDashboard-sidebar-title">Menu</span>
+        </div>
 
-      </nav>
-  
+        <nav className="docDashboard-menu-li">
+          <ul className="docDashboard-menu-list">
+            {menuItems.map((item) => (
+              <li key={item.name}>
+                <div
+                  className={`docDashboard-menu-item ${
+                    activePage === item.name ? "docDashboard-active" : ""
+                  } ${item.name === "Logout" ? "docDashboard-logout" : ""}`}
+                  onClick={() => {
+                    if (item.name === "Logout") {
+                      if (window.confirm("Are you sure you want to logout?")) {
+                        setLogin(false);
+                        navigateTo("/loginAndRegistrationPage");
+                      }
+                    } else {
+                      setActivePage(item.name);
+                    }
+                    if (window.innerWidth < 768) {
+                      setIsSidebarOpen(false);
+                    }
+                  }}
+                >
+                  {item.icon}
+                  <span>{item.name}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+
+      {/* Main Content */}
+      <div className="docDashboard-main-content">{renderContent()}</div>
     </div>
-  
-    {/* Main Content */}
-    <div className="docDashboard-main-content">
-      {renderContent()}
-    </div>
-  </div>
-  
   );
 };
 
-export default DocDashboard;
+export default MedicalLabTechnicianDashboard;

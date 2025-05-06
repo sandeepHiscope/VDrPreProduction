@@ -60,61 +60,12 @@
   overflow-x: hidden;
    background: var(--color-background-main);
 }
-.moving-text-container {
-  width: 100vw;
-  height: 20px;
-  background-color: #ffffff53;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 2rem;
-  /* left: 10px; */
-}
 
-.moving-text {
-  font-size: 1rem;
-  color: #000000;
-  white-space: nowrap;
-  position: absolute;
-  font-family: "Open Sans", sans-serif;
-  animation: move-text 25s linear infinite;
-}
 
-.text2{
-  font-size: 30px;
-}
 
-@media (max-width: 768px) {
-  .moving-text {
-    font-size: 0.8rem;
-  }
-  .text2{
-    font-size: 25px;
-  }
-}
 
-@media (max-width: 480px) {
-  .moving-text {
-    font-size: 0.6rem;
-  }
- 
-}
 
-.location-section {
-  background: #0c3c7048;
-  z-index: 100;
-}
-.location-container {
-  width: 300px;
-  position: relative;
-}
 
-label {
-  font-size: 14px;
-  margin-bottom: 5px;
-  display: block;
-}
 
 .homediv-h1 {
   color: #57585a;
