@@ -1,82 +1,83 @@
 import { useState, useRef } from "react";
 import "./sosPage.css";
 
-
-
+// Main SOS Page Component
 const SosPage = () => {
-  const [count, setCount] = useState("");
   const [sosActive, setSosActive] = useState(false);
   const [countdownStarted, setCountdownStarted] = useState(false);
   const [infoMessege, setInfoMessege] = useState("");
   const audioRef = useRef(null);
-  const countdownRef = useRef(null); // Ref to keep track of countdown interval
+  const countdownRef = useRef(null);
 
+  // Function to start the countdown on double-click
   const handleDoubleClick = () => {
-    let i = 5;
-    setCountdownStarted(true);
+    let i = 5; 
+    setCountdownStarted(true); // Update state to show countdown has started
+
     countdownRef.current = setInterval(() => {
       if (i >= 0) {
-        setCount(i);
+        setCount(i); // Update count display
         i--;
       } else {
-        clearInterval(countdownRef.current);
-        setCount("SOS Activated");
+        clearInterval(countdownRef.current); // Stop countdown
+        setCount("SOS Activated"); // Update button text
         setInfoMessege(
           "Your SOS has been activated. Contacting emergency services... and your family members"
         );
-        setSosActive(true);
-        // playMusic();
-        setCountdownStarted(false); // Ensure countdown state is reset
+        setSosActive(true); // Mark SOS as active
+        // playMusic(); // Optional: play alarm sound
+        setCountdownStarted(false); // Reset countdown state
       }
-    }, 1000); // Decrease count every 1 second
+    }, 1000); // Countdown runs every 1 second
   };
 
+  // Optional: Function to play an emergency alarm sound
   // const playMusic = () => {
-  //   audioRef.current = new Audio("./emergency-alarm-69780.mp3"); // Ensure the path to your music file is correct
-  //   audioRef.current.loop = true; // Loop the audio
+  //   audioRef.current = new Audio("./emergency-alarm-69780.mp3");
+  //   audioRef.current.loop = true;
   //   audioRef.current.play();
   // };
 
+  // Function to stop the SOS and reset all states
   const stopSos = () => {
     if (audioRef.current) {
       audioRef.current.pause();
-      audioRef.current.currentTime = 0; // Reset audio to the beginning
+      audioRef.current.currentTime = 0; // Reset audio
     }
-    clearInterval(countdownRef.current); // Clear countdown interval
+    clearInterval(countdownRef.current); // Stop countdown interval
     setSosActive(false);
     setCountdownStarted(false);
-    setCount("Under ");
-    setInfoMessege("");
+    setCount("Under "); // Reset button text
+    setInfoMessege(""); // Clear emergency message
   };
 
   return (
     <>
-      {/* <Header /> */}
+      {/* Page Header - Can be replaced with a Header component */}
       <div className="sos-header">
-      <h2> This Feature Is Under Development</h2>
+        <h2>This Feature Is Under Development</h2>
       </div>
-      {/* SOS part */}
+
+      {/* Main SOS Section */}
       <div className="sos-container">
         <div className="div1">
-        
-          {/* <button className="div1_btn" onDoubleClick={handleDoubleClick}> */}
-          {/* uncomment the above to turn on the fun ctionality */}
-          <button className="div1_btn" >
-            SOS
+
           </button>
         </div>
+
+        {/* Title and Message */}
         <h2 className="div1-h2">SOS EMERGENCY</h2>
         <div className="infoMessege">{infoMessege}</div>
+
+        {/* Stop Button - Visible when SOS is active or countdown is running */}
         {(sosActive || countdownStarted) && (
-          <>
-            <button className="stop_btn " onClick={stopSos}>
-              ❌
-            </button>
-          </>
+          <button className="stop_btn" onClick={stopSos}>
+            ❌
+          </button>
         )}
       </div>
 
-      {/* Footer */}
+      {/* Footer can be added here if needed */}
     </>
   );
 };
