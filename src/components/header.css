@@ -30,7 +30,7 @@
   box-shadow: 0 4px 200px rgba(141, 141, 141, 0.374);
   background-color: #d7f1f9;
 
-
+}
 .header-nav-container:hover {
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
