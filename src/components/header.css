@@ -20,7 +20,7 @@
 } */
 
 /* ============ NAV ============ */
-.header-nav-container {
+.header-nav-container{
   width: 100%;
   display: flex;
   justify-content: space-between;
