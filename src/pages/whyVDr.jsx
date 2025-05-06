@@ -4,6 +4,7 @@ import FounderPage from "../components/ourFoundersPage";
 import tempImg from "../assets/Images/foundersImg/kiran.jpg";
 // import tempDoc from "../assets/Images/headerImages/docImg3.jpg"
 import tempDoc from "../assets/Images/headerImages/doc1.jpg";
+import { useNavigate } from "react-router-dom";
 
 const WhyVDr = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -12,6 +13,7 @@ const WhyVDr = () => {
     verifications: 0,
     users: 0,
   });
+  const navigateTo = useNavigate();
 
   // Handle scroll effects
   useEffect(() => {
@@ -83,7 +85,7 @@ const WhyVDr = () => {
               Connecting you with verified, background-checked doctors committed
               to providing safe and high-quality healthcare.
             </p>
-            <button className="cta-button fade-in-element delay-2">
+            <button className="cta-button fade-in-element delay-2" onClick={() => navigateTo("/findDoctorPage")}>
               Find Your Doctor
             </button>
           </div>
@@ -584,7 +586,6 @@ const WhyVDr = () => {
       </div>
 
       <hr className="text-neutral-400" />
-      <h1 className="mainheader">Our Founders</h1>
       <FounderPage />
     </>
   );

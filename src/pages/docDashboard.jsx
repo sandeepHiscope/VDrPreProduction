@@ -781,6 +781,7 @@ const DocDashboard = () => {
 
   return (
     <div className="docDashboard-container">
+
       {/* Toggle Button for Mobile */}
       <button className="docDashboard-toggle-button" onClick={toggleSidebar}>
         ☰
