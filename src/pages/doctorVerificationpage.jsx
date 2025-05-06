@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import './DoctorVerificationPage.css';
+import './doctorVerificationPage.css';
 import { useNavigate, useLocation } from "react-router-dom";
 
 const DoctorVerificationPage = () => {
