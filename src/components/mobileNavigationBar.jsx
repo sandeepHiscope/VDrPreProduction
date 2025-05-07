@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'; // Import Link from React Router
 import './mobileNavigationBar.css';
 import { FaHome } from "react-icons/fa";
 
+
 import {
   Search,
   Shield,
@@ -10,6 +11,7 @@ import {
   Bell,
   ShoppingBag,
   ShieldQuestion,
+  LogIn,
 } from 'lucide-react'; // Import Lucide icons
 
 const MobileNavigationBar = () => {
@@ -83,15 +85,16 @@ const MobileNavigationBar = () => {
         <Shield />
         <span className="nav-label">Insurance</span>
       </Link>
+     
 
-      {/* <Link
-        to="/medicalLabTechnicianDashboard" // React Router Link for Info
+      <Link
+        to="/LoginAndRegistrationPage" // React Router Link for Info
         className={`nav-item ${activeIndex === 7 ? 'active' : ''}`}
         onClick={() => handleNavClick(7)}
       >
-        <ShieldQuestion />
-        <span className="nav-label">Diagnosis</span>
-      </Link> */}
+        < LogIn />
+        <span className="nav-label">Login</span>
+      </Link>
     </div>
   );
 };

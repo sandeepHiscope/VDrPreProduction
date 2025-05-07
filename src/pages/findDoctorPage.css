@@ -238,7 +238,7 @@ body {
   align-items: center;
   gap: var(--spacing-xs);
   padding: var(--spacing-xs) var(--spacing-sm);
-  background-color: var(--color-primary-hover, #0069d910);
+  background-color: var(--primary-light-hover, #0069d910);
   color: var(--color-primary);
   border-radius: var(--radius-md);
   font-size: 0.875rem;
