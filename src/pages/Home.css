@@ -788,13 +788,12 @@
   text-align: center;
 }
 
-.symptomsSection {
+.symptomsSection{
   text-align: center;
   padding: 20px;
   width: 90%;
   margin: 0;
 }
-
 .symptomsList {
   display: flex;
   flex-wrap: wrap;
