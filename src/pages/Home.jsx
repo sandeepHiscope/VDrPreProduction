@@ -192,23 +192,15 @@ function Homepage() {
         {/* Cards Slider Section */}
         <CardsSlider />
         <h2>More Categories to help you</h2>
-        <section className="categorySection">
-          <ul className="categoryList">
-            <li className="categoryItem">Dentist</li>
-            <li className="categoryItem">Cardiologist</li>
-            <li className="categoryItem">Dermatologist</li>
-            <li className="categoryItem">Pediatrician</li>
-            <li className="categoryItem">Orthopedic</li>
-            <li className="categoryItem">General Physician</li>
-            <li className="categoryItem">ENT Specialist</li>
-            <li className="categoryItem">Gynecologist</li>
-            <li className="categoryItem">Urologist</li>
-            <li className="categoryItem">Neurologist</li>
-            <li className="categoryItem">Psychiatrist</li>
-            <li className="categoryItem">Oncologist</li>
-            <li className="categoryItem">Gastroenterologist</li>
-          </ul>
-        </section>
+<section className="categorySection">
+  <ul className="categoryList">
+    {['Dentist', 'Cardiologist', 'Dermatologist', 'Pediatrician', 'Orthopedic', 'General Physician', 'ENT Specialist', 'Gynecologist', 'Urologist', 'Neurologist', 'Psychiatrist', 'Oncologist', 'Gastroenterologist'].map((category) => (
+      <li className="categoryItem" key={category}>
+        <Link to={`/findDoctorPage?category=${category}`}>{category}</Link>
+      </li>
+    ))}
+  </ul>
+</section>
 
         {/* { our services} */}
         <ServicesSection/>
