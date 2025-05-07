@@ -13,7 +13,7 @@ import {
   FlaskConical,
   Pill,
   UserCheck,
-  ArrowLeft, 
+  ArrowLeft,
 } from "lucide-react";
 import "./loginAndRegistrationPage.css";
 
@@ -145,8 +145,13 @@ const Login = () => {
       });
 
       if (response.ok) {
-        const data = await response.text();
-
+        const data = await response.json();
+        // Set login state and role in context
+        setUser({
+          email: formData.email,
+          role: role === "healthcare" ? healthcareType : "user",
+        });
+        setIsDoctor(role === "healthcare" && healthcareType === "doctor");
         // Success notification
         showNotification("Login successful! Welcome back.", "success");
 
@@ -217,6 +222,12 @@ const Login = () => {
       });
 
       if (response.ok) {
+        // Set login state and role in context after registration
+        setUser({
+          email: formData.email,
+          role: role === "healthcare" ? healthcareType : "user",
+        });
+        setIsDoctor(role === "healthcare" && healthcareType === "doctor");
         showNotification(
           "Registration successful! You can now log in.",
           "success"
@@ -317,11 +328,11 @@ const Login = () => {
           </div>
           <div className="testimonial">
             <p>
-              "MediConnect transformed how I connect with my patients. Highly
+              "Verified Health Care transformed how I connect with my patients. Highly
               recommended for all healthcare professionals!"
             </p>
             <div className="testimonial-author">
-              Dr. Sarah Johnson, Cardiologist
+              Dr.  SeethaRam , Cardiologist
             </div>
           </div>
         </div>
