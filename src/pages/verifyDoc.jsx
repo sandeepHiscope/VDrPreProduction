@@ -191,7 +191,7 @@ const VerifyDoc = () => {
         {activeTab === "scan" && (
           <>
             <div className="vdoc-scanner-section">
-              <h2 className="vdoc-section-title">QR Code Scanner</h2>
+              <h2 className="vdoc-section-title">Scan our Qr Know Your Doctor</h2>
               <p className="vdoc-instructions">
                 Scan a QR code using your camera or upload an image. If it's a
                 URL, you'll be redirected in 5 seconds.
@@ -344,12 +344,11 @@ const VerifyDoc = () => {
 
         {activeTab === "about" && (
           <div className="vdoc-about-section">
-            <h2 className="vdoc-section-title">About QR Scanner Pro</h2>
+            <h2 className="vdoc-section-title">About VDr Scanner</h2>
             <div className="vdoc-about-content">
               <p>
-                QR Scanner Pro is a fast, reliable, and easy-to-use QR code
-                scanner application. It allows you to scan QR codes using your
-                device's camera or by uploading images.
+                VDr Scanner is a fast, reliable, and easy-to-use QR scanning service. It allows you to scan QR codes using your
+                device's camera or by uploading images of doctors.
               </p>
 
               <h3>Features</h3>
