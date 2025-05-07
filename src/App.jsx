@@ -26,7 +26,9 @@ import UserDashboard from "./pages/userDashboard";
 import LoginContextProvider, { LoginContext } from "./context/loginContext.jsx";
 import DoctorAppointment from "./components/doctorAppointment";
 import CookieConsent from "./hooks/CookieConsent.jsx";
-import MedicalLabTechnicianDashboard from "./pages/medicalLabTechnicianDashboard.jsx"
+import MedicalLabTechnicianDashboard from "./pages/medicalLabTechnicianDashboard.jsx";
+import MobileNavigationBar from './components/mobileNavigationBar.jsx';
+
 const App = () => {
   const [location, setLocation] = useState();
   const currentUrl = window.location.href;
@@ -99,6 +101,7 @@ const App = () => {
               />
             </Routes>
           </div>
+          <MobileNavigationBar/>
           <Footer />
         </LoginContextProvider>
       </Router>

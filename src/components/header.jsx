@@ -105,6 +105,8 @@ const MainHeader = () => {
   };
   return (
       <nav className="header-nav-container">
+        
+         
          <button
                className="toggle-button"
                onClick={toggleSlide}
@@ -112,9 +114,20 @@ const MainHeader = () => {
              >
                {isOpen ? <ImCross className="secicon" /> : <IoReorderThreeOutline />}
              </button>
-        <Link to="/" onClick={handleNavClick}>
+             <div className="input-header-mobile">
+             <Link to="/" onClick={handleNavClick}>
           <img src={VDrLogo} alt="VDrapp Logo" className="header-logo" />
         </Link>
+        <Link to="/findDoctorPage">
+         <input
+              type="text"
+              id="home-search-bar"
+              placeholder="Search for Doctors near by you"
+              className="searchbar-input1"
+            />
+            </Link>
+        
+        </div>
 
         <div className="nav-menu">
           <div className={isOpen ? "nav-links-open" : "nav-links"}>
@@ -192,6 +205,7 @@ const MainHeader = () => {
               </button>
               
             )}
+            
           </div>
         </div>
       </nav>
