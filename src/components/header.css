@@ -31,10 +31,10 @@
   background-color: #ffffff;
 
 }
-.header-nav-container:hover {
+/* .header-nav-container:hover {
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
-}
+} */
 
 /* ============ LOGO ============ */
 .header-logo {
@@ -214,11 +214,11 @@
   display: none;
 }
 .searchbar-input1{
-  border: 0.5px solid rgb(87, 87, 87);
-  width: 300px;
+  border: 0.5px solid rgb(147, 147, 147);
+  width: 250px;
   height: 40px;
   display: none;
-
+  border-radius: 10px;
 }
 @media(max-width:698px){
  .searchbar-input1{

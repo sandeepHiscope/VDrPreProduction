@@ -127,8 +127,8 @@ const MainHeader = () => {
               placeholder="Search for Doctors near by you"
               className="searchbar-input1"
             />
+           
             </Link>
-        
         </div>
 
         <div className="nav-menu">

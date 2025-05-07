@@ -8,6 +8,12 @@ import defaultUser from "../assets/Images/commonImg/VDrlogo.png";
 import { FaChevronDown, FaChevronUp, FaStar, FaStarHalfAlt, FaLocationArrow, FaLanguage } from "react-icons/fa";
 import { BiFilterAlt, BiSearchAlt } from "react-icons/bi";
 import { MdClear, MdOutlineCalendarMonth, MdWorkOutline } from "react-icons/md";
+import { useDispatch, useSelector } from 'react-redux'; // Assuming you're using Redux for state management
+//added the code to input text deFAULT 
+
+
+// The default input text is ended here 
+
 // import { RiMoney2Line } from "react-icons/ri";
 
 // API URL constant
