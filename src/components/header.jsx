@@ -158,7 +158,7 @@ const MainHeader = () => {
                 </Link>
               )
             )}
-            {/* <button
+            <button
               className="nav-link flex items-center cursor-pointer"
               onClick={docLogged}
             >
@@ -175,7 +175,7 @@ const MainHeader = () => {
               onClick={loggedOut}
             >
               Logout ❌
-            </button> */}
+            </button>
           {/* only dev purpose */}
 
             {isLoggedIn ? (
