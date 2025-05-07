@@ -22,14 +22,14 @@ import {
 } from "lucide-react";
 import "../pages/medicalLabTechnicianDashboard.css";
 const menuItems = [
-  { name: "Dashboard", icon: <LayoutDashboard className="icon" /> },
-  { name: "Appointments", icon: <CalendarCheck className="icon" /> },
-  { name: "Sample Collection", icon: <FlaskConical className="icon" /> },
-  { name: "Lab Inventory", icon: <Boxes className="icon" /> },
-  { name: "Lab Test Requests", icon: <ClipboardList className="icon" /> },
-  { name: "Lab Reports", icon: <FileText className="icon" /> },
-  { name: "Technician Profile", icon: <User className="icon" /> },
-  { name: "Logout", icon: <LogOut className="icon" /> },
+  { name: "Dashboard", icon: <LayoutDashboard className="diagnosisDashboardPage-icon" /> },
+  { name: "Appointments", icon: <CalendarCheck className="diagnosisDashboardPage-icon" /> },
+  { name: "Sample Collection", icon: <FlaskConical className="diagnosisDashboardPage-icon" /> },
+  { name: "Lab Inventory", icon: <Boxes className="diagnosisDashboardPage-icon" /> },
+  { name: "Lab Test Requests", icon: <ClipboardList className="diagnosisDashboardPage-icon" /> },
+  { name: "Lab Reports", icon: <FileText className="diagnosisDashboardPage-icon" /> },
+  { name: "Technician Profile", icon: <User className="diagnosisDashboardPage-icon" /> },
+  { name: "Logout", icon: <LogOut className="diagnosisDashboardPage-icon" /> },
 ];
 
 const GET_DOCTORDETAILS_API_URL =
@@ -152,36 +152,36 @@ const MedicalLabTechnicianDashboard = () => {
     switch (activePage) {
       case "Dashboard":
         return (
-          <div className="dashboard-content">
-            <div className="header">
-              <h4 className="title">
+          <div className="diagnosisDashboardPage-dashboard-content">
+            <div className="diagnosisDashboardPage-header">
+              <h4 className="diagnosisDashboardPage-title">
                 VDR - Medical LabTechnician Dashboard Overview
               </h4>
             </div>
 
-            <div className="dashboard-grid">
-              <div className="main-column">
-                <div className="card appointments-card">
-                  <div className="card-header">
-                    <h3 className="card-title">Upcoming Appointments</h3>
-                    <div className="card-subtitle">Recent Patient</div>
+            <div className="diagnosisDashboardPage-dashboard-grid">
+              <div className="diagnosisDashboardPage-main-column">
+                <div className="diagnosisDashboardPage-card appointments-card">
+                  <div className="diagnosisDashboardPage-card-header">
+                    <h3 className="diagnosisDashboardPage-card-title">Upcoming Appointments</h3>
+                    <div className="diagnosisDashboardPage-card-subtitle">Recent Patient</div>
                   </div>
 
-                  <div className="appointment-list">
+                  <div className="diagnosisDashboardPage-appointment-list">
                     {upcomingAppointments.map((appointment, idx) => (
-                      <div key={idx} className="appointment-item">
-                        <div className="appointment-info">
-                          <div className="appointment-name">
+                      <div key={idx} className="diagnosisDashboardPage-appointment-item">
+                        <div className="diagnosisDashboardPage-appointment-info">
+                          <div className="diagnosisDashboardPage-appointment-name">
                             {appointment.name}
                           </div>
-                          <div className="appointment-type">
+                          <div className="diagnosisDashboardPage-appointment-type">
                             {appointment.time}, {appointment.type}
                           </div>
                         </div>
-                        <div className="appointment-date">
+                        <div className="diagnosisDashboardPage-appointment-date">
                           <span>{appointment.date}</span>
                           <svg
-                            className="arrow-icon"
+                            className="diagnosisDashboardPage-arrow-icon"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -199,19 +199,19 @@ const MedicalLabTechnicianDashboard = () => {
                   </div>
                 </div>
 
-                {/* <div className="services-card">
-                  <div className="card-header">
-                    <h3 className="card-title">Services by Recent Updates</h3>
+                {/* <div className="diagnosisDashboardPage-services-card">
+                  <div className="diagnosisDashboardPage-card-header">
+                    <h3 className="diagnosisDashboardPage-card-title">Services by Recent Updates</h3>
                   </div>
 
-                  <div className="update-list">
+                  <div className="diagnosisDashboardPage-update-list">
                     {recentUpdates.map((update, idx) => (
-                      <div key={idx} className="update-item">
+                      <div key={idx} className="diagnosisDashboardPage-update-item">
                         <div>
-                          <div className="update-name">{update.name}</div>
-                          <div className="update-action">{update.action}</div>
+                          <div className="diagnosisDashboardPage-update-name">{update.name}</div>
+                          <div className="diagnosisDashboardPage-update-action">{update.action}</div>
                         </div>
-                        <div className="update-date">
+                        <div className="diagnosisDashboardPage-update-date">
                           {update.date || update.name}
                         </div>
                       </div>
@@ -220,23 +220,23 @@ const MedicalLabTechnicianDashboard = () => {
                 </div> */}
               </div>
 
-              <div className="right-column">
-                <div className="quick-actions-card">
-                  <div className="card-header">
-                    <h3 className="card-title">
+              <div className="diagnosisDashboardPage-right-column">
+                <div className="diagnosisDashboardPage-quick-actions-card">
+                  <div className="diagnosisDashboardPage-card-header">
+                    <h3 className="diagnosisDashboardPage-card-title">
                       Quick Actions & Notifications
                     </h3>
                   </div>
 
-                  <div className="card-body">
-                    <h3 className="section-title">Upcoming</h3>
-                    <div className="action-item">
-                      <div className="action-info">
-                        <Calendar className="icon" />
-                        <span className="action-text">Today at 3:00 PM</span>
+                  <div className="diagnosisDashboardPage-card-body">
+                    <h3 className="diagnosisDashboardPage-section-title">Upcoming</h3>
+                    <div className="diagnosisDashboardPage-action-item">
+                      <div className="diagnosisDashboardPage-action-info">
+                        <Calendar className="diagnosisDashboardPage-icon" />
+                        <span className="diagnosisDashboardPage-action-text">Today at 3:00 PM</span>
                       </div>
                       <svg
-                        className="arrow-icon"
+                        className="diagnosisDashboardPage-arrow-icon"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -250,16 +250,16 @@ const MedicalLabTechnicianDashboard = () => {
                       </svg>
                     </div>
 
-                    <h3 className="section-title">Pending</h3>
-                    <div className="action-item">
-                      <div className="action-info">
-                        <FileText className="icon" />
-                        <span className="action-text">
+                    <h3 className="diagnosisDashboardPage-section-title">Pending</h3>
+                    <div className="diagnosisDashboardPage-action-item">
+                      <div className="diagnosisDashboardPage-action-info">
+                        <FileText className="diagnosisDashboardPage-icon" />
+                        <span className="diagnosisDashboardPage-action-text">
                           New prescription req
                         </span>
                       </div>
                       <svg
-                        className="arrow-icon"
+                        className="diagnosisDashboardPage-arrow-icon"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -273,14 +273,14 @@ const MedicalLabTechnicianDashboard = () => {
                       </svg>
                     </div>
 
-                    <h3 className="section-title">New Requests</h3>
-                    <div className="action-item">
-                      <div className="action-info">
-                        <FileText className="icon" />
-                        <span className="action-text">New appointment req</span>
+                    <h3 className="diagnosisDashboardPage-section-title">New Requests</h3>
+                    <div className="diagnosisDashboardPage-action-item">
+                      <div className="diagnosisDashboardPage-action-info">
+                        <FileText className="diagnosisDashboardPage-icon" />
+                        <span className="diagnosisDashboardPage-action-text">New appointment req</span>
                       </div>
                       <svg
-                        className="arrow-icon"
+                        className="diagnosisDashboardPage-arrow-icon"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -321,7 +321,7 @@ const MedicalLabTechnicianDashboard = () => {
         return <TechnicianProfile />;
       default:
         return (
-          <div className="center-message">
+          <div className="diagnosisDashboardPage-center-message">
             <p>No services yet this movement.</p>
           </div>
         );
@@ -330,20 +330,20 @@ const MedicalLabTechnicianDashboard = () => {
 
   // Patients component
   const Patients = () => (
-    <div className="patients">
+    <div className="diagnosisDashboardPage-patients">
       <h3>Patients</h3>
 
-      <div className="card">
-        <div className="search">
+      <div className="diagnosisDashboardPage-card">
+        <div className="diagnosisDashboardPage-search">
           <input
             type="text"
             placeholder="Search patients..."
-            className="search-input"
+            className="diagnosisDashboardPage-search-input"
           />
         </div>
 
-        <div className="table-container">
-          <table className="patient-table">
+        <div className="diagnosisDashboardPage-table-container">
+          <table className="diagnosisDashboardPage-patient-table">
             <thead>
               <tr>
                 <th>Name</th>
@@ -358,56 +358,56 @@ const MedicalLabTechnicianDashboard = () => {
                 <td>Raja Singh</td>
                 <td>P-001</td>
                 <td>Apr 04, 2025</td>
-                {/* <td className="status active">Active</td> */}
+                {/* <td className="diagnosisDashboardPage-status active">Active</td> */}
                 <td>
-                  <button className="view-btn">View</button>
+                  <button className="diagnosisDashboardPage-view-btn">View</button>
                 </td>
               </tr>
               <tr>
                 <td>Salman</td>
                 <td>P-002</td>
                 <td>Apr 24, 2025</td>
-                {/* <td className="status active">Active</td> */}
+                {/* <td className="diagnosisDashboardPage-status active">Active</td> */}
                 <td>
-                  <button className="view-btn">View</button>
+                  <button className="diagnosisDashboardPage-view-btn">View</button>
                 </td>
               </tr>
               <tr>
                 <td>Sowmith</td>
                 <td>P-003</td>
                 <td>Apr 19, 2025</td>
-                {/* <td className="status pending">Pending</td> */}
+                {/* <td className="diagnosisDashboardPage-status pending">Pending</td> */}
                 <td>
-                  <button className="view-btn">View</button>
+                  <button className="diagnosisDashboardPage-view-btn">View</button>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <div className="mobile-card">
-          <div className="card-item">
-            <span className="font-bold">Name:</span> Raju
-            <span className="font-bold">ID:</span> P-001
-            <span className="font-bold">Last Visit:</span> Apr 04, 2025
-            <span className="font-bold">Status:</span> Active
-            <button className="view-btn">View</button>
+        <div className="diagnosisDashboardPage-mobile-card">
+          <div className="diagnosisDashboardPage-card-item">
+            <span className="diagnosisDashboardPage-font-bold">Name:</span> Raju
+            <span className="diagnosisDashboardPage-font-bold">ID:</span> P-001
+            <span className="diagnosisDashboardPage-font-bold">Last Visit:</span> Apr 04, 2025
+            <span className="diagnosisDashboardPage-font-bold">Status:</span> Active
+            <button className="diagnosisDashboardPage-view-btn">View</button>
           </div>
 
-          <div className="card-item">
-            <span className="font-bold">Name:</span> Raja Singh
-            <span className="font-bold">ID:</span> P-002
-            <span className="font-bold">Last Visit:</span> Apr 24, 2025
-            <span className="font-bold">Status:</span> Active
-            <button className="view-btn">View</button>
+          <div className="diagnosisDashboardPage-card-item">
+            <span className="diagnosisDashboardPage-font-bold">Name:</span> Raja Singh
+            <span className="diagnosisDashboardPage-font-bold">ID:</span> P-002
+            <span className="diagnosisDashboardPage-font-bold">Last Visit:</span> Apr 24, 2025
+            <span className="diagnosisDashboardPage-font-bold">Status:</span> Active
+            <button className="diagnosisDashboardPage-view-btn">View</button>
           </div>
 
-          <div className="card-item">
-            <span className="font-bold">Name:</span> Sowmith
-            <span className="font-bold">ID:</span> P-003
-            <span className="font-bold">Last Visit:</span> Apr 19, 2025
-            <span className="font-bold">Status:</span> Pending
-            <button className="view-btn">View</button>
+          <div className="diagnosisDashboardPage-card-item">
+            <span className="diagnosisDashboardPage-font-bold">Name:</span> Sowmith
+            <span className="diagnosisDashboardPage-font-bold">ID:</span> P-003
+            <span className="diagnosisDashboardPage-font-bold">Last Visit:</span> Apr 19, 2025
+            <span className="diagnosisDashboardPage-font-bold">Status:</span> Pending
+            <button className="diagnosisDashboardPage-view-btn">View</button>
           </div>
         </div>
       </div>
@@ -416,49 +416,49 @@ const MedicalLabTechnicianDashboard = () => {
 
   // Prescriptions component
   const Prescriptions = () => (
-    <div className="prescriptions-container">
-      <h3 className="prescriptions-title">Prescriptions</h3>
+    <div className="diagnosisDashboardPage-prescriptions-container">
+      <h3 className="diagnosisDashboardPage-prescriptions-title">Prescriptions</h3>
 
-      <div className="prescriptions-card">
+      <div className="diagnosisDashboardPage-prescriptions-card">
         {/* Header: Search + Button */}
-        <div className="search-container">
+        <div className="diagnosisDashboardPage-search-container">
           <input
             type="text"
             placeholder="Search prescriptions..."
-            className="search-input"
+            className="diagnosisDashboardPage-search-input"
           />
-          <button className="new-prescription-button">New Prescription</button>
+          <button className="diagnosisDashboardPage-new-prescription-button">New Prescription</button>
         </div>
 
         {/* Desktop Table */}
-        <div className="desktop-table">
-          <table className="table">
-            <thead className="table-header">
+        <div className="diagnosisDashboardPage-desktop-table">
+          <table className="diagnosisDashboardPage-table">
+            <thead className="diagnosisDashboardPage-table-header">
               <tr>
-                <th className="table-cell">Patient</th>
-                <th className="table-cell">Medication</th>
-                <th className="table-cell">Dosage</th>
-                <th className="table-cell">Created</th>
-                <th className="table-cell">Status</th>
+                <th className="diagnosisDashboardPage-table-cell">Patient</th>
+                <th className="diagnosisDashboardPage-table-cell">Medication</th>
+                <th className="diagnosisDashboardPage-table-cell">Dosage</th>
+                <th className="diagnosisDashboardPage-table-cell">Created</th>
+                <th className="diagnosisDashboardPage-table-cell">Status</th>
               </tr>
             </thead>
-            <tbody className="table-body">
+            <tbody className="diagnosisDashboardPage-table-body">
               <tr>
-                <td className="table-cell">Indhu yadav</td>
-                <td className="table-cell">Amoxicillin</td>
-                <td className="table-cell">500mg, 3x daily</td>
-                <td className="table-cell">Apr 04, 2025</td>
-                <td className="table-cell">
-                  <span className="status-active">Active</span>
+                <td className="diagnosisDashboardPage-table-cell">Indhu yadav</td>
+                <td className="diagnosisDashboardPage-table-cell">Amoxicillin</td>
+                <td className="diagnosisDashboardPage-table-cell">500mg, 3x daily</td>
+                <td className="diagnosisDashboardPage-table-cell">Apr 04, 2025</td>
+                <td className="diagnosisDashboardPage-table-cell">
+                  <span className="diagnosisDashboardPage-status-active">Active</span>
                 </td>
               </tr>
               <tr>
-                <td className="table-cell">Teju</td>
-                <td className="table-cell">Lisinopril</td>
-                <td className="table-cell">10mg, daily</td>
-                <td className="table-cell">Apr 24, 2025</td>
-                <td className="table-cell">
-                  <span className="status-active">Active</span>
+                <td className="diagnosisDashboardPage-table-cell">Teju</td>
+                <td className="diagnosisDashboardPage-table-cell">Lisinopril</td>
+                <td className="diagnosisDashboardPage-table-cell">10mg, daily</td>
+                <td className="diagnosisDashboardPage-table-cell">Apr 24, 2025</td>
+                <td className="diagnosisDashboardPage-table-cell">
+                  <span className="diagnosisDashboardPage-status-active">Active</span>
                 </td>
               </tr>
             </tbody>
@@ -466,42 +466,42 @@ const MedicalLabTechnicianDashboard = () => {
         </div>
 
         {/* Mobile Cards */}
-        <div className="mobile-cards">
-          <div className="card">
-            <div className="card-info">
-              <span className="font-bold">Patient:</span> Indhu yadav
+        <div className="diagnosisDashboardPage-mobile-cards">
+          <div className="diagnosisDashboardPage-card">
+            <div className="diagnosisDashboardPage-card-info">
+              <span className="diagnosisDashboardPage-font-bold">Patient:</span> Indhu yadav
             </div>
-            <div className="card-info">
-              <span className="font-bold">Medication:</span> Amoxicillin
+            <div className="diagnosisDashboardPage-card-info">
+              <span className="diagnosisDashboardPage-font-bold">Medication:</span> Amoxicillin
             </div>
-            <div className="card-info">
-              <span className="font-bold">Dosage:</span> 500mg, 3x daily
+            <div className="diagnosisDashboardPage-card-info">
+              <span className="diagnosisDashboardPage-font-bold">Dosage:</span> 500mg, 3x daily
             </div>
-            <div className="card-info">
-              <span className="font-bold">Created:</span> Apr 04, 2025
+            <div className="diagnosisDashboardPage-card-info">
+              <span className="diagnosisDashboardPage-font-bold">Created:</span> Apr 04, 2025
             </div>
-            <div className="card-info">
-              <span className="font-bold">Status:</span>
-              <span className="status-active">Active</span>
+            <div className="diagnosisDashboardPage-card-info">
+              <span className="diagnosisDashboardPage-font-bold">Status:</span>
+              <span className="diagnosisDashboardPage-status-active">Active</span>
             </div>
           </div>
 
-          <div className="card">
-            <div className="card-info">
-              <span className="font-bold">Patient:</span> Teju
+          <div className="diagnosisDashboardPage-card">
+            <div className="diagnosisDashboardPage-card-info">
+              <span className="diagnosisDashboardPage-font-bold">Patient:</span> Teju
             </div>
-            <div className="card-info">
-              <span className="font-bold">Medication:</span> Lisinopril
+            <div className="diagnosisDashboardPage-card-info">
+              <span className="diagnosisDashboardPage-font-bold">Medication:</span> Lisinopril
             </div>
-            <div className="card-info">
-              <span className="font-bold">Dosage:</span> 10mg, daily
+            <div className="diagnosisDashboardPage-card-info">
+              <span className="diagnosisDashboardPage-font-bold">Dosage:</span> 10mg, daily
             </div>
-            <div className="card-info">
-              <span className="font-bold">Created:</span> Apr 24, 2025
+            <div className="diagnosisDashboardPage-card-info">
+              <span className="diagnosisDashboardPage-font-bold">Created:</span> Apr 24, 2025
             </div>
-            <div className="card-info">
-              <span className="font-bold">Status:</span>
-              <span className="status-active">Active</span>
+            <div className="diagnosisDashboardPage-card-info">
+              <span className="diagnosisDashboardPage-font-bold">Status:</span>
+              <span className="diagnosisDashboardPage-status-active">Active</span>
             </div>
           </div>
         </div>
@@ -511,48 +511,48 @@ const MedicalLabTechnicianDashboard = () => {
 
   // Teleconsultations component
   const Teleconsultations = () => (
-    <div className="teleconsultations-container">
-      <h3 className="teleconsultations-title">Teleconsultations</h3>
+    <div className="diagnosisDashboardPage-teleconsultations-container">
+      <h3 className="diagnosisDashboardPage-teleconsultations-title">Teleconsultations</h3>
 
-      <div className="sessions-container">
+      <div className="diagnosisDashboardPage-sessions-container">
         {/* Upcoming Sessions */}
-        <div className="sessions-card upcoming-sessions">
-          <h2 className="sessions-heading">Upcoming Sessions</h2>
-          <div className="session-list">
-            <div className="session-item">
-              <div className="session-info">
-                <div className="session-name">Indhu yadav</div>
-                <div className="session-time">04 Apr. at 9:40</div>
+        <div className="diagnosisDashboardPage-sessions-card upcoming-sessions">
+          <h2 className="diagnosisDashboardPage-sessions-heading">Upcoming Sessions</h2>
+          <div className="diagnosisDashboardPage-session-list">
+            <div className="diagnosisDashboardPage-session-item">
+              <div className="diagnosisDashboardPage-session-info">
+                <div className="diagnosisDashboardPage-session-name">Indhu yadav</div>
+                <div className="diagnosisDashboardPage-session-time">04 Apr. at 9:40</div>
               </div>
-              <button className="join-button">Join</button>
+              <button className="diagnosisDashboardPage-join-button">Join</button>
             </div>
-            <div className="session-item">
-              <div className="session-info">
-                <div className="session-name">Teju</div>
-                <div className="session-time">24 Apr. at 2:45</div>
+            <div className="diagnosisDashboardPage-session-item">
+              <div className="diagnosisDashboardPage-session-info">
+                <div className="diagnosisDashboardPage-session-name">Teju</div>
+                <div className="diagnosisDashboardPage-session-time">24 Apr. at 2:45</div>
               </div>
-              <button className="join-button">Join</button>
+              <button className="diagnosisDashboardPage-join-button">Join</button>
             </div>
           </div>
         </div>
 
         {/* Past Sessions */}
-        <div className="sessions-card past-sessions">
-          <h2 className="sessions-heading">Past Sessions</h2>
-          <div className="session-list">
-            <div className="session-item">
-              <div className="session-info">
-                <div className="session-name">Jony</div>
-                <div className="session-time">19 Apr. at 2:05</div>
+        <div className="diagnosisDashboardPage-sessions-card past-sessions">
+          <h2 className="diagnosisDashboardPage-sessions-heading">Past Sessions</h2>
+          <div className="diagnosisDashboardPage-session-list">
+            <div className="diagnosisDashboardPage-session-item">
+              <div className="diagnosisDashboardPage-session-info">
+                <div className="diagnosisDashboardPage-session-name">Jony</div>
+                <div className="diagnosisDashboardPage-session-time">19 Apr. at 2:05</div>
               </div>
-              <button className="view-notes-button">View Notes</button>
+              <button className="diagnosisDashboardPage-view-notes-button">View Notes</button>
             </div>
-            <div className="session-item">
-              <div className="session-info">
-                <div className="session-name">Raj</div>
-                <div className="session-time">15 Apr. at 11:30</div>
+            <div className="diagnosisDashboardPage-session-item">
+              <div className="diagnosisDashboardPage-session-info">
+                <div className="diagnosisDashboardPage-session-name">Raj</div>
+                <div className="diagnosisDashboardPage-session-time">15 Apr. at 11:30</div>
               </div>
-              <button className="view-notes-button">View Notes</button>
+              <button className="diagnosisDashboardPage-view-notes-button">View Notes</button>
             </div>
           </div>
         </div>
@@ -603,26 +603,26 @@ const MedicalLabTechnicianDashboard = () => {
     if (error) return <div>{error}</div>;
 
     return (
-      <div className="p-4 max-w-4xl mx-auto">
-        <h1 className="text-2xl font-bold mb-4">
+      <div className="diagnosisDashboardPage-p-4 max-w-4xl mx-auto">
+        <h1 className="diagnosisDashboardPage-text-2xl font-bold mb-4">
           Medical Lab Technician Dashboard
         </h1>
 
-        <div className="bg-white shadow rounded p-4 mb-6">
-          <h2 className="text-xl font-semibold mb-2">Total Appointments</h2>
-          <p className="text-3xl font-bold text-blue-600">{appointmentCount}</p>
+        <div className="diagnosisDashboardPage-bg-white shadow rounded p-4 mb-6">
+          <h2 className="diagnosisDashboardPage-text-xl font-semibold mb-2">Total Appointments</h2>
+          <p className="diagnosisDashboardPage-text-3xl font-bold text-blue-600">{appointmentCount}</p>
         </div>
 
-        <div className="bg-white shadow rounded p-4">
-          <h2 className="text-xl font-semibold mb-4">Appointment List</h2>
+        <div className="diagnosisDashboardPage-bg-white shadow rounded p-4">
+          <h2 className="diagnosisDashboardPage-text-xl font-semibold mb-4">Appointment List</h2>
           {appointments.length === 0 ? (
             <p>No appointments found.</p>
           ) : (
-            <ul className="space-y-4">
+            <ul className="diagnosisDashboardPage-space-y-4">
               {appointments.map((appointment) => (
                 <li
                   key={appointment.id}
-                  className="border p-4 rounded hover:shadow"
+                  className="diagnosisDashboardPage-border p-4 rounded hover:shadow"
                 >
                   <p>
                     <strong>Patient Name:</strong> {appointment.patientName}
@@ -645,118 +645,118 @@ const MedicalLabTechnicianDashboard = () => {
 
   // Profile component
   const Profile = () => (
-    <div className="doctor-profile-container">
-      <h1 className="doctor-profile-title">Doctor Profile</h1>
-      <div className="doctor-card2">
+    <div className="diagnosisDashboardPage-doctor-profile-container">
+      <h1 className="diagnosisDashboardPage-doctor-profile-title">Doctor Profile</h1>
+      <div className="diagnosisDashboardPage-doctor-card2">
         {/* Header Section */}
-        <div className="doctor-header">
-          <div className="doctor-header-content">
-            <div className="doctor-avatar">
+        <div className="diagnosisDashboardPage-doctor-header">
+          <div className="diagnosisDashboardPage-doctor-header-content">
+            <div className="diagnosisDashboardPage-doctor-avatar">
               <img
                 src={`data:image/jpeg;base64,${doctorProfile.doctorPhoto}`}
                 alt="doctor-image"
-                className="docDashboard_doctor-profile_img"
+                className="diagnosisDashboardPage-docDashboard_doctor-profile_img"
               />
             </div>
-            <div className="doctor-info">
-              <h2 className="doctor-name">{doctorProfile.fullName}</h2>
-              <p className="doctor-role">
+            <div className="diagnosisDashboardPage-doctor-info">
+              <h2 className="diagnosisDashboardPage-doctor-name">{doctorProfile.fullName}</h2>
+              <p className="diagnosisDashboardPage-doctor-role">
                 Speciality: {doctorProfile.medicalSpeciality}
               </p>
-              <p className="doctor-license">
+              <p className="diagnosisDashboardPage-doctor-license">
                 License: {doctorProfile.medicalLicenseNumber}
               </p>
             </div>
-            <div className="total-right">
-              <button className="edit-button">Edit Profile</button>
+            <div className="diagnosisDashboardPage-total-right">
+              <button className="diagnosisDashboardPage-edit-button">Edit Profile</button>
             </div>
           </div>
         </div>
 
         {/* Personal Information */}
-        <div className="doctor-section">
-          <h3 className="section-title">Personal Information</h3>
-          <div className="info-grid two-column">
-            <ul className="Personal-information-Ul-left">
+        <div className="diagnosisDashboardPage-doctor-section">
+          <h3 className="diagnosisDashboardPage-section-title">Personal Information</h3>
+          <div className="diagnosisDashboardPage-info-grid two-column">
+            <ul className="diagnosisDashboardPage-Personal-information-Ul-left">
               <li>
-                <p className="info-label">Email :</p>
+                <p className="diagnosisDashboardPage-info-label">Email :</p>
                 <p>{doctorProfile.email}</p>
               </li>
 
               <li>
-                <p className="info-label">Phone :</p>
+                <p className="diagnosisDashboardPage-info-label">Phone :</p>
                 <p>{doctorProfile.mobileNumber}</p>
               </li>
 
               <li>
-                <p className="info-label">Gender :</p>
+                <p className="diagnosisDashboardPage-info-label">Gender :</p>
                 <p>{doctorProfile.gender}</p>
               </li>
               <li>
-                <p className="info-label">Address :</p>
+                <p className="diagnosisDashboardPage-info-label">Address :</p>
                 <p>{doctorProfile.personalAddress}</p>
               </li>
             </ul>
           </div>
         </div>
 
-        <hr className="line" />
+        <hr className="diagnosisDashboardPage-line" />
 
         {/* Professional Information */}
-        <div className="doctor-section">
-          <h3 className="section-title">Professional Information</h3>
-          <div className="info-grid two-column">
-            <ul className="Personal-information-Ul-left">
+        <div className="diagnosisDashboardPage-doctor-section">
+          <h3 className="diagnosisDashboardPage-section-title">Professional Information</h3>
+          <div className="diagnosisDashboardPage-info-grid two-column">
+            <ul className="diagnosisDashboardPage-Personal-information-Ul-left">
               <li>
-                <p className="info-label">Medical License No</p>
+                <p className="diagnosisDashboardPage-info-label">Medical License No</p>
                 <p>{doctorProfile.medicalLicenseNumber}</p>
               </li>
 
               <li>
-                <p className="info-label">License Expiry</p>
+                <p className="diagnosisDashboardPage-info-label">License Expiry</p>
                 <p>{doctorProfile.medicalLicenseNumberExpiryDate}</p>
               </li>
 
               <li>
-                <p className="info-label">Specialization</p>
+                <p className="diagnosisDashboardPage-info-label">Specialization</p>
                 <p>{doctorProfile.medicalSpeciality}</p>
               </li>
 
               <li>
-                <p className="info-label">Educational Background</p>
+                <p className="diagnosisDashboardPage-info-label">Educational Background</p>
                 <p>{doctorProfile.educationalBackground}</p>
               </li>
               <li>
-                <p className="info-label">Experience</p>
+                <p className="diagnosisDashboardPage-info-label">Experience</p>
                 <p>{doctorProfile.experience} years</p>
               </li>
 
               <li>
-                <p className="info-label">Current Hospital/Clinic</p>
+                <p className="diagnosisDashboardPage-info-label">Current Hospital/Clinic</p>
                 <p>{doctorProfile.hospitalCurrentWorking}</p>
               </li>
 
               <li>
-                <p className="info-label">Clinic/Hospital Name</p>
+                <p className="diagnosisDashboardPage-info-label">Clinic/Hospital Name</p>
                 <p>{doctorProfile.hospitalOrClinic}</p>
               </li>
 
               <li>
-                <p className="info-label">Clinic/Hospital Address</p>
+                <p className="diagnosisDashboardPage-info-label">Clinic/Hospital Address</p>
                 <p>{doctorProfile.hospitalAddress}</p>
               </li>
 
               <li>
-                <p className="info-label">Languages Spoken</p>
+                <p className="diagnosisDashboardPage-info-label">Languages Spoken</p>
                 <p>{doctorProfile.launguage}</p>
               </li>
               <li>
-                <p className="info-label">Disciplinary Actions</p>
+                <p className="diagnosisDashboardPage-info-label">Disciplinary Actions</p>
                 <p>{doctorProfile.disciplinaryActions || "None"}</p>
               </li>
 
               <li>
-                <p className="info-label">Bio</p>
+                <p className="diagnosisDashboardPage-info-label">Bio</p>
                 <p>{doctorProfile.description || "N/A"}</p>
               </li>
             </ul>
@@ -764,31 +764,31 @@ const MedicalLabTechnicianDashboard = () => {
         </div>
 
         {/* Schedule */}
-        <div className="doctor-section border-top">
-          <h3 className="section-title">Schedule & Availability</h3>
-          <div className="schedule-grid">
-            <div className="schedule-box">
-              <p className="schedule-day">Monday - Friday</p>
-              <p className="schedule-time">9:00 AM - 5:00 PM</p>
+        <div className="diagnosisDashboardPage-doctor-section border-top">
+          <h3 className="diagnosisDashboardPage-section-title">Schedule & Availability</h3>
+          <div className="diagnosisDashboardPage-schedule-grid">
+            <div className="diagnosisDashboardPage-schedule-box">
+              <p className="diagnosisDashboardPage-schedule-day">Monday - Friday</p>
+              <p className="diagnosisDashboardPage-schedule-time">9:00 AM - 5:00 PM</p>
             </div>
-            <div className="schedule-box">
-              <p className="schedule-day">Saturday</p>
-              <p className="schedule-time">10:00 AM - 2:00 PM</p>
+            <div className="diagnosisDashboardPage-schedule-box">
+              <p className="diagnosisDashboardPage-schedule-day">Saturday</p>
+              <p className="diagnosisDashboardPage-schedule-time">10:00 AM - 2:00 PM</p>
             </div>
-            <div className="schedule-box">
-              <p className="schedule-day">Sunday</p>
-              <p className="schedule-time">Closed</p>
+            <div className="diagnosisDashboardPage-schedule-box">
+              <p className="diagnosisDashboardPage-schedule-day">Sunday</p>
+              <p className="diagnosisDashboardPage-schedule-time">Closed</p>
             </div>
           </div>
         </div>
 
         {/* Account Settings */}
-        <div className="doctor-section border-top">
-          <h3 className="section-title">Account Settings</h3>
-          <div className="settings-links">
-            <button className="settings-link">Change Password</button>
-            <button className="settings-link">Notification Preferences</button>
-            <button className="settings-link">Two-Factor Authentication</button>
+        <div className="diagnosisDashboardPage-doctor-section border-top">
+          <h3 className="diagnosisDashboardPage-section-title">Account Settings</h3>
+          <div className="diagnosisDashboardPage-settings-links">
+            <button className="diagnosisDashboardPage-settings-link">Change Password</button>
+            <button className="diagnosisDashboardPage-settings-link">Notification Preferences</button>
+            <button className="diagnosisDashboardPage-settings-link">Two-Factor Authentication</button>
           </div>
         </div>
       </div>
@@ -833,23 +833,23 @@ const MedicalLabTechnicianDashboard = () => {
     ]);
 
     return (
-      <div className="sample-collection-container">
-        <h3 className="page-title">Sample Collection</h3>
+      <div className="diagnosisDashboardPage-sample-collection-container">
+        <h3 className="diagnosisDashboardPage-page-title">Sample Collection</h3>
 
-        <div className="card">
-          <div className="card-header">
-            <div className="search-container">
+        <div className="diagnosisDashboardPage-card">
+          <div className="diagnosisDashboardPage-card-header">
+            <div className="diagnosisDashboardPage-search-container">
               <input
                 type="text"
                 placeholder="Search samples..."
-                className="search-input"
+                className="diagnosisDashboardPage-search-input"
               />
-              <button className="add-btn">New Sample</button>
+              <button className="diagnosisDashboardPage-add-btn">New Sample</button>
             </div>
           </div>
 
-          <div className="table-container">
-            <table className="sample-table">
+          <div className="diagnosisDashboardPage-table-container">
+            <table className="diagnosisDashboardPage-sample-table">
               <thead>
                 <tr>
                   <th>Sample ID</th>
@@ -870,7 +870,7 @@ const MedicalLabTechnicianDashboard = () => {
                     <td>{sample.collectionDate}</td>
                     <td>
                       <span
-                        className={`status-badge ${
+                        className={`diagnosisDashboardPage-status-badge ${
                           sample.status === "Collected"
                             ? "status-success"
                             : "status-pending"
@@ -881,14 +881,14 @@ const MedicalLabTechnicianDashboard = () => {
                     </td>
                     <td>
                       <span
-                        className={`priority-badge priority-${sample.priority.toLowerCase()}`}
+                        className={`diagnosisDashboardPage-priority-badge priority-${sample.priority.toLowerCase()}`}
                       >
                         {sample.priority}
                       </span>
                     </td>
                     <td>
-                      <button className="action-btn">Collect</button>
-                      <button className="action-btn view-btn">View</button>
+                      <button className="diagnosisDashboardPage-action-btn">Collect</button>
+                      <button className="diagnosisDashboardPage-action-btn view-btn">View</button>
                     </td>
                   </tr>
                 ))}
@@ -897,13 +897,13 @@ const MedicalLabTechnicianDashboard = () => {
           </div>
 
           {/* Mobile view cards */}
-          <div className="mobile-cards">
+          <div className="diagnosisDashboardPage-mobile-cards">
             {samples.map((sample) => (
-              <div key={sample.id} className="mobile-card">
-                <div className="card-header">
-                  <span className="sample-id">{sample.id}</span>
+              <div key={sample.id} className="diagnosisDashboardPage-mobile-card">
+                <div className="diagnosisDashboardPage-card-header">
+                  <span className="diagnosisDashboardPage-sample-id">{sample.id}</span>
                   <span
-                    className={`status-badge ${
+                    className={`diagnosisDashboardPage-status-badge ${
                       sample.status === "Collected"
                         ? "status-success"
                         : "status-pending"
@@ -912,7 +912,7 @@ const MedicalLabTechnicianDashboard = () => {
                     {sample.status}
                   </span>
                 </div>
-                <div className="card-content">
+                <div className="diagnosisDashboardPage-card-content">
                   <p>
                     <strong>Patient:</strong> {sample.patientName}
                   </p>
@@ -925,15 +925,15 @@ const MedicalLabTechnicianDashboard = () => {
                   <p>
                     <strong>Priority:</strong>
                     <span
-                      className={`priority-badge priority-${sample.priority.toLowerCase()}`}
+                      className={`diagnosisDashboardPage-priority-badge priority-${sample.priority.toLowerCase()}`}
                     >
                       {sample.priority}
                     </span>
                   </p>
                 </div>
-                <div className="card-actions">
-                  <button className="action-btn">Collect</button>
-                  <button className="action-btn view-btn">View</button>
+                <div className="diagnosisDashboardPage-card-actions">
+                  <button className="diagnosisDashboardPage-action-btn">Collect</button>
+                  <button className="diagnosisDashboardPage-action-btn view-btn">View</button>
                 </div>
               </div>
             ))}
@@ -998,41 +998,41 @@ const MedicalLabTechnicianDashboard = () => {
     };
 
     return (
-      <div className="lab-inventory-container">
-        <h3 className="page-title">Laboratory Inventory</h3>
+      <div className="diagnosisDashboardPage-lab-inventory-container">
+        <h3 className="diagnosisDashboardPage-page-title">Laboratory Inventory</h3>
 
-        <div className="dashboard-summary">
-          <div className="summary-card">
-            <div className="summary-title">Total Items</div>
-            <div className="summary-value">173</div>
+        <div className="diagnosisDashboardPage-dashboard-summary">
+          <div className="diagnosisDashboardPage-summary-card">
+            <div className="diagnosisDashboardPage-summary-title">Total Items</div>
+            <div className="diagnosisDashboardPage-summary-value">173</div>
           </div>
-          <div className="summary-card warning">
-            <div className="summary-title">Low Stock</div>
-            <div className="summary-value">12</div>
+          <div className="diagnosisDashboardPage-summary-card warning">
+            <div className="diagnosisDashboardPage-summary-title">Low Stock</div>
+            <div className="diagnosisDashboardPage-summary-value">12</div>
           </div>
-          <div className="summary-card danger">
-            <div className="summary-title">Out of Stock</div>
-            <div className="summary-value">5</div>
+          <div className="diagnosisDashboardPage-summary-card danger">
+            <div className="diagnosisDashboardPage-summary-title">Out of Stock</div>
+            <div className="diagnosisDashboardPage-summary-value">5</div>
           </div>
         </div>
 
-        <div className="card">
-          <div className="card-header">
-            <div className="search-container">
+        <div className="diagnosisDashboardPage-card">
+          <div className="diagnosisDashboardPage-card-header">
+            <div className="diagnosisDashboardPage-search-container">
               <input
                 type="text"
                 placeholder="Search inventory..."
-                className="search-input"
+                className="diagnosisDashboardPage-search-input"
               />
-              <div className="action-buttons">
-                <button className="add-btn">Add Item</button>
-                <button className="restock-btn">Restock</button>
+              <div className="diagnosisDashboardPage-action-buttons">
+                <button className="diagnosisDashboardPage-add-btn">Add Item</button>
+                <button className="diagnosisDashboardPage-restock-btn">Restock</button>
               </div>
             </div>
           </div>
 
-          <div className="table-container">
-            <table className="inventory-table">
+          <div className="diagnosisDashboardPage-table-container">
+            <table className="diagnosisDashboardPage-inventory-table">
               <thead>
                 <tr>
                   <th>Item ID</th>
@@ -1056,7 +1056,7 @@ const MedicalLabTechnicianDashboard = () => {
                     <td>{item.lastRestocked}</td>
                     <td>
                       <span
-                        className={`status-badge ${getStatusClass(
+                        className={`diagnosisDashboardPage-status-badge ${getStatusClass(
                           item.status
                         )}`}
                       >
@@ -1064,8 +1064,8 @@ const MedicalLabTechnicianDashboard = () => {
                       </span>
                     </td>
                     <td>
-                      <button className="action-btn">Update</button>
-                      <button className="action-btn view-btn">View</button>
+                      <button className="diagnosisDashboardPage-action-btn">Update</button>
+                      <button className="diagnosisDashboardPage-action-btn view-btn">View</button>
                     </td>
                   </tr>
                 ))}
@@ -1074,18 +1074,18 @@ const MedicalLabTechnicianDashboard = () => {
           </div>
 
           {/* Mobile view cards */}
-          <div className="mobile-cards">
+          <div className="diagnosisDashboardPage-mobile-cards">
             {inventory.map((item) => (
-              <div key={item.id} className="mobile-card">
-                <div className="card-header">
-                  <span className="item-id">{item.id}</span>
+              <div key={item.id} className="diagnosisDashboardPage-mobile-card">
+                <div className="diagnosisDashboardPage-card-header">
+                  <span className="diagnosisDashboardPage-item-id">{item.id}</span>
                   <span
-                    className={`status-badge ${getStatusClass(item.status)}`}
+                    className={`diagnosisDashboardPage-status-badge ${getStatusClass(item.status)}`}
                   >
                     {item.status}
                   </span>
                 </div>
-                <div className="card-content">
+                <div className="diagnosisDashboardPage-card-content">
                   <p>
                     <strong>Item:</strong> {item.itemName}
                   </p>
@@ -1102,9 +1102,9 @@ const MedicalLabTechnicianDashboard = () => {
                     <strong>Last Restocked:</strong> {item.lastRestocked}
                   </p>
                 </div>
-                <div className="card-actions">
-                  <button className="action-btn">Update</button>
-                  <button className="action-btn view-btn">View</button>
+                <div className="diagnosisDashboardPage-card-actions">
+                  <button className="diagnosisDashboardPage-action-btn">Update</button>
+                  <button className="diagnosisDashboardPage-action-btn view-btn">View</button>
                 </div>
               </div>
             ))}
@@ -1182,37 +1182,37 @@ const MedicalLabTechnicianDashboard = () => {
     };
 
     return (
-      <div className="lab-test-requests-container">
-        <h3 className="page-title">Lab Test Requests</h3>
+      <div className="diagnosisDashboardPage-lab-test-requests-container">
+        <h3 className="diagnosisDashboardPage-page-title">Lab Test Requests</h3>
 
-        <div className="dashboard-summary">
-          <div className="summary-card">
-            <div className="summary-title">Total Requests</div>
-            <div className="summary-value">24</div>
+        <div className="diagnosisDashboardPage-dashboard-summary">
+          <div className="diagnosisDashboardPage-summary-card">
+            <div className="diagnosisDashboardPage-summary-title">Total Requests</div>
+            <div className="diagnosisDashboardPage-summary-value">24</div>
           </div>
-          <div className="summary-card warning">
-            <div className="summary-title">Pending</div>
-            <div className="summary-value">8</div>
+          <div className="diagnosisDashboardPage-summary-card warning">
+            <div className="diagnosisDashboardPage-summary-title">Pending</div>
+            <div className="diagnosisDashboardPage-summary-value">8</div>
           </div>
-          <div className="summary-card progress">
-            <div className="summary-title">In Progress</div>
-            <div className="summary-value">5</div>
+          <div className="diagnosisDashboardPage-summary-card progress">
+            <div className="diagnosisDashboardPage-summary-title">In Progress</div>
+            <div className="diagnosisDashboardPage-summary-value">5</div>
           </div>
-          <div className="summary-card completed">
-            <div className="summary-title">Completed</div>
-            <div className="summary-value">11</div>
+          <div className="diagnosisDashboardPage-summary-card completed">
+            <div className="diagnosisDashboardPage-summary-title">Completed</div>
+            <div className="diagnosisDashboardPage-summary-value">11</div>
           </div>
         </div>
 
-        <div className="card">
-          <div className="card-header">
-            <div className="search-container">
+        <div className="diagnosisDashboardPage-card">
+          <div className="diagnosisDashboardPage-card-header">
+            <div className="diagnosisDashboardPage-search-container">
               <input
                 type="text"
                 placeholder="Search requests..."
-                className="search-input"
+                className="diagnosisDashboardPage-search-input"
               />
-              <select className="filter-select">
+              <select className="diagnosisDashboardPage-filter-select">
                 <option value="all">All Status</option>
                 <option value="pending">Pending</option>
                 <option value="in-progress">In Progress</option>
@@ -1221,8 +1221,8 @@ const MedicalLabTechnicianDashboard = () => {
             </div>
           </div>
 
-          <div className="table-container">
-            <table className="requests-table">
+          <div className="diagnosisDashboardPage-table-container">
+            <table className="diagnosisDashboardPage-requests-table">
               <thead>
                 <tr>
                   <th>Request ID</th>
@@ -1244,7 +1244,7 @@ const MedicalLabTechnicianDashboard = () => {
                     <td>{request.testType}</td>
                     <td>
                       <span
-                        className={`priority-badge ${getPriorityClass(
+                        className={`diagnosisDashboardPage-priority-badge ${getPriorityClass(
                           request.priority
                         )}`}
                       >
@@ -1254,7 +1254,7 @@ const MedicalLabTechnicianDashboard = () => {
                     <td>{request.requestDate}</td>
                     <td>
                       <span
-                        className={`status-badge ${getStatusClass(
+                        className={`diagnosisDashboardPage-status-badge ${getStatusClass(
                           request.status
                         )}`}
                       >
@@ -1263,12 +1263,12 @@ const MedicalLabTechnicianDashboard = () => {
                     </td>
                     <td>
                       {request.status === "Pending" && (
-                        <button className="action-btn">Process</button>
+                        <button className="diagnosisDashboardPage-action-btn">Process</button>
                       )}
                       {request.status === "In Progress" && (
-                        <button className="action-btn">Complete</button>
+                        <button className="diagnosisDashboardPage-action-btn">Complete</button>
                       )}
-                      <button className="action-btn view-btn">View</button>
+                      <button className="diagnosisDashboardPage-action-btn view-btn">View</button>
                     </td>
                   </tr>
                 ))}
@@ -1277,18 +1277,18 @@ const MedicalLabTechnicianDashboard = () => {
           </div>
 
           {/* Mobile view cards */}
-          <div className="mobile-cards">
+          <div className="diagnosisDashboardPage-mobile-cards">
             {testRequests.map((request) => (
-              <div key={request.id} className="mobile-card">
-                <div className="card-header">
-                  <span className="request-id">{request.id}</span>
+              <div key={request.id} className="diagnosisDashboardPage-mobile-card">
+                <div className="diagnosisDashboardPage-card-header">
+                  <span className="diagnosisDashboardPage-request-id">{request.id}</span>
                   <span
-                    className={`status-badge ${getStatusClass(request.status)}`}
+                    className={`diagnosisDashboardPage-status-badge ${getStatusClass(request.status)}`}
                   >
                     {request.status}
                   </span>
                 </div>
-                <div className="card-content">
+                <div className="diagnosisDashboardPage-card-content">
                   <p>
                     <strong>Patient:</strong> {request.patientName}
                   </p>
@@ -1301,7 +1301,7 @@ const MedicalLabTechnicianDashboard = () => {
                   <p>
                     <strong>Priority:</strong>
                     <span
-                      className={`priority-badge ${getPriorityClass(
+                      className={`diagnosisDashboardPage-priority-badge ${getPriorityClass(
                         request.priority
                       )}`}
                     >
@@ -1312,14 +1312,14 @@ const MedicalLabTechnicianDashboard = () => {
                     <strong>Date:</strong> {request.requestDate}
                   </p>
                 </div>
-                <div className="card-actions">
+                <div className="diagnosisDashboardPage-card-actions">
                   {request.status === "Pending" && (
-                    <button className="action-btn">Process</button>
+                    <button className="diagnosisDashboardPage-action-btn">Process</button>
                   )}
                   {request.status === "In Progress" && (
-                    <button className="action-btn">Complete</button>
+                    <button className="diagnosisDashboardPage-action-btn">Complete</button>
                   )}
-                  <button className="action-btn view-btn">View</button>
+                  <button className="diagnosisDashboardPage-action-btn view-btn">View</button>
                 </div>
               </div>
             ))}
@@ -1384,37 +1384,37 @@ const MedicalLabTechnicianDashboard = () => {
     };
 
     return (
-      <div className="lab-reports-container">
-        <h3 className="page-title">Laboratory Reports</h3>
+      <div className="diagnosisDashboardPage-lab-reports-container">
+        <h3 className="diagnosisDashboardPage-page-title">Laboratory Reports</h3>
 
-        <div className="dashboard-summary">
-          <div className="summary-card">
-            <div className="summary-title">Total Reports</div>
-            <div className="summary-value">42</div>
+        <div className="diagnosisDashboardPage-dashboard-summary">
+          <div className="diagnosisDashboardPage-summary-card">
+            <div className="diagnosisDashboardPage-summary-title">Total Reports</div>
+            <div className="diagnosisDashboardPage-summary-value">42</div>
           </div>
-          <div className="summary-card completed">
-            <div className="summary-title">Completed</div>
-            <div className="summary-value">32</div>
+          <div className="diagnosisDashboardPage-summary-card completed">
+            <div className="diagnosisDashboardPage-summary-title">Completed</div>
+            <div className="diagnosisDashboardPage-summary-value">32</div>
           </div>
-          <div className="summary-card warning">
-            <div className="summary-title">Pending Review</div>
-            <div className="summary-value">7</div>
+          <div className="diagnosisDashboardPage-summary-card warning">
+            <div className="diagnosisDashboardPage-summary-title">Pending Review</div>
+            <div className="diagnosisDashboardPage-summary-value">7</div>
           </div>
-          <div className="summary-card processing">
-            <div className="summary-title">Processing</div>
-            <div className="summary-value">3</div>
+          <div className="diagnosisDashboardPage-summary-card processing">
+            <div className="diagnosisDashboardPage-summary-title">Processing</div>
+            <div className="diagnosisDashboardPage-summary-value">3</div>
           </div>
         </div>
 
-        <div className="card">
-          <div className="card-header">
-            <div className="search-container">
+        <div className="diagnosisDashboardPage-card">
+          <div className="diagnosisDashboardPage-card-header">
+            <div className="diagnosisDashboardPage-search-container">
               <input
                 type="text"
                 placeholder="Search reports..."
-                className="search-input"
+                className="diagnosisDashboardPage-search-input"
               />
-              <select className="filter-select">
+              <select className="diagnosisDashboardPage-filter-select">
                 <option value="all">All Reports</option>
                 <option value="completed">Completed</option>
                 <option value="pending-review">Pending Review</option>
@@ -1423,8 +1423,8 @@ const MedicalLabTechnicianDashboard = () => {
             </div>
           </div>
 
-          <div className="table-container">
-            <table className="reports-table">
+          <div className="diagnosisDashboardPage-table-container">
+            <table className="diagnosisDashboardPage-reports-table">
               <thead>
                 <tr>
                   <th>Report ID</th>
@@ -1448,7 +1448,7 @@ const MedicalLabTechnicianDashboard = () => {
                     <td>{report.referredBy}</td>
                     <td>
                       <span
-                        className={`status-badge ${getStatusClass(
+                        className={`diagnosisDashboardPage-status-badge ${getStatusClass(
                           report.status
                         )}`}
                       >
@@ -1456,10 +1456,10 @@ const MedicalLabTechnicianDashboard = () => {
                       </span>
                     </td>
                     <td>
-                      <button className="action-btn view-btn">View</button>
-                      <button className="action-btn">Print</button>
+                      <button className="diagnosisDashboardPage-action-btn view-btn">View</button>
+                      <button className="diagnosisDashboardPage-action-btn">Print</button>
                       {report.status === "Pending Review" && (
-                        <button className="action-btn">Approve</button>
+                        <button className="diagnosisDashboardPage-action-btn">Approve</button>
                       )}
                     </td>
                   </tr>
@@ -1469,18 +1469,18 @@ const MedicalLabTechnicianDashboard = () => {
           </div>
 
           {/* Mobile view cards */}
-          <div className="mobile-cards">
+          <div className="diagnosisDashboardPage-mobile-cards">
             {reports.map((report) => (
-              <div key={report.id} className="mobile-card">
-                <div className="card-header">
-                  <span className="report-id">{report.id}</span>
+              <div key={report.id} className="diagnosisDashboardPage-mobile-card">
+                <div className="diagnosisDashboardPage-card-header">
+                  <span className="diagnosisDashboardPage-report-id">{report.id}</span>
                   <span
-                    className={`status-badge ${getStatusClass(report.status)}`}
+                    className={`diagnosisDashboardPage-status-badge ${getStatusClass(report.status)}`}
                   >
                     {report.status}
                   </span>
                 </div>
-                <div className="card-content">
+                <div className="diagnosisDashboardPage-card-content">
                   <p>
                     <strong>Patient:</strong> {report.patientName}
                   </p>
@@ -1497,11 +1497,11 @@ const MedicalLabTechnicianDashboard = () => {
                     <strong>Referred By:</strong> {report.referredBy}
                   </p>
                 </div>
-                <div className="card-actions">
-                  <button className="action-btn view-btn">View</button>
-                  <button className="action-btn">Print</button>
+                <div className="diagnosisDashboardPage-card-actions">
+                  <button className="diagnosisDashboardPage-action-btn view-btn">View</button>
+                  <button className="diagnosisDashboardPage-action-btn">Print</button>
                   {report.status === "Pending Review" && (
-                    <button className="action-btn">Approve</button>
+                    <button className="diagnosisDashboardPage-action-btn">Approve</button>
                   )}
                 </div>
               </div>
@@ -1535,104 +1535,104 @@ const MedicalLabTechnicianDashboard = () => {
     });
 
     return (
-      <div className="technician-profile-container">
-        <h3 className="technician-profile-title">Technician Profile</h3>
-        <div className="technician-card">
+      <div className="diagnosisDashboardPage-technician-profile-container">
+        <h3 className="diagnosisDashboardPage-technician-profile-title">Technician Profile</h3>
+        <div className="diagnosisDashboardPage-technician-card">
           {/* Header Section */}
-          <div className="technician-header">
-            <div className="technician-header-content">
-              <div className="technician-avatar">
+          <div className="diagnosisDashboardPage-technician-header">
+            <div className="diagnosisDashboardPage-technician-header-content">
+              <div className="diagnosisDashboardPage-technician-avatar">
                 <img
                   src="/api/placeholder/150/150"
                   alt="technician-profile"
-                  className="technician-profile-img"
+                  className="diagnosisDashboardPage-technician-profile-img"
                 />
               </div>
-              <div className="technician-info">
-                <h2 className="technician-name">{techProfile.fullName}</h2>
-                <p className="technician-role">
+              <div className="diagnosisDashboardPage-technician-info">
+                <h2 className="diagnosisDashboardPage-technician-name">{techProfile.fullName}</h2>
+                <p className="diagnosisDashboardPage-technician-role">
                   Specialization: {techProfile.specialization}
                 </p>
-                <p className="technician-license">
+                <p className="diagnosisDashboardPage-technician-license">
                   License: {techProfile.licenseNumber}
                 </p>
               </div>
-              <div className="total-right">
-                <button className="edit-button">Edit Profile</button>
+              <div className="diagnosisDashboardPage-total-right">
+                <button className="diagnosisDashboardPage-edit-button">Edit Profile</button>
               </div>
             </div>
           </div>
 
           {/* Personal Information */}
-          <div className="technician-section">
-            <h3 className="section-title">Personal Information</h3>
-            <div className="info-grid two-column">
-              <ul className="Personal-information-Ul-left">
+          <div className="diagnosisDashboardPage-technician-section">
+            <h3 className="diagnosisDashboardPage-section-title">Personal Information</h3>
+            <div className="diagnosisDashboardPage-info-grid two-column">
+              <ul className="diagnosisDashboardPage-Personal-information-Ul-left">
                 <li>
-                  <p className="info-label">Email:</p>
+                  <p className="diagnosisDashboardPage-info-label">Email:</p>
                   <p>{techProfile.email}</p>
                 </li>
                 <li>
-                  <p className="info-label">Phone:</p>
+                  <p className="diagnosisDashboardPage-info-label">Phone:</p>
                   <p>{techProfile.mobileNumber}</p>
                 </li>
                 <li>
-                  <p className="info-label">Gender:</p>
+                  <p className="diagnosisDashboardPage-info-label">Gender:</p>
                   <p>{techProfile.gender}</p>
                 </li>
                 <li>
-                  <p className="info-label">Address:</p>
+                  <p className="diagnosisDashboardPage-info-label">Address:</p>
                   <p>{techProfile.personalAddress}</p>
                 </li>
               </ul>
             </div>
           </div>
 
-          <hr className="line" />
+          <hr className="diagnosisDashboardPage-line" />
 
           {/* Professional Information */}
-          <div className="technician-section">
-            <h3 className="section-title">Professional Information</h3>
-            <div className="info-grid two-column">
-              <ul className="Personal-information-Ul-left">
+          <div className="diagnosisDashboardPage-technician-section">
+            <h3 className="diagnosisDashboardPage-section-title">Professional Information</h3>
+            <div className="diagnosisDashboardPage-info-grid two-column">
+              <ul className="diagnosisDashboardPage-Personal-information-Ul-left">
                 <li>
-                  <p className="info-label">License Number:</p>
+                  <p className="diagnosisDashboardPage-info-label">License Number:</p>
                   <p>{techProfile.licenseNumber}</p>
                 </li>
                 <li>
-                  <p className="info-label">License Expiry:</p>
+                  <p className="diagnosisDashboardPage-info-label">License Expiry:</p>
                   <p>{techProfile.licenseExpiry}</p>
                 </li>
                 <li>
-                  <p className="info-label">Specialization:</p>
+                  <p className="diagnosisDashboardPage-info-label">Specialization:</p>
                   <p>{techProfile.specialization}</p>
                 </li>
                 <li>
-                  <p className="info-label">Educational Background:</p>
+                  <p className="diagnosisDashboardPage-info-label">Educational Background:</p>
                   <p>{techProfile.educationalBackground}</p>
                 </li>
                 <li>
-                  <p className="info-label">Experience:</p>
+                  <p className="diagnosisDashboardPage-info-label">Experience:</p>
                   <p>{techProfile.experience} years</p>
                 </li>
                 <li>
-                  <p className="info-label">Current Laboratory:</p>
+                  <p className="diagnosisDashboardPage-info-label">Current Laboratory:</p>
                   <p>{techProfile.currentLab}</p>
                 </li>
                 <li>
-                  <p className="info-label">Laboratory Address:</p>
+                  <p className="diagnosisDashboardPage-info-label">Laboratory Address:</p>
                   <p>{techProfile.labAddress}</p>
                 </li>
                 <li>
-                  <p className="info-label">Languages:</p>
+                  <p className="diagnosisDashboardPage-info-label">Languages:</p>
                   <p>{techProfile.languages}</p>
                 </li>
                 <li>
-                  <p className="info-label">Certifications:</p>
+                  <p className="diagnosisDashboardPage-info-label">Certifications:</p>
                   <p>{techProfile.certifications}</p>
                 </li>
                 <li>
-                  <p className="info-label">Bio:</p>
+                  <p className="diagnosisDashboardPage-info-label">Bio:</p>
                   <p>{techProfile.bio}</p>
                 </li>
               </ul>
@@ -1640,33 +1640,33 @@ const MedicalLabTechnicianDashboard = () => {
           </div>
 
           {/* Schedule */}
-          <div className="technician-section border-top">
-            <h3 className="section-title">Schedule & Availability</h3>
-            <div className="schedule-grid">
-              <div className="schedule-box">
-                <p className="schedule-day">Monday - Friday</p>
-                <p className="schedule-time">8:00 AM - 4:00 PM</p>
+          <div className="diagnosisDashboardPage-technician-section border-top">
+            <h3 className="diagnosisDashboardPage-section-title">Schedule & Availability</h3>
+            <div className="diagnosisDashboardPage-schedule-grid">
+              <div className="diagnosisDashboardPage-schedule-box">
+                <p className="diagnosisDashboardPage-schedule-day">Monday - Friday</p>
+                <p className="diagnosisDashboardPage-schedule-time">8:00 AM - 4:00 PM</p>
               </div>
-              <div className="schedule-box">
-                <p className="schedule-day">Saturday</p>
-                <p className="schedule-time">9:00 AM - 1:00 PM</p>
+              <div className="diagnosisDashboardPage-schedule-box">
+                <p className="diagnosisDashboardPage-schedule-day">Saturday</p>
+                <p className="diagnosisDashboardPage-schedule-time">9:00 AM - 1:00 PM</p>
               </div>
-              <div className="schedule-box">
-                <p className="schedule-day">Sunday</p>
-                <p className="schedule-time">Off</p>
+              <div className="diagnosisDashboardPage-schedule-box">
+                <p className="diagnosisDashboardPage-schedule-day">Sunday</p>
+                <p className="diagnosisDashboardPage-schedule-time">Off</p>
               </div>
             </div>
           </div>
 
           {/* Account Settings */}
-          <div className="technician-section border-top">
-            <h3 className="section-title">Account Settings</h3>
-            <div className="settings-links">
-              <button className="settings-link">Change Password</button>
-              <button className="settings-link">
+          <div className="diagnosisDashboardPage-technician-section border-top">
+            <h3 className="diagnosisDashboardPage-section-title">Account Settings</h3>
+            <div className="diagnosisDashboardPage-settings-links">
+              <button className="diagnosisDashboardPage-settings-link">Change Password</button>
+              <button className="diagnosisDashboardPage-settings-link">
                 Notification Preferences
               </button>
-              <button className="settings-link">
+              <button className="diagnosisDashboardPage-settings-link">
                 Laboratory Equipment Access
               </button>
             </div>
@@ -1677,28 +1677,28 @@ const MedicalLabTechnicianDashboard = () => {
   };
 
   return (
-    <div className="docDashboard-container">
+    <div className="diagnosisDashboardPage-docDashboard-container">
       {/* Toggle Button for Mobile */}
-      <button className="docDashboard-toggle-button" onClick={toggleSidebar}>
+      <button className="diagnosisDashboardPage-docDashboard-toggle-button" onClick={toggleSidebar}>
         ☰
       </button>
 
       {/* Sidebar */}
       <div
-        className={`docDashboard-sidebar ${
+        className={`diagnosisDashboardPage-docDashboard-sidebar ${
           isSidebarOpen ? "docDashboard-sidebar-open" : ""
         }`}
       >
-        <div className="docDashboard-sidebar-header">
-          <span className="docDashboard-sidebar-title">Menu</span>
+        <div className="diagnosisDashboardPage-docDashboard-sidebar-header">
+          <span className="diagnosisDashboardPage-docDashboard-sidebar-title">Menu</span>
         </div>
 
-        <nav className="docDashboard-menu-li">
-          <ul className="docDashboard-menu-list">
+        <nav className="diagnosisDashboardPage-docDashboard-menu-li">
+          <ul className="diagnosisDashboardPage-docDashboard-menu-list">
             {menuItems.map((item) => (
               <li key={item.name}>
                 <div
-                  className={`docDashboard-menu-item ${
+                  className={`diagnosisDashboardPage-docDashboard-menu-item ${
                     activePage === item.name ? "docDashboard-active" : ""
                   } ${item.name === "Logout" ? "docDashboard-logout" : ""}`}
                   onClick={() => {
@@ -1725,7 +1725,7 @@ const MedicalLabTechnicianDashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="docDashboard-main-content">{renderContent()}</div>
+      <div className="diagnosisDashboardPage-docDashboard-main-content">{renderContent()}</div>
     </div>
   );
 };
