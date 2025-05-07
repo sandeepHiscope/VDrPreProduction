@@ -3,6 +3,18 @@ import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../context/loginContext";
 import googleLogo from "../assets/icons/google.png";
 import doctorImage from "../assets/Images/docRegister.png";
+import {
+  User,
+  Mail,
+  Lock,
+  Eye,
+  EyeOff,
+  Stethoscope,
+  FlaskConical,
+  Pill,
+  UserCheck,
+  ArrowLeft, 
+} from "lucide-react";
 import "./loginAndRegistrationPage.css";
 
 const Login = () => {
@@ -13,8 +25,9 @@ const Login = () => {
   const [showHealthcareTypes, setShowHealthcareTypes] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [formAnimationClass, setFormAnimationClass] = useState("");
-  const { isLoggedIn, login, logout, isUser, isDoctor, setUser, setIsDoctor } = useContext(LoginContext);
-  
+  const { isLoggedIn, login, logout, isUser, isDoctor, setUser, setIsDoctor } =
+    useContext(LoginContext);
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -35,7 +48,7 @@ const Login = () => {
     const timer = setTimeout(() => {
       setFormAnimationClass("");
     }, 500);
-    
+
     return () => clearTimeout(timer);
   }, [activeTab, role, healthcareType]);
 
@@ -45,7 +58,7 @@ const Login = () => {
       ...formData,
       [name]: value,
     });
-    
+
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors({
@@ -57,8 +70,8 @@ const Login = () => {
 
   const validateForm = () => {
     let isValid = true;
-    const newErrors = {...errors};
-    
+    const newErrors = { ...errors };
+
     // Username validation
     if (activeTab === "register" && !formData.username.trim()) {
       newErrors.username = "Username is required";
@@ -67,7 +80,7 @@ const Login = () => {
       newErrors.username = "Username must be at least 3 characters";
       isValid = false;
     }
-    
+
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim()) {
@@ -77,7 +90,7 @@ const Login = () => {
       newErrors.email = "Please enter a valid email address";
       isValid = false;
     }
-    
+
     // Password validation
     if (!formData.password) {
       newErrors.password = "Password is required";
@@ -86,20 +99,23 @@ const Login = () => {
       newErrors.password = "Password must be at least 6 characters";
       isValid = false;
     }
-    
+
     // Confirm password validation (only for registration)
-    if (activeTab === "register" && formData.password !== formData.confirmPassword) {
+    if (
+      activeTab === "register" &&
+      formData.password !== formData.confirmPassword
+    ) {
       newErrors.confirmPassword = "Passwords do not match";
       isValid = false;
     }
-    
+
     setErrors(newErrors);
     return isValid;
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     const loginData = {
@@ -108,7 +124,7 @@ const Login = () => {
     };
 
     let LOGIN_API_URL = "http://localhost:8080/user/login";
-    
+
     if (role === "healthcare") {
       if (healthcareType === "doctor") {
         LOGIN_API_URL = "http://localhost:8080/doctor/login";
@@ -130,10 +146,10 @@ const Login = () => {
 
       if (response.ok) {
         const data = await response.text();
-        
+
         // Success notification
         showNotification("Login successful! Welcome back.", "success");
-        
+
         if (role === "healthcare") {
           if (healthcareType === "doctor") {
             setIsDoctor(true);
@@ -152,13 +168,16 @@ const Login = () => {
       }
     } catch (error) {
       console.error("Login error:", error);
-      showNotification("An error occurred during login. Please try again.", "error");
+      showNotification(
+        "An error occurred during login. Please try again.",
+        "error"
+      );
     }
   };
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     if (formData.password !== formData.confirmPassword) {
@@ -177,7 +196,7 @@ const Login = () => {
     };
 
     let REGISTER_API_URL = "http://localhost:8080/user/register";
-    
+
     if (role === "healthcare") {
       if (healthcareType === "doctor") {
         REGISTER_API_URL = "http://localhost:8080/doctor/register";
@@ -198,8 +217,16 @@ const Login = () => {
       });
 
       if (response.ok) {
-        showNotification("Registration successful! You can now log in.", "success");
-        setFormData({ username: "", email: "", password: "", confirmPassword: "" });
+        showNotification(
+          "Registration successful! You can now log in.",
+          "success"
+        );
+        setFormData({
+          username: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        });
         setRole("");
         setHealthcareType("");
         setActiveTab("login");
@@ -217,13 +244,13 @@ const Login = () => {
     const notification = document.createElement("div");
     notification.className = `notification ${type}`;
     notification.textContent = message;
-    
+
     document.body.appendChild(notification);
-    
+
     setTimeout(() => {
       notification.classList.add("show");
     }, 10);
-    
+
     setTimeout(() => {
       notification.classList.remove("show");
       setTimeout(() => {
@@ -282,98 +309,132 @@ const Login = () => {
       <div className="auth-container">
         <div className="auth-left">
           <div className="brand-area">
-            <h1 className="brand-name">MediConnect</h1>
+            <h1 className="brand-name">Verified Health Care</h1>
             <p className="brand-tagline">Your Health, Our Priority</p>
           </div>
           <div className="illustration">
             <img src={doctorImage} alt="Healthcare professionals" />
           </div>
           <div className="testimonial">
-            <p>"MediConnect transformed how I connect with my patients. Highly recommended for all healthcare professionals!"</p>
-            <div className="testimonial-author">Dr. Sarah Johnson, Cardiologist</div>
+            <p>
+              "MediConnect transformed how I connect with my patients. Highly
+              recommended for all healthcare professionals!"
+            </p>
+            <div className="testimonial-author">
+              Dr. Sarah Johnson, Cardiologist
+            </div>
           </div>
         </div>
-        
+
         <div className="auth-right">
           <div className="auth-tabs">
-            <button 
-              className={`auth-tab ${activeTab === "login" ? "active" : ""}`} 
+            <button
+              className={`auth-tab ${activeTab === "login" ? "active" : ""}`}
               onClick={showLogin}
             >
               Login
             </button>
-            <button 
-              className={`auth-tab ${activeTab === "register" ? "active" : ""}`} 
+            <button
+              className={`auth-tab ${activeTab === "register" ? "active" : ""}`}
               onClick={showRegister}
             >
               Register
             </button>
           </div>
-          
+
           <div className={`auth-form-container ${formAnimationClass}`}>
             <h2 className="auth-title">
               {activeTab === "login" ? "Welcome Back" : "Create Your Account"}
-              {role && activeTab === "login" && ` | ${role === "healthcare" ? "Healthcare Professional" : "User"}`}
-              {role && activeTab === "register" && ` | ${role === "healthcare" ? "Healthcare Professional" : "User"}`}
-              {healthcareType && ` | ${healthcareType.charAt(0).toUpperCase() + healthcareType.slice(1)}`}
+              {role &&
+                activeTab === "login" &&
+                ` | ${
+                  role === "healthcare" ? "Healthcare Professional" : "User"
+                }`}
+              {role &&
+                activeTab === "register" &&
+                ` | ${
+                  role === "healthcare" ? "Healthcare Professional" : "User"
+                }`}
+              {healthcareType &&
+                ` | ${
+                  healthcareType.charAt(0).toUpperCase() +
+                  healthcareType.slice(1)
+                }`}
             </h2>
-            
+
             {/* Role Selection */}
             {!role && (
               <div className="role-selection">
                 <p className="selection-prompt">
-                  {activeTab === "login" 
-                    ? "Select your role to continue:" 
+                  {activeTab === "login"
+                    ? "Select your role to continue:"
                     : "I would like to register as:"}
                 </p>
                 <div className="role-buttons">
-                  <button className="role-btn healthcare" onClick={showDoctorForm}>
-                    <span className="role-icon">👨‍⚕️</span>
+                  <button
+                    className="role-btn healthcare"
+                    onClick={showDoctorForm}
+                  >
+                    <Stethoscope className="role-icon" size={20} />
                     <span className="role-text">Healthcare Professional</span>
                   </button>
                   <button className="role-btn user" onClick={showUserForm}>
-                    <span className="role-icon">👤</span>
-                    <span className="role-text">Patient / User</span>
+                    <User className="role-icon" size={20} />
+                    <span className="role-text">User</span>
                   </button>
                 </div>
               </div>
             )}
-            
+
             {/* Healthcare Type Selection */}
             {role === "healthcare" && showHealthcareTypes && (
               <div className="healthcare-type-selection">
-                <p className="selection-prompt">What type of healthcare professional are you?</p>
+                <p className="selection-prompt">
+                  What type of healthcare professional are you?
+                </p>
                 <div className="healthcare-type-buttons">
-                  <button className="healthcare-type-btn" onClick={() => selectHealthcareType("doctor")}>
-                    <span className="type-icon">🩺</span>
+                  <button
+                    className="healthcare-type-btn"
+                    onClick={() => selectHealthcareType("doctor")}
+                  >
+                    <Stethoscope className="type-icon" size={20} />
                     <span className="type-text">Doctor</span>
                   </button>
-                  <button className="healthcare-type-btn" onClick={() => selectHealthcareType("diagnostics")}>
-                    <span className="type-icon">🔬</span>
+                  <button
+                    className="healthcare-type-btn"
+                    onClick={() => selectHealthcareType("diagnostics")}
+                  >
+                    <FlaskConical className="type-icon" size={20} />
                     <span className="type-text">Diagnostics</span>
                   </button>
-                  <button className="healthcare-type-btn" onClick={() => selectHealthcareType("pharmacist")}>
-                    <span className="type-icon">💊</span>
+                  <button
+                    className="healthcare-type-btn"
+                    onClick={() => selectHealthcareType("pharmacist")}
+                  >
+                    <Pill className="type-icon" size={20} />
                     <span className="type-text">Pharmacist</span>
                   </button>
-                  <button className="healthcare-type-btn" onClick={() => selectHealthcareType("other")}>
-                    <span className="type-icon">👩‍⚕️</span>
+                  <button
+                    className="healthcare-type-btn"
+                    onClick={() => selectHealthcareType("other")}
+                  >
+                    <UserCheck className="type-icon" size={20} />
                     <span className="type-text">Other Healthcare</span>
                   </button>
                 </div>
                 <button className="back-button" onClick={goBack}>
-                  <span className="back-icon">←</span> Back
+                  <ArrowLeft className="back-icon" size={18} /> Back
                 </button>
               </div>
             )}
-            
+
             {/* Login Form */}
             {activeTab === "login" && role && !showHealthcareTypes && (
               <form onSubmit={handleLogin} className="auth-form">
                 <div className="form-group">
                   <label htmlFor="email">Email</label>
                   <div className="input-wrapper">
-                    <span className="input-icon">✉️</span>
+                    <Mail className="input-icon" size={18} />
                     <input
                       type="email"
                       id="email"
@@ -385,13 +446,15 @@ const Login = () => {
                       required
                     />
                   </div>
-                  {errors.email && <div className="error-message">{errors.email}</div>}
+                  {errors.email && (
+                    <div className="error-message">{errors.email}</div>
+                  )}
                 </div>
-                
+
                 <div className="form-group">
                   <label htmlFor="password">Password</label>
                   <div className="input-wrapper">
-                    <span className="input-icon">🔒</span>
+                    <Lock className="input-icon" size={18} />
                     <input
                       type={isPasswordVisible ? "text" : "password"}
                       id="password"
@@ -402,51 +465,63 @@ const Login = () => {
                       className={errors.password ? "error" : ""}
                       required
                     />
-                    <span 
+                    <span
                       className="password-toggle"
                       onClick={togglePasswordVisibility}
                     >
-                      {isPasswordVisible ? "👁️" : "👁️‍🗨️"}
+                      {isPasswordVisible ? (
+                        <Eye className="eye-icon" size={18} />
+                      ) : (
+                        <EyeOff className="eye-icon" size={18} />
+                      )}
                     </span>
                   </div>
-                  {errors.password && <div className="error-message">{errors.password}</div>}
+                  {errors.password && (
+                    <div className="error-message">{errors.password}</div>
+                  )}
                 </div>
-                
+
                 <div className="form-options">
                   <div className="remember-me">
                     <input type="checkbox" id="remember" name="remember" />
                     <label htmlFor="remember">Remember me</label>
                   </div>
-                  <a href="#forgot-password" className="forgot-password">Forgot password?</a>
+                  <a href="#forgot-password" className="forgot-password">
+                    Forgot password?
+                  </a>
                 </div>
-                
+
                 <button type="submit" className="submit-btn">
                   Login
                 </button>
-                
+
                 <div className="social-login">
                   <p>Or continue with</p>
                   <div className="social-buttons">
                     <button type="button" className="social-btn google">
-                      <img src={googleLogo} alt="Google" className="social-icon" />
+                      <img
+                        src={googleLogo}
+                        alt="Google"
+                        className="social-icon"
+                      />
                       <span>Google</span>
                     </button>
                   </div>
                 </div>
-                
+
                 <button type="button" onClick={goBack} className="back-button">
-                  <span className="back-icon">←</span> Back
+                  <ArrowLeft className="back-icon" size={18} /> Back
                 </button>
               </form>
             )}
-            
+
             {/* Register Form */}
             {activeTab === "register" && role && !showHealthcareTypes && (
               <form onSubmit={handleRegister} className="auth-form">
                 <div className="form-group">
                   <label htmlFor="username">Full Name</label>
                   <div className="input-wrapper">
-                    <span className="input-icon">👤</span>
+                    <User className="input-icon" size={18} />
                     <input
                       type="text"
                       id="username"
@@ -458,13 +533,15 @@ const Login = () => {
                       required
                     />
                   </div>
-                  {errors.username && <div className="error-message">{errors.username}</div>}
+                  {errors.username && (
+                    <div className="error-message">{errors.username}</div>
+                  )}
                 </div>
-                
+
                 <div className="form-group">
                   <label htmlFor="reg-email">Email</label>
                   <div className="input-wrapper">
-                    <span className="input-icon">✉️</span>
+                    <Mail className="input-icon" size={18} />
                     <input
                       type="email"
                       id="reg-email"
@@ -476,13 +553,15 @@ const Login = () => {
                       required
                     />
                   </div>
-                  {errors.email && <div className="error-message">{errors.email}</div>}
+                  {errors.email && (
+                    <div className="error-message">{errors.email}</div>
+                  )}
                 </div>
-                
+
                 <div className="form-group">
                   <label htmlFor="reg-password">Password</label>
                   <div className="input-wrapper">
-                    <span className="input-icon">🔒</span>
+                    <Lock className="input-icon" size={18} />
                     <input
                       type={isPasswordVisible ? "text" : "password"}
                       id="reg-password"
@@ -493,20 +572,26 @@ const Login = () => {
                       className={errors.password ? "error" : ""}
                       required
                     />
-                    <span 
+                    <span
                       className="password-toggle"
                       onClick={togglePasswordVisibility}
                     >
-                      {isPasswordVisible ? "👁️" : "👁️‍🗨️"}
+                      {isPasswordVisible ? (
+                        <Eye className="eye-icon" size={18} />
+                      ) : (
+                        <EyeOff className="eye-icon" size={18} />
+                      )}
                     </span>
                   </div>
-                  {errors.password && <div className="error-message">{errors.password}</div>}
+                  {errors.password && (
+                    <div className="error-message">{errors.password}</div>
+                  )}
                 </div>
-                
+
                 <div className="form-group">
                   <label htmlFor="confirmPassword">Confirm Password</label>
                   <div className="input-wrapper">
-                    <span className="input-icon">🔒</span>
+                    <Lock className="input-icon" size={18} />
                     <input
                       type={isPasswordVisible ? "text" : "password"}
                       id="confirmPassword"
@@ -519,23 +604,26 @@ const Login = () => {
                     />
                   </div>
                   {errors.confirmPassword && (
-                    <div className="error-message">{errors.confirmPassword}</div>
+                    <div className="error-message">
+                      {errors.confirmPassword}
+                    </div>
                   )}
                 </div>
-                
+
                 <div className="terms-checkbox">
                   <input type="checkbox" id="terms" name="terms" required />
                   <label htmlFor="terms">
-                    I agree to the <a href="#terms">Terms of Service</a> and <a href="#privacy">Privacy Policy</a>
+                    I agree to the <a href="#terms">Terms of Service</a> and{" "}
+                    <a href="#privacy">Privacy Policy</a>
                   </label>
                 </div>
-                
+
                 <button type="submit" className="submit-btn">
                   Create Account
                 </button>
-                
+
                 <button type="button" onClick={goBack} className="back-button">
-                  <span className="back-icon">←</span> Back
+                  <ArrowLeft className="back-icon" size={18} /> Back
                 </button>
               </form>
             )}
