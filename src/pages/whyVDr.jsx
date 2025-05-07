@@ -5,6 +5,8 @@ import tempImg from "../assets/Images/foundersImg/kiran.jpg";
 // import tempDoc from "../assets/Images/headerImages/docImg3.jpg"
 import tempDoc from "../assets/Images/headerImages/doc1.jpg";
 import { useNavigate } from "react-router-dom";
+// import allPagesLinks from "../data/allPagesLinks";
+// const {FounderPage}=allPagesLinks;
 
 const WhyVDr = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
