@@ -51,12 +51,7 @@ const NAV_LINKS = [
     icon: <Shield className="headericons" />,
     external: true,
   },
-  {
-    to: "/medicalLabTechnicianDashboard",
-    label: "Diagnosis Dash",
-   
-    icon: <ShieldQuestion className="headericons" />,
-  },
+  
 ];
 
 const MainHeader = () => {
@@ -65,7 +60,14 @@ const MainHeader = () => {
   const [position, setPosition] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-  const { isLoggedIn, isUser, isDoctor, setUser, setDoctor, setLogin } =
+  const { isLoggedIn,
+    isUser,
+    isDoctor,
+    isLabTechnician,
+    setUser,
+    setDoctor,
+    setLabTechnician,
+    setLogin, } =
     useContext(LoginContext);
 
   useEffect(() => {
@@ -99,116 +101,123 @@ const MainHeader = () => {
     setLogin(true);
     window.alert("User logged in successfully!");
   };
+  const labTechnicianLogged = () => {
+    setLabTechnician(true);
+    setUser(false);
+    setDoctor(false);
+    setLogin(true);
+    window.alert("Lab Technician logged in successfully!");
+  };
   const loggedOut = () => {
     setLogin(false);
     window.alert("Logged out successfully!");
   };
   return (
-      <nav className="header-nav-container">
-        
-         
-         <button
-               className="toggle-button"
-               onClick={toggleSlide}
-               aria-label="Toggle Menu"
-             >
-               {isOpen ? <ImCross className="secicon" /> : <IoReorderThreeOutline />}
-             </button>
-             <div className="input-header-mobile">
-             <Link to="/" onClick={handleNavClick}>
+    <nav className="header-nav-container">
+      <button
+        className="toggle-button"
+        onClick={toggleSlide}
+        aria-label="Toggle Menu"
+      >
+        {isOpen ? <ImCross className="secicon" /> : <IoReorderThreeOutline />}
+      </button>
+      <div className="input-header-mobile">
+        <Link to="/" onClick={handleNavClick}>
           <img src={VDrLogo} alt="VDrapp Logo" className="header-logo" />
         </Link>
         <Link to="/findDoctorPage">
-         <input
-              type="text"
-              id="home-search-bar"
-              placeholder="Search for Doctors near by you"
-              className="searchbar-input1"
-            />
-           
-            </Link>
-        </div>
+          <input
+            type="text"
+            id="home-search-bar"
+            placeholder="Search for Doctors near by you"
+            className="searchbar-input1"
+          />
+        </Link>
+      </div>
 
-        <div className="nav-menu">
-          <div className={isOpen ? "nav-links-open" : "nav-links"}>
-            {NAV_LINKS.map((link, index) =>
-              link.external ? (
-                <a
-                  key={index}
-                  href={link.href}
-                  target="_self"
-                  rel="noopener noreferrer"
-                  className={`nav-link flex items-center ${
-                    link.className || ""
-                  }`}
-                  onClick={handleNavClick}
-                >
-                  {link.icon} {link.label}
-                </a>
-              ) : (
-                <Link
-                  key={index}
-                  to={link.to}
-                  className={`nav-link flex items-center ${
-                    link.className || ""
-                  }`}
-                  onClick={handleNavClick}
-                >
-                  {link.icon} {link.label}
-                </Link>
-              )
-            )}
-            <button
-              className="nav-link flex items-center cursor-pointer"
-              onClick={docLogged}
-            >
-              Doc login ✅
-            </button>
-            <button
-              className="nav-link flex items-center cursor-pointer"
-              onClick={userLogged}
-            >
-              User login ✅
-            </button>
-            <button
-              className="nav-link flex items-center cursor-pointer"
-              onClick={loggedOut}
-            >
-              Logout ❌
-            </button>
-          {/* only dev purpose */}
-
-            {isLoggedIn ? (
-              isDoctor ? (
-                <Link
-                  to="/docDashboard"
-                  className="nav-link flex items-center text-blue-600"
-                  onClick={handleNavClick}
-                >
-                  <FaUserDoctor className="headericons" /> DocDashboard
-                </Link>
-              ) : (
-                <Link
-                  to="/userDashboard"
-                  className="nav-link flex items-center text-blue-600"
-                  onClick={handleNavClick}
-                >
-                  <FaUser className="headericons" /> UserDashboard
-                </Link>
-              )
-            ) : (
-              <button
-                className="login-button-header nav-link text-green-600"
-                onClick={handleLoginClick}
+      <div className="nav-menu">
+        <div className={isOpen ? "nav-links-open" : "nav-links"}>
+          {NAV_LINKS.map((link, index) =>
+            link.external ? (
+              <a
+                key={index}
+                href={link.href}
+                target="_self"
+                rel="noopener noreferrer"
+                className={`nav-link flex items-center ${
+                  link.className || ""
+                }`}
+                onClick={handleNavClick}
               >
-                Login/Signup
-              </button>
-              
-            )}
-            
-          </div>
+                {link.icon} {link.label}
+              </a>
+            ) : (
+              <Link
+                key={index}
+                to={link.to}
+                className={`nav-link flex items-center ${
+                  link.className || ""
+                }`}
+                onClick={handleNavClick}
+              >
+                {link.icon} {link.label}
+              </Link>
+            )
+          )}
+          <button
+            className="nav-link flex items-center cursor-pointer"
+            onClick={docLogged}
+          >
+            Doc login ✅
+          </button>
+          <button
+            className="nav-link flex items-center cursor-pointer"
+            onClick={userLogged}
+          >
+            User login ✅
+          </button>
+          <button
+            className="nav-link flex items-center cursor-pointer"
+            onClick={labTechnicianLogged}
+          >
+            Diagnos login ✅
+          </button>
+          <button
+            className="nav-link flex items-center cursor-pointer"
+            onClick={loggedOut}
+          >
+            Logout ❌
+          </button>
+
+          {isLoggedIn ? (
+            isDoctor ? (
+              <Link
+                to="/docDashboard"
+                className="nav-link flex items-center text-blue-600"
+                onClick={handleNavClick}
+              >
+                <FaUserDoctor className="headericons" /> DocDashboard
+              </Link>
+            ) : (
+              <Link
+                to="/userDashboard"
+                className="nav-link flex items-center text-blue-600"
+                onClick={handleNavClick}
+              >
+                <FaUser className="headericons" /> UserDashboard
+              </Link>
+            )
+          ) : (
+            <button
+              className="login-button-header nav-link text-green-600"
+              onClick={handleLoginClick}
+            >
+              Login/Signup
+            </button>
+          )}
         </div>
-      </nav>
+      </div>
+    </nav>
   );
 };
 
