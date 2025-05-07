@@ -104,8 +104,6 @@ const MainHeader = () => {
     window.alert("Logged out successfully!");
   };
   return (
- 
-
       <nav className="header-nav-container">
          <button
                className="toggle-button"

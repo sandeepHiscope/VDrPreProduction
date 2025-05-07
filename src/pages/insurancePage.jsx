@@ -1,7 +1,6 @@
 import React from "react";
 import "./insurancePage.css";
 import { useState } from "react";
-
 import FormPage0 from "../components/insuranceFormPage0";
 import FormPage1 from "../components/insuranceFormPage1";
 import FormPage2 from "../components/insuranceFormPage2";
@@ -13,7 +12,6 @@ import Fotter from "../components/footer";
 
 const Insurance = () => {
   const [page, setPage] = useState(0);
-
   const renderPage = () => {
     switch (page) {
       case 0:

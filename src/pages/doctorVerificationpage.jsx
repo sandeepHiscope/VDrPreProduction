@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import './doctorVerificationpage.css';
 import { useNavigate, useLocation } from "react-router-dom";
@@ -7,7 +6,6 @@ const DoctorVerificationPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const doctorEmail = location.state?.email || "";
-  
   const [formData, setFormData] = useState({
     fullName: "",
     mobileNo: '',
@@ -35,7 +33,6 @@ const DoctorVerificationPage = () => {
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({

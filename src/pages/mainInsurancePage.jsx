@@ -1,7 +1,6 @@
 import React from "react";
 import "./mainInsurancePage.css";
 import { useNavigate } from "react-router-dom";
-
 import Insurance from "./insurancePage";
 import FindDoctorPage from "./findDoctorPage";
 import Home from "./Home";
@@ -11,7 +10,6 @@ import SosPage from "./sosPage";
 import DoctorRegisterPage from "./doctorRegisterPage";
 import Demo from "./demoPage";
 import Fotter from "../components/footer";
-
 import Img2 from "../assets/Images/insurancePage/img2.jpg";
 import RegularInsuranceImg from "../assets/Images/insurancePage/img3.webp";
 import MicroInsuranceImg from "../assets/Images/insurancePage/microInsuranceImg.png";
@@ -19,7 +17,6 @@ import MicroInsuranceImg from "../assets/Images/insurancePage/microInsuranceImg.
 
 const MainInsurance = () => {
   const navigate = useNavigate();
-
   const handleInsurnaceType = () => {
     navigate("/insurancePage");
   };

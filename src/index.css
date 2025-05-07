@@ -2,10 +2,8 @@
 /* @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities"; */
-
 * {
   transition: all 0.3s ease-in-out;
-
   /* Colors*/
   --color-primary: #007bff; /*// Main blue for primary actions*/
   --color-primary-hover: #0069d9; /*// Darker blue on hover*/
@@ -13,31 +11,26 @@
   --color-accent-hover: #2ea748; /*// Darker green on hover*/
   --color-secondary: #6c757d; /*// Secondary button, muted UI*/
   --color-third: #dee2e6; /*// Darker text, headers*/
-
   /*Backgrounds*/
   --color-background-main: #f8f9fa; /*// App background*/
   --color-background-card: #ffffff; /*// Cards and modals*/
   --color-background-muted: #f1f3f5; /*// Light section backgrounds*/
   --color-background-hover: #f0f0f0; /*// Hover states*/
   --color-background-white: #ffffff; /*// Pure white for elements*/
-
   /*Text Colors*/
   --color-text-primary: #212529; /*// Headlines, main text*/
   --color-text-secondary: #6c757d; /* // Subtext, descriptions*/
   --color-text-muted: #adb5bd; /* // Placeholder or disabled text*/
   --color-text-on-primary: #ffffff; /*// Text on primary buttons*/
-
   /*Border & Divider Colors*/
   --color-border: #e0e0e0; /*// Standard dividers*/
   --color-border-strong: #ced4da; /*// Card or modal outlines*/
   --color-divider: #dee2e6; /*// Soft content separators*/
-
   /*Status Colors*/
   --color-success: #28c76f; /*// Success states*/
   --color-warning: #ff9f43; /*// Warning or pending states*/
   --color-error: #ea5455; /* // Validation errors, failures*/
   --color-info: #00cfe8; /* // Informational UI*/
-
   /*Optional Dark Theme (if you support dark mode)*/
   --color-dark-bg: #1e1e2f;
   --color-dark-card: #2c2c3e;
@@ -51,7 +44,6 @@
   --radius-lg: 12px;
   --radius-xl: 16px;
   --radius-full: 9999px; /* // For pills, circles*/
-
   --shadow-none: none;
 
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -79,7 +71,6 @@
   --border-style-dotted: dotted;
   --border-style-double: double;
 }
-
 :root {
   box-sizing: border-box;
   margin: 0;
@@ -87,7 +78,6 @@
   width: 100%;
   background-color: var(--color-background-main);
 }
-
 body {
   margin: 0;
   padding: 0;
@@ -98,7 +88,6 @@ body {
 background:var(--color-background-main);
   color: #333;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-
   cursor: url("./assets/cursor/custuomCursor.cur"), auto;
 }
 ::selection {

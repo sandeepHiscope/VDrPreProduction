@@ -24,7 +24,6 @@ const DoctorAppointment = () => {
   const [notes, setNotes] = useState("");
   const [userEmail, setUserEmail] = useState("sandeep@gmail.com"); // Replace with actual login data
   const [doctorEmail, setDoctorEmail] = useState("kiran@gmail.com");
-
   const today = new Date();
   const twoWeeks = [...Array(14)].map((_, i) => {
     const date = new Date();

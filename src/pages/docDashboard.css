@@ -49,8 +49,6 @@
   background-color: #d1d5db;
 }
 
-
-
 /* Main content */
 .main-content {
   flex-grow: 1;
@@ -79,8 +77,6 @@
     padding-top: 60px;
   }
 }
-
-
 
 .dashboard-content {
   width: 100%;
@@ -128,9 +124,7 @@
   display: flex;
   flex-direction: column;
   padding: 16px;
-  
   font-size: 24px;
-
   border-bottom: 1px solid #e0e0e0;
 }
 
@@ -144,8 +138,6 @@
 
 .card-title {
   font-size: 18px;
- 
-  /* font-weight: 500; */
 }
 
 .card-subtitle {
@@ -227,8 +219,6 @@ border-bottom: 1px solid #e0e0e0;
 }
 
 .card-title {
-/* font-size: 18px;
- */
  font-size: 30px;
 font-weight: bold;
 }
@@ -324,9 +314,7 @@ width: 20px;
 height: 20px;
 color: #9ca3af;
 }
-
 /* App.css */
-
 /* Recent Updates Styles */
 .recent-updates .card {
 background-color: white;
@@ -481,13 +469,9 @@ display: none;
 }
 }
 
-
-
-
 .prescriptions-container {
 padding: 1rem 1.5rem;
 }
-
 
 .prescriptions-title {
 font-size: 1.25rem;
@@ -814,8 +798,6 @@ align-items: center;
 overflow: hidden;
 }
 
-
-
 .docDashboard_doctor-profile_img {
 color: #6b7280;
 }
@@ -997,8 +979,6 @@ transition: all 0.2s ease;
 display: none;
 }
 
-
-
 .docDashboard-logout span,
 .docDashboard-logout svg {
   color: #ef4444;
@@ -1008,7 +988,6 @@ display: none;
 .docDashboard-logout:hover svg {
   color: #dc2626;
 }
-
 
 /* Main content */
 .docDashboard-main-content {
@@ -1023,9 +1002,7 @@ overflow:auto;
 padding: 1rem;
 }
 
-
 /* appointment styles */
-
 .appointments-container {
 padding: 16px;
 }
@@ -1148,7 +1125,6 @@ border: none;
   gap: 10px;
   opacity: 100%;
   transition: opacity 0.3s ease;
-  /* background-color: aqua; */
   width: 100px;
 }
 
@@ -1170,12 +1146,10 @@ border: none;
 
 .tick-btn {
   background-color: var(--color-primary);
- 
 }
 
 .cross-btn {
   background-color: #dc3545;
-
 }
 
 .tick-btn:hover {
@@ -1187,7 +1161,6 @@ border: none;
   background-color: #c82333;
   color: #ffffff;
 }
-
 
 .action-buttons .edit-btn {
 color: #3b82f6;
@@ -1338,12 +1311,10 @@ color: #171717;
   padding: 1rem;
 }
 
-
 @media (max-width: 648px) {
   .docDashboard-toggle-button {
     display: block;
   }
-
 
   .docDashboard-sidebar {
     position: absolute;
@@ -1354,7 +1325,6 @@ color: #171717;
     transition: left 0.3s ease;
   }
 
- 
   .docDashboard-sidebar.docDashboard-sidebar-open {
     left: 0;
     
@@ -1430,7 +1400,6 @@ select {
 }
 
 input[type="file"] {
-  /* background-color: var(--background-color-main); */
   display: block;
   margin-top: 10px;
   border: solid 1px #ccc;

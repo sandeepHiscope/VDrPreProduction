@@ -188,7 +188,6 @@ function ConsultationCard({ date, time, patient, status, type }) {
 
 function ConsultationSection() {
   const [activeFilter, setActiveFilter] = useState('upcoming');
-  
   const consultations = {
     past: [
       { id: 1, patient: 'John Doe', date: '15 Apr 2025', time: '10:30 AM', status: 'completed', type: 'video' },
@@ -283,7 +282,6 @@ function DiagnosisSection() {
 
 function PrescriptionSection() {
   const [activeFilter, setActiveFilter] = useState('current');
-  
   const prescriptions = {
     current: [
       { id: 1, name: 'Amoxicillin', dosage: '500mg', frequency: 'Three times daily', duration: '7 days', notes: 'Take with food' },

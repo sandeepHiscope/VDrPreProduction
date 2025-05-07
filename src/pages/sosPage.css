@@ -4,10 +4,8 @@
   height: 400px;
   position: relative;
   z-index: 10;
-  /* top: 260px; */
   left: 0%;
   margin-top: 9em;
-  /* background: #000; */
 }
 
 /* sos part */
@@ -27,9 +25,7 @@
 
 
 .sos-header{
-  /* position: absolute; */
   top: 70px;
-  /* margin-top: 50px; */
   left: 40%;
   font-size: xx-large;
   font-weight: 700;
@@ -43,8 +39,6 @@
     background: rgb(214, 206, 206);
     left: 45%;
   }
- 
-
 /* @keyframes floatColor {
   0% {
     background-color: #000000d8;
@@ -91,9 +85,7 @@
 
 .div1_btn:focus {
   outline: none;
-}
-
-  
+} 
 
 .div1-h2 {
   color: rgb(176, 164, 164);
@@ -145,7 +137,6 @@
     position: absolute;
     top: 90%;
     left: 40%;
-    /* align-items: center; */
     /* justify-content: center; */
   font-size: 12px;
   text-align: center;

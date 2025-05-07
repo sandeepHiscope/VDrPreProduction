@@ -14,7 +14,6 @@ const WhyVDr = () => {
     users: 0,
   });
   const navigateTo = useNavigate();
-
   // Handle scroll effects
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +31,6 @@ const WhyVDr = () => {
     const statsSection = document.getElementById("stats-section");
 
     if (!statsSection) return;
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -43,7 +41,6 @@ const WhyVDr = () => {
               const frameDuration = 1000 / 60; // 60fps
               const totalFrames = Math.round(duration / frameDuration);
               let frame = 0;
-
               const counter = setInterval(() => {
                 frame++;
                 const progress = frame / totalFrames;
@@ -66,9 +63,7 @@ const WhyVDr = () => {
       },
       { threshold: 0.5 }
     );
-
     observer.observe(statsSection);
-
     return () => {
       if (statsSection) observer.unobserve(statsSection);
     };
@@ -512,11 +507,7 @@ const WhyVDr = () => {
             </div>
           </div>
         </section>
-
-        
       </div>
-
-     
 
       <div className="whyVdr-faq-container">
         <div className="whyVdr-faq-header">
