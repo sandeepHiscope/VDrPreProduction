@@ -1,6 +1,5 @@
 import React from "react";
 import "./individualRegisterPage.css"; // Import the CSS file
-
 import DoctorVerification from "./doctorVerificationpage";
 import FindDoctorPage from "./findDoctorPage";
 import Home from "./Home";

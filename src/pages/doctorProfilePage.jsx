@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "./doctorProfilePage.css";
-
-//images import
 import Appointments from "../assets/Images/doctorprofilepage/appoitment1.png";
 import patientrecord from "../assets/Images/doctorprofilepage/patientrecord.png";
 import doctor from "../assets/Images/doctorprofilepage/doctor.png";
@@ -35,7 +33,6 @@ const DoctorProfilePage = () => {
 
   return (
     <div>
-
       {/* Sidebar */}
       <div className={`sidebar ${isSidebarOpen ? "open" : ""}`} id="mySidebar">
         <a href="javascript:void(0)" onClick={closeNav}>

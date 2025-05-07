@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { useEffect, useState, useContext } from "react";
-
 import "./App.css";
 import Homepage from "./pages/Home.jsx";
 import DoctorVerification from "./pages/doctorVerificationpage.jsx";
@@ -33,11 +32,9 @@ import MobileNavigationBar from './components/mobileNavigationBar.jsx';
 const App = () => {
   const [location, setLocation] = useState();
   const currentUrl = window.location.href;
-
   useEffect(() => {
     setLocation(currentUrl);
   }, [currentUrl]);
-
   useEffect(() => {
     console.log(`url:${currentUrl}`);
   }, []);
@@ -71,7 +68,6 @@ const App = () => {
                 path="/doctorRegisterPage"
                 element={<DoctorRegisterPage />}
               />
-
               <Route path="/insurancePage" element={<Insurance />} />
               {/* <Route path="/demoPage" element={<HomeDeliveryMedicine />} /> */}
               {/* <Route
@@ -83,7 +79,6 @@ const App = () => {
               <Route path="/QRCodeGenerator" element={<QRCodeGenerator />} />
               <Route path="/whyVDr" element={<WhyVDr />} />
               <Route path="/medicalLabTechnicianDashboard" element={<MedicalLabTechnicianDashboard />} />
-
               <Route
                 path="/docDashboard"
                 element={

@@ -32,7 +32,6 @@ const menuItems = [
 const GET_DOCTORDETAILS_API_URL =
   "http://localhost:8080/doctorverfication/get/";
 const GET_APPOINTMENTS_API_URL = "http://localhost:8080/Appointment/doctor/";
-
 const MedicalLabTechnicianDashboard = () => {
   const [activePage, setActivePage] = useState("Dashboard");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);

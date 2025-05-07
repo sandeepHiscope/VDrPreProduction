@@ -68,7 +68,6 @@ const VerifyDoc = () => {
     }
   };
 
-
   // Continuously grabs frames from the video, scans for QR codes, and calls handleScan on success
   const onScanSuccess = (stream, canvas, video) => {
     const context = canvas.getContext("2d");
@@ -87,7 +86,6 @@ const VerifyDoc = () => {
           if (stream) {
             stream.getTracks().forEach((track) => track.stop());
           }
-
         }
       }
     }, 200);
@@ -132,7 +130,6 @@ const VerifyDoc = () => {
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (!file) return;
-
     const reader = new FileReader();
     reader.onload = (e) => {
       const img = new Image();
@@ -144,7 +141,6 @@ const VerifyDoc = () => {
         canvas.width = img.width;
         canvas.height = img.height;
         context.drawImage(img, 0, 0, canvas.width, canvas.height);
-
         const imageData = context.getImageData(
           0,
           0,
@@ -379,6 +375,3 @@ const VerifyDoc = () => {
 };
 
 export default VerifyDoc;
-/*
-
-*/

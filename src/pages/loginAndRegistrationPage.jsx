@@ -11,7 +11,6 @@ const Login = () => {
   const [activeTab, setActiveTab] = useState("login");
   const [role, setRole] = useState("");
   const { isLoggedIn, login, logout, isUser, isDoctor, setUser, setIsDoctor} = useContext(LoginContext);
-
   const [formData, setFormData] = useState({
     username: "",
     email: "",

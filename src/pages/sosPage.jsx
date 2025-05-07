@@ -8,7 +8,6 @@ const SosPage = () => {
   const [infoMessege, setInfoMessege] = useState("");
   const audioRef = useRef(null);
   const countdownRef = useRef(null);
-
   // Function to start the countdown on double-click
   const handleDoubleClick = () => {
     let i = 5; 
@@ -30,14 +29,12 @@ const SosPage = () => {
       }
     }, 1000); // Countdown runs every 1 second
   };
-
   // Optional: Function to play an emergency alarm sound
   // const playMusic = () => {
   //   audioRef.current = new Audio("./emergency-alarm-69780.mp3");
   //   audioRef.current.loop = true;
   //   audioRef.current.play();
   // };
-
   // Function to stop the SOS and reset all states
   const stopSos = () => {
     if (audioRef.current) {
@@ -83,4 +80,3 @@ const SosPage = () => {
 };
 
 export default SosPage;
-
