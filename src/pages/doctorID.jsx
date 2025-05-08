@@ -7,7 +7,6 @@ const DoctorID = () => {
   const location = useLocation();
   const { doctor: stateDoctor } = location.state;
   const { id } = useParams();
-
   const doctor = {
     name: stateDoctor?.fullName || "not mentioned",
     license: stateDoctor?.medicalLicenseNumber || "not mentioned",

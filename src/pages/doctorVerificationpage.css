@@ -4,45 +4,14 @@
 /* This are Icons */
 /* Secret Trick: Type the Konami Code on this page (up, up, down, down, left, right, left, right, b, a) to unlock a surprise! */
 
-/* :root {
-  --primary-color: #2a70e0;
-  --primary-light: #e8f0fd;
-  --secondary-color: #4ecdc4;
-  --text-color: #333;
-  --light-gray: #f5f5f5;
-  --medium-gray: #e0e0e0;
-  --dark-gray: #757575;
-  --error-color: #e53935;
-  --success-color: #43a047;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --transition: all 0.3s ease;
-} */
-
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
-
-/* body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #f8f9fa;
-  color: var(--color-text-primary);
-  line-height: 1.6;
-} */
-
 .verification-container {
-
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
-
- 
   --text-color: #333;
   --light-gray: #f5f5f5;
   --medium-gray: #e0e0e0;
   --dark-gray: #757575;
- 
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --transition1: all 0.3s ease;
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import InsuranceImage from "../assets/Images/insurancePage/img2.jpg"
 
 const FormPage1 = () => {

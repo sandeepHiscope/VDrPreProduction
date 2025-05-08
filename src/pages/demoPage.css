@@ -1,13 +1,9 @@
-
-
 .home-delivery-medicine-container{
-    /* border: 1px solid black; */
     padding: 50px;
     position: absolute;
     top : 50%;
-   left: 320px;
-   width: 650px;
-    /* height: 100px; */
+    left: 320px;
+    width: 650px;
     font-weight: bold;
     font-size: x-large;
     background: linear-gradient(90deg, #2e75e0, #d817b8, #e20d6d);
@@ -19,7 +15,6 @@
 }
 
 .home-delivery-medicine-container{
-   
     animation: bounce 2s infinite;
   }
   
@@ -44,6 +39,3 @@
     transform: translate(-50%, -50%);
     opacity: 0.1;
   }
-
-
- 

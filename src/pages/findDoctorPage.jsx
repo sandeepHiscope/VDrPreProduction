@@ -14,7 +14,6 @@ import { MdClear, MdOutlineCalendarMonth, MdWorkOutline } from "react-icons/md";
 // The default input text is ended here 
 
 // import { RiMoney2Line } from "react-icons/ri";
-
 // API URL constant
 const GET_DOCTOR_API_URL = "http://localhost:8080/doctorverfication/all";
 
@@ -80,7 +79,6 @@ const DOCTORS_PER_PAGE = 10;
 
 // Helper functions
 const normalize = (str) => str?.toString().trim().toLowerCase() || "";
-
 const matchSpeciality = (doctorSpeciality, searchQuery) => {
   const normDoctor = normalize(doctorSpeciality);
   const normSearch = normalize(searchQuery);

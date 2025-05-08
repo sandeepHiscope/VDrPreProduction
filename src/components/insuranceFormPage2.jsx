@@ -62,11 +62,9 @@ const FormPage2 = () => {
           <p>----</p>
           </li>
         </ul>
-
       </div>
 
       <div  className='insurancefrompage2-div3'>
-
         <ul  className='insurancefrompage2-div3-ul1'>
           <li>
           <h6>Yearly Premium <br />6,000.00/-</h6>
@@ -83,7 +81,6 @@ const FormPage2 = () => {
             <h6>Monthly Premium <br />3,000.00/-</h6>
           </li>
         </ul>
-
       </div>
       
       <p className='pagecount'>“Start Your Journey to Protection Today!”

@@ -5,14 +5,11 @@
   gap:20px;
 }
 .viewDocSec-doctorDetails {
-  /* max-width: 800px; */
   height: auto;
-
   margin: 60px auto;
   padding: 2rem 1.5rem 1.5rem;
   border-radius: 12px;
   margin-left:35%;
-  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   position: relative;
   display: flex;
@@ -82,7 +79,6 @@ h2 {
   justify-content: start;
   gap: 10px;
   flex-wrap: wrap;
-  /* text-align: center; */
 }
 
 .details p strong {
@@ -120,8 +116,6 @@ h2 {
 
 .rate-btn1 {
   margin-left: 10px;
-  /* margin-top: 1rem; */
-
   padding: 0.6rem 1.2rem;
   height: 50px;
   border: none;
@@ -175,7 +169,6 @@ h2 {
   }
 }
 .appointmentBookingSec{
-  /* background: #000; */
   flex: 1;
   margin: 0;
 }

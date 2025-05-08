@@ -16,8 +16,7 @@ const DoctorRegisterPage = () => {
   };
 
   const API_URL = "http://localhost:8080/api/doctorsverification/register";
-
-const handleRegister = async (e) => {
+  const handleRegister = async (e) => {
   e.preventDefault();
   
   const requestData = {
@@ -45,7 +44,6 @@ const handleRegister = async (e) => {
     alert("An error occurred during registration.");
   }
 };
-
 
   return (
     <div className="login-container">

@@ -4,7 +4,7 @@
   --primary-light: #60a5fa;
   --accent-color: #10b981;
   --accent-light: #5eead4;
-  --neutral-900: #111827;
+  --neutral-900: #98b0e4;
   --neutral-800: #1f2937;
   --neutral-700: #374151;
   --neutral-600: #4b5563;
@@ -537,8 +537,6 @@
   transition: background-color;
 }
 
-
-
 .whyVdr-faq-container {
   min-width: 400px;
   margin: 2rem 10%;
@@ -607,7 +605,6 @@
   margin-top: 0.5rem;
 }
 .why-vdr-page .mainheader{
-  /* margin-top: ; */
   text-align: center;
 }
 h1.our-founder-and-devs {
@@ -617,7 +614,6 @@ h1.our-founder-and-devs {
   font-size: 2rem;
   margin-top: 3rem;
   text-decoration: underline;
-
 }
 @media (max-width: 800px) {
   .why-vdr-page p {
