@@ -26,15 +26,10 @@
   align-items: center;
   padding: 1em 1.5em;
   position: relative;
-<<<<<<< HEAD
-  box-shadow: 0 4px 20px rgba(141, 141, 141, 0.374);
-}
-=======
   box-shadow: 0 4px 200px rgba(141, 141, 141, 0.374);
   background-color: rgb(233, 233, 233);
 }
 
->>>>>>> abe5158b92bf9742765bb3ccbe78b84e54133eb8
 /* .header-nav-container:hover {
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);

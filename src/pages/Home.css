@@ -470,8 +470,7 @@
     color: #000000;
     background-color:white;
   }
-  .cursor-pointer:hover{
-  }
+
   .text2{
     font-size: 20px;
   }
@@ -756,8 +755,6 @@
 .faq-item input:checked ~ .faq-content {
   max-height: 500px;
   margin-top: 0.5rem;
-}
-.SlidingSecContainer{
 }
 
 .categoriesSection {
