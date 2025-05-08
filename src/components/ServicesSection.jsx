@@ -75,7 +75,7 @@ const ServicesSection = () => {
     <section className="services-section" id="services">
       <div className="services-container">
         <header className="services-header">
-          <h2>You are our main priority</h2>
+          <h2>Our services prioritize your needs</h2>
           <div className="services-underline"></div>
           <p>Our service works together to create a better life for you</p>
         </header>

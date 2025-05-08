@@ -37,13 +37,13 @@ body {
   background-color: var(--bg-light);
 }
 
-a {
+.auth-page a {
   color: var(--primary-color);
   text-decoration: none;
   transition: var(--transition);
 }
 
-a:hover {
+.auth-page a:hover {
   color: var(--primary-dark);
 }
 

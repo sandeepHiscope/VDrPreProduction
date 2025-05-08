@@ -177,12 +177,7 @@ const VerifyDoc = () => {
                 <span>History</span>
               </button>
             </li>
-            <li className={activeTab === "about" ? "vdoc-active" : ""}>
-              <button onClick={() => setActiveTab("about")}>
-                <FiInfo className="vdoc-nav-icon" />
-                <span>About</span>
-              </button>
-            </li>
+            
           </ul>
         </nav>
       </aside>
@@ -342,33 +337,6 @@ const VerifyDoc = () => {
           </div>
         )}
 
-        {activeTab === "about" && (
-          <div className="vdoc-about-section">
-            <h2 className="vdoc-section-title">About VDr Scanner</h2>
-            <div className="vdoc-about-content">
-              <p>
-                VDr Scanner is a fast, reliable, and easy-to-use QR scanning service. It allows you to scan QR codes using your
-                device's camera or by uploading images of doctors.
-              </p>
-
-              <h3>Features</h3>
-              <ul className="vdoc-features-list">
-                <li>Camera scanning of QR codes</li>
-                <li>Image upload scanning</li>
-                <li>URL detection and redirection</li>
-                <li>Scan history tracking</li>
-                <li>Fast and accurate detection</li>
-              </ul>
-
-              <h3>Privacy</h3>
-              <p>
-                Your privacy is important to us. All scanned data remains on
-                your device and is never transmitted to our servers. Your scan
-                history is stored locally in your browser.
-              </p>
-            </div>
-          </div>
-        )}
       </main>
     </div>
   );

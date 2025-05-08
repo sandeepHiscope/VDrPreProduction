@@ -569,15 +569,15 @@ const FindDoctorPage = () => {
 
   return (
     <div className="find-doctor-page">
-      <div className="search-container">
-        <div className="search-bar-wrapper">
+      <div className="findDoc-search-container">
+        <div className="findDoc-search-bar-wrapper">
           
-          <div className="search-input-group">
-            <BiSearchAlt className="search-icon" />
+          <div className="findDoc-search-input-group">
+            <BiSearchAlt className="findDoc-search-icon" />
             <input
               type="text"
               placeholder="Search by specialization"
-              className="search-input1"
+              className="findDoc-search-input1"
               value={searchQuery}
               onChange={(e) => dispatch({ 
                 type: ACTIONS.SET_SEARCH_QUERY, 
@@ -586,8 +586,8 @@ const FindDoctorPage = () => {
             />
           </div>
           
-          <div className="search-input-group">
-            <FaLocationArrow className="search-icon" />
+          <div className="findDoc-search-input-group">
+            <FaLocationArrow className="findDoc-search-icon" />
             <select
               className="state-dropdown"
               value={selectedState}

@@ -114,7 +114,7 @@ const MainHeader = () => {
     window.alert("Logged out successfully!");
   };
   return (
-    <nav className="header-nav-container">
+    <nav className="header-container">
       <button
         className="toggle-button"
         onClick={toggleSlide}

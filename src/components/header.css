@@ -2,8 +2,8 @@
 .headericons{
   width: 20px;
   height: 20px;
-  color:rgb(186, 178, 178);
   display: none;
+  color: aliceblue;
 }
 /* .header-background {
   position: absolute;
@@ -19,7 +19,7 @@
 } */
 
 /* ============ NAV ============ */
-.header-nav-container{
+.header-container{
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -27,7 +27,9 @@
   padding: 1em 1.5em;
   position: relative;
   box-shadow: 0 4px 200px rgba(141, 141, 141, 0.374);
-  background-color: rgb(233, 233, 233);
+  background: linear-gradient(90deg,rgb(197, 234, 255),rgb(107, 188, 255));
+  /* background:linear-gradient(90deg,--primary-); */
+  /* background: linear-gradient( 170deg ,rgb(21, 247, 213),rgb(36, 105, 255)); */
 }
 
 /* .header-nav-container:hover {

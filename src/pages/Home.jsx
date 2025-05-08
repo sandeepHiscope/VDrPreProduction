@@ -207,7 +207,7 @@ function Homepage() {
         {/* Testimonials (reviews) Section */}
         <section className="content-section testimonials-section">
           <div className="section-header">
-            <h2 className="text2">
+            <h2 className="testimonials-section-heading">
               Trusted By Users, Assured By Verified Doctors
             </h2>
             <div className="section-underline"></div>
