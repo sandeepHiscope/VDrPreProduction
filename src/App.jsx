@@ -101,8 +101,7 @@ const App = () => {
               />
             </Routes>
           </div>
-          <MobileNavigationBar/>
-          <Footer />
+          {window.innerWidth <= 768 ? <MobileNavigationBar /> : <Footer />}
         </LoginContextProvider>
       </Router>
       <CookieConsent />
