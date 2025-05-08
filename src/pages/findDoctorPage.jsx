@@ -246,14 +246,14 @@ const DoctorCard = ({ doctor, onClick }) => {
         <button className="book-appointment-btn" >Book Appointment</button>
       </div>
       
-      <div className="doctor-info">
-        <h3 className="doctor-name">
+      <div className="findDoc-doctor-info">
+        <h3 className="findDoc-doctor-name">
           Dr. {doctor.fullName?.toUpperCase() || "Not Mentioned"}
         </h3>
         
         <div className="doctor-specialty">
-          <span className="info-label">Specialty:</span>
-          <span className="info-value">{doctor.medicalSpeciality || "Not Mentioned"}</span>
+          <span className="doctor-specialty-info-label">Specialty:</span>
+          <span className="doctor-specialty-info-value">{doctor.medicalSpeciality || "Not Mentioned"}</span>
         </div>
         
         <div className="doctor-meta-info">
