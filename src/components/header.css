@@ -28,7 +28,7 @@
   padding: 1em 1.5em;
   position: relative;
   box-shadow: 0 4px 200px rgba(141, 141, 141, 0.374);
-  background-color: #ffffff;
+  background-color: rgb(233, 233, 233);
 
 }
 /* .header-nav-container:hover {
