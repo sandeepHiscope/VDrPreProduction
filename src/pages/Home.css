@@ -693,7 +693,7 @@
 .faq-container {
   min-width: 400px;
   margin: 1em;
-  padding: 2rem;
+  padding: 10px 30px 10px 30px;
   background: rgb(255, 253, 253);
   border-radius: var(--border-radius);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
