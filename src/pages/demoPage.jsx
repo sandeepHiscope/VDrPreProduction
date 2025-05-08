@@ -9,7 +9,6 @@ import DoctorRegisterPage from "./doctorRegisterPage";
 import FounderPage from "../components/ourFoundersPage";
 import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
 import Fotter from "../components/footer";
-
 // import MainHeader from "./header";
 const HomeDeliveryMedicine = () => {
   return (

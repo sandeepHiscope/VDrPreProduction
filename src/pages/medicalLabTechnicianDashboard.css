@@ -1,12 +1,12 @@
 .dashboard-container {
-    display: flex;
-    min-height: 100vh;
-    font-family: sans-serif;
-    position: relative;
-  }
-  
-  /* Toggle button: Hidden on desktop, visible on mobile */
-  /* .toggle-button {
+  display: flex;
+  min-height: 100vh;
+  font-family: sans-serif;
+  position: relative;
+}
+
+/* Toggle button: Hidden on desktop, visible on mobile */
+/* .diagnosisDashboardPage-toggle-button {
     display: none;
     position: absolute;
     right: 10px;
@@ -17,279 +17,271 @@
     z-index: 100;
     cursor: pointer;
   } */
-  
-  /* Sidebar: visible by default */
-  .sidebar {
-    width: 180px; /* reduced sidebar width */
-    background-color: #f3f4f6;
-    padding: 0;
-    border-right: 1px solid #ddd;
-    transition: left 0.3s ease;
-    position: relative;
-    left: 0;
-  }
-  
-  /* Menu items */
-  .menu-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px;
-    cursor: pointer;
-    color: #111;
-    transition: background 0.2s;
-  }
-  
-  .menu-item:hover {
-    background-color: #e5e7eb;
-  }
-  
-  .menu-item.active {
-    font-weight: bold;
-    background-color: #d1d5db;
-  }
-  
-  
-  
-  /* Main content */
-  .main-content {
-    flex-grow: 1;
-    padding: 20px;
-  }
-  
-  /* Responsive: Mobile */
-  @media (max-width: 768px) {
-    /* .toggle-button {
+
+/* Sidebar: visible by default */
+.diagnosisDashboardPage-sidebar {
+  width: 180px; /* reduced sidebar width */
+  background-color: #f3f4f6;
+  padding: 0;
+  border-right: 1px solid #ddd;
+  transition: left 0.3s ease;
+  position: relative;
+  left: 0;
+}
+
+/* Menu items */
+.diagnosisDashboardPage-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  cursor: pointer;
+  color: #111;
+  transition: background 0.2s;
+}
+
+.diagnosisDashboardPage-menu-item:hover {
+  background-color: #e5e7eb;
+}
+
+.diagnosisDashboardPage-menu-.itemdiagnosisDashboardPage-active {
+  font-weight: bold;
+  background-color: #d1d5db;
+}
+
+/* Main content */
+.diagnosisDashboardPage-main-content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+/* Responsive: Mobile */
+@media (max-width: 768px) {
+  /* .diagnosisDashboardPage-toggle-button {
       display: block;
     } */
-  
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -180px;
-      height: 100%;
-      z-index: 99;
-    }
-  
-    .dashboard-container.sidebar-open .sidebar {
-      left: 0;
-    }
-  
-    .main-content {
-      padding-top: 60px;
-    }
-  }
-  
-  
-  
-  .dashboard-content {
-    width: 100%;
+
+  .diagnosisDashboardPage-sidebar {
+    position: fixed;
+    top: 0;
+    left: -180px;
     height: 100%;
-    padding: 24px;
-    box-sizing: border-box;
+    z-index: 99;
   }
-  
-  .header {
-    padding: 0 24px 24px;
+
+  .diagnosisDashboardPage-dashboard-.containerdiagnosisDashboardPage-sidebar-open .diagnosisDashboardPage-sidebar {
+    left: 0;
   }
-  
-  .title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 24px;
+
+  .diagnosisDashboardPage-main-content {
+    padding-top: 60px;
   }
-  
-  .dashboard-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+}
+
+.diagnosisDashboardPage-dashboard-content {
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.diagnosisDashboardPage-header {
+  padding: 0 24px 24px;
+}
+
+.diagnosisDashboardPage-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.diagnosisDashboardPage-dashboard-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .diagnosisDashboardPage-dashboard-grid {
+    flex-direction: row;
   }
-  
-  @media (min-width: 1024px) {
-    .dashboard-grid {
-      flex-direction: row;
-    }
-  }
-  
-  .main-column {
-    flex: 1;
-    width: 100%;
-  }
-  
-  .card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    overflow-x: auto;
-    margin-bottom: 24px;
-  }
-  
-  .card-header {
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
-    
-    font-size: 24px;
-  
-    border-bottom: 1px solid #e0e0e0;
-  }
-  
-  @media (min-width: 640px) {
-    .card-header {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
-  
-  .card-title {
-    font-size: 18px;
-   
-    /* font-weight: 500; */
-  }
-  
-  .card-subtitle {
-    font-size: 14px;
-    color: #6b7280;
-    margin-top: 8px;
-  }
-  
-  @media (min-width: 640px) {
-    .card-subtitle {
-      margin-top: 0;
-    }
-  }
-  
-  .appointment-list {
-    border-top: 1px solid #f0f0f0;
-  }
-  
-  .appointment-item {
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
-    gap: 8px;
-    transition: background-color 0.2s ease;
-  }
-  
-  @media (min-width: 640px) {
-    .appointment-item {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
-  
-  .appointment-item:hover {
-    background-color: #f9f9f9;
-  }
-  
-  .appointment-info {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .appointment-name {
-    font-weight: 500;
-  }
-  
-  .appointment-type {
-    font-size: 14px;
-    color: #6b7280;
-  }
-  
-  .appointment-date {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    color: #4b5563;
-  }
-  
-  .arrow-icon {
-    width: 20px;
-    height: 20px;
-    margin-left: 8px;
-    color: #9ca3af;
-  }
-  
-  .services-card,
-  .quick-actions-card {
+}
+
+.diagnosisDashboardPage-main-column {
+  flex: 1;
+  width: 100%;
+}
+
+.diagnosisDashboardPage-card {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   overflow-x: auto;
   margin-bottom: 24px;
-  }
-  
-  .card-header {
+}
+
+.diagnosisDashboardPage-card-header {
+  display: flex;
+  flex-direction: column;
   padding: 16px;
+
+  font-size: 24px;
+
   border-bottom: 1px solid #e0e0e0;
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-card-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
-  
-  .card-title {
-  /* font-size: 18px;
-   */
-   font-size: 30px;
-  font-weight: bold;
+}
+
+.diagnosisDashboardPage-card-title {
+  font-size: 18px;
+}
+
+.diagnosisDashboardPage-card-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 8px;
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-card-subtitle {
+    margin-top: 0;
   }
-  
-  .update-list {
+}
+
+.diagnosisDashboardPage-appointment-list {
   border-top: 1px solid #f0f0f0;
-  }
-  
-  .update-item {
+}
+
+.diagnosisDashboardPage-appointment-item {
   display: flex;
   flex-direction: column;
   padding: 16px;
   gap: 8px;
   transition: background-color 0.2s ease;
-  }
-  
-  @media (min-width: 640px) {
-  .update-item {
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-appointment-item {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
-  }
-  
-  .update-item:hover {
+}
+
+.diagnosisDashboardPage-appointment-item:hover {
   background-color: #f9f9f9;
-  }
-  
-  .update-name {
+}
+
+.diagnosisDashboardPage-appointment-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.diagnosisDashboardPage-appointment-name {
   font-weight: 500;
-  }
-  
-  .update-action {
-  font-size: 14px;
-  }
-  
-  .update-date {
+}
+
+.diagnosisDashboardPage-appointment-type {
   font-size: 14px;
   color: #6b7280;
+}
+
+.diagnosisDashboardPage-appointment-date {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.diagnosisDashboardPage-arrow-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+  color: #9ca3af;
+}
+
+.diagnosisDashboardPage-services-card,
+.diagnosisDashboardPage-quick-actions-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+  margin-bottom: 24px;
+}
+
+.diagnosisDashboardPage-card-header {
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.diagnosisDashboardPage-card-title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.diagnosisDashboardPage-update-list {
+  border-top: 1px solid #f0f0f0;
+}
+
+.diagnosisDashboardPage-update-item {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-update-item {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
-  
-  .right-column {
+}
+
+.diagnosisDashboardPage-update-item:hover {
+  background-color: #f9f9f9;
+}
+
+.diagnosisDashboardPage-update-name {
+  font-weight: 500;
+}
+
+.diagnosisDashboardPage-update-action {
+  font-size: 14px;
+}
+
+.diagnosisDashboardPage-update-date {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.diagnosisDashboardPage-right-column {
   width: 100%;
-  }
-  
-  @media (min-width: 1024px) {
-  .right-column {
+}
+
+@media (min-width: 1024px) {
+  .diagnosisDashboardPage-right-column {
     width: 320px;
   }
-  }
-  
-  .card-body {
+}
+
+.diagnosisDashboardPage-card-body {
   padding: 16px;
-  }
-  
-  .section-title {
+}
+
+.diagnosisDashboardPage-section-title {
   font-weight: 500;
   margin-bottom: 8px;
-  }
-  
-  .action-item {
+}
+
+.diagnosisDashboardPage-action-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -297,513 +289,504 @@
   padding: 8px;
   border-radius: 6px;
   transition: background-color 0.2s ease;
-  }
-  
-  .action-item:hover {
+}
+
+.diagnosisDashboardPage-action-item:hover {
   background-color: #f9f9f9;
-  }
-  
-  .action-info {
+}
+
+.diagnosisDashboardPage-action-info {
   display: flex;
   align-items: center;
-  }
-  
-  .icon {
+}
+
+.diagnosisDashboardPage-icon {
   width: 20px;
   height: 20px;
   margin-right: 8px;
   color: #6b7280;
-  }
-  
-  .action-text {
+}
+
+.diagnosisDashboardPage-action-text {
   font-size: 14px;
-  }
-  
-  .arrow-icon {
+}
+
+.diagnosisDashboardPage-arrow-icon {
   width: 20px;
   height: 20px;
   color: #9ca3af;
-  }
-  
-  /* App.css */
-  
-  /* Recent Updates Styles */
-  .recent-updates .card {
+}
+/* .AppdiagnosisDashboardPage-css */
+/* Recent Updates Styles */
+.diagnosisDashboardPage-recent-updates .diagnosisDashboardPage-card {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .recent-updates .card-header {
+}
+
+.diagnosisDashboardPage-recent-updates .diagnosisDashboardPage-card-header {
   padding: 16px;
   border-bottom: 1px solid #e5e7eb;
-  }
-  
-  .recent-updates h3 {
+}
+
+.diagnosisDashboardPage-recent-updates h3 {
   font-size: 1rem;
   font-weight: 500;
-  }
-  
-  .recent-updates .updates-list .update-item {
+}
+
+.diagnosisDashboardPage-recent-updates .diagnosisDashboardPage-updates-list .diagnosisDashboardPage-update-item {
   padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #e5e7eb;
-  }
-  
-  .recent-updates .update-item:hover {
+}
+
+.diagnosisDashboardPage-recent-updates .diagnosisDashboardPage-update-item:hover {
   background-color: #f9fafb;
-  }
-  
-  .recent-updates .update-label {
+}
+
+.diagnosisDashboardPage-recent-updates .diagnosisDashboardPage-update-label {
   font-size: 0.875rem;
-  }
-  
-  .recent-updates .badge {
+}
+
+.diagnosisDashboardPage-recent-updates .diagnosisDashboardPage-badge {
   background-color: #f3f4f6;
   padding: 0.25rem 0.5rem;
   border-radius: 9999px;
   font-size: 0.875rem;
-  }
-  
-  .recent-updates .icon {
+}
+
+.diagnosisDashboardPage-recent-updates .diagnosisDashboardPage-icon {
   width: 20px;
   height: 20px;
   color: #6b7280;
-  }
-  
-  /* Patients Styles */
-  .patients {
+}
+
+/* Patients Styles */
+.diagnosisDashboardPage-patients {
   padding: 16px;
-  }
-  
-  .patients h3 {
-  font-size: 1.25rem;
+}
+
+.diagnosisDashboardPage-patients h3 {
+  font-size: .1diagnosisDashboardPage-25rem;
   font-weight: bold;
   margin-bottom: 24px;
-  }
-  
-  .patients .card {
+}
+
+.diagnosisDashboardPage-patients .diagnosisDashboardPage-card {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 16px;
   overflow-x: auto;
-  }
-  
-  .patients .search-input {
+}
+
+.diagnosisDashboardPage-patients .diagnosisDashboardPage-search-input {
   width: 100%;
   padding: 8px;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   font-size: 1rem;
-  }
-  
-  .patients .table-container {
+}
+
+.diagnosisDashboardPage-patients .diagnosisDashboardPage-table-container {
   overflow-x: auto;
   width: 100%;
-  }
-  
-  .patients .patient-table {
+}
+
+.diagnosisDashboardPage-patients .diagnosisDashboardPage-patient-table {
   width: 100%;
   border-collapse: collapse;
   min-width: 600px;
-  }
-  
-  .patients .patient-table th,
-  .patients .patient-table td {
+}
+
+.diagnosisDashboardPage-patients .diagnosisDashboardPage-patient-table th,
+.diagnosisDashboardPage-patients .diagnosisDashboardPage-patient-table td {
   padding: 15px;
   text-align: left;
   font-size: 0.95rem;
   border-bottom: 1px solid #e5e7eb;
-  }
-  
-  .patients .status {
+}
+
+.diagnosisDashboardPage-patients .diagnosisDashboardPage-status {
   display: inline-block;
   padding: 4px 8px;
   border-radius: 10px;
   font-size: 0.875rem;
   font-weight: 500;
-  }
-  
-  .patients .status.active {
+}
+
+.diagnosisDashboardPage-patients .diagnosisDashboardPage-.statusdiagnosisDashboardPage-active {
   background-color: #d1fae5;
   color: #16a34a;
-  }
-  
-  .patients .status.pending {
+}
+
+.diagnosisDashboardPage-patients .diagnosisDashboardPage-.statusdiagnosisDashboardPage-pending {
   background-color: #fef3c7;
   color: #ca8a04;
-  }
-  
-  .patients .view-btn {
+}
+
+.diagnosisDashboardPage-patients .diagnosisDashboardPage-view-btn {
   color: #3b82f6;
   font-weight: 500;
   cursor: pointer;
   text-decoration: underline;
-  }
-  
-  .patients .mobile-card {
+}
+
+.diagnosisDashboardPage-patients .diagnosisDashboardPage-mobile-card {
   display: none;
-  }
-  
-  /* ----------------------------- */
-  /* 🔽 Mobile Responsive Styling  */
-  /* ----------------------------- */
-  @media (max-width: 768px) {
-  .patients {
+}
+
+/* ----------------------------- */
+/* 🔽 Mobile Responsive Styling  */
+/* ----------------------------- */
+@media (max-width: 768px) {
+  .diagnosisDashboardPage-patients {
     padding: 12px;
   }
-  
-  .patients h3 {
-    font-size: 1.1rem;
+
+  .diagnosisDashboardPage-patients h3 {
+    font-size: .1diagnosisDashboardPage-1rem;
   }
-  
-  .patients .card {
+
+  .diagnosisDashboardPage-patients .diagnosisDashboardPage-card {
     padding: 12px;
   }
-  
-  .patients .search-input {
+
+  .diagnosisDashboardPage-patients .diagnosisDashboardPage-search-input {
     padding: 6px;
     font-size: 0.9rem;
   }
-  
-  .patients .patient-table th,
-  .patients .patient-table td {
+
+  .diagnosisDashboardPage-patients .diagnosisDashboardPage-patient-table th,
+  .diagnosisDashboardPage-patients .diagnosisDashboardPage-patient-table td {
     padding: 10px;
     font-size: 0.85rem;
   }
-  
-  .patients .status {
+
+  .diagnosisDashboardPage-patients .diagnosisDashboardPage-status {
     font-size: 0.75rem;
     padding: 2px 6px;
   }
-  }
-  
-  
-  
-  
-  .prescriptions-container {
+}
+
+.diagnosisDashboardPage-prescriptions-container {
   padding: 1rem 1.5rem;
-  }
-  
-  
-  .prescriptions-title {
-  font-size: 1.25rem;
+}
+
+.diagnosisDashboardPage-prescriptions-title {
+  font-size: .1diagnosisDashboardPage-25rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
-  }
-  
-  /* Card for the prescriptions content */
-  .prescriptions-card {
+}
+
+/* Card for the prescriptions content */
+.diagnosisDashboardPage-prescriptions-card {
   background-color: white;
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   padding: 1rem 1.5rem;
-  }
-  
-  /* Container for the search bar and button */
-  .search-container {
+}
+
+/* Container for the search bar and button */
+.diagnosisDashboardPage-search-container {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   margin-bottom: 1rem;
-  }
-  
-  @media (min-width: 640px) {
-  .search-container {
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-search-container {
     flex-direction: row;
     justify-content: space-between;
   }
-  }
-  
-  /* Search input field */
-  .search-input {
+}
+
+/* Search input field */
+.diagnosisDashboardPage-search-input {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 0.375rem;
-  }
-  
-  /* Button for creating a new prescription */
-  .new-prescription-button {
+}
+
+/* Button for creating a new prescription */
+.diagnosisDashboardPage-new-prescription-button {
   background-color: #3b82f6;
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 0.375rem;
-  }
-  
-  /* Desktop Table */
-  .desktop-table {
+}
+
+/* Desktop Table */
+.diagnosisDashboardPage-desktop-table {
   display: block;
   margin-top: 1.5rem;
-  }
-  
-  .table {
+}
+
+.diagnosisDashboardPage-table {
   width: 100%;
   border-collapse: collapse;
-  }
-  
-  .table-header {
+}
+
+.diagnosisDashboardPage-table-header {
   background-color: #f9fafb;
-  }
-  
-  .table-cell {
+}
+
+.diagnosisDashboardPage-table-cell {
   padding: 1rem;
   text-align: left;
-  }
-  
-  .table-body {
+}
+
+.diagnosisDashboardPage-table-body {
   border-top: 1px solid #e5e7eb;
-  }
-  
-  /* Status styles */
-  .status-active {
+}
+
+/* Status styles */
+.diagnosisDashboardPage-status-active {
   background-color: #d1fadf;
   color: #2f855a;
   padding: 0.25rem 0.5rem;
   border-radius: 0.375rem;
   font-size: 0.875rem;
-  }
-  
-  /* Mobile Card Layout */
-  .mobile-cards {
+}
+
+/* Mobile Card Layout */
+.diagnosisDashboardPage-mobile-cards {
   display: none;
   margin-top: 1.5rem;
-  }
-  
-  .card {
+}
+
+.diagnosisDashboardPage-card {
   border: 1px solid #e5e7eb;
   border-radius: 0.5rem;
   padding: 1rem;
   background-color: #f9fafb;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   margin-bottom: 1rem;
-  }
-  
-  .card-info {
+}
+
+.diagnosisDashboardPage-card-info {
   margin-bottom: 0.5rem;
-  }
-  
-  .font-bold {
+}
+
+.diagnosisDashboardPage-font-bold {
   font-weight: bold;
-  }
-  
-  @media (max-width: 767px) {
-  .desktop-table {
+}
+
+@media (max-width: 767px) {
+  .diagnosisDashboardPage-desktop-table {
     display: none;
   }
-  
-  .mobile-cards {
+
+  .diagnosisDashboardPage-mobile-cards {
     display: block;
   }
-  }
-  
-  /* Container for the entire component */
-  .teleconsultations-container {
+}
+
+/* Container for the entire component */
+.diagnosisDashboardPage-teleconsultations-container {
   padding: 1rem 1.5rem;
-  }
-  
-  /* Title for the section */
-  .teleconsultations-title {
-  font-size: 1.25rem;
+}
+
+/* Title for the section */
+.diagnosisDashboardPage-teleconsultations-title {
+  font-size: .1diagnosisDashboardPage-25rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
-  }
-  
-  /* Container for upcoming and past sessions */
-  .sessions-container {
+}
+
+/* Container for upcoming and past sessions */
+.diagnosisDashboardPage-sessions-container {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  }
-  
-  @media (min-width: 1024px) {
-  .sessions-container {
+}
+
+@media (min-width: 1024px) {
+  .diagnosisDashboardPage-sessions-container {
     flex-direction: row;
   }
-  }
-  
-  /* Card for each session section */
-  .sessions-card {
+}
+
+/* Card for each session section */
+.diagnosisDashboardPage-sessions-card {
   background-color: white;
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   padding: 1rem 1.5rem;
   flex: 1;
-  }
-  
-  /* Heading for each session section */
-  .sessions-heading {
-  font-size: 1.125rem;
+}
+
+/* Heading for each session section */
+.diagnosisDashboardPage-sessions-heading {
+  font-size: .1diagnosisDashboardPage-125rem;
   font-weight: 500;
   margin-bottom: 1rem;
-  }
-  
-  /* List of sessions */
-  .session-list {
+}
+
+/* List of sessions */
+.diagnosisDashboardPage-session-list {
   border-top: 1px solid #e5e7eb;
-  }
-  
-  .session-item {
+}
+
+.diagnosisDashboardPage-session-item {
   padding: 1rem 0;
   border-bottom: 1px solid #e5e7eb;
-  }
-  
-  .session-info {
+}
+
+.diagnosisDashboardPage-session-info {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  }
-  
-  @media (min-width: 640px) {
-  .session-info {
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-session-info {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
-  }
-  
-  /* Session Name and Time */
-  .session-name {
+}
+
+/* Session Name and Time */
+.diagnosisDashboardPage-session-name {
   font-weight: 500;
-  }
-  
-  .session-time {
+}
+
+.diagnosisDashboardPage-session-time {
   font-size: 0.875rem;
   color: #6b7280; /* gray-500 */
-  }
-  
-  /* Button Styles */
-  .join-button,
-  .view-notes-button {
+}
+
+/* Button Styles */
+.diagnosisDashboardPage-join-button,
+.diagnosisDashboardPage-view-notes-button {
   padding: 0.5rem 1rem;
   border-radius: 0.375rem;
   font-size: 0.875rem;
   width: 100%;
   margin-top: 0.5rem;
-  }
-  
-  .join-button {
+}
+
+.diagnosisDashboardPage-join-button {
   background-color: #3b82f6;
   color: white;
   text-align: center;
-  }
-  
-  .view-notes-button {
+}
+
+.diagnosisDashboardPage-view-notes-button {
   background-color: #f3f4f6;
   color: #4b5563; /* gray-700 */
   text-align: center;
-  }
-  
-  @media (min-width: 640px) {
-  .join-button,
-  .view-notes-button {
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-join-button,
+  .diagnosisDashboardPage-view-notes-button {
     width: auto;
     padding: 0.5rem 1rem;
   }
-  }
-  
-  /* General Container */
-  .main-container {
+}
+
+/* General Container */
+.diagnosisDashboardPage-main-container {
   display: flex;
   height: 100vh;
   background-color: white;
-  }
-  
-  /* Sidebar styles */
-  .sidebar {
+}
+
+/* Sidebar styles */
+.diagnosisDashboardPage-sidebar {
   background-color: #ffffff;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
   width: 12rem;
   transition: all 0.3s;
-  }
-  
-  .sidebar.sidebar-open {
+}
+
+.diagnosisDashboardPage-.sidebardiagnosisDashboardPage-sidebar-open {
   width: 15rem;
-  }
-  
-  .sidebar-header {
+}
+
+.diagnosisDashboardPage-sidebar-header {
   padding: 1rem;
   border-bottom: 1px solid #e5e7eb;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  }
-  
-  /* .sidebar-toggle {
+}
+
+/* .diagnosisDashboardPage-sidebar-toggle {
   cursor: pointer;
   } */
-  
-  .sidebar-toggle-icon {
+
+.diagnosisDashboardPage-sidebar-toggle-icon {
   width: 1.5rem;
   height: 1.5rem;
-  }
-  
-  .sidebar-brand {
+}
+
+.diagnosisDashboardPage-sidebar-brand {
   display: none;
-  }
-  
-  /* Profile Styles */
-  .doctor-profile-container {
+}
+
+/* Profile Styles */
+.diagnosisDashboardPage-doctor-profile-container {
   padding: 1rem;
-  }
-  
-  @media (min-width: 640px) {
-  .doctor-profile-container {
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-doctor-profile-container {
     padding: 1.5rem;
   }
-  }
-  
-  .doctor-profile-title {
-  font-size: 1.25rem;
+}
+
+.diagnosisDashboardPage-doctor-profile-title {
+  font-size: .1diagnosisDashboardPage-25rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  }
-  
-  @media (min-width: 640px) {
-  .doctor-profile-title {
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-doctor-profile-title {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
   }
-  }
-  
-  .doctor-card2 {
+}
+
+.diagnosisDashboardPage-doctor-card2 {
   background: white;
   border-radius: 0.5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .doctor-header {
-    
-    width: 100%;
-  /* padding: 1rem; */
+}
+
+.diagnosisDashboardPage-doctor-header {
+  width: 100%;
   border-bottom: 1px solid #ddd;
-  }
-  
-  @media (min-width: 640px) {
-  .doctor-header {
-    
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-doctor-header {
     padding: 1.5rem;
   }
-  }
-  
-  .doctor-header-content {
+}
+
+.diagnosisDashboardPage-doctor-header-content {
   display: flex;
   flex-direction: column;
   gap: 15rem;
   align-items: center;
-  }
-  
-  @media (min-width: 640px) {
-  .doctor-header-content {
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-doctor-header-content {
     flex-direction: row;
     align-items: flex-start;
   }
-  }
-  
-  .doctor-avatar {
+}
+
+.diagnosisDashboardPage-doctor-avatar {
   background: #e5e7eb;
   border-radius: 50%;
   width: 6rem;
@@ -812,686 +795,667 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  }
-  
-  
-  
-  .docDashboard_doctor-profile_img {
+}
+
+.diagnosisDashboardPage-docDashboard_doctor-profile_img {
   color: #6b7280;
-  }
-  
-  .doctor-info {
+}
+
+.diagnosisDashboardPage-doctor-info {
   text-align: center;
-  }
-  
-  @media (min-width: 640px) {
-  .doctor-info {
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-doctor-info {
     text-align: left;
   }
-  }
-  
-  .doctor-name {
-  font-size: 1.125rem;
+}
+
+.diagnosisDashboardPage-doctor-name {
+  font-size: .1diagnosisDashboardPage-125rem;
   font-weight: bold;
-  }
-  
-  .doctor-role,
-  .doctor-license {
+}
+
+.diagnosisDashboardPage-doctor-role,
+.diagnosisDashboardPage-doctor-license {
   color: #6b7280;
-  }
-  
-  .doctor-edit {
+}
+
+.diagnosisDashboardPage-doctor-edit {
   margin-top: 0.5rem;
-  }
-  
-  @media (min-width: 640px) {
-  .doctor-edit {
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-doctor-edit {
     margin-top: 0;
     margin-left: auto;
   }
-  }
-  
-  .edit-button {
+}
+
+.diagnosisDashboardPage-edit-button {
   background: #3b82f6;
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 0.375rem;
   border: none;
   cursor: pointer;
-  }
-  
-  .doctor-section {
+}
+
+.diagnosisDashboardPage-doctor-section {
   padding: 1rem;
   color: red;
-  }
-  
-  @media (min-width: 640px) {
-  .doctor-section {
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-doctor-section {
     padding: 1.5rem;
   }
-  }
-  
-  .border-top {
+}
+
+.diagnosisDashboardPage-border-top {
   border-top: 1px solid #ddd;
-  }
-  
-  .section-title {
-  font-size: 1.125rem;
+}
+
+.diagnosisDashboardPage-section-title {
+  font-size: .1diagnosisDashboardPage-125rem;
   font-weight: 500;
   margin-bottom: 1rem;
-  }
-  
-  .info-grid {
+}
+
+.diagnosisDashboardPage-info-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  }
-  
-  @media (min-width: 640px) {
-  .info-grid {
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-info-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  }
-  
-  .info-label {
+}
+
+.diagnosisDashboardPage-info-label {
   color: #6b7280;
   font-size: 0.875rem;
-  }
-  
-  .schedule-grid {
+}
+
+.diagnosisDashboardPage-schedule-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  }
-  
-  @media (min-width: 640px) {
-  .schedule-grid {
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-schedule-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  }
-  
-  .schedule-box {
+}
+
+.diagnosisDashboardPage-schedule-box {
   background: #f9fafb;
   padding: 0.75rem;
   border-radius: 0.375rem;
-  }
-  
-  .schedule-day {
+}
+
+.diagnosisDashboardPage-schedule-day {
   font-weight: 500;
-  }
-  
-  .schedule-time {
+}
+
+.diagnosisDashboardPage-schedule-time {
   color: #6b7280;
-  }
-  
-  .settings-links {
+}
+
+.diagnosisDashboardPage-settings-links {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  }
-  
-  .settings-link {
+}
+
+.diagnosisDashboardPage-settings-link {
   background: none;
   border: none;
   color: #3b82f6;
   text-align: left;
   padding: 0;
   cursor: pointer;
-  }
-  
-  /* General container styles */
-  .main-container {
+}
+
+/* General container styles */
+.diagnosisDashboardPage-main-container {
   display: flex;
   height: 100vh;
   background-color: white;
-  }
-  
-  /* Sidebar styles */
-  .sidebar {
+}
+
+/* Sidebar styles */
+.diagnosisDashboardPage-sidebar {
   background-color: #ffffff;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
   width: 15rem;
   transition: all 0.3s ease;
-  }
-  
-  .sidebar.sidebar-open {
+}
+
+.diagnosisDashboardPage-.sidebardiagnosisDashboardPage-sidebar-open {
   width: 16rem;
-  }
-  
-  .menu {
+}
+
+.diagnosisDashboardPage-menu {
   padding-top: 1rem;
-  }
-  .menu-list{
-  list-style-type:none;
+}
+.diagnosisDashboardPage-menu-list {
+  list-style-type: none;
   padding: 0;
-  }
-  .menu-item {
+}
+.diagnosisDashboardPage-menu-item {
   display: flex;
   align-items: center;
   padding: 0.75rem 1.5rem;
   width: 75%;
   text-align: left;
   transition: all 0.2s ease;
-  }
-  
-  .menu-item:hover {
+}
+
+.diagnosisDashboardPage-menu-item:hover {
   background-color: #f3f4f6;
-  }
-  
-  .menu-item.active {
+}
+
+.diagnosisDashboardPage-menu-.itemdiagnosisDashboardPage-active {
   background-color: #e7f3fe;
   color: #3b82f6;
   border-right: 4px solid #3b82f6;
-  }
-  
-  .menu-item-icon {
+}
+
+.diagnosisDashboardPage-menu-item-icon {
   margin-right: 1rem;
   transition: all 0.2s ease;
-  }
-  
-  .menu-item-name {
+}
+
+.diagnosisDashboardPage-menu-item-name {
   transition: all 0.2s ease;
-  }
-  
-  .menu-item-name.hidden {
+}
+
+.diagnosisDashboardPage-menu-item-hidden {
   display: none;
-  }
-  
-  
-  
-  .docDashboard-logout span,
-  .docDashboard-logout svg {
-    color: #ef4444;
-  }
-  
-  .docDashboard-logout:hover span,
-  .docDashboard-logout:hover svg {
-    color: #dc2626;
-  }
-  
-  
-  /* Main content */
-  .docDashboard-main-content {
-    flex: 1;
-    overflow: auto;
-    padding: 1rem;
-  }
-  /* Main content area */
-  .main-content {
+}
+
+.diagnosisDashboardPage-docDashboard-logout span,
+.diagnosisDashboardPage-docDashboard-logout svg {
+  color: #ef4444;
+}
+
+.diagnosisDashboardPage-docDashboard-logout:hover span,
+.diagnosisDashboardPage-docDashboard-logout:hover svg {
+  color: #dc2626;
+}
+
+/* Main content */
+.diagnosisDashboardPage-docDashboard-main-content {
   flex: 1;
-  overflow:auto;
+  overflow: auto;
   padding: 1rem;
-  }
-  
-  
-  /* appointment styles */
-  
-  .appointments-container {
+}
+/* Main content area */
+.diagnosisDashboardPage-main-content {
+  flex: 1;
+  overflow: auto;
+  padding: 1rem;
+}
+
+/* appointment styles */
+.diagnosisDashboardPage-appointments-container {
   padding: 16px;
-  }
-  
-  .appointments-container h4 {
-  font-size: 1.25rem;
+}
+
+.diagnosisDashboardPage-appointments-container h4 {
+  font-size: .1diagnosisDashboardPage-25rem;
   font-weight: bold;
   margin-bottom: 24px;
-  }
-  
-  .appointment-card-wrapper {
+}
+
+.diagnosisDashboardPage-appointment-card-wrapper {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  }
-  
-  @media (min-width: 1024px) {
-  .appointment-card-wrapper {
+}
+
+@media (min-width: 1024px) {
+  .diagnosisDashboardPage-appointment-card-wrapper {
     flex-direction: row;
   }
-  }
-  
-  .appointment-card {
+}
+
+.diagnosisDashboardPage-appointment-card {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 16px;
   flex: 1;
-  }
+}
 
-  
-  .appointment-header {
+.diagnosisDashboardPage-appointment-header {
   display: flex;
   flex-direction: column;
   gap: 16px;
   margin-bottom: 16px;
-  }
-  
-  @media (min-width: 640px) {
-  .appointment-header {
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-appointment-header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
-  }
-  
-  .new-appointment-btn {
+}
+
+.diagnosisDashboardPage-new-appointment-btn {
   background-color: #3b82f6;
   color: white;
   padding: 8px 16px;
   border: none;
   border-radius: 6px;
   width: 100%;
-  }
-  
-  @media (min-width: 640px) {
-  .new-appointment-btn {
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-new-appointment-btn {
     width: auto;
   }
-  }
-  
-  /* Desktop Table */
-  .appointment-table-wrapper {
+}
+
+/* Desktop Table */
+.diagnosisDashboardPage-appointment-table-wrapper {
   display: none;
-  }
-  
-  @media (min-width: 640px) {
-  .appointment-table-wrapper {
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-appointment-table-wrapper {
     display: block;
     overflow-x: auto;
   }
-  
-  .appointment-table {
+
+  .diagnosisDashboardPage-appointment-table {
     width: 100%;
     border-collapse: collapse;
   }
-  
-  .appointment-table th,
-  .appointment-table td {
+
+  .diagnosisDashboardPage-appointment-table th,
+  .diagnosisDashboardPage-appointment-table td {
     padding: 12px;
     text-align: left;
   }
-  
-  .appointment-table thead {
+
+  .diagnosisDashboardPage-appointment-table thead {
     background-color: #f9fafb;
   }
-  
-  .appointment-table tbody tr {
+
+  .diagnosisDashboardPage-appointment-table tbody tr {
     border-top: 1px solid #e5e7eb;
   }
-  }
-  
-  /* Status Styles */
-  .status-badge {
+}
+
+/* Status Styles */
+.diagnosisDashboardPage-status-badge {
   padding: 4px 8px;
   font-size: 0.875rem;
   border-radius: 4px;
   display: inline-block;
-  }
-  
-  .status-confirmed {
+}
+
+.diagnosisDashboardPage-status-confirmed {
   background-color: #d1fae5;
   color: #16a34a;
-  }
-  
-  .status-pending {
+}
+
+.diagnosisDashboardPage-status-pending {
   background-color: #fef3c7;
   color: #ca8a04;
-  }
-  
-  .action-buttons button {
+}
+
+.diagnosisDashboardPage-action-buttons button {
   margin-right: 8px;
   cursor: pointer;
   font-weight: 500;
   background: none;
   border: none;
-  }
-  
-  .action-buttons1 {
-    display: flex;
-    gap: 10px;
-    opacity: 100%;
-    transition: opacity 0.3s ease;
-    /* background-color: aqua; */
-    width: 100px;
-  }
-  
-  /* Show buttons when parent (e.g., a card or row) is hovered */
-  .card:hover .action-buttons1,
-  .row:hover .action-buttons1 {
-    opacity: 1;
-  }
-  
-  .tick-btn, .cross-btn {
-    font-size: 18px;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    color: rgb(59, 58, 58);
-    cursor: pointer;
-    background-color: #2c2c2d;
-  }
-  
-  .tick-btn {
-    background-color: var(--color-primary);
-   
-  }
-  
-  .cross-btn {
-    background-color: #dc3545;
-  
-  }
-  
-  .tick-btn:hover {
-    background-color: var(--color-accent);
-    color: #ffffff;
-  }
-  
-  .cross-btn:hover {
-    background-color: #c82333;
-    color: #ffffff;
-  }
-  
-  
-  .action-buttons .edit-btn {
+}
+
+.diagnosisDashboardPage-action-buttons1 {
+  display: flex;
+  gap: 10px;
+  opacity: 100%;
+  transition: opacity 0.3s ease;
+  width: 100px;
+}
+
+/* Show buttons when parent (.ediagnosisDashboardPage-.gdiagnosisDashboardPage-, a card or row) is hovered */
+.diagnosisDashboardPage-card:hover .diagnosisDashboardPage-action-buttons1,
+.diagnosisDashboardPage-row:hover .diagnosisDashboardPage-action-buttons1 {
+  opacity: 1;
+}
+
+.diagnosisDashboardPage-tick-btn,
+.diagnosisDashboardPage-cross-btn {
+  font-size: 18px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  color: rgb(59, 58, 58);
+  cursor: pointer;
+  background-color: #2c2c2d;
+}
+
+.diagnosisDashboardPage-tick-btn {
+  background-color: var(--color-primary);
+}
+
+.diagnosisDashboardPage-cross-btn {
+  background-color: #dc3545;
+}
+
+.diagnosisDashboardPage-tick-btn:hover {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+
+.diagnosisDashboardPage-cross-btn:hover {
+  background-color: #c82333;
+  color: #ffffff;
+}
+
+.diagnosisDashboardPage-action-buttons .diagnosisDashboardPage-edit-btn {
   color: #3b82f6;
-  }
-  
-  .action-buttons .cancel-btn {
+}
+
+.diagnosisDashboardPage-action-buttons .diagnosisDashboardPage-cancel-btn {
   color: #171717;
-  }
-  
-  /* Mobile Card Layout */
-  .mobile-appointment-list {
+}
+
+/* Mobile Card Layout */
+.diagnosisDashboardPage-mobile-appointment-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  }
-  
-  @media (min-width: 640px) {
-  .mobile-appointment-list {
+}
+
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-mobile-appointment-list {
     display: none;
   }
-  }
-  
-  .mobile-appointment-card {
+}
+
+.diagnosisDashboardPage-mobile-appointment-card {
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   padding: 16px;
   background-color: #f9fafb;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  }
-  
-  .mobile-appointment-card div {
+}
+
+.diagnosisDashboardPage-mobile-appointment-card div {
   margin-bottom: 6px;
-  }
-  
-  .mobile-appointment-card span {
+}
+
+.diagnosisDashboardPage-mobile-appointment-card span {
   font-weight: 600;
-  }
-  
-  .mobile-appointment-card .status-badge {
+}
+
+.diagnosisDashboardPage-mobile-appointment-card .diagnosisDashboardPage-status-badge {
   display: inline-block;
   margin-left: 4px;
-  }
-  
-  .mobile-appointment-card .mobile-actions {
+}
+
+.diagnosisDashboardPage-mobile-appointment-card .diagnosisDashboardPage-mobile-actions {
   display: flex;
   gap: 8px;
   margin-top: 12px;
-  }
-  
-  .mobile-appointment-card .mobile-actions button {
+}
+
+.diagnosisDashboardPage-mobile-appointment-card .diagnosisDashboardPage-mobile-actions button {
   flex: 1;
   padding: 6px;
   font-weight: 500;
   border: none;
   background: none;
   cursor: pointer;
-  }
-  
-  .mobile-appointment-card .edit-btn {
+}
+
+.diagnosisDashboardPage-mobile-appointment-card .diagnosisDashboardPage-edit-btn {
   color: #3b82f6;
-  }
-  
-  .mobile-appointment-card .cancel-btn {
+}
+
+.diagnosisDashboardPage-mobile-appointment-card .diagnosisDashboardPage-cancel-btn {
   color: #171717;
-  }
-  
-  .docDashboard-container {
-    display: flex;
-    height: 100vh;
-    background-color: white;
-    position: relative;
-  }
-  
-  
-  .docDashboard-sidebar {
-    background-color: #ffffff;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    width: 13rem;
-    transition: all 0.3s ease;
-  }
-  
-  
-  .docDashboard-sidebar.docDashboard-sidebar-open {
-    width: 15rem;
-  }
-  
-  
-  .docDashboard-sidebar-header {
-    padding: 0.75rem;
-    border-bottom: 1px solid #e5e7eb;
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
-    margin-left: 50px;
-  }
-  
-  .docDashboard-menu-item {
-    padding: 0.75rem 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem; 
-    cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease;
-    border-radius: 0.25rem;
-    color: #111;
-    width: 220px; 
-  }
-  
-  .docDashboard-menu-item:hover {
-    background-color: #e0f2fe; 
-    color: #2563eb; 
-  }
-  
-  .docDashboard-menu-item.docDashboard-active {
-    background-color: #dbeafe; 
-    font-weight: bold;
-    color: #1d4ed8; 
-    border-left: 4px solid #3b82f6;
-  }
-  
-  
-  .docDashboard-toggle-button {
-    display: none;
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    z-index: 1100;
-  }
-  
-  /* Main Content */
-  .docDashboard-main-content {
-    flex: 1;
-    overflow: auto;
-    padding: 1rem;
-  }
-  
-  
-  @media (max-width: 648px) {
-    .docDashboard-toggle-button {
-      display: block;
-    }
-  
-  
-    .docDashboard-sidebar {
-      position: absolute;
-      top: 0;
-      left: -12rem;
-      height: 100%;
-      z-index: 1000;
-      transition: left 0.3s ease;
-    }
-  
-   
-    .docDashboard-sidebar.docDashboard-sidebar-open {
-      left: 0;
-      
-    }
-  }
-  .center-message {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .doctor-section {
-    margin-bottom: 40px;
-  }
-  
-  .section-title {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
-  
-  .info-grid.two-column {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin-top: 30px;
-  }
-  .Personal-information-Ul-left {
-    width: auto;
-    margin: 0 auto;
-  }
-  
-  .Personal-information-Ul-left li {
-    list-style: none;
-    border-bottom: 1px solid #cccccc4f;
-  }
-  
-  .Personal-information-Ul-left li p{
-    text-align: center;
-    padding-right: 40px;
-    margin: 5px 0; /* optional spacing between p tags */
-  }
-  
-  .right {
-    margin-left: 150px;
-    flex: 1;
-    min-width: 280px;
-  }
-  
-  .info-label {
-    font-weight: bold;
-    margin-top: 15px;
-    width: 200px;
-    align-content: start;
-  }
-  
-  textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 8px;
-    resize: vertical;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  
-  select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  
-  input[type="file"] {
-    /* background-color: var(--background-color-main); */
+}
+
+.diagnosisDashboardPage-docDashboard-container {
+  display: flex;
+  height: 100vh;
+  background-color: white;
+  position: relative;
+}
+
+.diagnosisDashboardPage-docDashboard-sidebar {
+  background-color: #ffffff;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  width: 13rem;
+  transition: all 0.3s ease;
+}
+
+.diagnosisDashboardPage-docDashboard-.sidebardiagnosisDashboardPage-docDashboard-sidebar-open {
+  width: 15rem;
+}
+
+.diagnosisDashboardPage-docDashboard-sidebar-header {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+}
+
+.diagnosisDashboardPage-docDashboard-menu-item {
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border-radius: 0.25rem;
+  color: #111;
+  width: 220px;
+}
+
+.diagnosisDashboardPage-docDashboard-menu-item:hover {
+  background-color: #e0f2fe;
+  color: #2563eb;
+}
+
+.diagnosisDashboardPage-docDashboard-menu-.itemdiagnosisDashboardPage-docDashboard-active {
+  background-color: #dbeafe;
+  font-weight: bold;
+  color: #1d4ed8;
+  border-left: 4px solid #3b82f6;
+}
+
+.diagnosisDashboardPage-docDashboard-toggle-button {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+/* Main Content */
+.diagnosisDashboardPage-docDashboard-main-content {
+  flex: 1;
+  overflow: auto;
+  padding: 1rem;
+}
+
+@media (max-width: 648px) {
+  .diagnosisDashboardPage-docDashboard-toggle-button {
     display: block;
-    margin-top: 10px;
-    border: solid 1px #ccc;
   }
-  
-  .total-right {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
+
+  .diagnosisDashboardPage-docDashboard-sidebar {
+    position: absolute;
+    top: 0;
+    left: -12rem;
+    height: 100%;
+    z-index: 1000;
+    transition: left 0.3s ease;
   }
-  
-  .doctor-header {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    box-sizing: border-box;
+
+  .diagnosisDashboardPage-docDashboard-.sidebardiagnosisDashboardPage-docDashboard-sidebar-open {
+    left: 0;
   }
-  
-  .doctor-header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* max-width: 900px;
+}
+.diagnosisDashboardPage-center-message {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.diagnosisDashboardPage-doctor-section {
+  margin-bottom: 40px;
+}
+
+.diagnosisDashboardPage-section-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.diagnosisDashboardPage-info-.griddiagnosisDashboardPage-two-column {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+}
+.diagnosisDashboardPage-Personal-information-Ul-left {
+  width: auto;
+  margin: 0 auto;
+}
+
+.diagnosisDashboardPage-Personal-information-Ul-left li {
+  list-style: none;
+  border-bottom: 1px solid #cccccc4f;
+}
+
+.diagnosisDashboardPage-Personal-information-Ul-left li p {
+  text-align: center;
+  padding-right: 40px;
+  margin: 5px 0; /* optional spacing between p tags */
+}
+
+.diagnosisDashboardPage-right {
+  margin-left: 150px;
+  flex: 1;
+  min-width: 280px;
+}
+
+.diagnosisDashboardPage-info-label {
+  font-weight: bold;
+  margin-top: 15px;
+  width: 200px;
+  align-content: start;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  resize: vertical;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+input[type="file"] {
+  /* background-color: var(--background-color-main); */
+  display: block;
+  margin-top: 10px;
+  border: solid 1px #ccc;
+}
+
+.diagnosisDashboardPage-total-right {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.diagnosisDashboardPage-doctor-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.diagnosisDashboardPage-doctor-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* max-width: 900px;
     width: 100%;
     background-color: #f9f9f9; */
-    /* padding: 20px;
+  /* padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-  }
-  
-  .doctor-avatar {
-    flex: 0 0 120px;
-    margin-right: 20px;
-  }
-  
-  .docDashboard_doctor-profile_img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #ccc;
-  }
-  
-  .doctor-info {
-    flex: 1;
-  }
-  
-  .doctor-name {
-    font-size: 22px;
-    font-weight: bold;
-    margin: 5px 0;
-  }
-  
-  .doctor-role {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 5px;
-  }
-  
-  .doctor-license {
-    font-size: 16px;
-    color: #777;
-  }
-  
-  /* .total-right {
+}
+
+.diagnosisDashboardPage-doctor-avatar {
+  flex: 0 0 120px;
+  margin-right: 20px;
+}
+
+.diagnosisDashboardPage-docDashboard_doctor-profile_img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ccc;
+}
+
+.diagnosisDashboardPage-doctor-info {
+  flex: 1;
+}
+
+.diagnosisDashboardPage-doctor-name {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.diagnosisDashboardPage-doctor-role {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.diagnosisDashboardPage-doctor-license {
+  font-size: 16px;
+  color: #777;
+}
+
+/* .diagnosisDashboardPage-total-right {
     margin-left: auto;
   } */
-  
-  /* .edit-button {
+
+/* .diagnosisDashboardPage-edit-button {
     background-color: #007bff;
     color: white;  
     padding: 10px 16px;
@@ -1502,11 +1466,822 @@
     transition: background 0.3s;
   }
   
-  .edit-button:hover {
+  .diagnosisDashboardPage-edit-button:hover {
     background-color: #0056b3;
   } */
-  
-  .line{
-    color:#dedede
+
+.diagnosisDashboardPage-line {
+  color: #dedede;
+}
+
+/* Global Styles */
+:root {
+  --primary-color: #0070f3;
+  --secondary-color: #0060df;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --danger-color: #ef4444;
+  --progress-color: #6366f1;
+  --processing-color: #8b5cf6;
+  --review-color: #f59e0b;
+  --completed-color: #10b981;
+  --text-color: #333;
+  --text-light: #666;
+  --text-dark: #111;
+  --bg-color: #f7f9fc;
+  --card-bg: #ffffff;
+  --border-color: #e6e8ec;
+  --hover-bg: #f1f5f9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 14px;
+  line-height: .1diagnosisDashboardPage-5;
+}
+
+/* Layout */
+.diagnosisDashboardPage-app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar/Menu Styles */
+.diagnosisDashboardPage-sidebar {
+  width: 250px;
+  background-color: var(--card-bg);
+  border-right: 1px solid var(--border-color);
+  position: fixed;
+  height: 100vh;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.diagnosisDashboardPage-menu-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.diagnosisDashboardPage-menu-items {
+  padding: 10px 0;
+}
+
+.diagnosisDashboardPage-menu-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.diagnosisDashboardPage-menu-item:hover {
+  background-color: var(--hover-bg);
+}
+
+.diagnosisDashboardPage-menu-.itemdiagnosisDashboardPage-active {
+  background-color: rgba(0, 112, 243, 0.1);
+  color: var(--primary-color);
+  border-left: 3px solid var(--primary-color);
+}
+
+.diagnosisDashboardPage-menu-item svg {
+  margin-right: 12px;
+  color: var(--text-light);
+}
+
+.diagnosisDashboardPage-menu-.itemdiagnosisDashboardPage-active svg {
+  color: var(--primary-color);
+}
+
+.diagnosisDashboardPage-logout {
+  border-top: 1px solid var(--border-color);
+  margin-top: auto;
+  color: #dc2626;
+}
+
+/* Main Content Area */
+.diagnosisDashboardPage-main-content {
+  flex: 1;
+  margin-left: 250px;
+  padding: 20px;
+}
+
+/* Page Title */
+.diagnosisDashboardPage-page-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--text-dark);
+}
+
+/* Dashboard Summary Cards */
+.diagnosisDashboardPage-dashboard-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.diagnosisDashboardPage-summary-card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+}
+
+.diagnosisDashboardPage-summary-title {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 5px;
+}
+
+.diagnosisDashboardPage-summary-value {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.diagnosisDashboardPage-summary-.carddiagnosisDashboardPage-warning .diagnosisDashboardPage-summary-value {
+  color: var(--warning-color);
+}
+
+.diagnosisDashboardPage-summary-.carddiagnosisDashboardPage-danger .diagnosisDashboardPage-summary-value {
+  color: var(--danger-color);
+}
+
+.diagnosisDashboardPage-summary-.carddiagnosisDashboardPage-completed .diagnosisDashboardPage-summary-value,
+.diagnosisDashboardPage-summary-.carddiagnosisDashboardPage-success .diagnosisDashboardPage-summary-value {
+  color: var(--success-color);
+}
+
+.diagnosisDashboardPage-summary-.carddiagnosisDashboardPage-progress .diagnosisDashboardPage-summary-value,
+.diagnosisDashboardPage-summary-.carddiagnosisDashboardPage-processing .diagnosisDashboardPage-summary-value {
+  color: var(--processing-color);
+}
+
+/* Cards */
+.diagnosisDashboardPage-card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.diagnosisDashboardPage-card-header {
+  padding: 15px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Search and Filter */
+.diagnosisDashboardPage-search-container {
+  display: flex;
+  flex: 1;
+  gap: 10px;
+  align-items: center;
+}
+
+.diagnosisDashboardPage-search-input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: var(--bg-color);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.diagnosisDashboardPage-search-input:focus {
+  border-color: var(--primary-color);
+}
+
+.diagnosisDashboardPage-filter-select {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-color);
+  outline: none;
+}
+
+.diagnosisDashboardPage-action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.diagnosisDashboardPage-add-btn,
+.diagnosisDashboardPage-restock-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.diagnosisDashboardPage-add-btn:hover,
+.diagnosisDashboardPage-restock-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Tables */
+.diagnosisDashboardPage-table-container {
+  overflow-x: auto;
+  padding: 0 15px 15px;
+}
+
+.diagnosisDashboardPage-sample-table,
+.diagnosisDashboardPage-inventory-table,
+.diagnosisDashboardPage-requests-table,
+.diagnosisDashboardPage-reports-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.diagnosisDashboardPage-sample-table th,
+.diagnosisDashboardPage-inventory-table th,
+.diagnosisDashboardPage-requests-table th,
+.diagnosisDashboardPage-reports-table th,
+.diagnosisDashboardPage-sample-table td,
+.diagnosisDashboardPage-inventory-table td,
+.diagnosisDashboardPage-requests-table td,
+.diagnosisDashboardPage-reports-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.diagnosisDashboardPage-sample-table th,
+.diagnosisDashboardPage-inventory-table th,
+.diagnosisDashboardPage-requests-table th,
+.diagnosisDashboardPage-reports-table th {
+  font-weight: 600;
+  background-color: var(--bg-color);
+  color: var(--text-light);
+  position: sticky;
+  top: 0;
+}
+
+.diagnosisDashboardPage-sample-table tr:hover,
+.diagnosisDashboardPage-inventory-table tr:hover,
+.diagnosisDashboardPage-requests-table tr:hover,
+.diagnosisDashboardPage-reports-table tr:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Status Badges */
+.diagnosisDashboardPage-status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.diagnosisDashboardPage-status-success,
+.diagnosisDashboardPage-status-completed {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--success-color);
+}
+
+.diagnosisDashboardPage-status-warning,
+.diagnosisDashboardPage-status-review {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--warning-color);
+}
+
+.diagnosisDashboardPage-status-danger {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--danger-color);
+}
+
+.diagnosisDashboardPage-status-pending,
+.diagnosisDashboardPage-status-processing {
+  background-color: rgba(139, 92, 246, 0.1);
+  color: var(--processing-color);
+}
+
+.diagnosisDashboardPage-status-progress {
+  background-color: rgba(99, 102, 241, 0.1);
+  color: var(--progress-color);
+}
+
+/* Priority Badges */
+.diagnosisDashboardPage-priority-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.diagnosisDashboardPage-priority-urgent {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--danger-color);
+}
+
+.diagnosisDashboardPage-priority-high {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--warning-color);
+}
+
+.diagnosisDashboardPage-priority-normal {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--success-color);
+}
+
+/* Action Buttons */
+.diagnosisDashboardPage-action-btn {
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 12px;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: all 0.2s;
+}
+
+.diagnosisDashboardPage-action-btn:hover {
+  background-color: var(--hover-bg);
+}
+
+.diagnosisDashboardPage-view-btn {
+  background-color: transparent;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.diagnosisDashboardPage-view-btn:hover {
+  background-color: rgba(0, 112, 243, 0.1);
+}
+
+/* Mobile Cards (for responsive design) */
+.diagnosisDashboardPage-mobile-cards {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+}
+
+.diagnosisDashboardPage-mobile-card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.diagnosisDashboardPage-mobile-card .diagnosisDashboardPage-card-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background-color: var(--bg-color);
+}
+
+.diagnosisDashboardPage-mobile-card .diagnosisDashboardPage-card-content {
+  padding: 15px;
+}
+
+.diagnosisDashboardPage-mobile-card .diagnosisDashboardPage-card-content p {
+  margin-bottom: 8px;
+}
+
+.diagnosisDashboardPage-mobile-card .diagnosisDashboardPage-card-actions {
+  padding: 10px 15px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  gap: 8px;
+}
+
+.diagnosisDashboardPage-sample-id,
+.diagnosisDashboardPage-item-id,
+.diagnosisDashboardPage-request-id,
+.diagnosisDashboardPage-report-id {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* Technician Profile */
+.diagnosisDashboardPage-technician-profile-container {
+  padding: 20px;
+  background-color: var(--bg-color);
+}
+
+.diagnosisDashboardPage-technician-profile-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.diagnosisDashboardPage-technician-card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.diagnosisDashboardPage-technician-header {
+  background-color: #f8fafc;
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.diagnosisDashboardPage-technician-header-content {
+  display: flex;
+  align-items: center;
+}
+
+.diagnosisDashboardPage-technician-avatar {
+  margin-right: 20px;
+}
+
+.diagnosisDashboardPage-technician-profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.diagnosisDashboardPage-technician-info {
+  flex: 1;
+}
+
+.diagnosisDashboardPage-technician-name {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.diagnosisDashboardPage-technician-role,
+.diagnosisDashboardPage-technician-license {
+  color: var(--text-light);
+  margin-bottom: 3px;
+}
+
+.diagnosisDashboardPage-total-right {
+  display: flex;
+  align-items: center;
+}
+
+.diagnosisDashboardPage-edit-button {
+  padding: 8px 15px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.diagnosisDashboardPage-edit-button:hover {
+  background-color: var(--secondary-color);
+}
+
+.diagnosisDashboardPage-technician-section {
+  padding: 20px;
+}
+
+.diagnosisDashboardPage-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+}
+
+.diagnosisDashboardPage-info-grid {
+  display: grid;
+  gap: 15px;
+}
+
+.diagnosisDashboardPage-two-column {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.diagnosisDashboardPage-Personal-information-Ul-left {
+  list-style: none;
+}
+
+.diagnosisDashboardPage-Personal-information-Ul-left li {
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.diagnosisDashboardPage-info-label {
+  font-weight: 600;
+  width: 180px;
+  color: var(--text-light);
+}
+
+.diagnosisDashboardPage-Personal-information-Ul-left li p:last-child {
+  flex: 1;
+  min-width: 200px;
+}
+
+.diagnosisDashboardPage-line {
+  border: 0;
+  border-top: 1px solid var(--border-color);
+  margin: 0;
+}
+
+.diagnosisDashboardPage-border-top {
+  border-top: 1px solid var(--border-color);
+}
+
+.diagnosisDashboardPage-schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.diagnosisDashboardPage-schedule-box {
+  background-color: var(--bg-color);
+  border-radius: 6px;
+  padding: 15px;
+  border: 1px solid var(--border-color);
+}
+
+.diagnosisDashboardPage-schedule-day {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.diagnosisDashboardPage-settings-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.diagnosisDashboardPage-settings-link {
+  padding: 8px 15px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.diagnosisDashboardPage-settings-link:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Responsive design */
+@media screen and (max-width: 992px) {
+  .diagnosisDashboardPage-sidebar {
+    width: 60px;
   }
-  
+
+  .diagnosisDashboardPage-menu-item span {
+    display: none;
+  }
+
+  .diagnosisDashboardPage-menu-header {
+    text-align: center;
+    padding: 15px 5px;
+  }
+
+  .diagnosisDashboardPage-main-content {
+    margin-left: 60px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .diagnosisDashboardPage-table-container {
+    display: none;
+  }
+
+  .diagnosisDashboardPage-mobile-cards {
+    display: flex;
+  }
+
+  .diagnosisDashboardPage-dashboard-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .diagnosisDashboardPage-info-grid,
+  .diagnosisDashboardPage-two-column {
+    grid-template-columns: 1fr;
+  }
+
+  .diagnosisDashboardPage-technician-header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .diagnosisDashboardPage-technician-avatar {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .diagnosisDashboardPage-total-right {
+    margin-top: 15px;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .diagnosisDashboardPage-search-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .diagnosisDashboardPage-action-buttons {
+    margin-top: 10px;
+    justify-content: space-between;
+  }
+
+  .diagnosisDashboardPage-dashboard-summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Prefixing all relevant class names with .diagnosisDashboardPage-mlt-dashboard- to scope styles */
+.diagnosisDashboardPage-mlt-dashboard-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  color: #6b7280;
+}
+
+.diagnosisDashboardPage-mlt-dashboard-card-item {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.diagnosisDashboardPage-mlt-dashboard-search-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+@media (min-width: 640px) {
+  .diagnosisDashboardPage-mlt-dashboard-search-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.diagnosisDashboardPage-mlt-dashboard-search-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+}
+
+.diagnosisDashboardPage-mlt-dashboard-text {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Example for scoping .diagnosisDashboardPage-card, .diagnosisDashboardPage-mobile-cards, .diagnosisDashboardPage-mobile-card, .diagnosisDashboardPage-card-header, .diagnosisDashboardPage-card-content, .diagnosisDashboardPage-card-actions */
+.diagnosisDashboardPage-mlt-dashboard-card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.diagnosisDashboardPage-mlt-dashboard-mobile-cards {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+}
+
+.diagnosisDashboardPage-mlt-dashboard-mobile-card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.diagnosisDashboardPage-mlt-dashboard-card-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background-color: var(--bg-color);
+}
+
+.diagnosisDashboardPage-mlt-dashboard-card-content {
+  padding: 15px;
+}
+
+.diagnosisDashboardPage-mlt-dashboard-card-content p {
+  margin-bottom: 8px;
+}
+
+.diagnosisDashboardPage-mlt-dashboard-card-actions {
+  padding: 10px 15px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  gap: 8px;
+}
+
+/* Example for scoping .diagnosisDashboardPage-status-badge, .diagnosisDashboardPage-priority-badge, .diagnosisDashboardPage-action-btn, .diagnosisDashboardPage-view-btn */
+.diagnosisDashboardPage-mlt-dashboard-status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-block;
+}
+.diagnosisDashboardPage-mlt-dashboard-status-success,
+.diagnosisDashboardPage-mlt-dashboard-status-completed {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--success-color);
+}
+.diagnosisDashboardPage-mlt-dashboard-status-warning,
+.diagnosisDashboardPage-mlt-dashboard-status-review {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--warning-color);
+}
+.diagnosisDashboardPage-mlt-dashboard-status-danger {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--danger-color);
+}
+.diagnosisDashboardPage-mlt-dashboard-status-pending,
+.diagnosisDashboardPage-mlt-dashboard-status-processing {
+  background-color: rgba(139, 92, 246, 0.1);
+  color: var(--processing-color);
+}
+.diagnosisDashboardPage-mlt-dashboard-status-progress {
+  background-color: rgba(99, 102, 241, 0.1);
+  color: var(--progress-color);
+}
+
+.diagnosisDashboardPage-mlt-dashboard-priority-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.diagnosisDashboardPage-mlt-dashboard-priority-urgent {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--danger-color);
+}
+.diagnosisDashboardPage-mlt-dashboard-priority-high {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--warning-color);
+}
+.diagnosisDashboardPage-mlt-dashboard-priority-normal {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--success-color);
+}
+
+.diagnosisDashboardPage-mlt-dashboard-action-btn {
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 12px;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: all 0.2s;
+}
+.diagnosisDashboardPage-mlt-dashboard-action-btn:hover {
+  background-color: var(--hover-bg);
+}
+.diagnosisDashboardPage-mlt-dashboard-view-btn {
+  background-color: transparent;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.diagnosisDashboardPage-mlt-dashboard-view-btn:hover {
+  background-color: rgba(0, 112, 243, 0.1);
+}
+
+/* Responsive for mobile cards */
+@media (max-width: 768px) {
+  .diagnosisDashboardPage-mlt-dashboard-table-container {
+    display: none;
+  }
+  .diagnosisDashboardPage-mlt-dashboard-mobile-cards {
+    display: flex;
+  }
+}
+
+/* Add more as needed for other shared class names */

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
-// image imports
 import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
 import GooglePlayLogo from "../assets/icons/apps/googleplay.png";
 import AppStoreLogo from "../assets/icons/apps/applestore.png";
@@ -21,7 +20,6 @@ function Homepage() {
   const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState(50);
   const [currentImage, setCurrentImage] = useState(0);
-  
   // Sample header images array - replace with your actual images
   const HeaderImages = [
     { img: "/path-to-image1.jpg" },
@@ -33,7 +31,6 @@ function Homepage() {
     setIsOpen(!isOpen);
   };
   
-
   useEffect(() => {
     console.log("Home Page Rendered");  
     setIsHomePageRendered(true);
@@ -115,7 +112,6 @@ function Homepage() {
 
   const [activeSlides, setActiveSlides] = useState("doctor");
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-
   const doctorSlides = [
     "Detailed medical explanation about health care.",
     "Expert advice on how to maintain a healthy lifestyle.",
@@ -146,8 +142,6 @@ function Homepage() {
   return (
     <>
       <div className="header-section">
-       
-        
         <div
           className="header-background"
           style={{
@@ -195,11 +189,8 @@ function Homepage() {
           </div>
         )}
 
-        
-
         {/* Cards Slider Section */}
         <CardsSlider />
-
         <h2>More Categories to help you</h2>
 <section className="categorySection">
   <ul className="categoryList">
@@ -384,12 +375,7 @@ function Homepage() {
               based on your preferences.
             </div>
           </div>          
-  
-          
-    
         </div>
-
-        
       </div>
     </>
   );
