@@ -47,6 +47,7 @@
     flex-wrap: wrap;
     gap: 40px;
     justify-content: space-between;
+    align-items: center;
   }
   
   .services-tabs {
@@ -235,13 +236,24 @@
       min-width: 300px;
       width: 50%;
       background-color: #fff;
-      margin-left: 25%;
+      /* margin-left: 25%; */
     }
     .services-header h2 {
       font-size: 26px;
     }
     .services-header p{
       font-size: 15px;
+    }
+    .service-tab{
+      width: 10px;
+      height: 100px;
+    }
+    .services-tabs {
+      flex: 0 0 100%;
+      flex-direction: row;
+      overflow-x: auto;
+      padding-bottom: 15px;
+      gap: 15px;
     }
   
   }
