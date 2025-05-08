@@ -541,7 +541,7 @@
   min-width: 400px;
   margin: 2rem 10%;
   padding: 2rem;
-  background: rgb(255, 253, 253);
+  background: rgb(255, 255, 255);
   border-radius: var(--border-radius);
   border-radius:px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
@@ -739,6 +739,7 @@ h1.our-founder-and-devs {
   }
 }
 
+
 @media (max-width: 480px) {
   .why-vdr-page .hero-content h1 {
     font-size: 2rem;
@@ -768,5 +769,17 @@ h1.our-founder-and-devs {
     width: 30px;
     height: 30px;
     font-size: 1rem;
+  }
+  .whyVdr-faq-container {
+    min-width: 400px;
+    margin: 10px 10px 10px 10px ;
+    padding: 2rem;
+    background: rgb(255, 255, 255);
+    border-radius: var(--border-radius);
+    border-radius:px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    width: 81vw;
+    margin-top: 90px;
+    transition: all 0.3s ease-in-out;
   }
 }
