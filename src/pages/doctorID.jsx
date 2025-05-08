@@ -38,8 +38,8 @@ const DoctorID = () => {
           className="viewDocSec-doctorDetails"
           style={showAppointment ? { margin: 0 } : {}}
         >
-          <img src={VDrLogo} alt="Logo" className="logo" />
-          <img src={doctor.image} alt={doctor.name} className="doctor-img" />
+          <img src={VDrLogo} alt="Logo" className="docId-logo" />
+          <img src={doctor.image} alt={doctor.name} className="docId-doctor-img" />
           <h2>Dr. {doctor.name.toUpperCase()}</h2>
 
           <div className="details">

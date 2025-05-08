@@ -154,7 +154,7 @@ const DoctorAppointment = () => {
   );
 
   return (
-    <div className="appointment-card">
+    <div className="doc-appointment-card">
       <div className="mode-toggle">
         <button
           className={mode === "inClinic" ? "active" : ""}
