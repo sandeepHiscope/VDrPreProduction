@@ -655,7 +655,10 @@ margin: 0;
     
   }
   
-  
+  .findDoc-search-container{
+    width: 100vw;
+    margin: auto;
+  }
   .mobile-filter-toggle {
     display: flex;
   }
