@@ -29,11 +29,8 @@ const menuItems = [
   { name: "Logout", icon: <LogOut className="icon" /> },
 ];
 
-
 const GET_DOCTORDETAILS_API_URL = "http://localhost:8080/doctorverfication/get/";
 const GET_APPOINTMENTS_API_URL = "http://localhost:8080/Appointment/doctor/";
-
-
 const DocDashboard = () => {
   const [activePage, setActivePage] = useState("Dashboard");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -81,7 +78,6 @@ const DocDashboard = () => {
     console.log("Doctor appointments updated:", doctorAppointments);
   }, [doctorProfile], [doctorAppointments]);
   
-
   const upcomingAppointments = [
     {
       name: "Indhu Yadav",
@@ -133,7 +129,6 @@ const DocDashboard = () => {
         date: "23 Apr at 1:20",
       },
   ];
-
   // const recentUpdates = [
   //   {
   //     name: "Jony",
@@ -629,7 +624,6 @@ const DocDashboard = () => {
     );
   };
   
-
   // Profile component
   const Profile = () => (
     <div className="doctor-profile-container">
@@ -778,7 +772,6 @@ const DocDashboard = () => {
     </div>
   );
   
-
   return (
     <div className="docDashboard-container">
 

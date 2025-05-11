@@ -7,7 +7,6 @@ const DoctorID = () => {
   const location = useLocation();
   const { doctor: stateDoctor } = location.state;
   const { id } = useParams();
-
   const doctor = {
     name: stateDoctor?.fullName || "not mentioned",
     license: stateDoctor?.medicalLicenseNumber || "not mentioned",
@@ -39,8 +38,8 @@ const DoctorID = () => {
           className="viewDocSec-doctorDetails"
           style={showAppointment ? { margin: 0 } : {}}
         >
-          <img src={VDrLogo} alt="Logo" className="logo" />
-          <img src={doctor.image} alt={doctor.name} className="doctor-img" />
+          <img src={VDrLogo} alt="Logo" className="docId-logo" />
+          <img src={doctor.image} alt={doctor.name} className="docId-doctor-img" />
           <h2>Dr. {doctor.name.toUpperCase()}</h2>
 
           <div className="details">
@@ -69,10 +68,9 @@ const DoctorID = () => {
 
           <p className="experience">{doctor.experience}</p>
 
-          <div
-            className="button-group"
-            style={showAppointment ? { width: "50%" } : {}}
-          >
+
+          <div className="button-group" style={showAppointment ? { width: "10" } : {}}>
+
             <button className="book-btn1" onClick={handleBookClick}>
               Book Appointment
             </button>

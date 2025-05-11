@@ -24,7 +24,6 @@ const DoctorAppointment = () => {
   const [notes, setNotes] = useState("");
   const [userEmail, setUserEmail] = useState("sandeep@gmail.com"); // Replace with actual login data
   const [doctorEmail, setDoctorEmail] = useState("kiran@gmail.com");
-
   const today = new Date();
   const twoWeeks = [...Array(14)].map((_, i) => {
     const date = new Date();
@@ -155,7 +154,7 @@ const DoctorAppointment = () => {
   );
 
   return (
-    <div className="appointment-card">
+    <div className="doc-appointment-card">
       <div className="mode-toggle">
         <button
           className={mode === "inClinic" ? "active" : ""}
@@ -171,7 +170,7 @@ const DoctorAppointment = () => {
         </button>
       </div>
 
-      <div className="appointment-content">
+      <div cl2ssName="appointment-content">
         <div className="doctor-header">
           <img src={dummyDoctorData.image} alt="Doctor" className="doctor-image" />
           <div className="doctor-details">

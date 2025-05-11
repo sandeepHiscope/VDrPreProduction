@@ -8,8 +8,12 @@ import defaultUser from "../assets/Images/commonImg/VDrlogo.png";
 import { FaChevronDown, FaChevronUp, FaStar, FaStarHalfAlt, FaLocationArrow, FaLanguage } from "react-icons/fa";
 import { BiFilterAlt, BiSearchAlt } from "react-icons/bi";
 import { MdClear, MdOutlineCalendarMonth, MdWorkOutline } from "react-icons/md";
-// import { RiMoney2Line } from "react-icons/ri";
+//added the code to input text deFAULT 
 
+
+// The default input text is ended here 
+
+// import { RiMoney2Line } from "react-icons/ri";
 // API URL constant
 const GET_DOCTOR_API_URL = "http://localhost:8080/doctorverfication/all";
 
@@ -75,7 +79,6 @@ const DOCTORS_PER_PAGE = 10;
 
 // Helper functions
 const normalize = (str) => str?.toString().trim().toLowerCase() || "";
-
 const matchSpeciality = (doctorSpeciality, searchQuery) => {
   const normDoctor = normalize(doctorSpeciality);
   const normSearch = normalize(searchQuery);
@@ -240,17 +243,17 @@ const DoctorCard = ({ doctor, onClick }) => {
             className="doctor-image"
           />
         </div>
-        <button className="book-appointment-btn">Book Appointment</button>
+        <button className="book-appointment-btn" >Book Appointment</button>
       </div>
       
-      <div className="doctor-info">
-        <h3 className="doctor-name">
+      <div className="findDoc-doctor-info">
+        <h3 className="findDoc-doctor-name">
           Dr. {doctor.fullName?.toUpperCase() || "Not Mentioned"}
         </h3>
         
         <div className="doctor-specialty">
-          <span className="info-label">Specialty:</span>
-          <span className="info-value">{doctor.medicalSpeciality || "Not Mentioned"}</span>
+          <span className="doctor-specialty-info-label">Specialty:</span>
+          <span className="doctor-specialty-info-value">{doctor.medicalSpeciality || "Not Mentioned"}</span>
         </div>
         
         <div className="doctor-meta-info">
@@ -566,15 +569,15 @@ const FindDoctorPage = () => {
 
   return (
     <div className="find-doctor-page">
-      <div className="search-container">
-        <div className="search-bar-wrapper">
+      <div className="findDoc-search-container">
+        <div className="findDoc-search-bar-wrapper">
           
-          <div className="search-input-group">
-            <BiSearchAlt className="search-icon" />
+          <div className="findDoc-search-input-group">
+            <BiSearchAlt className="findDoc-search-icon" />
             <input
               type="text"
               placeholder="Search by specialization"
-              className="search-input1"
+              className="findDoc-search-input1"
               value={searchQuery}
               onChange={(e) => dispatch({ 
                 type: ACTIONS.SET_SEARCH_QUERY, 
@@ -583,8 +586,8 @@ const FindDoctorPage = () => {
             />
           </div>
           
-          <div className="search-input-group">
-            <FaLocationArrow className="search-icon" />
+          <div className="findDoc-search-input-group">
+            <FaLocationArrow className="findDoc-search-icon" />
             <select
               className="state-dropdown"
               value={selectedState}

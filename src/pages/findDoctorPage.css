@@ -102,27 +102,31 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
-.search-container {
+.findDoc-search-container {
   padding: var(--spacing-xl) var(--spacing-md);
-  background-color: var(--color-primary, #007bff10);
+  /* background-color: var(--color-primary, #007bff10); */
   border-bottom: 1px solid var(--color-border);
+  width: 75vw;
+  margin: 0 0 0 auto;
 }
 
-.search-bar-wrapper {
+.findDoc-search-bar-wrapper {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: var(--spacing-md);
 }
 
-.search-input-group {
+.findDoc-search-input-group {
   position: relative;
   flex: 1;
   min-width: 280px;
+  border: #000000 solid black;
 }
 
-.search-icon {
+.findDoc-search-icon {
   position: absolute;
   top: 50%;
   left: var(--spacing-md);
@@ -131,16 +135,16 @@ body {
   font-size: var(--font-size-xl);
 }
 
-.search-input1{
+.findDoc-search-input1{
   width: 100%;
   padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) var(--spacing-xxl);
   font-size: 1rem;
-  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   transition: var(--transition-fast, 0.15s ease-in-out);
   background-color: var(--color-background-white);
   color: var(--color-text-primary);
+  border: rgba(0, 0, 0, 0.502) solid .5px;
 }
 .state-dropdown {
   width: 100%;
@@ -152,11 +156,13 @@ body {
   transition: var(--transition-fast, 0.15s ease-in-out);
   background-color: var(--color-background-white);
   color: var(--color-text-primary);
+  border: rgba(0, 0, 0, 0.548) solid .5px;
+margin: 0;
 }
 .state-dropdown option {
   padding: 10px;
 }
-.search-input:focus,
+.findDoc-search-input:focus,
 .state-dropdown:focus {
   outline: none;
   border-color: var(--color-primary);
@@ -190,7 +196,7 @@ body {
   align-items: center;
   margin-bottom: var(--spacing-lg);
   padding-bottom: var(--spacing-md);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid ;
 }
 
 .filter-header h2 {
@@ -238,7 +244,7 @@ body {
   align-items: center;
   gap: var(--spacing-xs);
   padding: var(--spacing-xs) var(--spacing-sm);
-  background-color: var(--color-primary-hover, #0069d910);
+  background-color: var(--primary-light-hover, #0069d910);
   color: var(--color-primary);
   border-radius: var(--radius-md);
   font-size: 0.875rem;
@@ -373,6 +379,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
+  
 }
 
 .doctor-card {
@@ -406,7 +413,7 @@ body {
   border: 2px solid var(--color-border);
 }
 
-.doctor-image {
+.doctorId-doctor-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -428,17 +435,21 @@ body {
   background-color: var(--color-accent-hover);
 }
 
-.doctor-info {
+.doctor-specialty-doctor-info {
   flex: 1;
   margin-left: var(--spacing-lg);
   display: flex;
   flex-direction: column;
 }
 
-.doctor-name {
+.findDoc-doctor-name {
   margin-bottom: var(--spacing-sm);
   font-size: 1.125rem;
   color: var(--color-primary);
+}
+.findDoc-doctor-info{
+  padding:10px;
+
 }
 
 .doctor-specialty {
@@ -641,8 +652,13 @@ body {
 @media (max-width: 768px) {
   .find-doctor-content {
     flex-direction: column;
+    
   }
   
+  .findDoc-search-container{
+    width: 100vw;
+    margin: auto;
+  }
   .mobile-filter-toggle {
     display: flex;
   }
@@ -678,11 +694,18 @@ body {
 }
 
 @media (max-width: 576px) {
-  .search-bar-wrapper {
+  .findDoc-search-bar-wrapper {
     flex-direction: column;
   }
   
-  .search-input-group {
+.doctor-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+  
+  .findDoc-search-input-group {
     width: 100%;
   }
   
@@ -690,6 +713,12 @@ body {
     flex-direction: column;
     gap: var(--spacing-sm);
   }
+  .doctor-meta-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
   
   .doctor-bottom-info {
     flex-direction: column;
@@ -709,6 +738,10 @@ body {
   .doctor-card-left {
     flex-direction: column;
   }
+  .details {
+    width: 100%;
+    margin-top: 1rem;
+}
 }
 
 /* ========== ACCESSIBILITY STYLES ========== */

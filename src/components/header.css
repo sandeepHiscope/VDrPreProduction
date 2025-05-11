@@ -1,10 +1,9 @@
-
 /*header icon styling*/
 .headericons{
   width: 20px;
   height: 20px;
-  color:rgb(186, 178, 178);
   display: none;
+  color: aliceblue;
 }
 /* .header-background {
   position: absolute;
@@ -20,7 +19,7 @@
 } */
 
 /* ============ NAV ============ */
-.header-nav-container {
+.header-container{
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -28,13 +27,15 @@
   padding: 1em 1.5em;
   position: relative;
   box-shadow: 0 4px 200px rgba(141, 141, 141, 0.374);
-
+  background: linear-gradient(90deg,rgb(197, 234, 255),rgb(107, 188, 255));
+  /* background:linear-gradient(90deg,--primary-); */
+  /* background: linear-gradient( 170deg ,rgb(21, 247, 213),rgb(36, 105, 255)); */
 }
 
-.header-nav-container:hover {
+/* .header-nav-container:hover {
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
-}
+} */
 
 /* ============ LOGO ============ */
 .header-logo {
@@ -65,7 +66,7 @@
 /* Make it visible in mobile view */
 @media (max-width: 700px) {
   .toggle-button {
-    display: block;
+    display: none;
   }
 
   .header-nav-container {
@@ -73,9 +74,7 @@
     justify-content: space-between;
     align-items: center;
   }
- 
 } 
-
 
 /* ============ NAV MENU ============ */
 .nav-menu {
@@ -105,9 +104,6 @@
   color: #007bff;
   background-color: rgba(0, 123, 255, 0.1);
 }
-
-
-
 
 /* ============ TABLET ============ */
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -173,7 +169,7 @@
   }
 
   .toggle-button {
-    display: block;
+    display: none;
   }
 
   .nav-links-open {
@@ -205,4 +201,35 @@
   .headericons{
     display: block;
   }
+}
+.input-header-mobile{
+  display: flex;
+  gap: 20px;
+}
+.searchbar-input{
+  display: none;
+}
+.searchbar-input1{
+  border: 0.5px solid rgb(147, 147, 147);
+  width: 250px;
+  height: 40px;
+  display: none;
+  border-radius: 10px;
+}
+@media(max-width:698px){
+ .searchbar-input1{
+     display: block;
+ }
+ .header-nav-container{
+  background-color: #d7f1f9;
+
+ }
+ 
+}
+@media(max-width:440px){
+  .header-logo{
+    height: 2.5em;
+
+  }
+  
 }

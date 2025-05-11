@@ -2,8 +2,6 @@ import React from "react";
 import "./ourFoundersPage.css";
 import Cards from "./Cards";
 import Fotter from "./footer";
-
-// Image imports
 import Anji from "../assets/Images/foundersImg/anji.jpg";
 import Alekhya from "../assets/Images/foundersImg/alekhya.jpg";
 import Bhadru from "../assets/Images/foundersImg/bhadru.jpg";

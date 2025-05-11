@@ -10,6 +10,10 @@ const LoginContextProvider = ({ children }) => {
     return JSON.parse(localStorage.getItem("isLoggedIn")) || false;
   });
 
+  const [isLabTechnician, setIsLabTechnician] = useState(() => {
+    return JSON.parse(localStorage.getItem("isLabTechnician")) || false;
+  });
+
   const [isDoctor, setIsDoctor] = useState(() => {
     return JSON.parse(localStorage.getItem("isDoctor")) || false;
   });
@@ -38,17 +42,28 @@ const LoginContextProvider = ({ children }) => {
 
   const setUser = (value) => setIsUser(value);
   const setDoctor = (value) => setIsDoctor(value);
+  const setLabTechnician = (value) => setIsLabTechnician(value);
 
   // 🔁 Sync to localStorage
   useEffect(() => {
     localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
     localStorage.setItem("isUser", JSON.stringify(isUser));
     localStorage.setItem("isDoctor", JSON.stringify(isDoctor));
-  }, [isLoggedIn, isUser, isDoctor]);
+    localStorage.setItem("isLabTechnician", JSON.stringify(isLabTechnician));
+  }, [isLoggedIn, isUser, isDoctor, isLabTechnician]);
 
   return (
     <LoginContext.Provider
-      value={{ isLoggedIn, isUser, isDoctor, setUser, setDoctor, setLogin }}
+      value={{
+        isLoggedIn,
+        isUser,
+        isDoctor,
+        isLabTechnician,
+        setUser,
+        setDoctor,
+        setLabTechnician,
+        setLogin,
+      }}
     >
       {children}
     </LoginContext.Provider>

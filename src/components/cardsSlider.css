@@ -1,10 +1,7 @@
-
-
 .expert-slider-section {
   position: relative;
   width: 97%;
   overflow: hidden;
-  /* background-color: #d4ed7b; */
   box-sizing: border-box;
   margin: 1em;
 }
@@ -39,9 +36,7 @@
   margin: 1em 2em;
   overflow-x: hidden;
   scroll-behavior:smooth;
-
   transition: ease-in-out 1s;
-  
 }
 
 .slider-container::-webkit-scrollbar {
@@ -132,7 +127,6 @@
   pointer-events: none;
   padding: 0;
   box-sizing: border-box;
-  /* background: #000; */
 }
 
 .slider-navigation button {

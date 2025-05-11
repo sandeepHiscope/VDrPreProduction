@@ -68,7 +68,6 @@ const VerifyDoc = () => {
     }
   };
 
-
   // Continuously grabs frames from the video, scans for QR codes, and calls handleScan on success
   const onScanSuccess = (stream, canvas, video) => {
     const context = canvas.getContext("2d");
@@ -87,7 +86,6 @@ const VerifyDoc = () => {
           if (stream) {
             stream.getTracks().forEach((track) => track.stop());
           }
-
         }
       }
     }, 200);
@@ -132,7 +130,6 @@ const VerifyDoc = () => {
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (!file) return;
-
     const reader = new FileReader();
     reader.onload = (e) => {
       const img = new Image();
@@ -144,7 +141,6 @@ const VerifyDoc = () => {
         canvas.width = img.width;
         canvas.height = img.height;
         context.drawImage(img, 0, 0, canvas.width, canvas.height);
-
         const imageData = context.getImageData(
           0,
           0,
@@ -181,12 +177,7 @@ const VerifyDoc = () => {
                 <span>History</span>
               </button>
             </li>
-            <li className={activeTab === "about" ? "vdoc-active" : ""}>
-              <button onClick={() => setActiveTab("about")}>
-                <FiInfo className="vdoc-nav-icon" />
-                <span>About</span>
-              </button>
-            </li>
+            
           </ul>
         </nav>
       </aside>
@@ -195,7 +186,7 @@ const VerifyDoc = () => {
         {activeTab === "scan" && (
           <>
             <div className="vdoc-scanner-section">
-              <h2 className="vdoc-section-title">QR Code Scanner</h2>
+              <h2 className="vdoc-section-title">Scan our Qr Know Your Doctor</h2>
               <p className="vdoc-instructions">
                 Scan a QR code using your camera or upload an image. If it's a
                 URL, you'll be redirected in 5 seconds.
@@ -346,40 +337,9 @@ const VerifyDoc = () => {
           </div>
         )}
 
-        {activeTab === "about" && (
-          <div className="vdoc-about-section">
-            <h2 className="vdoc-section-title">About QR Scanner Pro</h2>
-            <div className="vdoc-about-content">
-              <p>
-                QR Scanner Pro is a fast, reliable, and easy-to-use QR code
-                scanner application. It allows you to scan QR codes using your
-                device's camera or by uploading images.
-              </p>
-
-              <h3>Features</h3>
-              <ul className="vdoc-features-list">
-                <li>Camera scanning of QR codes</li>
-                <li>Image upload scanning</li>
-                <li>URL detection and redirection</li>
-                <li>Scan history tracking</li>
-                <li>Fast and accurate detection</li>
-              </ul>
-
-              <h3>Privacy</h3>
-              <p>
-                Your privacy is important to us. All scanned data remains on
-                your device and is never transmitted to our servers. Your scan
-                history is stored locally in your browser.
-              </p>
-            </div>
-          </div>
-        )}
       </main>
     </div>
   );
 };
 
 export default VerifyDoc;
-/*
-
-*/

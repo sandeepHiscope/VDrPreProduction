@@ -22,7 +22,6 @@
   }
   
   .patientSidebar-header {
-    /* padding: 1rem; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,7 +60,6 @@
   
   .patientMain-inner {
     padding: 1.5rem;
-    /* background-color: #fff; */
   }
   
   .patientMain-heading {
@@ -445,7 +443,6 @@
   .prescriptionName {
     font-size: 1.7rem;
     font-weight: bold;
-    /* color: #1f2937; */
   }
   
   .prescriptionDetails {
@@ -541,4 +538,3 @@
   .notificationCard:hover {
     background-color: #f9fafb;
   }
-  

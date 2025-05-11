@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
-// image imports
 import VDrLogo from "../assets/Images/commonImg/VDrlogo.png";
 import GooglePlayLogo from "../assets/icons/apps/googleplay.png";
 import AppStoreLogo from "../assets/icons/apps/applestore.png";
@@ -21,7 +20,6 @@ function Homepage() {
   const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState(50);
   const [currentImage, setCurrentImage] = useState(0);
-  
   // Sample header images array - replace with your actual images
   const HeaderImages = [
     { img: "/path-to-image1.jpg" },
@@ -33,7 +31,6 @@ function Homepage() {
     setIsOpen(!isOpen);
   };
   
-
   useEffect(() => {
     console.log("Home Page Rendered");  
     setIsHomePageRendered(true);
@@ -115,7 +112,6 @@ function Homepage() {
 
   const [activeSlides, setActiveSlides] = useState("doctor");
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-
   const doctorSlides = [
     "Detailed medical explanation about health care.",
     "Expert advice on how to maintain a healthy lifestyle.",
@@ -146,8 +142,6 @@ function Homepage() {
   return (
     <>
       <div className="header-section">
-       
-        
         <div
           className="header-background"
           style={{
@@ -195,36 +189,25 @@ function Homepage() {
           </div>
         )}
 
-        
-
         {/* Cards Slider Section */}
         <CardsSlider />
-
         <h2>More Categories to help you</h2>
-        <section className="categorySection">
-          <ul className="categoryList">
-            <li className="categoryItem">Dentist</li>
-            <li className="categoryItem">Cardiologist</li>
-            <li className="categoryItem">Dermatologist</li>
-            <li className="categoryItem">Pediatrician</li>
-            <li className="categoryItem">Orthopedic</li>
-            <li className="categoryItem">General Physician</li>
-            <li className="categoryItem">ENT Specialist</li>
-            <li className="categoryItem">Gynecologist</li>
-            <li className="categoryItem">Urologist</li>
-            <li className="categoryItem">Neurologist</li>
-            <li className="categoryItem">Psychiatrist</li>
-            <li className="categoryItem">Oncologist</li>
-            <li className="categoryItem">Gastroenterologist</li>
-          </ul>
-        </section>
+<section className="categorySection">
+  <ul className="categoryList">
+    {['Dentist', 'Cardiologist', 'Dermatologist', 'Pediatrician', 'Orthopedic', 'General Physician', 'ENT Specialist', 'Gynecologist', 'Urologist', 'Neurologist', 'Psychiatrist', 'Oncologist', 'Gastroenterologist'].map((category) => (
+      <li className="categoryItem" key={category}>
+        <Link to={`/findDoctorPage?category=${category}`}>{category}</Link>
+      </li>
+    ))}
+  </ul>
+</section>
 
         {/* { our services} */}
         <ServicesSection/>
         {/* Testimonials (reviews) Section */}
         <section className="content-section testimonials-section">
           <div className="section-header">
-            <h2 className="text2">
+            <h2 className="testimonials-section-heading">
               Trusted By Users, Assured By Verified Doctors
             </h2>
             <div className="section-underline"></div>
@@ -392,12 +375,7 @@ function Homepage() {
               based on your preferences.
             </div>
           </div>          
-  
-          
-    
         </div>
-
-        
       </div>
     </>
   );
