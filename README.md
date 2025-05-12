@@ -47,3 +47,25 @@ If you have any questions or need assistance, feel free to contact our support t
 
 Thank you for choosing VDr. We hope you find the app useful and convenient for all your healthcare needs.
 
+#Project Structure
+
+my-app/
+├── public/
+│   └── index.html
+├── src/
+│   ├── assets/               # Images, fonts, icons
+│   ├── components/           # Reusable UI components (Button, Card, etc.)
+│   ├── features/             # Feature-based folders (Auth, Dashboard, etc.)
+│   ├── layouts/              # Shared layout components (Navbar, Sidebar)
+│   ├── pages/                # Route-level components (Home, About, etc.)
+│   ├── services/             # API calls or logic (axios, fetch wrappers)
+│   ├── hooks/                # Custom hooks (useAuth, useDebounce)
+│   ├── context/              # Context providers (AuthContext, ThemeContext)
+│   ├── utils/                # Helper functions (formatDate, validators)
+│   ├── styles/               # Global styles / Tailwind config
+│   ├── App.jsx
+│   └── main.jsx
+├── .env
+├── tailwind.config.js
+├── vite.config.js
+└── package.json
