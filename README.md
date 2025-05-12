@@ -47,7 +47,7 @@ If you have any questions or need assistance, feel free to contact our support t
 
 Thank you for choosing VDr. We hope you find the app useful and convenient for all your healthcare needs.
 
-#Project Structure
+# Project Structure
 
 my-app/
 ├── public/
