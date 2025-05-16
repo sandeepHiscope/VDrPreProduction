@@ -41,7 +41,7 @@ const NAV_LINKS = [
   },
   {
     href: "https://vdr-door-delivery-medicines.netlify.app/",
-    label: "Doorstep Meds",
+    label: "E‑Pharmacy",
     icon: <ShoppingBag className="headericons" />,
     external: true,
   },
